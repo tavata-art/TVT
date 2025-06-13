@@ -1,23 +1,52 @@
-<!-- core/templates/core/home.html -->
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenida a Tavata.art</title>
-    <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f0f0; margin: 0; }
-        .container { text-align: center; }
-        h1 { color: #333; }
-        p { color: #666; }
-        .emoji { font-size: 4rem; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="emoji">🐝</div>
-        <h1>¡Hola, Mundo! Soy Tavata CMS.</h1>
-        <p>Construyéndome, un bloque a la vez. ¡El despliegue fue un éxito!</p>
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block title %}Bienvenida a Tavata CMS{% endblock %}
+
+
+{% block content %}
+
+  <!-- Componente Jumbotron para el saludo de bienvenida -->
+  <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+    <div class="container-fluid py-5 text-center">
+
+      <!-- Icono de abeja con animación y color -->
+      <i class="fas fa-bee fa-beat text-primary" style="font-size: 5rem;"></i>
+
+      <!-- Títulos principales -->
+      <h1 class="display-5 fw-bold mt-3">¡Hola, Mundo! Soy Tavata CMS.</h1>
+      
+      <p class="fs-4">
+        Construyéndome, un bloque a la vez, ahora con una estructura profesional y adaptable.
+      </p>
+
+      <hr class="my-4">
+
+      <p>Esto demuestra que la herencia de plantillas y la integración de frameworks frontend funcionan a la perfección.</p>
+      
+      <a class="btn btn-primary btn-lg" href="#" role="button">Llamada a la Acción</a>
     </div>
-</body>
-</html>
+  </div>
+
+  <!-- Sistema de rejilla con tres columnas -->
+  <div class="row text-center">
+
+    <div class="col-lg-4">
+      <h3 class="fw-normal">Desarrollo Robusto</h3>
+      <p>Backend construido con Python y Django, siguiendo las mejores prácticas para un código limpio y mantenible.</p>
+    </div>
+
+    <div class="col-lg-4">
+      <h3 class="fw-normal">Diseño Moderno</h3>
+      <p>Interfaz de usuario creada con Bootstrap 5, asegurando una experiencia responsiva y agradable en cualquier dispositivo.</p>
+    </div>
+
+    <div class="col-lg-4">
+      <h3 class="fw-normal">Listo para Crecer</h3>
+      <p>Arquitectura escalable preparada para añadir nuevas funcionalidades como un blog, portafolio y mucho más.</p>
+    </div>
+
+  </div>
+
+{% endblock content %}

@@ -1,0 +1,50 @@
+/* static/css/theme.css */
+
+/*
+ * =========================================
+ *           TAVATA "BEE THEME"
+ * =========================================
+ * Define nuestras variables de color personalizadas
+ * y las usamos para sobrescribir las de Bootstrap.
+ */
+
+:root {
+    /* 1. Definimos nuestros colores base */
+    --tavata-yellow: #ffc107;
+    --tavata-dark: #212529;
+    --tavata-light: #f8f9fa;
+
+    /* 2. Sobrescribimos las variables de color principales de Bootstrap */
+    --bs-primary: var(--tavata-yellow);       /* El color primario ahora es nuestro amarillo */
+    --bs-primary-rgb: 255, 193, 7;           /* La versión RGB para transparencias (muy importante) */
+
+    --bs-dark: var(--tavata-dark);
+    --bs-dark-rgb: 33, 37, 41;
+
+    --bs-light: var(--tavata-light);
+    --bs-light-rgb: 248, 249, 250;
+
+    /* Ajustamos el color del texto sobre nuestro color primario para mejor contraste */
+    --bs-body-color-rgb: 33, 37, 41; /* Texto principal oscuro */
+}
+
+/* 3. Pequeños ajustes y clases de utilidad */
+
+/* Asegurarnos de que el texto en botones primarios sea negro para legibilidad */
+.btn-primary {
+    --bs-btn-color: var(--tavata-dark);
+    --bs-btn-hover-color: var(--tavata-dark);
+    --bs-btn-active-color: var(--tavata-dark);
+    --bs-btn-border-color: var(--tavata-yellow);
+    --bs-btn-hover-bg: #ffca2c; /* Un amarillo un poco más claro al pasar el ratón */
+    --bs-btn-hover-border-color: #ffca2c;
+}
+
+/* Clases de utilidad para usar nuestros colores directamente */
+.text-tavata-yellow {
+    color: var(--tavata-yellow) !important;
+}
+
+.bg-tavata-dark {
+    background-color: var(--tavata-dark) !important;
+}
