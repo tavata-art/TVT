@@ -19,6 +19,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('pages/', include('pages.urls')),
+    path('tinymce/', include('tinymce.urls')), 
+    # La ruta de 'core' debe ir al final si usa la raíz ''
     path('', include('core.urls')),
-    path('pages/', include('pages.urls')), # ¡Añadimos esta línea!
 ]

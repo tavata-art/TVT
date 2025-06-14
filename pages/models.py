@@ -1,6 +1,8 @@
+# pages/models.py
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from tinymce import models as tinymce_models 
 
 # Definimos las opciones para el estado de publicación
 STATUS_CHOICES = (
@@ -14,7 +16,7 @@ class Page(models.Model):
     """
     title = models.CharField(max_length=200, verbose_name="Título")
     slug = models.SlugField(max_length=200, unique=True, verbose_name="Slug (URL amigable)")
-    content = models.TextField(verbose_name="Contenido")
+    content = tinymce_models.HTMLField(verbose_name="Contenido")
     author = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name="Autor")
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft', verbose_name="Estado")
     
