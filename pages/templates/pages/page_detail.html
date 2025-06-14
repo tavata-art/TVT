@@ -13,6 +13,17 @@
                 Por: {{ page.author.get_full_name|default:page.author.username }} | 
                 Última actualización: {{ page.updated_at|date:"d M Y" }}
             </p>
+            <!-- ¡NUEVO BLOQUE PARA CATEGORÍAS! -->
+            {% if page.categories.all %}
+            <div class="mb-3">
+                <strong>Categorías:</strong>
+                {% for category in page.categories.all %}
+                    <!-- En el futuro, este enlace irá a una página que lista todas las páginas de esa categoría -->
+                    <a href="#" class="badge bg-tavata-yellow text-dark text-decoration-none">{{ category.name }}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+
             <hr>
 
             <!-- Contenido Principal de la Página -->

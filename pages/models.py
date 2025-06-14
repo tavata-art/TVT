@@ -2,6 +2,22 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+class Category(models.Model):
+    name = models.CharField(max_length=100, unique=True, verbose_name="Nombre")
+    slug = models.SlugField(max_length=100, unique=True, verbose_name="Slug")
+
+    class Meta:
+        verbose_name = "categoría"
+        verbose_name_plural = "categorías"
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        # En el futuro, podríamos tener una página que liste todas las páginas de una categoría
+        return reverse('pages_by_category', args=[self.slug])
+
 # Definimos las opciones para el estado de publicación
 STATUS_CHOICES = (
     ('draft', 'Borrador'),
@@ -20,7 +36,16 @@ class Page(models.Model):
     
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Última actualización")
-
+    # ¡NUEVO CAMPO! La relación con Categorías.
+    # Usamos ManyToManyField porque una página puede estar en varias categorías,
+    # y una categoría puede tener varias páginas.
+    categories = models.ManyToManyField(
+        Category, 
+        verbose_name="Categorías", 
+        related_name="pages", # Nos permite hacer category.pages para obtener las páginas
+        blank=True # Hace que asignar una categoría no sea obligatorio
+    )
+    
     class Meta:
         verbose_name = "página"
         verbose_name_plural = "páginas"
