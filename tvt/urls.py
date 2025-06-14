@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings          # Importa settings
+from django.conf.urls.static import static  # Importa static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,3 +26,9 @@ urlpatterns = [
     # La ruta de 'core' debe ir al final si usa la raíz ''
     path('', include('core.urls')),
 ]
+
+# ¡AÑADIR ESTO AL FINAL!
+# Sirve los archivos media SOLAMENTE si estamos en modo DEBUG (desarrollo).
+# En producción, el servidor web (Nginx, Apache) se encargará de esto.
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

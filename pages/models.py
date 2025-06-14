@@ -16,6 +16,12 @@ class Page(models.Model):
     """
     title = models.CharField(max_length=200, verbose_name="Título")
     slug = models.SlugField(max_length=200, unique=True, verbose_name="Slug (URL amigable)")
+    featured_image = models.ImageField(
+        upload_to='pages/featured/%Y/%m/%d/', 
+        blank=True, 
+        null=True, 
+        verbose_name="Imagen Destacada"
+    )
     content = tinymce_models.HTMLField(verbose_name="Contenido")
     author = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name="Autor")
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft', verbose_name="Estado")

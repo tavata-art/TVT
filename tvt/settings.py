@@ -163,6 +163,13 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
+# --- Configuración de Archivos Media ---
+# La URL base desde la que se servirán los archivos media.
+MEDIA_URL = '/media/'
+
+# La ruta absoluta en el sistema de archivos donde se guardarán los archivos subidos.
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 

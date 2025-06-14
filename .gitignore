@@ -10,6 +10,16 @@ env/
 .env/
 .env
 
+# Archivos generados por Django (estáticos y media)
+# ----------------------------------------------------
+staticfiles/
+
+# ¡LA LÍNEA QUE NECESITAMOS AÑADIR!
+# Ignora todos los archivos subidos por los usuarios.
+media/
+# ----------------------------------------------------
+
+
 # Distribution / packaging
 build/
 dist/
