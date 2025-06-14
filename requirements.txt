@@ -1,5 +1,12 @@
 asgiref==3.8.1
+bleach==6.2.0
 Django==5.2.3
+django-grappelli==3.0.10
+django-summernote==0.8.20.0
+Markdown==3.8
+pillow==11.2.1
 PyMySQL==1.1.1
 python-decouple==3.8
+six==1.17.0
 sqlparse==0.5.3
+webencodings==0.5.1
