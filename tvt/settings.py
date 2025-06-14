@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',  # Asegúrate de que tu aplicación core esté aquí
+    'core.apps.CoreConfig',
+    'pages.apps.PagesConfig',
 ]
 
 MIDDLEWARE = [
