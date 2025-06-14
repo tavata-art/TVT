@@ -5,6 +5,7 @@ from django.urls import reverse
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name="Nombre")
     slug = models.SlugField(max_length=100, unique=True, verbose_name="Slug")
+    description = models.TextField(blank=True, verbose_name="Descripción")
 
     class Meta:
         verbose_name = "categoría"

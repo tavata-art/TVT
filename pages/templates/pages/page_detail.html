@@ -18,9 +18,11 @@
             <div class="mb-3">
                 <strong>Categorías:</strong>
                 {% for category in page.categories.all %}
-                    <!-- En el futuro, este enlace irá a una página que lista todas las páginas de esa categoría -->
-                    <a href="#" class="badge bg-tavata-yellow text-dark text-decoration-none">{{ category.name }}</a>
-                {% endfor %}
+                <!-- AHORA: Usamos la etiqueta 'url' para generar el enlace dinámicamente -->
+                <a href="{% url 'pages_by_category' category.slug %}" class="badge bg-tavata-yellow text-dark text-decoration-none">
+                    {{ category.name }}
+                </a>
+            {% endfor %}
             </div>
             {% endif %}
 

@@ -1,0 +1,39 @@
+<!-- pages/templates/pages/pages_by_category.html -->
+{% extends 'core/base.html' %}
+
+{% block title %}Páginas en {{ category.name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+
+    <!-- Encabezado de la página de categoría -->
+    <div class="category-header mb-4">
+        <h1 class="display-5">Categoría: <span class="text-primary">{{ category.name }}</span></h1>
+        {% if category.description %}
+            <p class="lead">{{ category.description }}</p>
+        {% endif %}
+        <hr>
+    </div>
+
+    <!-- Lista de páginas -->
+    <div class="page-list">
+        <!-- ¿La variable en el 'if' se llama 'pages_list'? -->
+        {% if pages_list %} 
+            <ul class="list-group list-group-flush">
+                <!-- ¿La variable en el 'for' se llama 'pages_list'? -->
+                {% for page in pages_list %}
+                <li class="list-group-item">
+                    <a href="{{ page.get_absolute_url }}" class="fs-4 text-decoration-none">{{ page.title }}</a>
+                    <p class="text-muted mb-0">Publicado el {{ page.created_at|date:"d M, Y" }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <div class="alert alert-info" role="alert">
+                Actualmente no hay páginas publicadas en esta categoría.
+            </div>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

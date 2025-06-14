@@ -32,12 +32,18 @@
 
 /* Asegurarnos de que el texto en botones primarios sea negro para legibilidad */
 .btn-primary {
+    /* 1. Definimos explícitamente el color de fondo normal */
+    --bs-btn-bg: var(--tavata-yellow);
+    --bs-btn-border-color: var(--tavata-yellow);
+
+    /* 2. Definimos el color del texto para buen contraste */
     --bs-btn-color: var(--tavata-dark);
     --bs-btn-hover-color: var(--tavata-dark);
     --bs-btn-active-color: var(--tavata-dark);
-    --bs-btn-border-color: var(--tavata-yellow);
-    --bs-btn-hover-bg: #ffca2c; /* Un amarillo un poco más claro al pasar el ratón */
-    --bs-btn-hover-border-color: #ffca2c;
+
+    /* 3. Definimos los colores para el estado :hover */
+    --bs-btn-hover-bg: #e6ac00; /* Un dorado un poco más oscuro al pasar el ratón */
+    --bs-btn-hover-border-color: #e6ac00;
 }
 
 /* Clases de utilidad para usar nuestros colores directamente */
