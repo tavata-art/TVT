@@ -9,6 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('pages/', include('pages.urls')),
+    path('blog/', include('blog.urls', namespace='blog')), # <-- ¡NUEVA LÍNEA!
     path('', include('core.urls')),
 ]
 

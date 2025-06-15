@@ -1,0 +1,33 @@
+<!-- blog/templates/blog/post_list.html -->
+{% extends 'core/base.html' %}
+
+{% block title %}Nuestro Blog{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="display-4 text-center mb-5">Nuestro Blog</h1>
+
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                {% if post.featured_image %}
+                    <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
+                {% endif %}
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text text-muted">
+                        <small>{{ post.published_date|date:"d F, Y" }} por {{ post.author.get_full_name|default:post.author.username }}</small>
+                    </p>
+                    <a href="{{ post.get_absolute_url }}" class="btn btn-primary mt-auto">Leer Más</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+            <div class="col">
+                <p class="text-center">Aún no hay entradas en el blog. ¡Vuelve pronto!</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

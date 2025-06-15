@@ -1,0 +1,53 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+
+<!-- El título de la pestaña del navegador será el título del post -->
+{% block title %}{{ post.title }} | Blog de Tavata.art{% endblock %}
+
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- Usamos una columna ancha pero centrada para la legibilidad del texto -->
+        <div class="col-lg-8 mx-auto">
+
+            <!-- 1. Imagen Destacada: Solo se muestra si el post tiene una -->
+            {% if post.featured_image %}
+                <img src="{{ post.featured_image.url }}" class="img-fluid rounded mb-4 shadow" alt="{{ post.title }}">
+            {% endif %}
+
+            <!-- 2. Título del Post -->
+            <h1 class="display-4 fw-bold">{{ post.title }}</h1>
+
+            <!-- 3. Metadatos del Post: Fecha y Autor -->
+            <p class="lead text-muted">
+                Publicado el {{ post.published_date|date:"d F, Y" }} por {{ post.author.get_full_name|default:post.author.username }}
+            </p>
+
+            <!-- 4. Categorías del Post: Solo se muestra si tiene categorías asignadas -->
+            {% if post.categories.exists %}
+                <div class="mb-3">
+                    <strong>Categorías:</strong>
+                    {% for category in post.categories.all %}
+                        <a href="{% url 'blog:posts_by_category' category.slug %}" class="badge bg-tavata-yellow text-dark text-decoration-none">
+                            {{ category.name }}
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <!-- Una línea divisoria para separar la cabecera del contenido -->
+            <hr class="my-4">
+
+            <!-- 5. Contenido Principal del Post -->
+            <!-- El filtro |safe es crucial para que el HTML guardado por Summernote se renderice correctamente. -->
+            <div class="post-content fs-5">
+                {{ post.content|safe }}
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
