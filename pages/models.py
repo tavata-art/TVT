@@ -46,6 +46,12 @@ class Page(models.Model):
         related_name="pages", # Nos permite hacer category.pages para obtener las páginas
         blank=True # Hace que asignar una categoría no sea obligatorio
     )
+    # --- NUEVO CAMPO ---
+    is_homepage = models.BooleanField(
+        default=False,
+        verbose_name="¿Es la página de inicio?",
+        help_text="Marcar solo una página con esta opción. Si varias están marcadas, se usará la más reciente."
+    )
     
     class Meta:
         verbose_name = "página"

@@ -2,14 +2,15 @@
 from django.contrib import admin
 from .models import Post, PostCategory
 from django_summernote.admin import SummernoteModelAdmin
+from modeltranslation.admin import TabbedTranslationAdmin
 
 @admin.register(PostCategory)
-class PostCategoryAdmin(admin.ModelAdmin):
+class PostCategoryAdmin(TabbedTranslationAdmin):
     list_display = ('name', 'slug')
     prepopulated_fields = {'slug': ('name',)}
 
 @admin.register(Post)
-class PostAdmin(SummernoteModelAdmin):
+class PostAdmin(SummernoteModelAdmin, TabbedTranslationAdmin):
     summernote_fields = ('content',)
     list_display = ('title', 'author', 'status', 'published_date')
     list_filter = ('status', 'created_at', 'published_date', 'author')
