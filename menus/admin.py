@@ -1,3 +1,10 @@
+# menus/admin.py
 from django.contrib import admin
+from .models import MenuItem
 
-# Register your models here.
+@admin.register(MenuItem)
+class MenuItemAdmin(admin.ModelAdmin):
+    list_display = ('title', 'order', 'link_page', 'link_url')
+    list_editable = ('order',)
+    search_fields = ('title',)
+    list_filter = ('link_page',)

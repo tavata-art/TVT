@@ -55,7 +55,8 @@ INSTALLED_APPS = [
     'django_summernote',
     'core.apps.CoreConfig',
     'pages.apps.PagesConfig',
-    'blog.apps.BlogConfig', # ¡Nuestra nueva app de blog!
+    'blog.apps.BlogConfig',
+    'menus.apps.MenusConfig', # ¡Nuestra nueva app!
 ]
 
 MIDDLEWARE = [
