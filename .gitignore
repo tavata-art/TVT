@@ -30,4 +30,6 @@ db.sqlite3
 
 # Archivos generados por Django (estáticos y media)
 staticfiles/
-media/   # <--- ¡ESTA ES LA LÍNEA QUE NECESITAS!
+media/
+media/*   # <--- ¡ESTA ES LA LÍNEA QUE NECESITAS!
+django-summernote/
