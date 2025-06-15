@@ -1,8 +1,17 @@
 <!-- core/templates/core/partials/_footer.html -->
- {% load menu_tags %}
-
+{% load menu_tags %}
+{% load i18n %}
 <footer class="bg-dark text-white text-center p-3 mt-auto">
-    <p class="mb-0">&copy; {% now "Y" %} Tavata.art - Construido con Django y <i class="fas fa-bee"></i> por Tavata.</p>
+    {# Usamos blocktranslate para manejar texto con variables o HTML dentro #}
+    <p class="mb-0">
+    {# 1. Calculamos el año y lo guardamos en una variable local 'year' #}
+    {% now "Y" as year %}
+
+    {# 2. Pasamos esa variable 'year' al contexto del blocktranslate con 'with' #}
+    {% blocktranslate with year=year trimmed %}
+        &copy; {{ year }} Tavata.art - Construido con Django y <i class="fas fa-bee"></i> por Gustavo y Tavata.
+    {% endblocktranslate %}
+</p>
     <p class="mb-0">
         {% show_menu 'footer-menu' %}
     </p>
