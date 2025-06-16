@@ -3,6 +3,7 @@ bleach==6.2.0
 Django==5.2.3
 django-grappelli==3.0.10
 django-modeltranslation==0.19.15
+django-solo==2.4.0
 django-summernote==0.8.20.0
 Markdown==3.8
 pillow==11.2.1

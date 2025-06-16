@@ -55,11 +55,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_summernote',
+    'solo', 
     'core.apps.CoreConfig',
     'pages.apps.PagesConfig',
     'blog.apps.BlogConfig',
     'menus.apps.MenusConfig', 
-    'search.apps.SearchConfig', # <-- Our new search app!
+    'search.apps.SearchConfig', 
+    'site_settings.apps.SiteSettingsConfig', 
 ]
 
 MIDDLEWARE = [
