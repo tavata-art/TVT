@@ -13,7 +13,8 @@ urlpatterns = [
 
 # URLs que SÍ tendrán el prefijo de idioma (/es/..., /en/...)
 urlpatterns += i18n_patterns(
-    path('pages/', include('pages.urls', namespace='pages')), # <-- ¡AÑADIMOS EL NAMESPACE!
+    path('search/', include('search.urls', namespace='search')), # <-- new line with namespace
+    path('pages/', include('pages.urls', namespace='pages')),
     path('blog/', include('blog.urls', namespace='blog')),
     path('', include('core.urls')),
 )

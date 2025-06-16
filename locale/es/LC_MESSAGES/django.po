@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-16 12:58+0000\n"
-"PO-Revision-Date: 2025-06-16 17:00+0000\n"
+"POT-Creation-Date: 2025-06-16 15:44+0000\n"
+"PO-Revision-Date: 2025-06-16 18:12+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
 
 #: blog/models.py:9 pages/models.py:8
 msgid "Name"
@@ -90,7 +91,7 @@ msgstr "entradas de blog"
 
 #: blog/templates/blog/partials/_blog_categories_widget.html:13
 msgid "No categories available."
-msgstr "No hay categorias disponibles"
+msgstr "No hay categorias disponibles."
 
 #: blog/templates/blog/partials/_recent_posts_widget.html:5
 msgid "Recent Posts"
@@ -98,7 +99,7 @@ msgstr "Post Recientes"
 
 #: blog/templates/blog/partials/_recent_posts_widget.html:10
 msgid "No recent posts available."
-msgstr "No hay post recientes"
+msgstr "No hay post recientes."
 
 #: blog/templates/blog/post_detail.html:31
 #, python-format
@@ -165,15 +166,11 @@ msgid ""
 msgstr ""
 "\n"
 "                Entradas en la categoría: <span class=\"text-"
-"primary\">%(category.name)s</span>"
+"primary\">%(category.name)s</span>\n"
+"             "
 
 #: blog/templates/blog/post_list_by_category.html:48
-#, fuzzy, python-format
-#| msgid ""
-#| "\n"
-#| "                                    Published on %(published_date)s by "
-#| "%(author)s\n"
-#| "                                "
+#, python-format
 msgid ""
 "\n"
 "                                    Published %(published_date)s by "
@@ -197,6 +194,15 @@ msgid ""
 msgstr ""
 "&copy; %(year)s Tavata.art - Construido con Django y <i class=\"fas fa-"
 "bee\"></i> por Gustavo y Tavata."
+
+#: core/templates/core/partials/_header.html:29
+msgid "Search..."
+msgstr "Búsqueda..."
+
+#: core/templates/core/partials/_header.html:30
+#: search/templates/search/search_results.html:26
+msgid "Search"
+msgstr "Buscar"
 
 #: menus/models.py:9
 msgid "Menu Title"
@@ -358,11 +364,45 @@ msgstr ""
 msgid "There are currently no published pages in this category."
 msgstr "Actualmente no hay páginas publicadas en esta categoría."
 
-#: tvt/settings.py:152
+#: search/templates/search/search_results.html:5
+#, python-format
+msgid "Search results for \"%(query)s\""
+msgstr "Resultados de búsqueda para \"%(query)s\""
+
+#: search/templates/search/search_results.html:13
+msgid "Search results for:"
+msgstr "Resultados de búsqueda para:"
+
+#: search/templates/search/search_results.html:18
+msgid "1 result found."
+msgstr "1 resultado encontrado."
+
+#: search/templates/search/search_results.html:20
+#, python-format
+msgid "%(count)s results found."
+msgstr "%(count)s resultados encontrados."
+
+#: search/templates/search/search_results.html:27
+msgid "Please enter a term in the search bar above."
+msgstr "Por favor ingrese una consulta en la barra de búsqueda."
+
+#: search/templates/search/search_results.html:34
+msgid "Pages Found"
+msgstr "Páginas Encontradas"
+
+#: search/templates/search/search_results.html:46
+msgid "Blog Posts Found"
+msgstr "Entradas de blog encontradas"
+
+#: search/templates/search/search_results.html:51
+msgid "Published on"
+msgstr "Publicado"
+
+#: tvt/settings.py:153
 msgid "Spanish"
 msgstr "Español"
 
-#: tvt/settings.py:153
+#: tvt/settings.py:154
 msgid "English"
 msgstr "Inglés"
 

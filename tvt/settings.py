@@ -47,7 +47,7 @@ else: # Para 'testing', 'production' u otros
 # Application definition
 
 INSTALLED_APPS = [
-    'modeltranslation', # <-- Antes del admin
+    'modeltranslation', # <-- Before admin
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -58,13 +58,14 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'pages.apps.PagesConfig',
     'blog.apps.BlogConfig',
-    'menus.apps.MenusConfig', # ¡Nuestra nueva app!
+    'menus.apps.MenusConfig', 
+    'search.apps.SearchConfig', # <-- Our new search app!
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',  # <-- ¡NUEVA LÍNEA!
+    'django.middleware.locale.LocaleMiddleware',  # <-- ¡Localization!
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

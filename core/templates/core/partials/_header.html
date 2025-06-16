@@ -1,5 +1,6 @@
 {# Loads the custom template tags from our 'menus' app to render the navigation #}
 {% load menu_tags %}
+{% load i18n %}
 
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -21,6 +22,16 @@
                     {# The menu itself is managed in the Django admin. #}
                     {% show_menu 'main-menu' %}
                 </ul>
+
+                {# --- NEW SEARCH FORM --- #}
+                {# This form submits data to the 'search_results' URL name using the GET method. #}
+                <form class="d-flex" ...>
+                    {# La primera cadena a traducir #}
+                    <input class="form-control me-2" type="search" name="q" placeholder="{% translate 'Search...' %}" aria-label="Search">
+
+                    {# La segunda cadena a traducir #}
+                    <button class="btn btn-primary" type="submit">{% translate "Search" %}</button>
+                </form>
             </div>
         </div>
     </nav>
