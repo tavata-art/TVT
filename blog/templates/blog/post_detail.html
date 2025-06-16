@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% load i18n %}
-
+{% load blog_tags %}
 
 {# SEO blocks to override the defaults from base.html #}
 {% block seo_title %}{{ post.meta_title|default:post.title }}{% endblock %}
@@ -57,4 +57,13 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block sidebar_right %}
+    {# The 'sticky-top' class makes the sidebar "stick" to the top of the viewport once you scroll past it. #}
+    {# We still add 'pt-5' (padding-top) to align it correctly at the start. #}
+    <div class="sticky-top pt-5">
+        {% show_recent_posts %}
+        {% show_blog_categories %}
+    </div>
 {% endblock %}

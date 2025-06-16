@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-16 10:11+0000\n"
+"POT-Creation-Date: 2025-06-16 12:58+0000\n"
 "PO-Revision-Date: 2025-06-16 17:00+0000\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -73,8 +73,10 @@ msgstr "Fecha de Publicación"
 msgid "Status"
 msgstr "Estado"
 
-#: blog/models.py:46 blog/templates/blog/post_detail.html:39 pages/admin.py:45
-#: pages/models.py:45 pages/templates/pages/page_detail.html:39
+#: blog/models.py:46
+#: blog/templates/blog/partials/_blog_categories_widget.html:5
+#: blog/templates/blog/post_detail.html:39 pages/admin.py:45 pages/models.py:45
+#: pages/templates/pages/page_detail.html:39
 msgid "Categories"
 msgstr "Categorías"
 
@@ -86,7 +88,20 @@ msgstr "entrada de blog"
 msgid "blog posts"
 msgstr "entradas de blog"
 
+#: blog/templates/blog/partials/_blog_categories_widget.html:13
+msgid "No categories available."
+msgstr "No hay categorias disponibles"
+
+#: blog/templates/blog/partials/_recent_posts_widget.html:5
+msgid "Recent Posts"
+msgstr "Post Recientes"
+
+#: blog/templates/blog/partials/_recent_posts_widget.html:10
+msgid "No recent posts available."
+msgstr "No hay post recientes"
+
 #: blog/templates/blog/post_detail.html:31
+#, python-format
 msgid ""
 "\n"
 "                Published on %(published_date)s by %(author)s\n"
@@ -96,12 +111,12 @@ msgstr ""
 "                 Publicado el %(published_date)s por %(author)s\n"
 "                "
 
-#: blog/templates/blog/post_list.html:7 blog/templates/blog/post_list.html:11
-#: blog/templates/blog/post_list.html:19
+#: blog/templates/blog/post_list.html:8 blog/templates/blog/post_list.html:12
+#: blog/templates/blog/post_list.html:20
 msgid "Our Blog"
 msgstr "Nuestro Blog"
 
-#: blog/templates/blog/post_list.html:8
+#: blog/templates/blog/post_list.html:9
 msgid ""
 "Latest articles and updates on Computer Vision, Natural Language Processing, "
 "and more from the Tavata team."
@@ -109,12 +124,11 @@ msgstr ""
 "Últimos artículos y novedades sobre Visión por Computador, Procesamiento de "
 "Lenguaje Natural y más del equipo de Tavata."
 
-#: blog/templates/blog/post_list.html:20
+#: blog/templates/blog/post_list.html:21
 msgid "News, articles, and insights from our team."
 msgstr "Noticias, artículos e ideas de nuestro equipo."
 
-#: blog/templates/blog/post_list.html:42
-#: blog/templates/blog/post_list_by_category.html:47
+#: blog/templates/blog/post_list.html:43
 #, python-format
 msgid ""
 "\n"
@@ -127,21 +141,22 @@ msgstr ""
 "%(author)s\n"
 "                                "
 
-#: blog/templates/blog/post_list.html:48
-#: blog/templates/blog/post_list_by_category.html:53
+#: blog/templates/blog/post_list.html:49
+#: blog/templates/blog/post_list_by_category.html:54
 msgid "Read More"
 msgstr "Leer Más"
 
-#: blog/templates/blog/post_list.html:56
+#: blog/templates/blog/post_list.html:57
 msgid "There are no blog posts yet. Come back soon!"
 msgstr "Aún no hay entradas en el blog. ¡Vuelve pronto!"
 
-#: blog/templates/blog/post_list_by_category.html:10
+#: blog/templates/blog/post_list_by_category.html:11
 #, python-format
 msgid "Posts in %(category.name)s"
 msgstr "Entradas en %(category.name)s"
 
-#: blog/templates/blog/post_list_by_category.html:20
+#: blog/templates/blog/post_list_by_category.html:21
+#, python-format
 msgid ""
 "\n"
 "                Posts in category: <span class=\"text-"
@@ -152,7 +167,25 @@ msgstr ""
 "                Entradas en la categoría: <span class=\"text-"
 "primary\">%(category.name)s</span>"
 
-#: blog/templates/blog/post_list_by_category.html:61
+#: blog/templates/blog/post_list_by_category.html:48
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "                                    Published on %(published_date)s by "
+#| "%(author)s\n"
+#| "                                "
+msgid ""
+"\n"
+"                                    Published %(published_date)s by "
+"%(author)s\n"
+"                                "
+msgstr ""
+"\n"
+"                                    Publicado en %(published_date)s por "
+"%(author)s\n"
+"                                "
+
+#: blog/templates/blog/post_list_by_category.html:62
 msgid "There are currently no published posts in this category."
 msgstr "Actualmente no hay entradas publicadas en esta categoría."
 
@@ -271,14 +304,15 @@ msgid "pages"
 msgstr "páginas"
 
 #: pages/templates/pages/page_detail.html:31
+#, python-format
 msgid ""
 "\n"
 "                        By %(author)s | Last updated: %(updated_date)s\n"
 "                    "
-msgstr 
+msgstr ""
 "\n"
-"                        Por %(author)s | Última Actualización: %(updated_date)s"
-"                    "
+"                        Por %(author)s | Última Actualización: "
+"%(updated_date)s                    "
 
 #: pages/templates/pages/page_detail.html:62
 msgid "Welcome!"
@@ -297,6 +331,7 @@ msgid "Pages in %(category.name)s"
 msgstr "Páginas en %(category.name)s"
 
 #: pages/templates/pages/pages_by_category.html:20
+#, python-format
 msgid ""
 "\n"
 "                Pages in category: <span class=\"text-"
