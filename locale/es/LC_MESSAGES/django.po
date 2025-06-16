@@ -1,0 +1,336 @@
+# Spanish translations for tvt-cms project.
+# Copyright (C) 2025 Gustavo
+# This file is distributed under the same license as the tvt-cms package.
+# Gustavo <tu_email@ejemplo.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tvt-cms 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-16 10:11+0000\n"
+"PO-Revision-Date: 2025-06-16 17:00+0000\n"
+"Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
+"Language-Team: Spanish <es@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: blog/models.py:9 pages/models.py:8
+msgid "Name"
+msgstr "Nombre"
+
+#: blog/models.py:10 blog/models.py:36 pages/models.py:9
+msgid "Slug"
+msgstr "Slug"
+
+#: blog/models.py:12 blog/models.py:48 pages/models.py:12 pages/models.py:56
+msgid "Meta Title (SEO)"
+msgstr "Meta Título (SEO)"
+
+#: blog/models.py:13 blog/models.py:49 pages/models.py:13 pages/models.py:57
+msgid "Meta Description (SEO)"
+msgstr "Meta Descripción (SEO)"
+
+#: blog/models.py:16
+msgid "blog category"
+msgstr "categoría de blog"
+
+#: blog/models.py:17
+msgid "blog categories"
+msgstr "categorías de blog"
+
+#: blog/models.py:32 pages/models.py:32
+msgid "Draft"
+msgstr "Borrador"
+
+#: blog/models.py:33 pages/models.py:33
+msgid "Published"
+msgstr "Publicado"
+
+#: blog/models.py:35 pages/models.py:36
+msgid "Title"
+msgstr "Título"
+
+#: blog/models.py:37 pages/models.py:40
+msgid "Author"
+msgstr "Autor"
+
+#: blog/models.py:39 pages/models.py:38
+msgid "Content"
+msgstr "Contenido"
+
+#: blog/models.py:40
+msgid "Featured Image"
+msgstr "Imagen Destacada"
+
+#: blog/models.py:42
+msgid "Published Date"
+msgstr "Fecha de Publicación"
+
+#: blog/models.py:44 pages/models.py:41
+msgid "Status"
+msgstr "Estado"
+
+#: blog/models.py:46 blog/templates/blog/post_detail.html:39 pages/admin.py:45
+#: pages/models.py:45 pages/templates/pages/page_detail.html:39
+msgid "Categories"
+msgstr "Categorías"
+
+#: blog/models.py:56
+msgid "blog post"
+msgstr "entrada de blog"
+
+#: blog/models.py:57
+msgid "blog posts"
+msgstr "entradas de blog"
+
+#: blog/templates/blog/post_detail.html:31
+msgid ""
+"\n"
+"                Published on %(published_date)s by %(author)s\n"
+"                "
+msgstr ""
+"\n"
+"                 Publicado el %(published_date)s por %(author)s\n"
+"                "
+
+#: blog/templates/blog/post_list.html:7 blog/templates/blog/post_list.html:11
+#: blog/templates/blog/post_list.html:19
+msgid "Our Blog"
+msgstr "Nuestro Blog"
+
+#: blog/templates/blog/post_list.html:8
+msgid ""
+"Latest articles and updates on Computer Vision, Natural Language Processing, "
+"and more from the Tavata team."
+msgstr ""
+"Últimos artículos y novedades sobre Visión por Computador, Procesamiento de "
+"Lenguaje Natural y más del equipo de Tavata."
+
+#: blog/templates/blog/post_list.html:20
+msgid "News, articles, and insights from our team."
+msgstr "Noticias, artículos e ideas de nuestro equipo."
+
+#: blog/templates/blog/post_list.html:42
+#: blog/templates/blog/post_list_by_category.html:47
+#, python-format
+msgid ""
+"\n"
+"                                    Published on %(published_date)s by "
+"%(author)s\n"
+"                                "
+msgstr ""
+"\n"
+"                                    Publicado en %(published_date)s por "
+"%(author)s\n"
+"                                "
+
+#: blog/templates/blog/post_list.html:48
+#: blog/templates/blog/post_list_by_category.html:53
+msgid "Read More"
+msgstr "Leer Más"
+
+#: blog/templates/blog/post_list.html:56
+msgid "There are no blog posts yet. Come back soon!"
+msgstr "Aún no hay entradas en el blog. ¡Vuelve pronto!"
+
+#: blog/templates/blog/post_list_by_category.html:10
+#, python-format
+msgid "Posts in %(category.name)s"
+msgstr "Entradas en %(category.name)s"
+
+#: blog/templates/blog/post_list_by_category.html:20
+msgid ""
+"\n"
+"                Posts in category: <span class=\"text-"
+"primary\">%(category.name)s</span>\n"
+"            "
+msgstr ""
+"\n"
+"                Entradas en la categoría: <span class=\"text-"
+"primary\">%(category.name)s</span>"
+
+#: blog/templates/blog/post_list_by_category.html:61
+msgid "There are currently no published posts in this category."
+msgstr "Actualmente no hay entradas publicadas en esta categoría."
+
+#: core/templates/core/partials/_footer.html:9
+#, python-format
+msgid ""
+"&copy; %(year)s Tavata.art - Built with Django and <i class=\"fas fa-bee\"></"
+"i> by Gustavo and Tavata."
+msgstr ""
+"&copy; %(year)s Tavata.art - Construido con Django y <i class=\"fas fa-"
+"bee\"></i> por Gustavo y Tavata."
+
+#: menus/models.py:9
+msgid "Menu Title"
+msgstr "Título del Menú"
+
+#: menus/models.py:10
+msgid "Slug (identifier for code)"
+msgstr "Slug (identificador para el código)"
+
+#: menus/models.py:13
+msgid "Menu"
+msgstr "Menú"
+
+#: menus/models.py:14
+msgid "Menus"
+msgstr "Menús"
+
+#: menus/models.py:28
+msgid "Menu it belongs to"
+msgstr "Menú al que pertenece"
+
+#: menus/models.py:35
+msgid "Link Text"
+msgstr "Texto del Enlace"
+
+#: menus/models.py:36
+msgid "Order"
+msgstr "Orden"
+
+#: menus/models.py:43
+msgid "Link to a Page"
+msgstr "Enlazar a una Página"
+
+#: menus/models.py:44
+msgid "Select an internal page to link to. Leave blank if using a manual URL."
+msgstr ""
+"Selecciona una página interna para enlazar. Deja en blanco si usas una URL "
+"manual."
+
+#: menus/models.py:49
+msgid "Link to a manual URL"
+msgstr "Enlazar a una URL manual"
+
+#: menus/models.py:50
+msgid ""
+"Use for external URLs (e.g., https://google.com) or fixed paths (e.g., /"
+"blog/)."
+msgstr ""
+"Úsalo para URLs externas (ej: https://google.com) o rutas fijas (ej: /blog/)."
+
+#: menus/models.py:52
+msgid "Icon Class (e.g., fab fa-facebook)"
+msgstr "Clase de Ícono (ej: fab fa-facebook)"
+
+#: menus/models.py:56
+msgid "Menu Item"
+msgstr "Elemento de Menú"
+
+#: menus/models.py:57
+msgid "Menu Items"
+msgstr "Elementos de Menú"
+
+#: pages/models.py:10
+msgid "Description"
+msgstr "Descripción"
+
+#: pages/models.py:16
+msgid "page category"
+msgstr "categoría de página"
+
+#: pages/models.py:17
+msgid "page categories"
+msgstr "categorías de página"
+
+#: pages/models.py:37
+msgid "Slug (URL friendly)"
+msgstr "Slug (URL amigable)"
+
+#: pages/models.py:52
+msgid "Is Homepage?"
+msgstr "¿Es la página de inicio?"
+
+#: pages/models.py:53
+msgid ""
+"Mark only one page with this option. If multiple are marked, the most recent "
+"one will be used."
+msgstr ""
+"Marcar solo una página con esta opción. Si varias están marcadas, se usará "
+"la más reciente."
+
+#: pages/models.py:59
+msgid "Creation Date"
+msgstr "Fecha de Creación"
+
+#: pages/models.py:60
+msgid "Last Updated"
+msgstr "Última Actualización"
+
+#: pages/models.py:63
+msgid "page"
+msgstr "página"
+
+#: pages/models.py:64
+msgid "pages"
+msgstr "páginas"
+
+#: pages/templates/pages/page_detail.html:31
+msgid ""
+"\n"
+"                        By %(author)s | Last updated: %(updated_date)s\n"
+"                    "
+msgstr 
+"\n"
+"                        Por %(author)s | Última Actualización: %(updated_date)s"
+"                    "
+
+#: pages/templates/pages/page_detail.html:62
+msgid "Welcome!"
+msgstr "¡Bienvenido!"
+
+#: pages/templates/pages/page_detail.html:63
+msgid ""
+"Site under construction. Please configure a homepage from the admin panel."
+msgstr ""
+"Sitio en construcción. Por favor, configura una página de inicio desde el "
+"panel de administración."
+
+#: pages/templates/pages/pages_by_category.html:10
+#, python-format
+msgid "Pages in %(category.name)s"
+msgstr "Páginas en %(category.name)s"
+
+#: pages/templates/pages/pages_by_category.html:20
+msgid ""
+"\n"
+"                Pages in category: <span class=\"text-"
+"primary\">%(category.name)s</span>\n"
+"            "
+msgstr ""
+"\n"
+"                Páginas en la categoría: <span class=\"text-"
+"primary\">%(category.name)s</span>\n"
+"            "
+
+#: pages/templates/pages/pages_by_category.html:44
+#, python-format
+msgid ""
+"\n"
+"                            Updated on %(updated_date)s\n"
+"                            "
+msgstr ""
+"\n"
+"                            Actualizado en %(updated_date)s\n"
+"                            "
+
+#: pages/templates/pages/pages_by_category.html:55
+msgid "There are currently no published pages in this category."
+msgstr "Actualmente no hay páginas publicadas en esta categoría."
+
+#: tvt/settings.py:152
+msgid "Spanish"
+msgstr "Español"
+
+#: tvt/settings.py:153
+msgid "English"
+msgstr "Inglés"
+
+#, python-format
+#~ msgid "Updated on %(updated_date)s"
+#~ msgstr "Actualizado el %(updated_date)s"

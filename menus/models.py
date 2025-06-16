@@ -1,68 +1,62 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 from pages.models import Page
 
-# ==============================================================================
-# 1. EL NUEVO MODELO PARA AGRUPAR ENLACES
-# ==============================================================================
 class Menu(models.Model):
     """
-    Representa una ubicación de menú en el sitio, como 'Menú Principal' o 'Menú del Footer'.
+    Represents a menu location on the site, like 'Main Menu' or 'Footer Menu'.
     """
-    title = models.CharField(max_length=100, unique=True, verbose_name="Título del Menú")
-    slug = models.SlugField(max_length=100, unique=True, verbose_name="Slug (identificador para el código)")
+    title = models.CharField(max_length=100, unique=True, verbose_name=_("Menu Title"))
+    slug = models.SlugField(max_length=100, unique=True, verbose_name=_("Slug (identifier for code)"))
 
     class Meta:
-        verbose_name = "Menú"
-        verbose_name_plural = "Menús"
+        verbose_name = _("Menu")
+        verbose_name_plural = _("Menus")
 
     def __str__(self):
         return self.title
 
 
-# ==============================================================================
-# 2. EL MODELO MenuItem EXISTENTE, AHORA MODIFICADO
-# ==============================================================================
 class MenuItem(models.Model):
     """
-    Representa un enlace individual dentro de un Menú específico.
+    Represents a single link item within a specific Menu.
     """
-    # --- ¡EL CAMPO CLAVE QUE AÑADIMOS! ---
-    # Lo hacemos nulable temporalmente para que la migración no falle.
     menu = models.ForeignKey(
         Menu, 
         on_delete=models.CASCADE, 
         related_name="items", 
-        verbose_name="Menú al que pertenece",
-        null=True,  # <-- Permite que este campo esté vacío en la BD por ahora
-        blank=True  # <-- Permite que este campo esté vacío en los formularios del admin
+        verbose_name=_("Menu it belongs to"),
+        # We keep these True for now to allow a smooth data migration.
+        # Later, we can set them to False for data integrity.
+        null=True,
+        blank=True
     )
     
-    # --- Campos que ya tenías ---
-    title = models.CharField(max_length=100, verbose_name="Texto del Enlace")
-    order = models.PositiveIntegerField(default=0, verbose_name="Orden")
+    title = models.CharField(max_length=100, verbose_name=_("Link Text"))
+    order = models.PositiveIntegerField(default=0, verbose_name=_("Order"))
     
     link_page = models.ForeignKey(
         Page, 
         on_delete=models.CASCADE, 
         blank=True, 
         null=True, 
-        verbose_name="Enlazar a una Página",
-        help_text="Selecciona una página interna. Deja en blanco si usas una URL manual."
+        verbose_name=_("Link to a Page"),
+        help_text=_("Select an internal page to link to. Leave blank if using a manual URL.")
     )
     link_url = models.CharField(
         max_length=255, 
         blank=True, 
-        verbose_name="Enlazar a una URL manual",
-        help_text="Úsalo para URLs externas (ej: https://google.com) o rutas fijas (ej: /blog/)."
+        verbose_name=_("Link to a manual URL"),
+        help_text=_("Use for external URLs (e.g., https://google.com) or fixed paths (e.g., /blog/).")
     )
+    icon_class = models.CharField(max_length=100, blank=True, null=True, verbose_name=_("Icon Class (e.g., fab fa-facebook)"))
 
     class Meta:
         ordering = ['order']
-        verbose_name = "Elemento de Menú"
-        verbose_name_plural = "Elementos de Menú"
+        verbose_name = _("Menu Item")
+        verbose_name_plural = _("Menu Items")
 
     def __str__(self):
-        # Hacemos el __str__ un poco más informativo
         if self.menu:
             return f"{self.menu.title} - {self.title}"
         return self.title

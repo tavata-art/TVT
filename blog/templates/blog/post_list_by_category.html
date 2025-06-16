@@ -1,53 +1,68 @@
-<!-- blog/templates/blog/post_list_by_category.html -->
 {% extends 'core/base.html' %}
 {% load i18n %}
 
-{# Sobrescribimos los bloques SEO de base.html #}
+{# --- SEO and Browser Tab Title Blocks --- #}
+{# Use the category's SEO fields, with the name as a fallback #}
 {% block seo_title %}{{ category.meta_title|default:category.name }}{% endblock %}
-{% block seo_description %}{{ category.meta_description|default:'' }}{% endblock %}
+{% block seo_description %}{{ category.meta_description|default:"" }}{% endblock %}
 
-{% block title %}{% blocktranslate %}Posts en {{ category.name }}{% endblocktranslate %}{% endblock %}
+{# This sets the browser tab's title #}
+{% block title %}{% blocktranslate %}Posts in {{ category.name }}{% endblocktranslate %}{% endblock %}
+
 
 {% block content %}
 <div class="container mt-5">
+    
+    {# --- Category Page Header --- #}
+    <div class="category-header mb-5 text-center">
+        <h1 class="display-4">
+            {# The main visible title of the page #}
+            {% blocktranslate %}
+                Posts in category: <span class="text-primary">{{ category.name }}</span>
+            {% endblocktranslate %}
+        </h1>
+        {# Display the category description if it exists #}
+        {% if category.description %}
+            <p class="lead">{{ category.description }}</p>
+        {% endif %}
+    </div>
 
-    <!-- Encabezado específico de la categoría -->
-    <h1 class="display-4 text-center mb-5">
-        {# Usamos blocktranslate para incluir el <span> y la variable #}
-        {% blocktranslate %}
-        Posts en la Categoría: <span class="text-primary">{{ category.name }}</span>
-        {% endblocktranslate %}
-    </h1>
-
+    {# --- List of Posts --- #}
     <div class="row">
         {% for post in posts %}
-        <div class="col-md-6 col-lg-4 mb-4">
-            <div class="card h-100">
-                {% if post.featured_image %}
-                    <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
-                {% endif %}
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{ post.title }}</h5>
-                    <p class="card-text text-muted">
-                        {# Guardamos la variable author_name antes para más limpieza #}
-                        {% firstof post.author.get_full_name post.author.username as author_name %}
-                        <small>
-                            {% blocktranslate with author=author_name published_date=post.published_date|date:"DATE_FORMAT" %}
-                                {{ published_date }} - {{ author }}
-                            {% endblocktranslate %}
-                        </small>
-                    </p>
-                    <a href="{{ post.get_absolute_url }}" class="btn btn-primary mt-auto">{% translate "Leer Más" %}s</a>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    {# Featured image for the post card #}
+                    {% if post.featured_image %}
+                        <a href="{{ post.get_absolute_url }}">
+                            <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
+                        </a>
+                    {% endif %}
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text text-muted">
+                            {# Post metadata line, fully internationalized #}
+                            {% firstof post.author.get_full_name post.author.username as author_name %}
+                            <small>
+                                {% blocktranslate with published_date=post.published_date|date:"DATE_FORMAT" author=author_name %}
+                                    Published {{ published_date }} by {{ author }}
+                                {% endblocktranslate %}
+                            </small>
+                        </p>
+                        {# "Read More" button #}
+                        <a href="{{ post.get_absolute_url }}" class="btn btn-primary mt-auto">{% translate "Read More" %}</a>
+                    </div>
                 </div>
             </div>
-        </div>
         {% empty %}
+            {# Message displayed when no posts are in this category #}
             <div class="col">
                 <div class="alert alert-info" role="alert">
-                    {% translate "Aún no hay entradas publicadas en esta categoría." %}
+                    {% translate "There are currently no published posts in this category." %}
                 </div>
             </div>
         {% endfor %}
     </div>
+
 </div>
 {% endblock %}

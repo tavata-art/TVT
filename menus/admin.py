@@ -1,23 +1,35 @@
-# menus/admin.py
 from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
 from .models import Menu, MenuItem
-from modeltranslation.admin import TabbedTranslationAdmin # Importamos para la internacionalización
+from modeltranslation.admin import TabbedTranslationAdmin
 
-# Esta clase define cómo se verán los MenuItem DENTRO de la página de un Menu
 class MenuItemInline(admin.TabularInline):
+    """
+    Allows editing MenuItems directly within the Menu admin page.
+    This is a more user-friendly approach.
+    """
     model = MenuItem
-    extra = 1 # Muestra un campo vacío para añadir un nuevo item
+    extra = 1 # Shows one empty slot for a new item
     ordering = ['order']
+    # If the inline form gets too wide, you can specify fields to show:
+    # fields = ('title', 'order', 'link_page', 'link_url', 'icon_class')
+
 
 @admin.register(Menu)
-class MenuAdmin(admin.ModelAdmin):
+class MenuAdmin(TabbedTranslationAdmin): # Making Menu title translatable
+    """ Admin options for the Menu model. """
     list_display = ('title', 'slug')
     prepopulated_fields = {'slug': ('title',)}
-    inlines = [MenuItemInline] # ¡Aquí adjuntamos el inline!
+    inlines = [MenuItemInline] # This embeds the MenuItem editor
 
-# También es bueno tener acceso a los MenuItem por separado, aunque no es estrictamente necesario
+
 @admin.register(MenuItem)
 class MenuItemAdmin(TabbedTranslationAdmin):
-    list_display = ('title', 'menu', 'order')
+    """
+    Provides a separate admin view for all MenuItems,
+    which is useful for managing all links at once.
+    """
+    list_display = ('title', 'menu', 'order', 'link_page', 'link_url')
     list_filter = ('menu',)
     list_editable = ('order',)
+    search_fields = ('title', 'link_url')

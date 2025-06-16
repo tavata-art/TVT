@@ -1,18 +1,25 @@
-<!-- core/templates/core/partials/_header.html -->
+{# Loads the custom template tags from our 'menus' app to render the navigation #}
 {% load menu_tags %}
 
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
+            {# Main site brand/logo, links to the homepage #}
             <a class="navbar-brand" href="{% url 'home' %}">
                 <i class="fas fa-bee"></i> Tavata CMS
             </a>
+
+            {# Mobile navigation toggle button #}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            {# Collapsible navigation container #}
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    {% show_menu 'main-menu' %} {# Buscamos el menú con slug 'main-menu' #}
+                    {# Here we call our custom template tag to dynamically render the main menu. #}
+                    {# The menu itself is managed in the Django admin. #}
+                    {% show_menu 'main-menu' %}
                 </ul>
             </div>
         </div>

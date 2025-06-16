@@ -1,17 +1,18 @@
-<!-- core/templates/core/partials/_footer.html -->
-{% load menu_tags %}
+{# Loads the custom template tags for i18n and menus #}
 {% load i18n %}
+{% load menu_tags %}
+ 
 <footer class="bg-dark text-white text-center p-3 mt-auto">
-    {# Usamos blocktranslate para manejar texto con variables o HTML dentro #}
+    {# Copyright notice. The 'year' variable is passed to the translation block. #}
     <p class="mb-0">
-    {# 1. Calculamos el año y lo guardamos en una variable local 'year' #}
-    {% now "Y" as year %}
+        {% now "Y" as year %}
+        {% blocktranslate with year=year trimmed %}
+            &copy; {{ year }} Tavata.art - Built with Django and <i class="fas fa-bee"></i> by Gustavo and Tavata.
+        {% endblocktranslate %}
+    </p>
 
-    {# 2. Pasamos esa variable 'year' al contexto del blocktranslate con 'with' #}
-    {% blocktranslate with year=year trimmed %}
-        &copy; {{ year }} Tavata.art - Construido con Django y <i class="fas fa-bee"></i> por Gustavo y Tavata.
-    {% endblocktranslate %}
-</p>
+    {# This section calls our custom template tag to render the footer menu. #}
+    {# The menu content is managed in the Django admin via the 'footer-menu' slug. #}
     <p class="mb-0">
         {% show_menu 'footer-menu' %}
     </p>

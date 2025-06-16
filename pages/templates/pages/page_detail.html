@@ -1,40 +1,67 @@
 {% extends 'core/base.html' %}
 {% load i18n %}
+{% load static %}
 
+{# --- SEO and Browser Tab Title Blocks --- #}
+{# Override the base templates SEO blocks with this page's specific data #}
 {% block seo_title %}{{ page.meta_title|default:page.title }}{% endblock %}
 {% block seo_description %}{{ page.meta_description|default:"" }}{% endblock %}
 
+{# This block sets the browser tab's title #}
 {% block title %}{{ page.title }}{% endblock %}
+
 
 {% block content %}
 <div class="container mt-5">
-    <div class="row">
-        <div class="col-lg-8 mx-auto">
-            <h1 class="display-4 fw-bold">{{ page.title }}</h1>
-            <p class="lead text-muted">
-                {% firstof page.author.get_full_name page.author.username as author_name %}
-                {% blocktranslate with author=author_name updated_date=page.updated_at|date:"DATE_FORMAT" %}
-                    {{ author }} | {{ updated_date }}
-                {% endblocktranslate %}
-            </p>
+    {# Check if the 'page' object was passed from the view. #}
+    {# This is a safeguard for the homepage if no page is marked as such. #}
+    {% if page %}
+        <div class="row">
+            {# Use a centered, medium-width column for better text readability #}
+            <div class="col-lg-10 mx-auto">
 
-            {% if page.categories.exists %}
-            <div class="mb-3">
-                <strong>{% translate "Categorías" %}:</strong>
-                {% for category in page.categories.all %}
-                    <a href="{% url 'pages:pages_by_category' category.slug %}" class="badge bg-tavata-yellow text-dark text-decoration-none">
-                        {{ category.name }}
-                    </a>
-                {% endfor %}
-            </div>
-            {% endif %}
+                {# 1. Page Title (from database, already multilingual) #}
+                <h1 class="display-4 fw-bold">{{ page.title }}</h1>
+                
+                {# 2. Page Metadata (Author and Last Updated timestamp) #}
+                <p class="lead text-muted">
+                    {# Use 'firstof' to safely get the author's name #}
+                    {% firstof page.author.get_full_name page.author.username as author_name %}
+                    {# The entire sentence is wrapped in blocktranslate for proper localization #}
+                    {% blocktranslate with author=author_name updated_date=page.updated_at|date:"DATE_FORMAT" %}
+                        By {{ author }} | Last updated: {{ updated_date }}
+                    {% endblocktranslate %}
+                </p>
 
-            <hr class="my-4">
+                {# 3. Page Categories, displayed only if they exist #}
+                {% if page.categories.exists %}
+                    <div class="mb-3">
+                        <strong>{% translate "Categories" %}:</strong>
+                        {% for category in page.categories.all %}
+                            <a href="{% url 'pages:pages_by_category' category.slug %}" class="badge bg-tavata-yellow text-dark text-decoration-none">
+                                {{ category.name }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
 
-            <div class="page-content fs-5">
-                {{ page.content|safe }}
+                {# A horizontal rule to separate the header from the main content #}
+                <hr class="my-4">
+
+                {# 4. Main Page Content (from database, already multilingual) #}
+                {# The |safe filter is crucial for rendering HTML from the WYSIWYG editor #}
+                <div class="page-content fs-5">
+                    {{ page.content|safe }}
+                </div>
+
             </div>
         </div>
-    </div>
+    {% else %}
+        {# This block is shown if no homepage is set in the database. #}
+        <div class="text-center">
+            <h1 class="display-3">{% translate "Welcome!" %}</h1>
+            <p class="lead">{% translate "Site under construction. Please configure a homepage from the admin panel." %}</p>
+        </div>
+    {% endif %}
 </div>
 {% endblock %}

@@ -4,71 +4,69 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 class Category(models.Model):
-    name = models.CharField(max_length=100, unique=True, verbose_name="Nombre")
-    slug = models.SlugField(max_length=100, unique=True, verbose_name="Slug")
-    description = models.TextField(blank=True, verbose_name="Descripción")
-
-    # ¡AÑADIMOS LOS CAMPOS SEO!
-    meta_title = models.CharField(max_length=70, blank=True, null=True, verbose_name=_("Meta Título (SEO)"))
-    meta_description = models.CharField(max_length=160, blank=True, null=True, verbose_name=_("Meta Descripción (SEO)"))
+    """ Represents a category for grouping static pages. """
+    name = models.CharField(max_length=100, unique=True, verbose_name=_("Name"))
+    slug = models.SlugField(max_length=100, unique=True, verbose_name=_("Slug"))
+    description = models.TextField(blank=True, verbose_name=_("Description"))
+    
+    meta_title = models.CharField(max_length=70, blank=True, null=True, verbose_name=_("Meta Title (SEO)"))
+    meta_description = models.CharField(max_length=160, blank=True, null=True, verbose_name=_("Meta Description (SEO)"))
 
     class Meta:
-        verbose_name = _("categoría de página")
-        verbose_name_plural = _("categorías de página")
+        verbose_name = _("page category")
+        verbose_name_plural = _("page categories")
         ordering = ['name']
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        # En el futuro, podríamos tener una página que liste todas las páginas de una categoría
-        return reverse('pages_by_category', args=[self.slug])
+        # This generates the URL to list all pages within this category.
+        return reverse('pages:pages_by_category', args=[self.slug])
 
-# Definimos las opciones para el estado de publicación
-STATUS_CHOICES = (
-    ('draft', 'Borrador'),
-    ('published', 'Publicada'),
-)
 
 class Page(models.Model):
-    """
-    Representa una página estática del CMS.
-    """
-    title = models.CharField(max_length=200, verbose_name="Título")
-    slug = models.SlugField(max_length=200, unique=True, verbose_name="Slug (URL amigable)")
-    content = models.TextField(verbose_name="Contenido")
-    author = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name="Autor")
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft', verbose_name="Estado")
+    """ Represents a single static page in the CMS, like 'About Us'. """
     
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
-    updated_at = models.DateTimeField(auto_now=True, verbose_name="Última actualización")
-    # ¡NUEVO CAMPO! La relación con Categorías.
-    # Usamos ManyToManyField porque una página puede estar en varias categorías,
-    # y una categoría puede tener varias páginas.
+    STATUS_CHOICES = (
+        ('draft', _('Draft')),
+        ('published', _('Published')),
+    )
+    
+    title = models.CharField(max_length=250, verbose_name=_("Title"))
+    slug = models.SlugField(max_length=250, unique=True, verbose_name=_("Slug (URL friendly)"))
+    content = models.TextField(verbose_name=_("Content")) # The editor will be applied in admin.py
+    
+    author = models.ForeignKey(User, on_delete=models.PROTECT, related_name="pages", verbose_name=_("Author"))
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft', verbose_name=_("Status"))
+    
     categories = models.ManyToManyField(
         Category, 
-        verbose_name="Categorías", 
-        related_name="pages", # Nos permite hacer category.pages para obtener las páginas
-        blank=True # Hace que asignar una categoría no sea obligatorio
+        verbose_name=_("Categories"), 
+        related_name="pages",
+        blank=True
     )
-    # --- NUEVO CAMPO ---
+    
     is_homepage = models.BooleanField(
         default=False,
-        verbose_name="¿Es la página de inicio?",
-        help_text="Marcar solo una página con esta opción. Si varias están marcadas, se usará la más reciente."
+        verbose_name=_("Is Homepage?"),
+        help_text=_("Mark only one page with this option. If multiple are marked, the most recent one will be used.")
     )
-    # ¡AÑADIMOS LOS CAMPOS SEO!
-    meta_title = models.CharField(max_length=70, blank=True, null=True, verbose_name=_("Meta Título (SEO)"))
-    meta_description = models.CharField(max_length=160, blank=True, null=True, verbose_name=_("Meta Descripción (SEO)"))
+
+    meta_title = models.CharField(max_length=70, blank=True, null=True, verbose_name=_("Meta Title (SEO)"))
+    meta_description = models.CharField(max_length=160, blank=True, null=True, verbose_name=_("Meta Description (SEO)"))
+
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Creation Date"))
+    updated_at = models.DateTimeField(auto_now=True, verbose_name=_("Last Updated"))
 
     class Meta:
-        verbose_name = _("página")
-        verbose_name_plural = _("páginas")
+        verbose_name = _("page")
+        verbose_name_plural = _("pages")
         ordering = ['-created_at']
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        # Ahora usamos 'namespace:nombre_de_la_ruta'
+        # Uses the 'pages' namespace to generate the correct URL.
         return reverse('pages:page_detail', kwargs={'slug': self.slug})

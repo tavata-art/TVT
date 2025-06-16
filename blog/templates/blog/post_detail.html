@@ -3,40 +3,37 @@
 {% load i18n %}
 
 
-{# --- Bloques para SEO y Título de la Pestaña --- #}
+{# SEO blocks to override the defaults from base.html #}
 {% block seo_title %}{{ post.meta_title|default:post.title }}{% endblock %}
 {% block seo_description %}{{ post.meta_description|default:"" }}{% endblock %}
 
+{# This block sets the browser tab's title #}
 {% block title %}{{ post.title }}{% endblock %}
 
 
 {% block content %}
 <div class="container mt-5">
     <div class="row">
-        {# Usamos una columna ancha pero centrada para la legibilidad del texto #}
+        {# Use a centered, medium-width column for better text readability #}
         <div class="col-lg-8 mx-auto">
 
-            {# 1. Imagen Destacada: Solo se muestra si el post tiene una #}
+            {# 1. Featured Image: Only displayed if the post has one #}
             {% if post.featured_image %}
                 <img src="{{ post.featured_image.url }}" class="img-fluid rounded mb-4 shadow" alt="{{ post.title }}">
             {% endif %}
 
-            {# 2. Título del Post (viene de la base de datos, ya es multi-idioma) #}
+            {# 2. Post Title (from the database, already multilingual) #}
             <h1 class="display-4 fw-bold">{{ post.title }}</h1>
 
-            {# 3. Metadatos del Post: Fecha y Autor (Internacionalizado) #}
+            {# 3. Post Metadata: Date and Author (Internationalized) #}
             <p class="lead text-muted">
-                {# Guardamos el nombre del autor en una variable para pasarlo al bloque #}
                 {% firstof post.author.get_full_name post.author.username as author_name %}
-
-                {# ¡AQUÍ ESTÁ LA LÓGICA CORRECTA! #}
-                {# La frase completa está en español y dentro de UN SOLO blocktranslate #}
                 {% blocktranslate with published_date=post.published_date|date:"DATE_FORMAT" author=author_name %}
-                    Publicado el {{ published_date }} por {{ author }}
+                Published on {{ published_date }} by {{ author }}
                 {% endblocktranslate %}
             </p>
 
-            {# 4. Categorías del Post (Internacionalizado) #}
+            {# 4. Post Categories: Only displayed if categories are assigned #}
             {% if post.categories.exists %}
                 <div class="mb-3">
                     <strong>{% translate "Categories" %}:</strong>
@@ -48,10 +45,11 @@
                 </div>
             {% endif %}
 
-            {# Una línea divisoria para separar la cabecera del contenido #}
+            {# A horizontal rule to separate header from content #}
             <hr class="my-4">
 
-            {# 5. Contenido Principal del Post (viene de la base de datos, ya es multi-idioma) #}
+            {# 5. Main Post Content (from the database, already multilingual) #}
+            {# The |safe filter is crucial to render the HTML from the WYSIWYG editor correctly. #}
             <div class="post-content fs-5">
                 {{ post.content|safe }}
             </div>

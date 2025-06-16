@@ -145,11 +145,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
 # Idioma por defecto
-LANGUAGE_CODE = 'es' 
+LANGUAGE_CODE = 'en' 
 
 # Lista de idiomas disponibles
 LANGUAGES = [
-    ('es', _('Español')),
+    ('es', _('Spanish')),
     ('en', _('English')),
 ]
 
