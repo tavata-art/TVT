@@ -24,6 +24,11 @@ class SiteConfiguration(SingletonModel):
         verbose_name=_("Number of Posts in 'Recent Posts' Widget")
     )
 
+    # --- ¡NUEVO CAMPO! ---
+    popular_posts_widget_count = models.PositiveIntegerField(
+        default=5, 
+        verbose_name=_("Number of Posts in 'Most Viewed' Widget")
+    )
     # --- We can add more settings in the future! ---
     # site_contact_email = models.EmailField(
     #     blank=True, 

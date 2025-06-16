@@ -1,69 +1,76 @@
-{% extends 'core/base.html' %}
-{% load static %}
-{% load i18n %}
-{% load blog_tags %}
+{# blog/post_detail.html (COMPLETO) #}
 
-{# SEO blocks to override the defaults from base.html #}
+{% extends 'core/base.html' %}
+{% load i18n blog_tags %} {# Cargamos ambas librerías de tags #}
+
+{# --- Bloques SEO y Título de Pestaña --- #}
 {% block seo_title %}{{ post.meta_title|default:post.title }}{% endblock %}
 {% block seo_description %}{{ post.meta_description|default:"" }}{% endblock %}
-
-{# This block sets the browser tab's title #}
 {% block title %}{{ post.title }}{% endblock %}
 
 
-{% block content %}
-<div class="container mt-5">
-    <div class="row">
-        {# Use a centered, medium-width column for better text readability #}
-        <div class="col-lg-8 mx-auto">
-
-            {# 1. Featured Image: Only displayed if the post has one #}
-            {% if post.featured_image %}
-                <img src="{{ post.featured_image.url }}" class="img-fluid rounded mb-4 shadow" alt="{{ post.title }}">
-            {% endif %}
-
-            {# 2. Post Title (from the database, already multilingual) #}
-            <h1 class="display-4 fw-bold">{{ post.title }}</h1>
-
-            {# 3. Post Metadata: Date and Author (Internationalized) #}
-            <p class="lead text-muted">
-                {% firstof post.author.get_full_name post.author.username as author_name %}
-                {% blocktranslate with published_date=post.published_date|date:"DATE_FORMAT" author=author_name %}
-                Published on {{ published_date }} by {{ author }}
-                {% endblocktranslate %}
-            </p>
-
-            {# 4. Post Categories: Only displayed if categories are assigned #}
-            {% if post.categories.exists %}
-                <div class="mb-3">
-                    <strong>{% translate "Categories" %}:</strong>
-                    {% for category in post.categories.all %}
-                        <a href="{% url 'blog:posts_by_category' category.slug %}" class="badge bg-tavata-yellow text-dark text-decoration-none">
-                            {{ category.name }}
-                        </a>
-                    {% endfor %}
-                </div>
-            {% endif %}
-
-            {# A horizontal rule to separate header from content #}
-            <hr class="my-4">
-
-            {# 5. Main Post Content (from the database, already multilingual) #}
-            {# The |safe filter is crucial to render the HTML from the WYSIWYG editor correctly. #}
-            <div class="post-content fs-5">
-                {{ post.content|safe }}
+{# --- PRUEBA EN SIDEBAR IZQUIERDO --- #}
+{% block sidebar_left %}
+    <div class="sticky-top pt-5">
+        <div class="card mb-4">
+            <h5 class="card-header bg-danger text-white">TEST LEFT SIDEBAR</h5>
+            <div class="list-group list-group-flush">
+                <span class="list-group-item">Si ves esto, el bloque 'sidebar_left' funciona.</span>
             </div>
-
         </div>
     </div>
-</div>
 {% endblock %}
 
+
+{# --- CONTENIDO PRINCIPAL DEL POST --- #}
+{% block content %}
+    <div class="post-detail-container">
+        {# 1. Imagen Destacada #}
+        {% if post.featured_image %}
+            <img src="{{ post.featured_image.url }}" class="img-fluid rounded mb-4 shadow" alt="{{ post.title }}">
+        {% endif %}
+
+        {# 2. Título del Post #}
+        <h1 class="display-4 fw-bold">{{ post.title }}</h1>
+
+        {# 3. Metadatos (Autor, Fecha) #}
+        <p class="lead text-muted">
+            {% firstof post.author.get_full_name post.author.username as author_name %}
+            {% blocktranslate with published_date=post.published_date|date:"DATE_FORMAT" author=author_name %}
+                Published on {{ published_date }} by {{ author }}
+            {% endblocktranslate %}
+        </p>
+
+        {# 4. Categorías #}
+        {% if post.categories.exists %}
+            <div class="mb-3">
+                <strong>{% translate "Categories" %}:</strong>
+                {% for category in post.categories.all %}
+                    <a href="{{ category.get_absolute_url }}" class="badge bg-tavata-yellow text-dark text-decoration-none">
+                        {{ category.name }}
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <hr class="my-4">
+
+        {# 5. Cuerpo del Post #}
+        <div class="post-content fs-5">
+            {{ post.content|safe }}
+        </div>
+    </div>
+{% endblock %}
+
+
+{# --- PRUEBA EN SIDEBAR DERECHO --- #}
 {% block sidebar_right %}
-    {# The 'sticky-top' class makes the sidebar "stick" to the top of the viewport once you scroll past it. #}
-    {# We still add 'pt-5' (padding-top) to align it correctly at the start. #}
     <div class="sticky-top pt-5">
-        {% show_recent_posts %}
-        {% show_blog_categories %}
+        <div class="card mb-4">
+            <h5 class="card-header bg-success text-white">TEST RIGHT SIDEBAR</h5>
+            <div class="list-group list-group-flush">
+                <span class="list-group-item">Si ves esto, el bloque 'sidebar_right' funciona.</span>
+            </div>
+        </div>
     </div>
 {% endblock %}

@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post, PostCategory
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from django.db.models import F
 
 def post_list_view(request):
     """
@@ -51,6 +51,14 @@ def post_detail_view(request, year, month, day, slug):
                              published_date__day=day,
                              slug=slug)
 
+    # --- LÓGICA DE INCREMENTO DE VISTAS ---
+    # Increment the view count by 1 efficiently in the database
+    post.views_count = F('views_count') + 1
+    post.save(update_fields=['views_count'])
+    # Refresh the object from the database to get the updated value
+    post.refresh_from_db()
+    # --- FIN DE LA LÓGICA DE VISTAS ---
+    
     context = {
         'post': post,
     }

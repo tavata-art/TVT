@@ -47,15 +47,24 @@ else: # Para 'testing', 'production' u otros
 # Application definition
 
 INSTALLED_APPS = [
-    'modeltranslation', # <-- Before admin
+    # 1. modeltranslation PRIMERO. Esto asegura que su "magia" de
+    #    parcheo y registro se ejecute antes que cualquier otra cosa,
+    #    especialmente antes que el 'admin'.
+    'modeltranslation',
+
+    # 2. Las apps de Django Core
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # 3. Otras apps de Terceros
     'django_summernote',
-    'solo', 
+    'solo',
+
+    # 4. Nuestras Propias Aplicaciones
     'core.apps.CoreConfig',
     'pages.apps.PagesConfig',
     'blog.apps.BlogConfig',

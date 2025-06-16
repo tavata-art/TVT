@@ -1,16 +1,24 @@
-<!-- blog/templates/blog/partials/_blog_categories_widget.html -->
 {% load i18n %}
 
+{# This widget displays a list of blog categories. #}
+{# It only shows categories that have at least one published post. #}
 <div class="card mb-4 shadow-sm border-0">
     <h5 class="card-header">{% translate "Categories" %}</h5>
     <div class="list-group list-group-flush">
+        
+        {# We loop through the 'categories' queryset passed from the template tag. #}
         {% for category in categories %}
             <a href="{{ category.get_absolute_url }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                {# The category name (a multilingual field) #}
                 {{ category.name }}
-                <span class="badge bg-primary rounded-pill">{{ category.posts.count }}</span>
+                
+                {# The post count badge. We now use 'num_posts' from the .annotate() in the tag. #}
+                <span class="badge bg-primary rounded-pill">{{ category.num_posts }}</span>
             </a>
         {% empty %}
+            {# This message is displayed if there are no categories with posts. #}
             <span class="list-group-item">{% translate "No categories available." %}</span>
         {% endfor %}
+        
     </div>
 </div>

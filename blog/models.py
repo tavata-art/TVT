@@ -50,7 +50,8 @@ class Post(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    # For tracking the number of views
+    views_count = models.PositiveIntegerField(default=0, verbose_name=_("View Count"))
     class Meta:
         ordering = ('-published_date',)
         verbose_name = _("blog post")
