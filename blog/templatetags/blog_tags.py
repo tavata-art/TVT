@@ -1,5 +1,6 @@
+# blog/templatetags/blog_tags.py
 from django import template
-from django.db.models import Count
+from django.db.models import Count, F, Q # <-- ¡AÑADIMOS Q AQUÍ!
 from blog.models import Post, PostCategory
 from site_settings.models import SiteConfiguration
 
@@ -51,9 +52,8 @@ def show_blog_categories():
     Renders a widget with a list of all blog categories.
     Annotates each category with the count of published posts.
     """
-    # Using .annotate() is very efficient. It performs the count in the database.
     categories = PostCategory.objects.annotate(
-        num_posts=Count('posts', filter=models.Q(posts__status='published'))
-    ).filter(num_posts__gt=0).order_by('-num_posts', 'name') # Only show categories with posts
-    
+        num_posts=Count('posts', filter=Q(posts__status='published')) # Ahora 'Q' está definido
+    ).filter(num_posts__gt=0).order_by('-num_posts', 'name')
+
     return {'categories': categories}

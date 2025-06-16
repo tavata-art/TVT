@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-16 17:01+0000\n"
-"PO-Revision-Date: 2025-06-16 19:08+0200\n"
+"POT-Creation-Date: 2025-06-16 19:29+0000\n"
+"PO-Revision-Date: 2025-06-16 21:37+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -75,23 +75,31 @@ msgid "Status"
 msgstr "Estado"
 
 #: blog/models.py:46
-#: blog/templates/blog/partials/_blog_categories_widget.html:5
-#: blog/templates/blog/post_detail.html:39 pages/admin.py:45 pages/models.py:45
+#: blog/templates/blog/partials/_blog_categories_widget.html:6
+#: blog/templates/blog/post_detail.html:34 pages/admin.py:45 pages/models.py:45
 #: pages/templates/pages/page_detail.html:39
 msgid "Categories"
 msgstr "Categorías"
 
-#: blog/models.py:56
+#: blog/models.py:54
+msgid "View Count"
+msgstr "Número de vistas"
+
+#: blog/models.py:57
 msgid "blog post"
 msgstr "entrada de blog"
 
-#: blog/models.py:57
+#: blog/models.py:58
 msgid "blog posts"
 msgstr "entradas de blog"
 
-#: blog/templates/blog/partials/_blog_categories_widget.html:13
+#: blog/templates/blog/partials/_blog_categories_widget.html:20
 msgid "No categories available."
 msgstr "No hay categorias disponibles."
+
+#: blog/templates/blog/partials/_posts_widget.html:9
+msgid "No posts available."
+msgstr "No hay post recientes."
 
 #: blog/templates/blog/partials/_recent_posts_widget.html:5
 msgid "Recent Posts"
@@ -101,12 +109,12 @@ msgstr "Post Recientes"
 msgid "No recent posts available."
 msgstr "No hay post recientes."
 
-#: blog/templates/blog/post_detail.html:31
+#: blog/templates/blog/post_detail.html:26
 #, python-format
 msgid ""
 "\n"
 "                Published on %(published_date)s by %(author)s\n"
-"                "
+"            "
 msgstr ""
 "\n"
 "                 Publicado el %(published_date)s por %(author)s\n"
@@ -410,17 +418,38 @@ msgstr "Entradas de blog encontradas"
 msgid "Published on"
 msgstr "Publicado"
 
-#: tvt/settings.py:153
+#: site_settings/models.py:14
+msgid "Posts per Page in Blog"
+msgstr "Posts por Página en el Blog"
+
+#: site_settings/models.py:18
+msgid "Results per Page in Search"
+msgstr "Resultados por Página en la Búsqueda"
+
+#: site_settings/models.py:24
+msgid "Number of Posts in 'Recent Posts' Widget"
+msgstr "Widget: Número de Posts en 'Post Recientes'"
+
+#: site_settings/models.py:30
+msgid "Number of Posts in 'Most Viewed' Widget"
+msgstr "Widget: Número de Post en 'Más Vistos'"
+
+#: site_settings/models.py:44 site_settings/models.py:46
+#: site_settings/models.py:50
+msgid "Site Configuration"
+msgstr "Configuración del Sitio"
+
+#: tvt/settings.py:164
 msgid "Spanish"
 msgstr "Español"
 
-#: tvt/settings.py:154
+#: tvt/settings.py:165
 msgid "English"
 msgstr "Inglés"
 
-#: tvt/settings.py:155
+#: tvt/settings.py:166
 msgid "Català"
-msgstr ""
+msgstr "Catalán"
 
 #, python-format
 #~ msgid "Updated on %(updated_date)s"

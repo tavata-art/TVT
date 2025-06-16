@@ -9,19 +9,6 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 
-{# --- PRUEBA EN SIDEBAR IZQUIERDO --- #}
-{% block sidebar_left %}
-    <div class="sticky-top pt-5">
-        <div class="card mb-4">
-            <h5 class="card-header bg-danger text-white">TEST LEFT SIDEBAR</h5>
-            <div class="list-group list-group-flush">
-                <span class="list-group-item">Si ves esto, el bloque 'sidebar_left' funciona.</span>
-            </div>
-        </div>
-    </div>
-{% endblock %}
-
-
 {# --- CONTENIDO PRINCIPAL DEL POST --- #}
 {% block content %}
     <div class="post-detail-container">
@@ -63,14 +50,20 @@
 {% endblock %}
 
 
-{# --- PRUEBA EN SIDEBAR DERECHO --- #}
+{# --- WIDGETS REALES DEL SIDEBAR IZQUIERDO --- #}
+{% block sidebar_left %}
+    <div class="sticky-top pt-5">
+        {# Llamamos al widget de los más vistos #}
+        {% show_most_viewed_posts %}
+    </div>
+{% endblock sidebar_left %}
+
+
+{# --- WIDGETS REALES DEL SIDEBAR DERECHO --- #}
 {% block sidebar_right %}
     <div class="sticky-top pt-5">
-        <div class="card mb-4">
-            <h5 class="card-header bg-success text-white">TEST RIGHT SIDEBAR</h5>
-            <div class="list-group list-group-flush">
-                <span class="list-group-item">Si ves esto, el bloque 'sidebar_right' funciona.</span>
-            </div>
-        </div>
+        {# Llamamos a los widgets de recientes y categorías #}
+        {% show_recent_posts %}
+        {% show_blog_categories %}
     </div>
-{% endblock %}
+{% endblock sidebar_right %}
