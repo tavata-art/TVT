@@ -1,8 +1,10 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
-from .models import Post, PostCategory
+from .models import Post, PostCategory, Comment
 from django_summernote.admin import SummernoteModelAdmin
 from modeltranslation.admin import TabbedTranslationAdmin
+from mptt.admin import MPTTModelAdmin
+from site_settings.models import SiteConfiguration
 
 @admin.register(PostCategory)
 class PostCategoryAdmin(TabbedTranslationAdmin):
@@ -25,3 +27,23 @@ class PostAdmin(SummernoteModelAdmin, TabbedTranslationAdmin):
     prepopulated_fields = {'slug': ('title',)}
     filter_horizontal = ('categories',)
     summernote_fields = ('content',)
+
+# --- NEW ADMIN CLASS FOR COMMENTS ---
+@admin.register(Comment)
+class CommentAdmin(MPTTModelAdmin):
+    list_display = ('__str__', 'post', 'author_name', 'created_at', 'is_approved')
+    list_display_links = ('__str__',)
+    list_filter = ('is_approved', 'created_at')
+    list_editable = ('is_approved',)
+    search_fields = ('content', 'author_name', 'author_email')
+
+    # Definimos el método que MPTT usará para obtener el valor
+    def get_mptt_level_indent(self, obj=None):
+        try:
+            # La consulta a la BD se hace aquí, cuando se renderiza la vista
+            return SiteConfiguration.objects.get().comment_indentation_pixels
+        except SiteConfiguration.DoesNotExist:
+            # Fallback si la configuración no existe
+            return 20
+
+    mptt_level_indent = property(get_mptt_level_indent)

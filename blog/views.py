@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post, PostCategory
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import F
+from .forms import CommentForm
 
 def post_list_view(request):
     """
@@ -59,8 +60,34 @@ def post_detail_view(request, year, month, day, slug):
     post.refresh_from_db()
     # --- FIN DE LA LÓGICA DE VISTAS ---
     
+    # --- Lógica de Comentarios ---
+    # 1. Get all approved comments for this post
+    comments = post.comments.filter(is_approved=True)
+
+    # 2. Form processing
+    new_comment = None
+    comment_form = CommentForm() # Create an empty form instance
+
+    if request.method == 'POST':
+        # If the form was submitted, create an instance with the submitted data
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            # Create the comment object but don't save to the database yet
+            new_comment = comment_form.save(commit=False)
+            # Assign the current post to the comment
+            new_comment.post = post
+            # We'll set is_approved to False in production for moderation
+            new_comment.is_approved = True 
+            # Save the comment to the database
+            new_comment.save()
+            # Reset the form after successful submission
+            comment_form = CommentForm() 
+    # --- Fin de Lógica de Comentarios ---
+
     context = {
         'post': post,
+        'comments': comments,       # Pass the list of comments to the template
+        'comment_form': comment_form, # Pass the form instance to the template
     }
     return render(request, 'blog/post_detail.html', context)
 

@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     # 3. Otras apps de Terceros
     'django_summernote',
     'solo',
+    'mptt',
 
     # 4. Nuestras Propias Aplicaciones
     'core.apps.CoreConfig',
