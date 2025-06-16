@@ -1,6 +1,7 @@
 # Add get_object_or_404 and PostCategory back to the imports
 from django.shortcuts import render, get_object_or_404
-from .models import Post, PostCategory
+from django.http import HttpResponseRedirect
+from .models import Post, PostCategory, Comment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import F
 from .forms import CommentForm
@@ -40,11 +41,14 @@ def post_list_view(request):
     # 6. Render the template with the provided context.
     return render(request, 'blog/post_list.html', context)
 
-
-# --- Vista para el detalle de un post ---
 def post_detail_view(request, year, month, day, slug):
-    # Buscamos un post que coincida con todos los parámetros de la URL
-    # y que esté publicado. Si no, devuelve un error 404.
+    """
+    Displays a single blog post and handles the comment submission process.
+    """
+    # 1. Retrieve the Post object
+    # ---------------------------------
+    # We fetch a single post that matches the URL parameters and is published.
+    # If no post is found, it will automatically raise a 404 error.
     post = get_object_or_404(Post, 
                              status='published',
                              published_date__year=year,
@@ -52,44 +56,58 @@ def post_detail_view(request, year, month, day, slug):
                              published_date__day=day,
                              slug=slug)
 
-    # --- LÓGICA DE INCREMENTO DE VISTAS ---
-    # Increment the view count by 1 efficiently in the database
+    # 2. Increment the View Count
+    # ---------------------------------
+    # We use an F() expression to perform an atomic update on the database,
+    # which is safe from race conditions and efficient.
     post.views_count = F('views_count') + 1
     post.save(update_fields=['views_count'])
-    # Refresh the object from the database to get the updated value
+    # We refresh the object from the database to get the updated view count
+    # immediately available in the template if needed.
     post.refresh_from_db()
-    # --- FIN DE LA LÓGICA DE VISTAS ---
-    
-    # --- Lógica de Comentarios ---
-    # 1. Get all approved comments for this post
-    comments = post.comments.filter(is_approved=True)
 
-    # 2. Form processing
-    new_comment = None
-    comment_form = CommentForm() # Create an empty form instance
+    # 3. Handle the Comment Form
+    # ---------------------------------
+    # Get all approved comments for this post.
+    # The 'comments' related_name comes from the ForeignKey in the Comment model.
+    comments = post.comments.filter(is_approved=True)
+    
+    # Initialize the form instance.
+    comment_form = CommentForm()
 
     if request.method == 'POST':
-        # If the form was submitted, create an instance with the submitted data
+        # If the request is a POST, a comment has been submitted.
+        # We bind the submitted data to a new form instance.
         comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
-            # Create the comment object but don't save to the database yet
-            new_comment = comment_form.save(commit=False)
-            # Assign the current post to the comment
-            new_comment.post = post
-            # We'll set is_approved to False in production for moderation
-            new_comment.is_approved = True 
-            # Save the comment to the database
-            new_comment.save()
-            # Reset the form after successful submission
-            comment_form = CommentForm() 
-    # --- Fin de Lógica de Comentarios ---
 
+        if comment_form.is_valid():
+            # If the form is valid, create a Comment object but don't save it yet.
+            new_comment = comment_form.save(commit=False)
+            # Associate the comment with the current post.
+            new_comment.post = post
+            # For testing, we approve comments automatically. In production, this would be False.
+            new_comment.is_approved = True
+            # Now, save the comment to the database.
+            new_comment.save()
+
+            # --- Post/Redirect/Get Pattern ---
+            # We redirect to the same page to prevent form resubmission on refresh.
+            # We add an HTML anchor to scroll the user down to the comments section.
+            post_url = post.get_absolute_url()
+            redirect_url = f"{post_url}#comments-section"
+            return HttpResponseRedirect(redirect_url)
+    
+    # 4. Prepare the Context and Render
+    # ---------------------------------
+    # This part is reached on a GET request, or if a POST form is invalid.
+    # If the form was invalid, 'comment_form' will contain the errors to display.
     context = {
         'post': post,
-        'comments': comments,       # Pass the list of comments to the template
-        'comment_form': comment_form, # Pass the form instance to the template
+        'comments': comments,
+        'comment_form': comment_form,
     }
     return render(request, 'blog/post_detail.html', context)
+
 
 # --- NUEVA VISTA PARA CATEGORÍAS ---
 def posts_by_category_view(request, category_slug):

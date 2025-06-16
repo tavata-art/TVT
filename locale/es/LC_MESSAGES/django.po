@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-16 19:29+0000\n"
-"PO-Revision-Date: 2025-06-16 21:37+0200\n"
+"POT-Creation-Date: 2025-06-16 21:08+0000\n"
+"PO-Revision-Date: 2025-06-16 23:28+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -18,80 +18,132 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.6\n"
 
-#: blog/models.py:9 pages/models.py:8
+#: blog/forms.py:14
+msgid "Your Name"
+msgstr "Tu Nombre"
+
+#: blog/forms.py:15
+msgid "Your Email"
+msgstr "Tu Correo"
+
+#: blog/forms.py:16
+msgid "Your Comment"
+msgstr "Tu Comentario"
+
+#: blog/forms.py:21 blog/models.py:10 pages/models.py:8
 msgid "Name"
 msgstr "Nombre"
 
-#: blog/models.py:10 blog/models.py:36 pages/models.py:9
+#: blog/forms.py:22
+msgid "Email"
+msgstr "correo electrónico"
+
+#: blog/forms.py:23
+msgid "Comment"
+msgstr "Comentario"
+
+#: blog/models.py:11 blog/models.py:37 pages/models.py:9
 msgid "Slug"
 msgstr "Slug"
 
-#: blog/models.py:12 blog/models.py:48 pages/models.py:12 pages/models.py:56
+#: blog/models.py:13 blog/models.py:49 pages/models.py:12 pages/models.py:56
 msgid "Meta Title (SEO)"
 msgstr "Meta Título (SEO)"
 
-#: blog/models.py:13 blog/models.py:49 pages/models.py:13 pages/models.py:57
+#: blog/models.py:14 blog/models.py:50 pages/models.py:13 pages/models.py:57
 msgid "Meta Description (SEO)"
 msgstr "Meta Descripción (SEO)"
 
-#: blog/models.py:16
+#: blog/models.py:17
 msgid "blog category"
 msgstr "categoría de blog"
 
-#: blog/models.py:17
+#: blog/models.py:18
 msgid "blog categories"
 msgstr "categorías de blog"
 
-#: blog/models.py:32 pages/models.py:32
+#: blog/models.py:33 pages/models.py:32
 msgid "Draft"
 msgstr "Borrador"
 
-#: blog/models.py:33 pages/models.py:33
+#: blog/models.py:34 pages/models.py:33
 msgid "Published"
 msgstr "Publicado"
 
-#: blog/models.py:35 pages/models.py:36
+#: blog/models.py:36 pages/models.py:36
 msgid "Title"
 msgstr "Título"
 
-#: blog/models.py:37 pages/models.py:40
+#: blog/models.py:38 pages/models.py:40
 msgid "Author"
 msgstr "Autor"
 
-#: blog/models.py:39 pages/models.py:38
+#: blog/models.py:40 blog/models.py:101 pages/models.py:38
 msgid "Content"
 msgstr "Contenido"
 
-#: blog/models.py:40
+#: blog/models.py:41
 msgid "Featured Image"
 msgstr "Imagen Destacada"
 
-#: blog/models.py:42
+#: blog/models.py:43
 msgid "Published Date"
 msgstr "Fecha de Publicación"
 
-#: blog/models.py:44 pages/models.py:41
+#: blog/models.py:45 pages/models.py:41
 msgid "Status"
 msgstr "Estado"
 
-#: blog/models.py:46
+#: blog/models.py:47
 #: blog/templates/blog/partials/_blog_categories_widget.html:6
-#: blog/templates/blog/post_detail.html:34 pages/admin.py:45 pages/models.py:45
+#: blog/templates/blog/post_detail.html:45 pages/admin.py:45 pages/models.py:45
 #: pages/templates/pages/page_detail.html:39
 msgid "Categories"
 msgstr "Categorías"
 
-#: blog/models.py:54
+#: blog/models.py:55
 msgid "View Count"
 msgstr "Número de vistas"
 
-#: blog/models.py:57
+#: blog/models.py:58
 msgid "blog post"
 msgstr "entrada de blog"
 
-#: blog/models.py:58
+#: blog/models.py:59
 msgid "blog posts"
 msgstr "entradas de blog"
+
+#: blog/models.py:82
+msgid "Post"
+msgstr "Post"
+
+#: blog/models.py:94
+msgid "Parent Comment"
+msgstr "Comentario Padre"
+
+#: blog/models.py:98
+msgid "Author Name"
+msgstr "Nombre del Autor"
+
+#: blog/models.py:99
+msgid "Author Email"
+msgstr "Email del Autor"
+
+#: blog/models.py:103
+msgid "Created At"
+msgstr "Fecha de Creación"
+
+#: blog/models.py:107
+msgid "Is Approved?"
+msgstr "¿Está aprobado?"
+
+#: blog/models.py:117
+msgid "comment"
+msgstr "comentario"
+
+#: blog/models.py:118
+msgid "comments"
+msgstr "comentarios"
 
 #: blog/templates/blog/partials/_blog_categories_widget.html:20
 msgid "No categories available."
@@ -109,7 +161,7 @@ msgstr "Post Recientes"
 msgid "No recent posts available."
 msgstr "No hay post recientes."
 
-#: blog/templates/blog/post_detail.html:26
+#: blog/templates/blog/post_detail.html:37
 #, python-format
 msgid ""
 "\n"
@@ -119,6 +171,33 @@ msgstr ""
 "\n"
 "                 Publicado el %(published_date)s por %(author)s\n"
 "                "
+
+#: blog/templates/blog/post_detail.html:65
+#, python-format
+msgid "%(count)s Comment"
+msgid_plural "%(count)s Comments"
+msgstr[0] "%(count)s Comentario"
+msgstr[1] "%(count)s Comentarios"
+
+#: blog/templates/blog/post_detail.html:80
+msgid "ago"
+msgstr "hace"
+
+#: blog/templates/blog/post_detail.html:81
+msgid "Reply"
+msgstr "Respuesta"
+
+#: blog/templates/blog/post_detail.html:103
+msgid "Leave a Comment"
+msgstr "Deja un Comentario"
+
+#: blog/templates/blog/post_detail.html:125
+msgid "Submit Comment"
+msgstr "Comenta"
+
+#: blog/templates/blog/post_detail.html:163
+msgid "Reply to"
+msgstr "Responder a"
 
 #: blog/templates/blog/post_list.html:5 blog/templates/blog/post_list.html:9
 #: blog/templates/blog/post_list.html:17
@@ -430,24 +509,36 @@ msgstr "Resultados por Página en la Búsqueda"
 msgid "Number of Posts in 'Recent Posts' Widget"
 msgstr "Widget: Número de Posts en 'Post Recientes'"
 
-#: site_settings/models.py:30
+#: site_settings/models.py:29
 msgid "Number of Posts in 'Most Viewed' Widget"
 msgstr "Widget: Número de Post en 'Más Vistos'"
 
-#: site_settings/models.py:44 site_settings/models.py:46
-#: site_settings/models.py:50
+#: site_settings/models.py:35
+msgid "Comment Indentation (in pixels)"
+msgstr "Comentario Indentación (en pixels)"
+
+#: site_settings/models.py:36
+msgid ""
+"Controls how much space is added for each level of nested comments in the "
+"admin list view."
+msgstr ""
+"Controla cuánto espacio se agrega para cada nivel de comentarios anidados en "
+"la vista de lista de administración."
+
+#: site_settings/models.py:50 site_settings/models.py:52
+#: site_settings/models.py:56
 msgid "Site Configuration"
 msgstr "Configuración del Sitio"
 
-#: tvt/settings.py:164
+#: tvt/settings.py:165
 msgid "Spanish"
 msgstr "Español"
 
-#: tvt/settings.py:165
+#: tvt/settings.py:166
 msgid "English"
 msgstr "Inglés"
 
-#: tvt/settings.py:166
+#: tvt/settings.py:167
 msgid "Català"
 msgstr "Catalán"
 
