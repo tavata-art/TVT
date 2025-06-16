@@ -4,8 +4,8 @@ from .models import Post, PostCategory
 
 @register(PostCategory)
 class PostCategoryTranslationOptions(TranslationOptions):
-    fields = ('name', 'slug')
+    fields = ('name', 'slug', 'meta_title', 'meta_description')
 
 @register(Post)
 class PostTranslationOptions(TranslationOptions):
-    fields = ('title', 'slug', 'content')
+    fields = ('title', 'slug', 'content', 'meta_title', 'meta_description')

@@ -1,15 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name="Nombre")
     slug = models.SlugField(max_length=100, unique=True, verbose_name="Slug")
     description = models.TextField(blank=True, verbose_name="Descripción")
 
+    # ¡AÑADIMOS LOS CAMPOS SEO!
+    meta_title = models.CharField(max_length=70, blank=True, null=True, verbose_name=_("Meta Título (SEO)"))
+    meta_description = models.CharField(max_length=160, blank=True, null=True, verbose_name=_("Meta Descripción (SEO)"))
+
     class Meta:
-        verbose_name = "categoría"
-        verbose_name_plural = "categorías"
+        verbose_name = _("categoría de página")
+        verbose_name_plural = _("categorías de página")
         ordering = ['name']
 
     def __str__(self):
@@ -52,17 +57,18 @@ class Page(models.Model):
         verbose_name="¿Es la página de inicio?",
         help_text="Marcar solo una página con esta opción. Si varias están marcadas, se usará la más reciente."
     )
-    
+    # ¡AÑADIMOS LOS CAMPOS SEO!
+    meta_title = models.CharField(max_length=70, blank=True, null=True, verbose_name=_("Meta Título (SEO)"))
+    meta_description = models.CharField(max_length=160, blank=True, null=True, verbose_name=_("Meta Descripción (SEO)"))
+
     class Meta:
-        verbose_name = "página"
-        verbose_name_plural = "páginas"
+        verbose_name = _("página")
+        verbose_name_plural = _("páginas")
         ordering = ['-created_at']
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        """
-        Devuelve la URL canónica para una instancia de página.
-        """
-        return reverse('page_detail', kwargs={'slug': self.slug})
+        # Ahora usamos 'namespace:nombre_de_la_ruta'
+        return reverse('pages:page_detail', kwargs={'slug': self.slug})

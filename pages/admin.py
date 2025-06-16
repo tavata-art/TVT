@@ -7,7 +7,7 @@ from modeltranslation.admin import TabbedTranslationAdmin # ¡Importamos!
 # --- REGISTRO DEL NUEVO MODELO CATEGORY ---
 @admin.register(Category)
 class CategoryAdmin(TabbedTranslationAdmin):
-    list_display = ('name', 'slug')
+    list_display = ('name', 'slug', 'meta_title')
     prepopulated_fields = {'slug': ('name',)}
     search_fields = ('name',)
 
@@ -16,7 +16,7 @@ class CategoryAdmin(TabbedTranslationAdmin):
 class PageAdmin(SummernoteModelAdmin, TabbedTranslationAdmin):
     summernote_fields = ('content',)
 
-    list_display = ('title', 'author', 'status', 'is_homepage', 'display_categories', 'created_at')
+    list_display = ('title', 'author', 'status', 'is_homepage', 'display_categories', 'created_at', 'meta_title')
     list_filter = ('status', 'author', 'categories') # ¡Añadimos filtro por categoría!
     search_fields = ('title', 'content')
     prepopulated_fields = {'slug': ('title',)}

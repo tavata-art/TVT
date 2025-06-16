@@ -2,6 +2,8 @@
 from django.urls import path
 from . import views
 
+app_name = 'pages' # <-- AÑADIMOS ESTA LÍNEA
+
 urlpatterns = [
     # NUEVA RUTA: Recibirá un 'slug' de categoría como parámetro
     # Ejemplo: /pages/category/tutoriales/

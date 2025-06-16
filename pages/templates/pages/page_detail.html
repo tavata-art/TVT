@@ -1,38 +1,38 @@
-<!-- pages/templates/pages/page_detail.html -->
 {% extends 'core/base.html' %}
+{% load i18n %}
 
-{% block title %}{{ page.title }} | Tavata.art{% endblock %}
+{% block seo_title %}{{ page.meta_title|default:page.title }}{% endblock %}
+{% block seo_description %}{{ page.meta_description|default:"" }}{% endblock %}
+
+{% block title %}{{ page.title }}{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
     <div class="row">
-        <div class="col-lg-10 mx-auto">
-            <!-- Título de la Página -->
-            <h1 class="display-4">{{ page.title }}</h1>
+        <div class="col-lg-8 mx-auto">
+            <h1 class="display-4 fw-bold">{{ page.title }}</h1>
             <p class="lead text-muted">
-                Por: {{ page.author.get_full_name|default:page.author.username }} | 
-                Última actualización: {{ page.updated_at|date:"d M Y" }}
+                {% firstof page.author.get_full_name page.author.username as author_name %}
+                {% blocktranslate with author=author_name updated_date=page.updated_at|date:"DATE_FORMAT" %}
+                    {{ author }} | {{ updated_date }}
+                {% endblocktranslate %}
             </p>
-            <!-- ¡NUEVO BLOQUE PARA CATEGORÍAS! -->
-            {% if page.categories.all %}
+
+            {% if page.categories.exists %}
             <div class="mb-3">
-                <strong>Categorías:</strong>
+                <strong>{% translate "Categorías" %}:</strong>
                 {% for category in page.categories.all %}
-                <!-- AHORA: Usamos la etiqueta 'url' para generar el enlace dinámicamente -->
-                <a href="{% url 'pages_by_category' category.slug %}" class="badge bg-tavata-yellow text-dark text-decoration-none">
-                    {{ category.name }}
-                </a>
-            {% endfor %}
+                    <a href="{% url 'pages:pages_by_category' category.slug %}" class="badge bg-tavata-yellow text-dark text-decoration-none">
+                        {{ category.name }}
+                    </a>
+                {% endfor %}
             </div>
             {% endif %}
 
-            <hr>
+            <hr class="my-4">
 
-            <!-- Contenido Principal de la Página -->
-            <!-- El filtro 'safe' es CRUCIAL si vas a usar un editor de texto enriquecido (WYSIWYG) en el futuro,
-                 para que Django no escape el HTML (negritas, enlaces, etc.). -->
-            <div class="page-content">
-                {{ page.content|safe|linebreaks }}
+            <div class="page-content fs-5">
+                {{ page.content|safe }}
             </div>
         </div>
     </div>

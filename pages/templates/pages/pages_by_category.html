@@ -1,7 +1,11 @@
 <!-- pages/templates/pages/pages_by_category.html -->
 {% extends 'core/base.html' %}
+{% load i18n %}
+{# Sobrescribimos los bloques SEO de base.html #}
+{% block seo_title %}{{ category.meta_title|default:category.name }}{% endblock %}
+{% block seo_description %}{{ category.meta_description|default:'' }}{% endblock %}
 
-{% block title %}Páginas en {{ category.name }}{% endblock %}
+{% block title %}{% blocktranslate %}Páginas en {{ category.name }}{% endblocktranslate %}{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
@@ -24,13 +28,17 @@
                 {% for page in pages_list %}
                 <li class="list-group-item">
                     <a href="{{ page.get_absolute_url }}" class="fs-4 text-decoration-none">{{ page.title }}</a>
-                    <p class="text-muted mb-0">Publicado el {{ page.created_at|date:"d M, Y" }}</p>
+                    <p class="text-muted mb-0">
+                        {% blocktranslate with published_date=page.created_at|date:"d M, Y" %}
+                        Publicado el {{ published_date }}
+                        {% endblocktranslate %}
+                    </p>
                 </li>
                 {% endfor %}
             </ul>
         {% else %}
             <div class="alert alert-info" role="alert">
-                Actualmente no hay páginas publicadas en esta categoría.
+                {% translate "Actualmente no hay páginas publicadas en esta categoría." %}
             </div>
         {% endif %}
     </div>

@@ -1,35 +1,45 @@
 {% extends 'core/base.html' %}
-
 {% load static %}
+{% load i18n %}
 
 
-<!-- El título de la pestaña del navegador será el título del post -->
-{% block title %}{{ post.title }} | Blog de Tavata.art{% endblock %}
+{# --- Bloques para SEO y Título de la Pestaña --- #}
+{% block seo_title %}{{ post.meta_title|default:post.title }}{% endblock %}
+{% block seo_description %}{{ post.meta_description|default:"" }}{% endblock %}
+
+{% block title %}{{ post.title }}{% endblock %}
 
 
 {% block content %}
 <div class="container mt-5">
     <div class="row">
-        <!-- Usamos una columna ancha pero centrada para la legibilidad del texto -->
+        {# Usamos una columna ancha pero centrada para la legibilidad del texto #}
         <div class="col-lg-8 mx-auto">
 
-            <!-- 1. Imagen Destacada: Solo se muestra si el post tiene una -->
+            {# 1. Imagen Destacada: Solo se muestra si el post tiene una #}
             {% if post.featured_image %}
                 <img src="{{ post.featured_image.url }}" class="img-fluid rounded mb-4 shadow" alt="{{ post.title }}">
             {% endif %}
 
-            <!-- 2. Título del Post -->
+            {# 2. Título del Post (viene de la base de datos, ya es multi-idioma) #}
             <h1 class="display-4 fw-bold">{{ post.title }}</h1>
 
-            <!-- 3. Metadatos del Post: Fecha y Autor -->
+            {# 3. Metadatos del Post: Fecha y Autor (Internacionalizado) #}
             <p class="lead text-muted">
-                Publicado el {{ post.published_date|date:"d F, Y" }} por {{ post.author.get_full_name|default:post.author.username }}
+                {# Guardamos el nombre del autor en una variable para pasarlo al bloque #}
+                {% firstof post.author.get_full_name post.author.username as author_name %}
+
+                {# ¡AQUÍ ESTÁ LA LÓGICA CORRECTA! #}
+                {# La frase completa está en español y dentro de UN SOLO blocktranslate #}
+                {% blocktranslate with published_date=post.published_date|date:"DATE_FORMAT" author=author_name %}
+                    Publicado el {{ published_date }} por {{ author }}
+                {% endblocktranslate %}
             </p>
 
-            <!-- 4. Categorías del Post: Solo se muestra si tiene categorías asignadas -->
+            {# 4. Categorías del Post (Internacionalizado) #}
             {% if post.categories.exists %}
                 <div class="mb-3">
-                    <strong>Categorías:</strong>
+                    <strong>{% translate "Categories" %}:</strong>
                     {% for category in post.categories.all %}
                         <a href="{% url 'blog:posts_by_category' category.slug %}" class="badge bg-tavata-yellow text-dark text-decoration-none">
                             {{ category.name }}
@@ -38,11 +48,10 @@
                 </div>
             {% endif %}
 
-            <!-- Una línea divisoria para separar la cabecera del contenido -->
+            {# Una línea divisoria para separar la cabecera del contenido #}
             <hr class="my-4">
 
-            <!-- 5. Contenido Principal del Post -->
-            <!-- El filtro |safe es crucial para que el HTML guardado por Summernote se renderice correctamente. -->
+            {# 5. Contenido Principal del Post (viene de la base de datos, ya es multi-idioma) #}
             <div class="post-content fs-5">
                 {{ post.content|safe }}
             </div>

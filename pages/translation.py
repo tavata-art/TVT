@@ -4,8 +4,8 @@ from .models import Page, Category
 
 @register(Category)
 class CategoryTranslationOptions(TranslationOptions):
-    fields = ('name', 'slug', 'description')
+    fields = ('name', 'slug', 'description', 'meta_title', 'meta_description')
     
 @register(Page)
 class PageTranslationOptions(TranslationOptions):
-    fields = ('title', 'slug', 'content')
+    fields = ('title', 'slug', 'content', 'meta_title', 'meta_description')
