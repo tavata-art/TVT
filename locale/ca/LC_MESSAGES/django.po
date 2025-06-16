@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-16 16:16+0000\n"
-"PO-Revision-Date: 2025-06-16 18:20+0200\n"
+"POT-Creation-Date: 2025-06-16 17:01+0000\n"
+"PO-Revision-Date: 2025-06-16 19:06+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "Language: ca\n"
@@ -106,18 +106,18 @@ msgstr "No hi ha entrades recents disponibles."
 msgid ""
 "\n"
 "                Published on %(published_date)s by %(author)s\n"
-"            "
+"                "
 msgstr ""
 "\n"
 "                Publicat el %(published_date)s per %(author)s\n"
-"            "
+"                "
 
-#: blog/templates/blog/post_list.html:7 blog/templates/blog/post_list.html:12
-#: blog/templates/blog/post_list.html:20
+#: blog/templates/blog/post_list.html:5 blog/templates/blog/post_list.html:9
+#: blog/templates/blog/post_list.html:17
 msgid "Our Blog"
 msgstr "El Nostre Blog"
 
-#: blog/templates/blog/post_list.html:8
+#: blog/templates/blog/post_list.html:6
 msgid ""
 "Latest articles and updates on Computer Vision, Natural Language Processing, "
 "and more from the Tavata team."
@@ -125,12 +125,11 @@ msgstr ""
 "Últims articles i novetats sobre Visió per Computador, Processament de "
 "Llenguatge Natural i més de l'equip de Tavata."
 
-#: blog/templates/blog/post_list.html:21
+#: blog/templates/blog/post_list.html:18
 msgid "News, articles, and insights from our team."
 msgstr "Notícies, articles i idees del nostre equip."
 
-#: blog/templates/blog/post_list.html:43
-#: blog/templates/blog/post_list_by_category.html:48
+#: blog/templates/blog/post_list.html:41
 #, python-format
 msgid ""
 "\n"
@@ -143,14 +142,26 @@ msgstr ""
 "%(author)s\n"
 "                                "
 
-#: blog/templates/blog/post_list.html:49
+#: blog/templates/blog/post_list.html:47
 #: blog/templates/blog/post_list_by_category.html:54
 msgid "Read More"
 msgstr "Llegir Més"
 
-#: blog/templates/blog/post_list.html:57
+#: blog/templates/blog/post_list.html:55
 msgid "There are no blog posts yet. Come back soon!"
 msgstr "Encara no hi ha entrades al blog. Torna aviat!"
+
+#: blog/templates/blog/post_list.html:70 blog/templates/blog/post_list.html:74
+#: search/templates/search/partials/_pagination.html:10
+#: search/templates/search/partials/_pagination.html:12
+msgid "Previous"
+msgstr "Anterior"
+
+#: blog/templates/blog/post_list.html:94 blog/templates/blog/post_list.html:98
+#: search/templates/search/partials/_pagination.html:26
+#: search/templates/search/partials/_pagination.html:28
+msgid "Next"
+msgstr "El proper"
 
 #: blog/templates/blog/post_list_by_category.html:11
 #, python-format
@@ -161,14 +172,27 @@ msgstr "Entrades a %(category.name)s"
 #, python-format
 msgid ""
 "\n"
-"            Posts in category: <span class=\"text-"
+"                Posts in category: <span class=\"text-"
 "primary\">%(category.name)s</span>\n"
-"        "
+"            "
 msgstr ""
 "\n"
-"            Entrades a la categoria: <span class=\"text-"
+"                 Entrades a la categoria: <span class=\"text-"
 "primary\">%(category.name)s</span>\n"
-"        "
+"             "
+
+#: blog/templates/blog/post_list_by_category.html:48
+#, python-format
+msgid ""
+"\n"
+"                                    Published %(published_date)s by "
+"%(author)s\n"
+"                                "
+msgstr ""
+"\n"
+"                                     Publicat el %(published_date)s per "
+"%(author)s\n"
+"                                "
 
 #: blog/templates/blog/post_list_by_category.html:62
 msgid "There are currently no published posts in this category."
@@ -183,12 +207,12 @@ msgstr ""
 "&copy; %(year)s Tavata.art - Construït amb Django i <i class=\"fas fa-"
 "bee\"></i> per Gustavo i Tavata."
 
-#: core/templates/core/partials/_header.html:30
+#: core/templates/core/partials/_header.html:29
 msgid "Search..."
 msgstr "Cercar..."
 
-#: core/templates/core/partials/_header.html:33
-#: search/templates/search/search_results.html:26
+#: core/templates/core/partials/_header.html:30
+#: search/templates/search/search_results.html:25
 msgid "Search"
 msgstr "Cercar"
 
@@ -300,8 +324,15 @@ msgstr "pàgines"
 
 #: pages/templates/pages/page_detail.html:31
 #, python-format
-msgid "By %(author)s | Last updated: %(updated_date)s"
-msgstr "Per %(author)s | Última Actualització: %(updated_date)s"
+msgid ""
+"\n"
+"                        By %(author)s | Last updated: %(updated_date)s\n"
+"                    "
+msgstr ""
+"\n"
+"                        Per %(author)s | Última Actualització: "
+"%(updated_date)s\n"
+"                  "
 
 #: pages/templates/pages/page_detail.html:62
 msgid "Welcome!"
@@ -322,14 +353,26 @@ msgstr "Pàgines a %(category.name)s"
 #: pages/templates/pages/pages_by_category.html:20
 #, python-format
 msgid ""
-"Pages in category: <span class=\"text-primary\">%(category.name)s</span>"
+"\n"
+"                Pages in category: <span class=\"text-"
+"primary\">%(category.name)s</span>\n"
+"            "
 msgstr ""
-"Pàgines a la categoria: <span class=\"text-primary\">%(category.name)s</span>"
+"\n"
+"            Entrades a la categoria: <span class=\"text-"
+"primary\">%(category.name)s</span>\n"
+"         "
 
 #: pages/templates/pages/pages_by_category.html:44
 #, python-format
-msgid "Updated on %(updated_date)s"
-msgstr "Actualitzat el %(updated_date)s"
+msgid ""
+"\n"
+"                            Updated on %(updated_date)s\n"
+"                            "
+msgstr ""
+"\n"
+"                                    Publicat el %(updated_date)s\n"
+"                                    "
 
 #: pages/templates/pages/pages_by_category.html:55
 msgid "There are currently no published pages in this category."
@@ -340,32 +383,32 @@ msgstr "Actualment no hi ha pàgines publicades en aquesta categoria."
 msgid "Search results for \"%(query)s\""
 msgstr "Resultats de la cerca per a \"%(query)s\""
 
-#: search/templates/search/search_results.html:13
+#: search/templates/search/search_results.html:12
 msgid "Search results for:"
 msgstr "Resultats de la cerca per a:"
 
-#: search/templates/search/search_results.html:18
+#: search/templates/search/search_results.html:17
 msgid "1 result found."
 msgstr "1 resultat trobat."
 
-#: search/templates/search/search_results.html:20
+#: search/templates/search/search_results.html:19
 #, python-format
 msgid "%(count)s results found."
 msgstr "%(count)s resultats trobats."
 
-#: search/templates/search/search_results.html:27
+#: search/templates/search/search_results.html:26
 msgid "Please enter a term in the search bar above."
 msgstr "Si us plau, introdueix un terme a la barra de cerca."
 
-#: search/templates/search/search_results.html:34
+#: search/templates/search/search_results.html:33
 msgid "Pages Found"
 msgstr "Pàgines Trobades"
 
-#: search/templates/search/search_results.html:46
+#: search/templates/search/search_results.html:49
 msgid "Blog Posts Found"
 msgstr "Entrades de Blog Trobades"
 
-#: search/templates/search/search_results.html:51
+#: search/templates/search/search_results.html:54
 msgid "Published on"
 msgstr "Publicat el"
 
@@ -380,3 +423,14 @@ msgstr "Anglès"
 #: tvt/settings.py:155
 msgid "Català"
 msgstr "Català"
+
+#, python-format
+#~ msgid ""
+#~ "Pages in category: <span class=\"text-primary\">%(category.name)s</span>"
+#~ msgstr ""
+#~ "Pàgines a la categoria: <span class=\"text-primary\">%(category.name)s</"
+#~ "span>"
+
+#, python-format
+#~ msgid "Updated on %(updated_date)s"
+#~ msgstr "Actualitzat el %(updated_date)s"

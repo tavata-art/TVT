@@ -1,16 +1,44 @@
-# blog/views.py
+# Add get_object_or_404 and PostCategory back to the imports
 from django.shortcuts import render, get_object_or_404
 from .models import Post, PostCategory
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-# --- Vista para la lista de posts ---
+
 def post_list_view(request):
-    # Obtenemos solo los posts que están publicados
-    posts = Post.objects.filter(status='published')
+    """
+    Displays a list of published blog posts, paginated.
+    """
+    # 1. Retrieve the full, ordered list of all published posts.
+    all_posts = Post.objects.filter(status='published').order_by('-published_date')
 
+    # 2. Create a Paginator instance.
+    #    We'll show 6 posts per page. This number can be changed easily.
+    paginator = Paginator(all_posts, 6)
+
+    # 3. Get the page number from the URL's GET parameters (e.g., /blog/?page=2).
+    page_number = request.GET.get('page')
+
+    # 4. Get the specific Page object for the requested page number.
+    #    This includes robust error handling.
+    try:
+        posts = paginator.page(page_number)
+    except PageNotAnInteger:
+        # If the 'page' parameter is not an integer, deliver the first page.
+        posts = paginator.page(1)
+    except EmptyPage:
+        # If the page number is out of range (e.g., 999),
+        # deliver the last page of results.
+        posts = paginator.page(paginator.num_pages)
+
+    # 5. Prepare the context to be passed to the template.
+    #    The 'posts' variable is now a Paginator's Page object, not a simple list.
     context = {
         'posts': posts,
     }
+
+    # 6. Render the template with the provided context.
     return render(request, 'blog/post_list.html', context)
+
 
 # --- Vista para el detalle de un post ---
 def post_detail_view(request, year, month, day, slug):

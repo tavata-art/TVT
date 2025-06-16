@@ -24,12 +24,9 @@
                 </ul>
 
                 {# --- NEW SEARCH FORM --- #}
-                {# This form submits data to the 'search_results' URL name using the GET method. #}
-                <form class="d-flex" ...>
-                    {# La primera cadena a traducir #}
+                {# This form submits data to the 'search:search_results' URL name using the GET method. #}
+                <form class="d-flex" role="search" action="{% url 'search:search_results' %}" method="get">
                     <input class="form-control me-2" type="search" name="q" placeholder="{% translate 'Search...' %}" aria-label="Search">
-
-                    {# La segunda cadena a traducir #}
                     <button class="btn btn-primary" type="submit">{% translate "Search" %}</button>
                 </form>
             </div>
