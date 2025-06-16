@@ -152,6 +152,7 @@ LANGUAGE_CODE = 'en'
 LANGUAGES = [
     ('es', _('Spanish')),
     ('en', _('English')),
+    ('ca', _('Català')),
 ]
 
 # Rutas donde Django buscará los archivos de traducción (.po/.mo)

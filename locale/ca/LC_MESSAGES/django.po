@@ -1,4 +1,4 @@
-# Spanish translations for tvt-cms project.
+# Catalan translations for tvt-cms project.
 # Copyright (C) 2025 Gustavo
 # This file is distributed under the same license as the tvt-cms package.
 # Gustavo <tu_email@ejemplo.com>, 2025.
@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-16 15:44+0000\n"
+"POT-Creation-Date: 2025-06-16 16:16+0000\n"
 "PO-Revision-Date: 2025-06-16 18:20+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
-"Language-Team: Spanish <es@li.org>\n"
-"Language: es\n"
+"Language-Team: Catalan <ca@li.org>\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: blog/models.py:9 pages/models.py:8
 msgid "Name"
-msgstr "Nombre"
+msgstr "Nom"
 
 #: blog/models.py:10 blog/models.py:36 pages/models.py:9
 msgid "Slug"
@@ -28,31 +28,31 @@ msgstr "Slug"
 
 #: blog/models.py:12 blog/models.py:48 pages/models.py:12 pages/models.py:56
 msgid "Meta Title (SEO)"
-msgstr "Meta Título (SEO)"
+msgstr "Meta Títol (SEO)"
 
 #: blog/models.py:13 blog/models.py:49 pages/models.py:13 pages/models.py:57
 msgid "Meta Description (SEO)"
-msgstr "Meta Descripción (SEO)"
+msgstr "Meta Descripció (SEO)"
 
 #: blog/models.py:16
 msgid "blog category"
-msgstr "categoría de blog"
+msgstr "categoria de blog"
 
 #: blog/models.py:17
 msgid "blog categories"
-msgstr "categorías de blog"
+msgstr "categories de blog"
 
 #: blog/models.py:32 pages/models.py:32
 msgid "Draft"
-msgstr "Borrador"
+msgstr "Esborrany"
 
 #: blog/models.py:33 pages/models.py:33
 msgid "Published"
-msgstr "Publicado"
+msgstr "Publicat"
 
 #: blog/models.py:35 pages/models.py:36
 msgid "Title"
-msgstr "Título"
+msgstr "Títol"
 
 #: blog/models.py:37 pages/models.py:40
 msgid "Author"
@@ -60,26 +60,26 @@ msgstr "Autor"
 
 #: blog/models.py:39 pages/models.py:38
 msgid "Content"
-msgstr "Contenido"
+msgstr "Contingut"
 
 #: blog/models.py:40
 msgid "Featured Image"
-msgstr "Imagen Destacada"
+msgstr "Imatge Destacada"
 
 #: blog/models.py:42
 msgid "Published Date"
-msgstr "Fecha de Publicación"
+msgstr "Data de Publicació"
 
 #: blog/models.py:44 pages/models.py:41
 msgid "Status"
-msgstr "Estado"
+msgstr "Estat"
 
 #: blog/models.py:46
 #: blog/templates/blog/partials/_blog_categories_widget.html:5
 #: blog/templates/blog/post_detail.html:39 pages/admin.py:45 pages/models.py:45
 #: pages/templates/pages/page_detail.html:39
 msgid "Categories"
-msgstr "Categorías"
+msgstr "Categories"
 
 #: blog/models.py:56
 msgid "blog post"
@@ -87,49 +87,50 @@ msgstr "entrada de blog"
 
 #: blog/models.py:57
 msgid "blog posts"
-msgstr "entradas de blog"
+msgstr "entrades de blog"
 
 #: blog/templates/blog/partials/_blog_categories_widget.html:13
 msgid "No categories available."
-msgstr "No hay categorias disponibles."
+msgstr "No hi ha categories disponibles."
 
 #: blog/templates/blog/partials/_recent_posts_widget.html:5
 msgid "Recent Posts"
-msgstr "Post Recientes"
+msgstr "Entrades Recents"
 
 #: blog/templates/blog/partials/_recent_posts_widget.html:10
 msgid "No recent posts available."
-msgstr "No hay post recientes."
+msgstr "No hi ha entrades recents disponibles."
 
 #: blog/templates/blog/post_detail.html:31
 #, python-format
 msgid ""
 "\n"
 "                Published on %(published_date)s by %(author)s\n"
-"                "
+"            "
 msgstr ""
 "\n"
-"                 Publicado el %(published_date)s por %(author)s\n"
-"                "
+"                Publicat el %(published_date)s per %(author)s\n"
+"            "
 
-#: blog/templates/blog/post_list.html:8 blog/templates/blog/post_list.html:12
+#: blog/templates/blog/post_list.html:7 blog/templates/blog/post_list.html:12
 #: blog/templates/blog/post_list.html:20
 msgid "Our Blog"
-msgstr "Nuestro Blog"
+msgstr "El Nostre Blog"
 
-#: blog/templates/blog/post_list.html:9
+#: blog/templates/blog/post_list.html:8
 msgid ""
 "Latest articles and updates on Computer Vision, Natural Language Processing, "
 "and more from the Tavata team."
 msgstr ""
-"Últimos artículos y novedades sobre Visión por Computador, Procesamiento de "
-"Lenguaje Natural y más del equipo de Tavata."
+"Últims articles i novetats sobre Visió per Computador, Processament de "
+"Llenguatge Natural i més de l'equip de Tavata."
 
 #: blog/templates/blog/post_list.html:21
 msgid "News, articles, and insights from our team."
-msgstr "Noticias, artículos e ideas de nuestro equipo."
+msgstr "Notícies, articles i idees del nostre equip."
 
 #: blog/templates/blog/post_list.html:43
+#: blog/templates/blog/post_list_by_category.html:48
 #, python-format
 msgid ""
 "\n"
@@ -138,53 +139,40 @@ msgid ""
 "                                "
 msgstr ""
 "\n"
-"                                    Publicado en %(published_date)s por "
+"                                    Publicat el %(published_date)s per "
 "%(author)s\n"
 "                                "
 
 #: blog/templates/blog/post_list.html:49
 #: blog/templates/blog/post_list_by_category.html:54
 msgid "Read More"
-msgstr "Leer Más"
+msgstr "Llegir Més"
 
 #: blog/templates/blog/post_list.html:57
 msgid "There are no blog posts yet. Come back soon!"
-msgstr "Aún no hay entradas en el blog. ¡Vuelve pronto!"
+msgstr "Encara no hi ha entrades al blog. Torna aviat!"
 
 #: blog/templates/blog/post_list_by_category.html:11
 #, python-format
 msgid "Posts in %(category.name)s"
-msgstr "Entradas en %(category.name)s"
+msgstr "Entrades a %(category.name)s"
 
 #: blog/templates/blog/post_list_by_category.html:21
 #, python-format
 msgid ""
 "\n"
-"                Posts in category: <span class=\"text-"
+"            Posts in category: <span class=\"text-"
 "primary\">%(category.name)s</span>\n"
-"            "
+"        "
 msgstr ""
 "\n"
-"                Entradas en la categoría: <span class=\"text-"
+"            Entrades a la categoria: <span class=\"text-"
 "primary\">%(category.name)s</span>\n"
-"             "
-
-#: blog/templates/blog/post_list_by_category.html:48
-#, python-format
-msgid ""
-"\n"
-"                                    Published %(published_date)s by "
-"%(author)s\n"
-"                                "
-msgstr ""
-"\n"
-"                                    Publicado en %(published_date)s por "
-"%(author)s\n"
-"                                "
+"        "
 
 #: blog/templates/blog/post_list_by_category.html:62
 msgid "There are currently no published posts in this category."
-msgstr "Actualmente no hay entradas publicadas en esta categoría."
+msgstr "Actualment no hi ha entrades publicades en aquesta categoria."
 
 #: core/templates/core/partials/_footer.html:9
 #, python-format
@@ -192,25 +180,25 @@ msgid ""
 "&copy; %(year)s Tavata.art - Built with Django and <i class=\"fas fa-bee\"></"
 "i> by Gustavo and Tavata."
 msgstr ""
-"&copy; %(year)s Tavata.art - Construido con Django y <i class=\"fas fa-"
-"bee\"></i> por Gustavo y Tavata."
-
-#: core/templates/core/partials/_header.html:29
-msgid "Search..."
-msgstr "Búsqueda..."
+"&copy; %(year)s Tavata.art - Construït amb Django i <i class=\"fas fa-"
+"bee\"></i> per Gustavo i Tavata."
 
 #: core/templates/core/partials/_header.html:30
+msgid "Search..."
+msgstr "Cercar..."
+
+#: core/templates/core/partials/_header.html:33
 #: search/templates/search/search_results.html:26
 msgid "Search"
-msgstr "Buscar"
+msgstr "Cercar"
 
 #: menus/models.py:9
 msgid "Menu Title"
-msgstr "Título del Menú"
+msgstr "Títol del Menú"
 
 #: menus/models.py:10
 msgid "Slug (identifier for code)"
-msgstr "Slug (identificador para el código)"
+msgstr "Slug (identificador per al codi)"
 
 #: menus/models.py:13
 msgid "Menu"
@@ -222,60 +210,61 @@ msgstr "Menús"
 
 #: menus/models.py:28
 msgid "Menu it belongs to"
-msgstr "Menú al que pertenece"
+msgstr "Menú al qual pertany"
 
 #: menus/models.py:35
 msgid "Link Text"
-msgstr "Texto del Enlace"
+msgstr "Text de l'Enllaç"
 
 #: menus/models.py:36
 msgid "Order"
-msgstr "Orden"
+msgstr "Ordre"
 
 #: menus/models.py:43
 msgid "Link to a Page"
-msgstr "Enlazar a una Página"
+msgstr "Enllaçar a una Pàgina"
 
 #: menus/models.py:44
 msgid "Select an internal page to link to. Leave blank if using a manual URL."
 msgstr ""
-"Selecciona una página interna para enlazar. Deja en blanco si usas una URL "
-"manual."
+"Selecciona una pàgina interna per enllaçar. Deixa en blanc si fas servir una "
+"URL manual."
 
 #: menus/models.py:49
 msgid "Link to a manual URL"
-msgstr "Enlazar a una URL manual"
+msgstr "Enllaçar a una URL manual"
 
 #: menus/models.py:50
 msgid ""
 "Use for external URLs (e.g., https://google.com) or fixed paths (e.g., /"
 "blog/)."
 msgstr ""
-"Úsalo para URLs externas (ej: https://google.com) o rutas fijas (ej: /blog/)."
+"Fes servir per a URLs externes (ex: https://google.com) o rutes fixes (ex: /"
+"blog/)."
 
 #: menus/models.py:52
 msgid "Icon Class (e.g., fab fa-facebook)"
-msgstr "Clase de Ícono (ej: fab fa-facebook)"
+msgstr "Classe d'Icona (ex: fab fa-facebook)"
 
 #: menus/models.py:56
 msgid "Menu Item"
-msgstr "Elemento de Menú"
+msgstr "Element de Menú"
 
 #: menus/models.py:57
 msgid "Menu Items"
-msgstr "Elementos de Menú"
+msgstr "Elements de Menú"
 
 #: pages/models.py:10
 msgid "Description"
-msgstr "Descripción"
+msgstr "Descripció"
 
 #: pages/models.py:16
 msgid "page category"
-msgstr "categoría de página"
+msgstr "categoria de pàgina"
 
 #: pages/models.py:17
 msgid "page categories"
-msgstr "categorías de página"
+msgstr "categories de pàgina"
 
 #: pages/models.py:37
 msgid "Slug (URL friendly)"
@@ -283,129 +272,111 @@ msgstr "Slug (URL amigable)"
 
 #: pages/models.py:52
 msgid "Is Homepage?"
-msgstr "¿Es la página de inicio?"
+msgstr "És la pàgina d'inici?"
 
 #: pages/models.py:53
 msgid ""
 "Mark only one page with this option. If multiple are marked, the most recent "
 "one will be used."
 msgstr ""
-"Marcar solo una página con esta opción. Si varias están marcadas, se usará "
-"la más reciente."
+"Marca només una pàgina amb aquesta opció. Si se'n marquen diverses, "
+"s'utilitzarà la més recent."
 
 #: pages/models.py:59
 msgid "Creation Date"
-msgstr "Fecha de Creación"
+msgstr "Data de Creació"
 
 #: pages/models.py:60
 msgid "Last Updated"
-msgstr "Última Actualización"
+msgstr "Última Actualització"
 
 #: pages/models.py:63
 msgid "page"
-msgstr "página"
+msgstr "pàgina"
 
 #: pages/models.py:64
 msgid "pages"
-msgstr "páginas"
+msgstr "pàgines"
 
 #: pages/templates/pages/page_detail.html:31
 #, python-format
-msgid ""
-"\n"
-"                        By %(author)s | Last updated: %(updated_date)s\n"
-"                    "
-msgstr ""
-"\n"
-"                        Por %(author)s | Última Actualización: "
-"%(updated_date)s                    "
+msgid "By %(author)s | Last updated: %(updated_date)s"
+msgstr "Per %(author)s | Última Actualització: %(updated_date)s"
 
 #: pages/templates/pages/page_detail.html:62
 msgid "Welcome!"
-msgstr "¡Bienvenido!"
+msgstr "Benvingut!"
 
 #: pages/templates/pages/page_detail.html:63
 msgid ""
 "Site under construction. Please configure a homepage from the admin panel."
 msgstr ""
-"Sitio en construcción. Por favor, configura una página de inicio desde el "
-"panel de administración."
+"Lloc en construcció. Si us plau, configura una pàgina d'inici des del panell "
+"d'administració."
 
 #: pages/templates/pages/pages_by_category.html:10
 #, python-format
 msgid "Pages in %(category.name)s"
-msgstr "Páginas en %(category.name)s"
+msgstr "Pàgines a %(category.name)s"
 
 #: pages/templates/pages/pages_by_category.html:20
 #, python-format
 msgid ""
-"\n"
-"                Pages in category: <span class=\"text-"
-"primary\">%(category.name)s</span>\n"
-"            "
+"Pages in category: <span class=\"text-primary\">%(category.name)s</span>"
 msgstr ""
-"\n"
-"                Páginas en la categoría: <span class=\"text-"
-"primary\">%(category.name)s</span>\n"
-"            "
+"Pàgines a la categoria: <span class=\"text-primary\">%(category.name)s</span>"
 
 #: pages/templates/pages/pages_by_category.html:44
 #, python-format
-msgid ""
-"\n"
-"                            Updated on %(updated_date)s\n"
-"                            "
-msgstr ""
-"\n"
-"                            Actualizado en %(updated_date)s\n"
-"                            "
+msgid "Updated on %(updated_date)s"
+msgstr "Actualitzat el %(updated_date)s"
 
 #: pages/templates/pages/pages_by_category.html:55
 msgid "There are currently no published pages in this category."
-msgstr "Actualmente no hay páginas publicadas en esta categoría."
+msgstr "Actualment no hi ha pàgines publicades en aquesta categoria."
 
 #: search/templates/search/search_results.html:5
 #, python-format
 msgid "Search results for \"%(query)s\""
-msgstr "Resultados de búsqueda para \"%(query)s\""
+msgstr "Resultats de la cerca per a \"%(query)s\""
 
 #: search/templates/search/search_results.html:13
 msgid "Search results for:"
-msgstr "Resultados de búsqueda para:"
+msgstr "Resultats de la cerca per a:"
 
 #: search/templates/search/search_results.html:18
 msgid "1 result found."
-msgstr "1 resultado encontrado."
+msgstr "1 resultat trobat."
 
 #: search/templates/search/search_results.html:20
 #, python-format
 msgid "%(count)s results found."
-msgstr "%(count)s resultados encontrados."
+msgstr "%(count)s resultats trobats."
 
 #: search/templates/search/search_results.html:27
 msgid "Please enter a term in the search bar above."
-msgstr "Por favor ingrese una consulta en la barra de búsqueda."
+msgstr "Si us plau, introdueix un terme a la barra de cerca."
 
 #: search/templates/search/search_results.html:34
 msgid "Pages Found"
-msgstr "Páginas Encontradas"
+msgstr "Pàgines Trobades"
 
 #: search/templates/search/search_results.html:46
 msgid "Blog Posts Found"
-msgstr "Entradas de blog encontradas"
+msgstr "Entrades de Blog Trobades"
 
 #: search/templates/search/search_results.html:51
 msgid "Published on"
-msgstr "Publicado"
+msgstr "Publicat el"
 
 #: tvt/settings.py:153
 msgid "Spanish"
-msgstr "Español"
+msgstr "Espanyol"
 
 #: tvt/settings.py:154
 msgid "English"
-msgstr "Inglés"
+msgstr "Anglès"
 
-#, python-format
-#~ msgid "Updated on %(updated_date)s"
-#~ msgstr "Actualizado el %(updated_date)s"
+#: tvt/settings.py:155
+msgid "Català"
+msgstr "Català"
