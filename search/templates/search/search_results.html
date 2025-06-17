@@ -36,10 +36,9 @@
             </li>
             {% endfor %}
         </ul>
-        {# Include the pagination for Pages, preserving the state of the other paginator #}
-        {% with base_url="?q="|add:query|add:"&p_post="|add:post_results.number %}
-            {% include 'search/partials/_pagination_component.html' with page_obj=page_results param_name='p_page' base_url=base_url %}
-        {% endwith %}
+        {# Include the centralized pagination component. #}
+        {# We pass the page object and specify the unique URL parameter name for this list. #}
+        {% include 'core/partials/_pagination.html' with page_obj=page_results param_name='p_page' %}
     {% endif %}
 
     {# A divider that only shows if both result types are present #}
@@ -56,10 +55,8 @@
             </li>
             {% endfor %}
         </ul>
-        {# Include the pagination for Posts, preserving the state of the other paginator #}
-        {% with base_url="?q="|add:query|add:"&p_page="|add:page_results.number %}
-            {% include 'search/partials/_pagination_component.html' with page_obj=post_results param_name='p_post' base_url=base_url %}
-        {% endwith %}
+        {# We reuse the exact same centralized component, just with different variables #}
+        {% include 'core/partials/_pagination.html' with page_obj=post_results param_name='p_post' %}
     {% endif %}
 
 </div>

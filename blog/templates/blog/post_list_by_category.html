@@ -66,39 +66,10 @@
         {% endfor %}
     </div>
 
-    {# --- PAGINATION COMPONENT --- #}
-    {# Render the pagination controls if there are multiple pages. #}
-    {% if posts.has_other_pages %}
-    <nav aria-label="Page navigation" class="mt-5">
-        <ul class="pagination justify-content-center">
-            
-            {# 'Previous' Button #}
-            {% if posts.has_previous %}
-                <li class="page-item"><a class="page-link" href="?page={{ posts.previous_page_number }}">{% translate "Previous" %}</a></li>
-            {% else %}
-                <li class="page-item disabled"><span class="page-link">{% translate "Previous" %}</span></li>
-            {% endif %}
-
-            {# Page Number Links #}
-            {% for i in posts.paginator.page_range %}
-                {% if posts.number == i %}
-                    <li class="page-item active" aria-current="page"><span class="page-link">{{ i }}</span></li>
-                {% else %}
-                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-                {% endif %}
-            {% endfor %}
-            
-            {# 'Next' Button #}
-            {% if posts.has_next %}
-                <li class="page-item"><a class="page-link" href="?page={{ posts.next_page_number }}">{% translate "Next" %}</a></li>
-            {% else %}
-                <li class="page-item disabled"><span class="page-link">{% translate "Next" %}</span></li>
-            {% endif %}
-
-        </ul>
-    </nav>
-    {% endif %}
-    {# --- END PAGINATION COMPONENT --- #}
+    {# --- PAGINATION --- #}
+    {# We include our single, centralized pagination component from the 'core' app. #}
+    {# The component will automatically use '?page=' as the parameter name. #}
+    {% include 'core/partials/_pagination.html' with page_obj=posts %}
 
 </div>
 {% endblock %}

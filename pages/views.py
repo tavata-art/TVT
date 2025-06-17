@@ -1,6 +1,8 @@
 # pages/views.py
 from django.shortcuts import render, get_object_or_404
 from .models import Page, Category
+from django.core.paginator import Paginator # Asegúrate de importar Paginator
+from site_settings.models import SiteConfiguration
 
 def page_detail_view(request, slug):
     # Buscamos una página que coincida con el slug Y que esté publicada.
@@ -14,24 +16,29 @@ def page_detail_view(request, slug):
 
     return render(request, 'pages/page_detail.html', context)
 
-# --- NUEVA VISTA ---
 def pages_by_category_view(request, category_slug):
     """
-    Recupera y muestra todas las páginas publicadas que pertenecen
-    a una categoría específica.
+    Displays a paginated list of published pages belonging
+    to a specific category.
     """
-    # 1. Obtener el objeto de la categoría. Si no existe, devuelve un error 404.
     category = get_object_or_404(Category, slug=category_slug)
+    all_pages_in_category = category.pages.filter(status='published').order_by('title')
 
-    # 2. Filtrar las páginas. Usamos el 'related_name="pages"' que definimos en el modelo.
-    #    Solo queremos las páginas que estén 'published'.
-    pages_in_category = category.pages.filter(status='published')
+    try:
+        site_config = SiteConfiguration.objects.get()
+        # Usamos el mismo setting que para el blog para mantener la consistencia
+        items_per_page = site_config.blog_items_per_page 
+    except SiteConfiguration.DoesNotExist:
+        items_per_page = 9 # Fallback
 
-    # 3. Preparar el contexto para la plantilla.
+    paginator = Paginator(all_pages_in_category, items_per_page)
+    page_number = request.GET.get('page', 1)
+
+    pages_list = paginator.get_page(page_number)
+
     context = {
         'category': category,
-        'pages_list': pages_in_category, # Usamos un nombre de variable claro
+        'pages_list': pages_list, # Pasamos el objeto paginado
     }
-
-    # 4. Renderizar la plantilla, pasándole el contexto.
     return render(request, 'pages/pages_by_category.html', context)
+   
