@@ -70,8 +70,8 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'blog.apps.BlogConfig',
     'menus.apps.MenusConfig', 
-    'search.apps.SearchConfig', 
     'site_settings.apps.SiteSettingsConfig', 
+    'search.apps.SearchConfig', 
 ]
 
 MIDDLEWARE = [
@@ -94,9 +94,11 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
             ],
         },
     },

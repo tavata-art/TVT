@@ -26,7 +26,8 @@
                 {# --- NEW SEARCH FORM --- #}
                 {# This form submits data to the 'search:search_results' URL name using the GET method. #}
                 <form class="d-flex" role="search" action="{% url 'search:search_results' %}" method="get">
-                    <input class="form-control me-2" type="search" name="q" placeholder="{% translate 'Search...' %}" aria-label="Search">
+                    {# The header can get the 'q' parameter directly from the request's GET object #}
+                    <input class="form-control me-2" type="search" name="q" value="{{ request.GET.q|default:'' }}" placeholder="{% translate 'Search...' %}" aria-label="Search">
                     <button class="btn btn-primary" type="submit">{% translate "Search" %}</button>
                 </form>
             </div>
