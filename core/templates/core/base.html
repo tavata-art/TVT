@@ -21,9 +21,10 @@
 </head>
 
 {# These body classes help with styling and keeping the footer at the bottom #}
+{# These body classes use Flexbox to ensure the footer sticks to the bottom on short pages #}
 <body class="d-flex flex-column min-vh-100 bg-light">
 
-    {# 1. Include the Header partial #}
+    {# 1. Include the Header partial from a separate file for organization #}
     {% include 'core/partials/_header.html' %}
 
 
@@ -31,22 +32,41 @@
     <main class="container-fluid flex-grow-1 py-4">
         <div class="row">
 
-            {# Left Sidebar (optional) #}
-            <aside class="col-lg-2 d-none d-lg-block">
+            {# Left Sidebar: Hidden on small screens, appears on medium and larger screens #}
+            <aside class="col-lg-3 col-md-3 d-none d-md-block">
                 {% block sidebar_left %}{% endblock sidebar_left %}
             </aside>
 
-            {# Central Content Area #}
-            <div class="col-lg-8 col-md-12">
+            {# Central Content Column: This is where the main content of each page will go #}
+            <div class="col-lg-6 col-md-9 col-sm-12">
+                
+                {# --- FLASH MESSAGES BLOCK --- #}
+                {# This block is where Django's messages will be displayed. #}
+                {# Child templates can override this to move or disable messages. #}
+                {% block messages %}
+                    {% if messages %}
+                        <div class="messages-container">
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endblock messages %}
+                
+                {# Breadcrumbs block for navigation context on inner pages #}
                 {% block breadcrumbs %}{% endblock breadcrumbs %}
                 
+                {# Main content block, which child templates will override #}
                 <div class="mt-4">
                     {% block content %}{% endblock content %}
                 </div>
             </div>
 
-            {# Right Sidebar (optional) #}
-            <aside class="col-lg-2 d-none d-lg-block">
+            {# Right Sidebar: Hidden on small/medium screens, appears on large screens #}
+            <aside class="col-lg-3 d-none d-lg-block">
                 {% block sidebar_right %}{% endblock sidebar_right %}
             </aside>
 

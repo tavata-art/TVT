@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-16 21:08+0000\n"
-"PO-Revision-Date: 2025-06-16 23:17+0200\n"
+"POT-Creation-Date: 2025-06-17 10:08+0000\n"
+"PO-Revision-Date: 2025-06-17 12:11+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "Language: ca\n"
@@ -96,7 +96,7 @@ msgstr "Estat"
 
 #: blog/models.py:47
 #: blog/templates/blog/partials/_blog_categories_widget.html:6
-#: blog/templates/blog/post_detail.html:45 pages/admin.py:45 pages/models.py:45
+#: blog/templates/blog/post_detail.html:50 pages/admin.py:45 pages/models.py:45
 #: pages/templates/pages/page_detail.html:39
 msgid "Categories"
 msgstr "Categories"
@@ -149,19 +149,28 @@ msgstr "comentaris"
 msgid "No categories available."
 msgstr "No hi ha categories disponibles."
 
-#: blog/templates/blog/partials/_posts_widget.html:9
-msgid "No posts available."
-msgstr "No hi ha entrades recents disponibles."
-
+#: blog/templates/blog/partials/_posts_widget.html:7
 #: blog/templates/blog/partials/_recent_posts_widget.html:5
 msgid "Recent Posts"
 msgstr "Entrades Recents"
+
+#: blog/templates/blog/partials/_posts_widget.html:8
+msgid "Most Viewed"
+msgstr "Més vistós"
+
+#: blog/templates/blog/partials/_posts_widget.html:9
+msgid "Most Commented"
+msgstr "Més comentat"
+
+#: blog/templates/blog/partials/_posts_widget.html:16
+msgid "No posts available."
+msgstr "No hi ha entrades recents disponibles."
 
 #: blog/templates/blog/partials/_recent_posts_widget.html:10
 msgid "No recent posts available."
 msgstr "No hi ha entrades recents disponibles."
 
-#: blog/templates/blog/post_detail.html:37
+#: blog/templates/blog/post_detail.html:42
 #, python-format
 msgid ""
 "\n"
@@ -172,30 +181,34 @@ msgstr ""
 "                Publicat el %(published_date)s per %(author)s\n"
 "                "
 
-#: blog/templates/blog/post_detail.html:65
+#: blog/templates/blog/post_detail.html:70
 #, python-format
 msgid "%(count)s Comment"
 msgid_plural "%(count)s Comments"
 msgstr[0] "%(count)s Comentari"
 msgstr[1] "%(count)s Comentaris"
 
-#: blog/templates/blog/post_detail.html:80
+#: blog/templates/blog/post_detail.html:84
 msgid "ago"
 msgstr "fa"
 
-#: blog/templates/blog/post_detail.html:81
+#: blog/templates/blog/post_detail.html:85
 msgid "Reply"
 msgstr "Respon"
 
-#: blog/templates/blog/post_detail.html:103
+#: blog/templates/blog/post_detail.html:117
 msgid "Leave a Comment"
 msgstr "Deixa un comentari"
 
-#: blog/templates/blog/post_detail.html:125
+#: blog/templates/blog/post_detail.html:138
 msgid "Submit Comment"
 msgstr "Envieu comentari"
 
-#: blog/templates/blog/post_detail.html:163
+#: blog/templates/blog/post_detail.html:174
+msgid "Cancel Reply"
+msgstr "Cancel·la la resposta"
+
+#: blog/templates/blog/post_detail.html:183
 msgid "Reply to"
 msgstr "Respon a"
 
@@ -284,6 +297,14 @@ msgstr ""
 #: blog/templates/blog/post_list_by_category.html:62
 msgid "There are currently no published posts in this category."
 msgstr "Actualment no hi ha entrades publicades en aquesta categoria."
+
+#: blog/views.py:94
+msgid "Thank you! Your comment has been published."
+msgstr "Gràcies! El vostre comentari ha estat publicat."
+
+#: blog/views.py:97
+msgid "Thank you! Your comment has been submitted and is awaiting moderation."
+msgstr "Gràcies! El vostre comentari ha estat enviat i espera la moderació."
 
 #: core/templates/core/partials/_footer.html:9
 #, python-format
@@ -527,8 +548,18 @@ msgstr ""
 "Controla quina quantitat d’espai s’afegeix per a cada nivell de comentaris "
 "nidificats a la vista de la llista d’administració."
 
-#: site_settings/models.py:50 site_settings/models.py:52
-#: site_settings/models.py:56
+#: site_settings/models.py:41
+msgid "Auto-approve comments"
+msgstr "Comentaris aprovats automàticament"
+
+#: site_settings/models.py:42
+msgid ""
+"If checked, new comments will be published immediately without moderation."
+msgstr ""
+"Si es comprova, es publicaran immediatament nous comentaris sense moderació."
+
+#: site_settings/models.py:56 site_settings/models.py:58
+#: site_settings/models.py:62
 msgid "Site Configuration"
 msgstr "Configuració del lloc"
 

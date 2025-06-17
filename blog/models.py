@@ -104,7 +104,7 @@ class Comment(MPTTModel):
     
     # This is crucial for moderation.
     # We'll set the default to True for easier testing. Change to False for production.
-    is_approved = models.BooleanField(default=True, verbose_name=_("Is Approved?"))
+    is_approved = models.BooleanField(default=False, verbose_name=_("Is Approved?"))
     
 
     class MPTTMeta:

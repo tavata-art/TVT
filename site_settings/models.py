@@ -35,6 +35,12 @@ class SiteConfiguration(SingletonModel):
         verbose_name=_("Comment Indentation (in pixels)"),
         help_text=_("Controls how much space is added for each level of nested comments in the admin list view.")
     )
+
+    auto_approve_comments = models.BooleanField(
+        default=False, # Default to requiring moderation (more secure)
+        verbose_name=_("Auto-approve comments"),
+        help_text=_("If checked, new comments will be published immediately without moderation.")
+    )
     # --- We can add more settings in the future! ---
     # site_contact_email = models.EmailField(
     #     blank=True, 

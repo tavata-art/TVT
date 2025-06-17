@@ -1,7 +1,14 @@
 <!-- blog/templates/blog/partials/_posts_widget.html -->
 {% load i18n %}
 <div class="card mb-4 shadow-sm border-0">
-    <h5 class="card-header">{% translate widget_title %}</h5>
+    <h5 class="card-header">
+        {# ¡AQUÍ ESTÁ LA MAGIA! #}
+        {# Comprobamos qué clave nos llegó y mostramos el texto correspondiente #}
+        {% if widget_title_key == "recent_posts" %}{% translate "Recent Posts" %}
+        {% elif widget_title_key == "most_viewed" %}{% translate "Most Viewed" %}
+        {% elif widget_title_key == "most_commented" %}{% translate "Most Commented" %}
+        {% endif %}
+    </h5>
     <div class="list-group list-group-flush">
         {% for post in posts %}
             <a href="{{ post.get_absolute_url }}" class="list-group-item list-group-item-action">{{ post.title }}</a>
