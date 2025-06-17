@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-17 21:36+0000\n"
-"PO-Revision-Date: 2025-06-17 22:31+0200\n"
+"POT-Creation-Date: 2025-06-17 22:14+0000\n"
+"PO-Revision-Date: 2025-06-18 00:21+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "Language: ca\n"
@@ -17,6 +17,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.6\n"
+
+#: accounts/templates/registration/login.html:5
+#: accounts/templates/registration/login.html:12
+#: accounts/templates/registration/login.html:30
+#: core/templates/core/partials/_header.html:49
+msgid "Log In"
+msgstr "Iniciar sessió"
+
+#: accounts/templates/registration/login.html:16
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+"El vostre nom d’usuari i la vostra contrasenya no coincideixen. Torneu-ho a "
+"provar."
+
+#: accounts/templates/registration/login.html:22
+msgid "Username"
+msgstr "Nom d'usuari"
+
+#: accounts/templates/registration/login.html:26
+msgid "Password"
+msgstr "Contrasenya"
 
 #: blog/forms.py:14
 msgid "Your Name"
@@ -395,6 +416,15 @@ msgstr "Cercar..."
 msgid "Search"
 msgstr "Cercar"
 
+#: core/templates/core/partials/_header.html:40
+#, python-format
+msgid "Hello, %(user_name)s!"
+msgstr "Hola,%(user_name)s!"
+
+#: core/templates/core/partials/_header.html:45
+msgid "Log Out"
+msgstr "Tanqueu"
+
 #: core/templates/core/partials/_pagination.html:13
 #: core/templates/core/partials/_pagination.html:15
 msgid "Previous"
@@ -672,15 +702,15 @@ msgstr ""
 msgid "Site Configuration"
 msgstr "Configuració del lloc"
 
-#: tvt/settings.py:171
+#: tvt/settings.py:172
 msgid "Spanish"
 msgstr "Espanyol"
 
-#: tvt/settings.py:172
+#: tvt/settings.py:173
 msgid "English"
 msgstr "Anglès"
 
-#: tvt/settings.py:173
+#: tvt/settings.py:174
 msgid "Català"
 msgstr "Català"
 

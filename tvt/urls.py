@@ -5,9 +5,20 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # 1. Definimos nuestra propia URL de logout para que redirija inmediatamente.
+    #    La vista LogoutView, si no encuentra una plantilla de confirmación,
+    #    redirige al LOGOUT_REDIRECT_URL que definimos en settings.py.
+    #    Para forzarlo en algunos casos, se puede especificar next_page.
+    #    Pero la clave es NO tener una plantilla logged_out.html.
+    # Vamos a probar la forma más limpia.
+    path('accounts/logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
+
+    # 2. Incluimos el resto de las URLs de auth (login, password_reset, etc.)
+    path('accounts/', include('django.contrib.auth.urls')),
     path('summernote/', include('django_summernote.urls')),
 ]
 

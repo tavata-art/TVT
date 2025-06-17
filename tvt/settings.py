@@ -76,6 +76,7 @@ INSTALLED_APPS = [
     'search.apps.SearchConfig', 
     'contact.apps.ContactConfig',
     'widgets.apps.WidgetsConfig',
+    'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [
@@ -281,3 +282,9 @@ LOGGING = {
         # },
     },
 }
+
+# URL to redirect to after a successful login.
+LOGIN_REDIRECT_URL = '/'
+
+# URL to redirect to after a successful logout.
+LOGOUT_REDIRECT_URL = '/'

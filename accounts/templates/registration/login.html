@@ -1,0 +1,39 @@
+<!-- accounts/templates/registration/login.html -->
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Log In" %}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">{% translate "Log In" %}</h2>
+
+                {# Display form errors, if any #}
+                {% if form.errors %}
+                    <p class="text-danger text-center">{% translate "Your username and password didn't match. Please try again." %}</p>
+                {% endif %}
+
+                <form method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="{{ form.username.id_for_label }}" class="form-label">{% translate "Username" %}</label>
+                        <input type="text" name="username" class="form-control" id="{{ form.username.id_for_label }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.password.id_for_label }}" class="form-label">{% translate "Password" %}</label>
+                        <input type="password" name="password" class="form-control" id="{{ form.password.id_for_label }}" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">{% translate "Log In" %}</button>
+                    </div>
+                </form>
+                {# We can add links for password reset or signup later #}
+                {# <p class="text-center mt-3"><a href="#">Forgot password?</a></p> #}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
