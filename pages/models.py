@@ -11,7 +11,7 @@ class Category(models.Model):
     
     meta_title = models.CharField(max_length=70, blank=True, null=True, verbose_name=_("Meta Title (SEO)"))
     meta_description = models.CharField(max_length=160, blank=True, null=True, verbose_name=_("Meta Description (SEO)"))
-
+    
     class Meta:
         verbose_name = _("page category")
         verbose_name_plural = _("page categories")
@@ -58,6 +58,12 @@ class Page(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Creation Date"))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_("Last Updated"))
+
+    importance_order = models.PositiveIntegerField(
+        default=99,
+        verbose_name=_("Importance Order"),
+        help_text=_("A lower number means higher priority in search results. E.g., 1 for 'About Us', 2 for 'Contact', 99 for others.")
+    )
 
     class Meta:
         verbose_name = _("page")

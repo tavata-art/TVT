@@ -1,53 +1,57 @@
 # search/views.py
 from django.shortcuts import render
 from django.db.models import Q
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.core.paginator import Paginator
+
 from pages.models import Page
 from blog.models import Post
-
-# ¡NUEVO IMPORT! Importamos nuestro modelo de configuración.
 from site_settings.models import SiteConfiguration
 
 def search_results_view(request):
     """
-    Performs a search and paginates the results for both Pages and Posts,
-    using settings from the SiteConfiguration model.
+    Performs a search across Pages and Blog Posts, ordering Pages by importance,
+    and paginates the results correctly.
     """
-    # 1. Get the site-wide configuration settings first.
-    #    .get() is safe here because django-solo guarantees only one object.
-    site_config = SiteConfiguration.objects.get()
-    
+    try:
+        site_config = SiteConfiguration.objects.get()
+        pages_per_page = site_config.search_pages_per_page
+        posts_per_page = site_config.search_posts_per_page
+    except SiteConfiguration.DoesNotExist:
+        pages_per_page = 5
+        posts_per_page = 5
+
     query = request.GET.get('q', '')
     
-    all_page_results = Page.objects.none()
-    all_post_results = Post.objects.none()
-    
-    if query:
-        # Get all matching objects first
-        page_query = Q(title__icontains=query) | Q(content__icontains=query)
-        all_page_results = Page.objects.filter(page_query, status='published').distinct()
-        
-        post_query = Q(title__icontains=query) | Q(content__icontains=query)
-        all_post_results = Post.objects.filter(post_query, status='published').distinct().order_by('-published_date')
+    # Initialize with empty QuerySets
+    page_results_qs = Page.objects.none()
+    post_results_qs = Post.objects.none()
 
-    # --- Paginate Page Results using the dynamic setting ---
-    page_paginator = Paginator(all_page_results, site_config.search_results_per_page) # <-- USAMOS EL VALOR DINÁMICO
-    page_page_number = request.GET.get('page_page')
-    try:
-        paginated_page_results = page_paginator.page(page_page_number)
-    except (PageNotAnInteger, EmptyPage):
-        paginated_page_results = page_paginator.page(1)
+    if query:
+        # Build the Q objects for the search query
+        page_query = Q(title__icontains=query) | Q(content__icontains=query)
+        post_query = Q(title__icontains=query) | Q(content__icontains=query)
+
+        # --- ¡LA LÓGICA CORRECTA! ---
+        # 1. Obtenemos TODAS las páginas que coinciden con la búsqueda.
+        # 2. LUEGO, las ordenamos por importancia y después por título.
+        page_results_qs = Page.objects.filter(page_query, status='published') \
+                                      .distinct() \
+                                      .order_by('importance_order', 'title')
+        
+        post_results_qs = Post.objects.filter(post_query, status='published') \
+                                      .distinct().order_by('-published_date')
+
+    # --- Paginación (ahora sobre los QuerySets correctos) ---
+    page_paginator = Paginator(page_results_qs, pages_per_page)
+    page_page_number = request.GET.get('p_page', 1)
+    paginated_page_results = page_paginator.get_page(page_page_number)
     
-    # --- Paginate Post Results using the SAME dynamic setting ---
-    post_paginator = Paginator(all_post_results, site_config.search_results_per_page) # <-- USAMOS EL VALOR DINÁMICO
-    post_page_number = request.GET.get('post_page')
-    try:
-        paginated_post_results = post_paginator.page(post_page_number)
-    except (PageNotAnInteger, EmptyPage):
-        paginated_post_results = post_paginator.page(1)
+    post_paginator = Paginator(post_results_qs, posts_per_page)
+    post_page_number = request.GET.get('p_post', 1)
+    paginated_post_results = post_paginator.get_page(post_page_number)
     
-    # Calculate total results
-    total_results = all_page_results.count() + all_post_results.count()
+    # --- Contexto ---
+    total_results = page_results_qs.count() + post_results_qs.count()
 
     context = {
         'query': query,

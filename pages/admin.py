@@ -17,8 +17,11 @@ class PageAdmin(SummernoteModelAdmin, TabbedTranslationAdmin):
     """ Admin options for the Page model, integrating Summernote and ModelTranslation. """
     
     # What fields to display in the list view
-    list_display = ('title', 'author', 'status', 'is_homepage', 'display_categories')
+    list_display = ('title', 'status', 'is_homepage', 'importance_order', 'author')
     
+    # Allow editing these fields directly from the list view
+    list_editable = ('status', 'is_homepage', 'importance_order')
+
     # Filters in the right sidebar
     list_filter = ('status', 'author', 'categories', 'is_homepage')
     
@@ -26,7 +29,7 @@ class PageAdmin(SummernoteModelAdmin, TabbedTranslationAdmin):
     search_fields = ('title', 'content')
     
     # Ordering
-    ordering = ('-created_at',)
+    ordering = ('importance_order', '-updated_at')
     
     # Auto-populate the slug field from the title
     prepopulated_fields = {'slug': ('title',)}
@@ -36,10 +39,3 @@ class PageAdmin(SummernoteModelAdmin, TabbedTranslationAdmin):
     
     # Tell Summernote which field(s) to use its WYSIWYG editor on
     summernote_fields = ('content',)
-
-    def display_categories(self, obj):
-        """ Creates a string for the Categories column. """
-        return ", ".join([category.name for category in obj.categories.all()])
-    
-    # Set the column header for our custom method
-    display_categories.short_description = _("Categories")

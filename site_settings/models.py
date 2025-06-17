@@ -14,12 +14,25 @@ class SiteConfiguration(SingletonModel):
         verbose_name=_("Items per Page in Blog/Category lists"),
         help_text=_("Number of posts to show on the main blog page and on category pages.")
     )
+    search_pages_per_page = models.PositiveIntegerField(
+        default=5, 
+        verbose_name=_("Pages per Page in Search Results")
+    )
+    search_posts_per_page = models.PositiveIntegerField(
+        default=5, 
+        verbose_name=_("Posts per Page in Search Results")
+    )
     search_results_per_page = models.PositiveIntegerField(
         default=5, 
         verbose_name=_("Results per Page in Search"),
         help_text=_("Number of items to show per section (Pages/Posts) on the search results page.")
     )
-
+    # --- Search Settings ---
+    search_importance_limit = models.PositiveIntegerField(
+        default=3,
+        verbose_name=_("Number of 'Important' Pages to show first in search"),
+        help_text=_("How many top-priority pages to display before regular search results.")
+    )
     # --- Widget Settings ---
     recent_posts_widget_count = models.PositiveIntegerField(
         default=5, 
