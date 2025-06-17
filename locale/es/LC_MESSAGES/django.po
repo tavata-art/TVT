@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-17 10:08+0000\n"
-"PO-Revision-Date: 2025-06-17 12:12+0200\n"
+"POT-Creation-Date: 2025-06-17 12:03+0000\n"
+"PO-Revision-Date: 2025-06-17 14:04+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -230,6 +230,7 @@ msgid "News, articles, and insights from our team."
 msgstr "Noticias, artículos e ideas de nuestro equipo."
 
 #: blog/templates/blog/post_list.html:41
+#: blog/templates/blog/post_list_by_category.html:49
 #, python-format
 msgid ""
 "\n"
@@ -243,7 +244,7 @@ msgstr ""
 "                                "
 
 #: blog/templates/blog/post_list.html:47
-#: blog/templates/blog/post_list_by_category.html:54
+#: blog/templates/blog/post_list_by_category.html:55
 msgid "Read More"
 msgstr "Leer Más"
 
@@ -252,14 +253,22 @@ msgid "There are no blog posts yet. Come back soon!"
 msgstr "Aún no hay entradas en el blog. ¡Vuelve pronto!"
 
 #: blog/templates/blog/post_list.html:70 blog/templates/blog/post_list.html:74
+#: blog/templates/blog/post_list_by_category.html:77
+#: blog/templates/blog/post_list_by_category.html:79
 #: search/templates/search/partials/_pagination.html:10
 #: search/templates/search/partials/_pagination.html:12
+#: search/templates/search/partials/_pagination_component.html:9
+#: search/templates/search/partials/_pagination_component.html:11
 msgid "Previous"
 msgstr "Anterior"
 
 #: blog/templates/blog/post_list.html:94 blog/templates/blog/post_list.html:98
+#: blog/templates/blog/post_list_by_category.html:93
+#: blog/templates/blog/post_list_by_category.html:95
 #: search/templates/search/partials/_pagination.html:26
 #: search/templates/search/partials/_pagination.html:28
+#: search/templates/search/partials/_pagination_component.html:23
+#: search/templates/search/partials/_pagination_component.html:25
 msgid "Next"
 msgstr "Siguiente"
 
@@ -281,20 +290,7 @@ msgstr ""
 "primary\">%(category.name)s</span>\n"
 "             "
 
-#: blog/templates/blog/post_list_by_category.html:48
-#, python-format
-msgid ""
-"\n"
-"                                    Published %(published_date)s by "
-"%(author)s\n"
-"                                "
-msgstr ""
-"\n"
-"                                    Publicado en %(published_date)s por "
-"%(author)s\n"
-"                                "
-
-#: blog/templates/blog/post_list_by_category.html:62
+#: blog/templates/blog/post_list_by_category.html:63
 msgid "There are currently no published posts in this category."
 msgstr "Actualmente no hay entradas publicadas en esta categoría."
 
@@ -511,19 +507,15 @@ msgstr "Por favor ingrese una consulta en la barra de búsqueda."
 msgid "Pages Found"
 msgstr "Páginas Encontradas"
 
-#: search/templates/search/search_results.html:49
+#: search/templates/search/search_results.html:43
 msgid "Blog Posts Found"
 msgstr "Entradas de blog encontradas"
 
-#: search/templates/search/search_results.html:54
-msgid "Published on"
-msgstr "Publicado"
-
 #: site_settings/models.py:14
-msgid "Posts per Page in Blog"
-msgstr "Posts por Página en el Blog"
+msgid "Items per Page in Blog/Category lists"
+msgstr "Posts por Página en el Blog/Lista de Categorias"
 
-#: site_settings/models.py:18
+#: site_settings/models.py:18 site_settings/models.py:47
 msgid "Results per Page in Search"
 msgstr "Resultados por Página en la Búsqueda"
 
@@ -558,8 +550,8 @@ msgstr ""
 "Si está marcado, los nuevos comentarios se publicarán inmediatamente sin "
 "moderación."
 
-#: site_settings/models.py:56 site_settings/models.py:58
-#: site_settings/models.py:62
+#: site_settings/models.py:61 site_settings/models.py:63
+#: site_settings/models.py:67
 msgid "Site Configuration"
 msgstr "Configuración del Sitio"
 
@@ -574,6 +566,21 @@ msgstr "Inglés"
 #: tvt/settings.py:167
 msgid "Català"
 msgstr "Catalán"
+
+#~ msgid "Published on"
+#~ msgstr "Publicado"
+
+#, python-format
+#~ msgid ""
+#~ "\n"
+#~ "                                    Published %(published_date)s by "
+#~ "%(author)s\n"
+#~ "                                "
+#~ msgstr ""
+#~ "\n"
+#~ "                                    Publicado en %(published_date)s por "
+#~ "%(author)s\n"
+#~ "                                "
 
 #, python-format
 #~ msgid "Updated on %(updated_date)s"

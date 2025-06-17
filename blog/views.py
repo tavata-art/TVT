@@ -18,7 +18,12 @@ def post_list_view(request):
 
     # 2. Create a Paginator instance.
     #    We'll show 6 posts per page. This number can be changed easily.
-    paginator = Paginator(all_posts, 6)
+    try:
+        config = SiteConfiguration.objects.get()
+        posts_per_page = config.blog_items_per_page
+    except SiteConfiguration.DoesNotExist:
+        posts_per_page = 6  # Fallback
+    paginator = Paginator(all_posts, posts_per_page)
 
     # 3. Get the page number from the URL's GET parameters (e.g., /blog/?page=2).
     page_number = request.GET.get('page')
@@ -120,27 +125,37 @@ def post_detail_view(request, year, month, day, slug):
     }
     return render(request, 'blog/post_detail.html', context)
 
-
-
-# --- NUEVA VISTA PARA CATEGORÍAS ---
 def posts_by_category_view(request, category_slug):
     """
-    Filtra y muestra todas las entradas publicadas que pertenecen
-    a una categoría de blog específica.
+    Filters and displays a paginated list of published posts
+    belonging to a specific blog category.
     """
-    # 1. Obtenemos el objeto de la categoría; si no existe, 404.
+    # --- 1. Get Base Data ---
     category = get_object_or_404(PostCategory, slug=category_slug)
+    all_posts_in_category = category.posts.filter(status='published').order_by('-published_date')
 
-    # 2. Filtramos los posts usando el 'related_name="posts"'.
-    #    Solo queremos los que estén publicados.
-    posts = category.posts.filter(status='published')
+    # --- 2. Get Pagination Settings ---
+    try:
+        config = SiteConfiguration.objects.get()
+        posts_per_page = config.blog_items_per_page
+    except SiteConfiguration.DoesNotExist:
+        posts_per_page = 6  # Fallback
 
-    # 3. Preparamos el contexto.
+    # --- 3. Apply Pagination ---
+    paginator = Paginator(all_posts_in_category, posts_per_page)
+    page_number = request.GET.get('page')
+
+    try:
+        posts = paginator.page(page_number)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
+    # --- 4. Prepare Context and Render ---
     context = {
         'category': category,
-        'posts': posts, # Le pasamos la lista de posts filtrados
+        'posts': posts,  # Pass the paginated 'posts' object
     }
-
-    # 4. Renderizamos la plantilla.
     return render(request, 'blog/post_list_by_category.html', context)
 
