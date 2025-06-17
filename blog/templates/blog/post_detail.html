@@ -1,8 +1,8 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% load i18n %}
+{% load widget_tags %}
 {% load mptt_tags %}
-{% load blog_tags %}
 
 
 {# --- SEO and Browser Tab Title Blocks --- #}
@@ -17,10 +17,11 @@
 {% block messages %}{% endblock %}
 
 
-{# --- Left Sidebar with 'Most Viewed' Widget --- #}
+{# --- Left Sidebar --- #}
 {% block sidebar_left %}
     <div class="sticky-top pt-5">
-        {% show_most_viewed_posts %}
+        {# 2. Llamamos a la zona de widgets para el sidebar izquierdo del blog #}
+        {% show_widget_zone 'blog-sidebar-left' %}
     </div>
 {% endblock sidebar_left %}
 
@@ -144,15 +145,14 @@
 {% endblock %}
 
 
-{# --- Right Sidebar Widgets --- #}
+{# --- Right Sidebar --- #}
 {% block sidebar_right %}
     <div class="sticky-top pt-5">
-        {% show_recent_posts %}
-        {% show_most_viewed_posts %} {# Lo moví aquí para agrupar por posts #}
-        {% show_most_commented_posts %} {# ¡NUEVA LLAMADA! #}
-        {% show_blog_categories %}
+        {# 3. Llamamos a la zona de widgets para el sidebar derecho del blog #}
+        {% show_widget_zone 'blog-sidebar-right' %}
     </div>
 {% endblock sidebar_right %}
+
 
 
 {# --- Extra JavaScript for comment replies --- #}

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-17 16:20+0000\n"
-"PO-Revision-Date: 2025-06-17 18:33+0200\n"
+"POT-Creation-Date: 2025-06-17 20:23+0000\n"
+"PO-Revision-Date: 2025-06-17 22:31+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "Language: ca\n"
@@ -94,9 +94,7 @@ msgstr "Data de Publicació"
 msgid "Status"
 msgstr "Estat"
 
-#: blog/models.py:47
-#: blog/templates/blog/partials/_blog_categories_widget.html:6
-#: blog/templates/blog/post_detail.html:50 pages/models.py:45
+#: blog/models.py:47 blog/templates/blog/post_detail.html:51 pages/models.py:45
 #: pages/templates/pages/page_detail.html:39
 msgid "Categories"
 msgstr "Categories"
@@ -145,32 +143,7 @@ msgstr "comentari"
 msgid "comments"
 msgstr "comentaris"
 
-#: blog/templates/blog/partials/_blog_categories_widget.html:20
-msgid "No categories available."
-msgstr "No hi ha categories disponibles."
-
-#: blog/templates/blog/partials/_posts_widget.html:7
-#: blog/templates/blog/partials/_recent_posts_widget.html:5
-msgid "Recent Posts"
-msgstr "Entrades Recents"
-
-#: blog/templates/blog/partials/_posts_widget.html:8
-msgid "Most Viewed"
-msgstr "Més vistós"
-
-#: blog/templates/blog/partials/_posts_widget.html:9
-msgid "Most Commented"
-msgstr "Més comentat"
-
-#: blog/templates/blog/partials/_posts_widget.html:16
-msgid "No posts available."
-msgstr "No hi ha entrades recents disponibles."
-
-#: blog/templates/blog/partials/_recent_posts_widget.html:10
-msgid "No recent posts available."
-msgstr "No hi ha entrades recents disponibles."
-
-#: blog/templates/blog/post_detail.html:42
+#: blog/templates/blog/post_detail.html:43
 #, python-format
 msgid ""
 "\n"
@@ -181,26 +154,26 @@ msgstr ""
 "                Publicat el %(published_date)s per %(author)s\n"
 "                "
 
-#: blog/templates/blog/post_detail.html:70
+#: blog/templates/blog/post_detail.html:71
 #, python-format
 msgid "%(count)s Comment"
 msgid_plural "%(count)s Comments"
 msgstr[0] "%(count)s Comentari"
 msgstr[1] "%(count)s Comentaris"
 
-#: blog/templates/blog/post_detail.html:84
+#: blog/templates/blog/post_detail.html:85
 msgid "ago"
 msgstr "fa"
 
-#: blog/templates/blog/post_detail.html:85
+#: blog/templates/blog/post_detail.html:86
 msgid "Reply"
 msgstr "Respon"
 
-#: blog/templates/blog/post_detail.html:117
+#: blog/templates/blog/post_detail.html:118
 msgid "Leave a Comment"
 msgstr "Deixa un comentari"
 
-#: blog/templates/blog/post_detail.html:138
+#: blog/templates/blog/post_detail.html:139
 msgid "Submit Comment"
 msgstr "Envieu comentari"
 
@@ -675,49 +648,150 @@ msgstr ""
 "Quantes pàgines de primera prioritat es mostren abans dels resultats de "
 "cerca regulars."
 
-#: site_settings/models.py:39
-msgid "Number of Posts in 'Recent Posts' Widget"
-msgstr "Nombre de publicacions a Widget \"Postes recents\""
-
-#: site_settings/models.py:44
-msgid "Number of Posts in 'Most Viewed' Widget"
-msgstr "Nombre de publicacions en Widget \"Most Viewed\""
-
-#: site_settings/models.py:50
+#: site_settings/models.py:40
 msgid "Comment Indentation (in pixels)"
 msgstr "Indentació del comentari ( en píxels )"
 
-#: site_settings/models.py:51
+#: site_settings/models.py:41
 msgid "Controls the visual indentation for nested comments in the admin."
 msgstr ""
 "Controla la sagnia visual per a comentaris nidificats a l'administrador."
 
-#: site_settings/models.py:57
+#: site_settings/models.py:47
 msgid "Auto-approve comments"
 msgstr "Comentaris aprovats automàticament"
 
-#: site_settings/models.py:58
+#: site_settings/models.py:48
 msgid ""
 "If checked, new comments will be published immediately without moderation."
 msgstr ""
 "Si es comprova, es publicaran immediatament nous comentaris sense moderació."
 
-#: site_settings/models.py:62 site_settings/models.py:63
-#: site_settings/models.py:66
+#: site_settings/models.py:52 site_settings/models.py:53
+#: site_settings/models.py:56
 msgid "Site Configuration"
 msgstr "Configuració del lloc"
 
-#: tvt/settings.py:168
+#: tvt/settings.py:169
 msgid "Spanish"
 msgstr "Espanyol"
 
-#: tvt/settings.py:169
+#: tvt/settings.py:170
 msgid "English"
 msgstr "Anglès"
 
-#: tvt/settings.py:170
+#: tvt/settings.py:171
 msgid "Català"
 msgstr "Català"
+
+#: widgets/admin.py:27
+msgid "Number of Widgets"
+msgstr "Nombre de widgets"
+
+#: widgets/models.py:12
+msgid "Zone Name"
+msgstr "Nom de la zona"
+
+#: widgets/models.py:13
+msgid "Slug (used in templates)"
+msgstr "Slug (utilitzat en plantilla)"
+
+#: widgets/models.py:16 widgets/models.py:41
+msgid "Widget Zone"
+msgstr "Zona Widget"
+
+#: widgets/models.py:17
+msgid "Widget Zones"
+msgstr "Zonas Widget"
+
+#: widgets/models.py:29
+msgid "Recent Blog Posts"
+msgstr "Publicacions recents de blocs"
+
+#: widgets/models.py:30
+msgid "Most Viewed Blog Posts"
+msgstr "La majoria de publicacions de blocs vistos"
+
+#: widgets/models.py:31
+msgid "Most Commented Blog Posts"
+msgstr "Publicacions de blocs més comentades"
+
+#: widgets/models.py:32
+msgid "Blog Category List"
+msgstr "Llista de categories de blocs"
+
+#: widgets/models.py:46
+msgid "Widget Type"
+msgstr "Tipus de widget"
+
+#: widgets/models.py:50
+msgid "Widget Title"
+msgstr "Títol de l'idget"
+
+#: widgets/models.py:51
+msgid "The title that will be displayed above the widget."
+msgstr "El títol que es mostrarà per sobre del widget."
+
+#: widgets/models.py:55
+msgid "Display Order"
+msgstr "Ordre de visualització"
+
+#: widgets/models.py:61
+msgid "Number of items to show"
+msgstr "Nombre d’articles a mostrar"
+
+#: widgets/models.py:63
+msgid ""
+"Used by widgets that display a list of items, like 'Recent Posts' or 'Blog "
+"Categories'."
+msgstr ""
+"Utilitzat per widgets que mostren una llista d’elements, com ara “Postes "
+"recents” o “categories de blocs”'."
+
+#: widgets/models.py:70
+msgid "Filter by Blog Category (optional)"
+msgstr "Filtre per categoria de blocs ( opcional )"
+
+#: widgets/models.py:71
+msgid "If selected, the widget will only show posts from this category."
+msgstr ""
+"Si es selecciona, el widget només mostrarà publicacions d’aquesta categoria."
+
+#: widgets/models.py:78
+msgid "Filter by Page Category (optional)"
+msgstr "Filtre per categoria de pàgina ( opcional )"
+
+#: widgets/models.py:79
+msgid "Used for a future 'List of Pages' widget."
+msgstr "S'utilitza per a un futur widget \"Llista de pàgines."
+
+#: widgets/models.py:84
+msgid "Widget"
+msgstr "Widget"
+
+#: widgets/models.py:85
+msgid "Widgets"
+msgstr "Widgets"
+
+#: widgets/templates/widgets/partials/_blog_categories_widget.html:37
+msgid "No categories with posts available."
+msgstr "No hi ha categories disponibles."
+
+#: widgets/templates/widgets/partials/_posts_widget.html:32
+msgid "No items to display."
+msgstr "No hi ha articles a mostrar."
+
+#~ msgid "Number of Posts in 'Recent Posts' Widget"
+#~ msgstr "Nombre de publicacions a Widget \"Postes recents\""
+
+#~ msgid "Number of Posts in 'Most Viewed' Widget"
+#~ msgstr "Nombre de publicacions en Widget \"Most Viewed\""
+
+#~ msgid "No posts available."
+#~ msgstr "No hi ha entrades recents disponibles."
+
+#~ msgid "No recent posts available."
+#~ msgstr "No hi ha entrades recents disponibles."
 
 #, python-format
 #~ msgid "Search results for \"%(query)s\""

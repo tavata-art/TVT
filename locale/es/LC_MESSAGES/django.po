@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-17 16:20+0000\n"
-"PO-Revision-Date: 2025-06-17 18:21+0200\n"
+"POT-Creation-Date: 2025-06-17 20:23+0000\n"
+"PO-Revision-Date: 2025-06-17 22:24+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -94,9 +94,7 @@ msgstr "Fecha de Publicación"
 msgid "Status"
 msgstr "Estado"
 
-#: blog/models.py:47
-#: blog/templates/blog/partials/_blog_categories_widget.html:6
-#: blog/templates/blog/post_detail.html:50 pages/models.py:45
+#: blog/models.py:47 blog/templates/blog/post_detail.html:51 pages/models.py:45
 #: pages/templates/pages/page_detail.html:39
 msgid "Categories"
 msgstr "Categorías"
@@ -145,32 +143,7 @@ msgstr "comentario"
 msgid "comments"
 msgstr "comentarios"
 
-#: blog/templates/blog/partials/_blog_categories_widget.html:20
-msgid "No categories available."
-msgstr "No hay categorias disponibles."
-
-#: blog/templates/blog/partials/_posts_widget.html:7
-#: blog/templates/blog/partials/_recent_posts_widget.html:5
-msgid "Recent Posts"
-msgstr "Post Recientes"
-
-#: blog/templates/blog/partials/_posts_widget.html:8
-msgid "Most Viewed"
-msgstr "Más Vistos"
-
-#: blog/templates/blog/partials/_posts_widget.html:9
-msgid "Most Commented"
-msgstr "Más Comentados"
-
-#: blog/templates/blog/partials/_posts_widget.html:16
-msgid "No posts available."
-msgstr "No hay post recientes."
-
-#: blog/templates/blog/partials/_recent_posts_widget.html:10
-msgid "No recent posts available."
-msgstr "No hay post recientes."
-
-#: blog/templates/blog/post_detail.html:42
+#: blog/templates/blog/post_detail.html:43
 #, python-format
 msgid ""
 "\n"
@@ -181,26 +154,26 @@ msgstr ""
 "                 Publicado el %(published_date)s por %(author)s\n"
 "                "
 
-#: blog/templates/blog/post_detail.html:70
+#: blog/templates/blog/post_detail.html:71
 #, python-format
 msgid "%(count)s Comment"
 msgid_plural "%(count)s Comments"
 msgstr[0] "%(count)s Comentario"
 msgstr[1] "%(count)s Comentarios"
 
-#: blog/templates/blog/post_detail.html:84
+#: blog/templates/blog/post_detail.html:85
 msgid "ago"
 msgstr "hace"
 
-#: blog/templates/blog/post_detail.html:85
+#: blog/templates/blog/post_detail.html:86
 msgid "Reply"
 msgstr "Respuesta"
 
-#: blog/templates/blog/post_detail.html:117
+#: blog/templates/blog/post_detail.html:118
 msgid "Leave a Comment"
 msgstr "Deja un Comentario"
 
-#: blog/templates/blog/post_detail.html:138
+#: blog/templates/blog/post_detail.html:139
 msgid "Submit Comment"
 msgstr "Comenta"
 
@@ -674,51 +647,152 @@ msgstr ""
 "Cuántas páginas de alta prioridad mostrar antes de los resultados de "
 "búsqueda regulares."
 
-#: site_settings/models.py:39
-msgid "Number of Posts in 'Recent Posts' Widget"
-msgstr "Widget: Número de Posts en 'Post Recientes'"
-
-#: site_settings/models.py:44
-msgid "Number of Posts in 'Most Viewed' Widget"
-msgstr "Widget: Número de Post en 'Más Vistos'"
-
-#: site_settings/models.py:50
+#: site_settings/models.py:40
 msgid "Comment Indentation (in pixels)"
 msgstr "Comentario Indentación (en pixels)"
 
-#: site_settings/models.py:51
+#: site_settings/models.py:41
 msgid "Controls the visual indentation for nested comments in the admin."
 msgstr ""
 "Controla cuánto espacio se agrega para cada nivel de comentarios anidados en "
 "la vista de lista de administración."
 
-#: site_settings/models.py:57
+#: site_settings/models.py:47
 msgid "Auto-approve comments"
 msgstr "Comentario auto aprobado"
 
-#: site_settings/models.py:58
+#: site_settings/models.py:48
 msgid ""
 "If checked, new comments will be published immediately without moderation."
 msgstr ""
 "Si está marcado, los nuevos comentarios se publicarán inmediatamente sin "
 "moderación."
 
-#: site_settings/models.py:62 site_settings/models.py:63
-#: site_settings/models.py:66
+#: site_settings/models.py:52 site_settings/models.py:53
+#: site_settings/models.py:56
 msgid "Site Configuration"
 msgstr "Configuración del Sitio"
 
-#: tvt/settings.py:168
+#: tvt/settings.py:169
 msgid "Spanish"
 msgstr "Español"
 
-#: tvt/settings.py:169
+#: tvt/settings.py:170
 msgid "English"
 msgstr "Inglés"
 
-#: tvt/settings.py:170
+#: tvt/settings.py:171
 msgid "Català"
 msgstr "Catalán"
+
+#: widgets/admin.py:27
+msgid "Number of Widgets"
+msgstr "Número de Widgets"
+
+#: widgets/models.py:12
+msgid "Zone Name"
+msgstr "Nombre de la Zona"
+
+#: widgets/models.py:13
+msgid "Slug (used in templates)"
+msgstr "Slug (used en plantillas)"
+
+#: widgets/models.py:16 widgets/models.py:41
+msgid "Widget Zone"
+msgstr "Zona del Widget"
+
+#: widgets/models.py:17
+msgid "Widget Zones"
+msgstr "Zonas del Widget"
+
+#: widgets/models.py:29
+msgid "Recent Blog Posts"
+msgstr "Publicaciones Recientes de Blog"
+
+#: widgets/models.py:30
+msgid "Most Viewed Blog Posts"
+msgstr "Publicaciones de Blog Más Vistas"
+
+#: widgets/models.py:31
+msgid "Most Commented Blog Posts"
+msgstr "Publicaciones de Blog Más Comentadas"
+
+#: widgets/models.py:32
+msgid "Blog Category List"
+msgstr "Lista de Categorías de Blog"
+
+#: widgets/models.py:46
+msgid "Widget Type"
+msgstr "Tipo de Widget"
+
+#: widgets/models.py:50
+msgid "Widget Title"
+msgstr "Título del Widget"
+
+#: widgets/models.py:51
+msgid "The title that will be displayed above the widget."
+msgstr "El título que se mostrará encima del widget."
+
+#: widgets/models.py:55
+msgid "Display Order"
+msgstr "Mostrar Orden"
+
+#: widgets/models.py:61
+msgid "Number of items to show"
+msgstr "Número de artículos a mostrar"
+
+#: widgets/models.py:63
+msgid ""
+"Used by widgets that display a list of items, like 'Recent Posts' or 'Blog "
+"Categories'."
+msgstr ""
+"Utilizado por widgets que muestran una lista de elementos, como "
+"'Publicaciones recientes' o 'Categorías de blogs'."
+
+#: widgets/models.py:70
+msgid "Filter by Blog Category (optional)"
+msgstr "Filtrar por Categoría de Blog (opcional)"
+
+#: widgets/models.py:71
+msgid "If selected, the widget will only show posts from this category."
+msgstr ""
+"Si se selecciona, el widget solo mostrará publicaciones de esta categoría."
+
+#: widgets/models.py:78
+msgid "Filter by Page Category (optional)"
+msgstr "Filtrar por categoría de página (opcional)"
+
+#: widgets/models.py:79
+msgid "Used for a future 'List of Pages' widget."
+msgstr "Utilizado para un futuro widget 'Lista de páginas."
+
+#: widgets/models.py:84
+msgid "Widget"
+msgstr "Widget"
+
+#: widgets/models.py:85
+msgid "Widgets"
+msgstr "Widgets"
+
+#: widgets/templates/widgets/partials/_blog_categories_widget.html:37
+msgid "No categories with posts available."
+msgstr "No hay categorías con publicaciones disponibles."
+
+#: widgets/templates/widgets/partials/_posts_widget.html:32
+msgid "No items to display."
+msgstr "No hay elementos para mostrar."
+
+#~ msgid "Number of Posts in 'Recent Posts' Widget"
+#~ msgstr "Widget: Número de Posts en 'Post Recientes'"
+
+#~ msgid "Number of Posts in 'Most Viewed' Widget"
+#~ msgstr "Widget: Número de Post en 'Más Vistos'"
+
+#~ msgid "No posts available."
+#~ msgstr "No hay post recientes."
+
+#~ msgid "No recent posts available."
+#~ msgstr "No hay post recientes."
 
 #, python-format
 #~ msgid "Search results for \"%(query)s\""

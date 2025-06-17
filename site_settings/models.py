@@ -33,16 +33,6 @@ class SiteConfiguration(SingletonModel):
         verbose_name=_("Number of 'Important' Pages to show first in search"),
         help_text=_("How many top-priority pages to display before regular search results.")
     )
-    # --- Widget Settings ---
-    recent_posts_widget_count = models.PositiveIntegerField(
-        default=5, 
-        verbose_name=_("Number of Posts in 'Recent Posts' Widget")
-    )
-
-    popular_posts_widget_count = models.PositiveIntegerField(
-        default=5, 
-        verbose_name=_("Number of Posts in 'Most Viewed' Widget")
-    )
 
     # --- Admin Display Settings ---
     comment_indentation_pixels = models.PositiveIntegerField(

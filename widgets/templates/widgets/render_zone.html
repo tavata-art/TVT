@@ -1,0 +1,23 @@
+{# widgets/templates/widgets/render_zone.html (VERSIÓN CORREGIDA) #}
+
+{% for data in processed_widgets %}
+    {# We check the widget type to decide which partial template to include. #}
+
+    {% if data.widget.widget_type == 'recent_posts' or data.widget.widget_type == 'most_viewed_posts' or data.widget.widget_type == 'most_commented_posts' %}
+
+        {# For all post-list type widgets, we include the same partial. #}
+        {% include 'widgets/partials/_posts_widget.html' with widget=data.widget items=data.items request=request %}
+
+    {% elif data.widget.widget_type == 'blog_categories' %}
+
+        {# For the category widget, we include its specific partial. #}
+        {% include 'widgets/partials/_blog_categories_widget.html' with widget=data.widget items=data.items request=request %}
+
+    {% else %}
+        {# Fallback or for future widgets - you can add more elifs here #}
+        <div class="alert alert-warning">
+            Widget template for type "{{ data.widget.widget_type }}" not found.
+        </div>
+    {% endif %}
+
+{% endfor %}

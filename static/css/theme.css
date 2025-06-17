@@ -54,3 +54,16 @@
 .bg-tavata-dark {
     background-color: var(--tavata-dark) !important;
 }
+
+
+/* --- Collapsible Widget Icon (Bootstrap Native Rotation) --- */
+
+.TAVATA-collapse-icon {
+    transition: transform 0.25s ease-in-out;
+}
+
+/* Cuando el botón NO está colapsado (es decir, el contenido es visible)... */
+[aria-expanded="true"] .TAVATA-collapse-icon {
+    /* ...la flecha apunta hacia arriba. */
+    transform: rotate(-180deg);
+}

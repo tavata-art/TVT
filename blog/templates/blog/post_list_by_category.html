@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 {% load i18n %}
-{% load blog_tags %}
+{% load widget_tags %}
 
 {# --- SEO and Browser Tab Title Blocks --- #}
 {# Use the category's SEO fields, with its name as a fallback. #}
@@ -74,11 +74,16 @@
 </div>
 {% endblock %}
 
+{# Y si tienes sidebar izquierdo... #}
+{% block sidebar_left %}
+    <div class="sticky-top pt-5">
+        {% show_widget_zone 'blog-sidebar-left' %}
+    </div>
+{% endblock %}
 
-{# --- Right Sidebar Widgets --- #}
 {% block sidebar_right %}
     <div class="sticky-top pt-5">
-        {% show_recent_posts %}
-        {% show_blog_categories %}
+        {# Llamamos a la zona de widgets que hemos definido en el admin #}
+        {% show_widget_zone 'blog-sidebar-right' %}
     </div>
-{% endblock sidebar_right %}
+{% endblock %}
