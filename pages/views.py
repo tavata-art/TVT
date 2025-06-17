@@ -1,8 +1,11 @@
 # pages/views.py
+import logging
 from django.shortcuts import render, get_object_or_404
 from .models import Page, Category
 from django.core.paginator import Paginator # Asegúrate de importar Paginator
 from site_settings.models import SiteConfiguration
+
+logger = logging.getLogger(__name__)
 
 def page_detail_view(request, slug):
     # Buscamos una página que coincida con el slug Y que esté publicada.
@@ -29,6 +32,7 @@ def pages_by_category_view(request, category_slug):
         # Usamos el mismo setting que para el blog para mantener la consistencia
         items_per_page = site_config.blog_items_per_page 
     except SiteConfiguration.DoesNotExist:
+        logger.warning("SiteConfiguration does not exist. Using default items per page.")
         items_per_page = 9 # Fallback
 
     paginator = Paginator(all_pages_in_category, items_per_page)

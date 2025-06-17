@@ -1,4 +1,5 @@
 # search/views.py
+import logging
 from django.shortcuts import render
 from django.db.models import Q
 from django.core.paginator import Paginator
@@ -6,6 +7,8 @@ from django.core.paginator import Paginator
 from pages.models import Page
 from blog.models import Post
 from site_settings.models import SiteConfiguration
+
+logger = logging.getLogger(__name__)
 
 def search_results_view(request):
     """
@@ -17,6 +20,7 @@ def search_results_view(request):
         pages_per_page = site_config.search_pages_per_page
         posts_per_page = site_config.search_posts_per_page
     except SiteConfiguration.DoesNotExist:
+        logger.warning("SiteConfiguration does not exist. Using default pagination settings.")
         pages_per_page = 5
         posts_per_page = 5
 

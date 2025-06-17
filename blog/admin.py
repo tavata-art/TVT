@@ -1,3 +1,4 @@
+import logging
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from .models import Post, PostCategory, Comment
@@ -5,6 +6,9 @@ from django_summernote.admin import SummernoteModelAdmin
 from modeltranslation.admin import TabbedTranslationAdmin
 from mptt.admin import MPTTModelAdmin
 from site_settings.models import SiteConfiguration
+
+
+logger = logging.getLogger(__name__)
 
 @admin.register(PostCategory)
 class PostCategoryAdmin(TabbedTranslationAdmin):
@@ -43,7 +47,9 @@ class CommentAdmin(MPTTModelAdmin):
             # La consulta a la BD se hace aquí, cuando se renderiza la vista
             return SiteConfiguration.objects.get().comment_indentation_pixels
         except SiteConfiguration.DoesNotExist:
-            # Fallback si la configuración no existe
+            logger.warning(
+                "SiteConfiguration does not exist. Using default indentation."
+            )
             return 20
 
     mptt_level_indent = property(get_mptt_level_indent)

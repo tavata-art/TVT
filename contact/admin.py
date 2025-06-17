@@ -1,8 +1,11 @@
 # contact/admin.py
+import logging
 from django.contrib import admin
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from .models import ContactMessage
+
+logger = logging.getLogger(__name__)
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):
@@ -26,10 +29,17 @@ class ContactMessageAdmin(admin.ModelAdmin):
                 if not obj.responded_at:
                     obj.responded_at = timezone.now()
                     obj.responded_by = request.user
+                    logger.info(
+                        f"Admin user '{request.user.username}' (ID: {request.user.id}) marked "
+                        f"contact message ID {obj.id} ('{obj.subject}') as READ."
+                    )
             # Case 2: The message is being marked as UNREAD.
             else:
                 obj.responded_at = None
                 obj.responded_by = None
-        
+                logger.info(
+                    f"Admin user '{request.user.username}' (ID: {request.user.id}) marked "
+                    f"contact message ID {obj.id} as UNREAD."
+                )
         # Call the original save_model method to continue the saving process.
         super().save_model(request, obj, form, change)

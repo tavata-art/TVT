@@ -1,4 +1,5 @@
 # widgets/templatetags/widget_tags.py
+import logging
 from django import template
 from django.db.models import Count, Q
 
@@ -7,6 +8,8 @@ from blog.models import Post, PostCategory
 from pages.models import Page, Category as PageCategory
 from widgets.models import WidgetZone
 
+
+logger = logging.getLogger(__name__)
 register = template.Library()
 
 @register.inclusion_tag('widgets/render_zone.html', takes_context=True)
@@ -20,6 +23,7 @@ def show_widget_zone(context, zone_slug):
         zone = WidgetZone.objects.prefetch_related('widgets').get(slug=zone_slug)
         widgets = zone.widgets.all()
     except WidgetZone.DoesNotExist:
+        logger.warning(f"Widget zone with slug '{zone_slug}' not found in database.")
         widgets = []
 
     # We process the data for each widget before sending to the template
@@ -49,7 +53,7 @@ def show_widget_zone(context, zone_slug):
             widget_data['items'] = PostCategory.objects.annotate(
                                         num_posts=Count('posts', filter=Q(posts__status='published'))
                                     ).filter(num_posts__gt=0).order_by('-num_posts', 'name')[:widget.item_count]
-
+        logger.debug(f"Widget '{widget.title}': Found {widget_data['items'].count()} elements.")
         # Add more elif blocks here for future widget types...
 
         processed_widgets.append(widget_data)

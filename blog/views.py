@@ -1,3 +1,4 @@
+import logging
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import F, Q
@@ -8,6 +9,8 @@ from django.utils.translation import gettext
 from .forms import CommentForm
 from .models import Post, PostCategory, Comment
 from site_settings.models import SiteConfiguration
+
+logger = logging.getLogger(__name__)
 
 def post_list_view(request):
     """
@@ -22,6 +25,9 @@ def post_list_view(request):
         config = SiteConfiguration.objects.get()
         posts_per_page = config.blog_items_per_page
     except SiteConfiguration.DoesNotExist:
+        logger.warning(
+                "SiteConfiguration does not exist. Using default indentation."
+            )
         posts_per_page = 6  # Fallback
     paginator = Paginator(all_posts, posts_per_page)
 
@@ -33,11 +39,14 @@ def post_list_view(request):
     try:
         posts = paginator.page(page_number)
     except PageNotAnInteger:
-        # If the 'page' parameter is not an integer, deliver the first page.
+        logger.info(
+                "If the 'page' parameter is not an integer, deliver the first page."
+            )
         posts = paginator.page(1)
     except EmptyPage:
-        # If the page number is out of range (e.g., 999),
-        # deliver the last page of results.
+        logger.isEnabledFor(
+                "If the page number is out of range (e.g., 999), deliver the last page."
+            )
         posts = paginator.page(paginator.num_pages)
 
     # 5. Prepare the context to be passed to the template.
@@ -139,6 +148,9 @@ def posts_by_category_view(request, category_slug):
         config = SiteConfiguration.objects.get()
         posts_per_page = config.blog_items_per_page
     except SiteConfiguration.DoesNotExist:
+        logger.warning(
+            "SiteConfiguration does not exist. Using default pagination settings."
+        )
         posts_per_page = 6  # Fallback
 
     # --- 3. Apply Pagination ---
@@ -148,8 +160,12 @@ def posts_by_category_view(request, category_slug):
     try:
         posts = paginator.page(page_number)
     except PageNotAnInteger:
+        # If the 'page' parameter is not an integer, deliver the first page.
+        logger.info("Page number is not an integer, delivering the first page.")
         posts = paginator.page(1)
     except EmptyPage:
+        # If the page number is out of range (e.g., 999), deliver the last page.
+        logger.info("Page number is out of range, delivering the last page.")
         posts = paginator.page(paginator.num_pages)
 
     # --- 4. Prepare Context and Render ---

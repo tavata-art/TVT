@@ -1,23 +1,39 @@
 # core/views.py
+import logging
 from django.shortcuts import render
-from pages.models import Page # ¡Importamos el modelo Page!
+from pages.models import Page
+
+# Get a logger instance for this module.
+logger = logging.getLogger(__name__)
 
 def home(request):
     """
-    Busca la página marcada como 'página de inicio' en la base de datos
-    y la renderiza usando una plantilla genérica de página.
+    Finds the page marked as the 'homepage' in the database and renders it.
+    If no homepage is set, it displays a default view.
     """
+    logger.info(f"Homepage requested by user: {request.user.username or 'Anonymous'}")
+
+    homepage = None
     try:
-        # Buscamos la página de inicio publicada más reciente
         homepage = Page.objects.filter(is_homepage=True, status='published').latest('updated_at')
+        logger.debug(f"Serving homepage: '{homepage.title}' (ID: {homepage.id})")
+
     except Page.DoesNotExist:
-        # Si nadie ha marcado una página como inicio, evitamos un error.
-        # Podemos renderizar la plantilla estática original o mostrar un mensaje.
-        homepage = None
+        # This is a configuration warning, not an error. The site still works.
+        logger.warning("No published page has been configured as the homepage. Serving a placeholder.")
+        # The template itself handles displaying a user-friendly message.
+        
+    except Exception as e:
+        # Catch any other unexpected database or logic errors.
+        logger.error(
+            f"An unexpected error occurred while fetching the homepage.",
+            exc_info=True # Include the full traceback for debugging.
+        )
+        # In this case, homepage remains None, and the template will show a message.
+        # A more robust solution might render a 500 error page.
 
     context = {
-        'page': homepage, # La pasamos con el nombre 'page' para reutilizar la plantilla
+        'page': homepage,
     }
 
-    # ¡Reutilizamos la plantilla de detalle de página!
     return render(request, 'pages/page_detail.html', context)

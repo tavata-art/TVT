@@ -17,6 +17,8 @@ import pymysql
 pymysql.install_as_MySQLdb()
 from django.utils.translation import gettext_lazy as _
 
+ADMINS = [('Tavata', 'tavata.art@outlook.com')]
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -31,18 +33,18 @@ print("*********************************************")
 print(f"**** EJECUTANDO EN AMBIENTE: {ENVIRONMENT.upper()} ****")
 print("*********************************************")
 
-
 # 2. Configurar otras variables basadas en el ambiente
 if ENVIRONMENT == 'development':
     SECRET_KEY = config('SECRET_KEY', default='django-insecure-dev-key-default')
     DEBUG = True
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else: # Para 'testing', 'production' u otros
     SECRET_KEY = config('SECRET_KEY')
     # DEBUG es False por defecto, a menos que un ambiente específico lo active
     DEBUG = config('DEBUG', default=False, cast=bool)
     ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv()) #-> Permite múltiples hosts separados por comas
-
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Application definition
 
@@ -207,3 +209,75 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+# ==============================================================================
+# LOGGING CONFIGURATION
+# ==============================================================================
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False, # No desactiva los loggers por defecto de Django
+
+    # --- FORMATTERS: Cómo se verá cada línea del log ---
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+
+    # --- FILTERS: Para añadir contexto o filtrar logs ---
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+    },
+
+    # --- HANDLERS: A dónde se envía cada log (consola, archivo, email) ---
+    'handlers': {
+        # Handler para la consola de desarrollo
+        'console': {
+            'level': 'DEBUG',
+            'filters': ['require_debug_true'], # Solo funciona si DEBUG=True
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+        # Handler para guardar en un archivo los warnings y errores
+        'file_error': {
+            'level': 'WARNING',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': BASE_DIR / 'logs/error.log', # Ruta al archivo
+            'maxBytes': 1024 * 1024 * 5,  # 5 MB
+            'backupCount': 2,
+            'formatter': 'verbose',
+        },
+        # Handler para que los administradores reciban un email en caso de error 500
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'], # Solo funciona si DEBUG=False
+            'class': 'django.utils.log.AdminEmailHandler',
+        },
+    },
+
+    # --- LOGGERS: El cerebro que une todo ---
+    'loggers': {
+        # Logger principal de Django. Capturará todo lo que pase en el framework.
+        'django': {
+            'handlers': ['console', 'file_error', 'mail_admins'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        # Podemos crear loggers para nuestras propias apps si queremos
+        # 'blog': {
+        #     'handlers': ['console', 'file_error'],
+        #     'level': 'DEBUG',
+        # },
+    },
+}

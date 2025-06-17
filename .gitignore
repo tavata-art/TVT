@@ -32,4 +32,5 @@ db.sqlite3
 staticfiles/
 media/
 media/*   # <--- ¡ESTA ES LA LÍNEA QUE NECESITAS!
+/logs/
 django-summernote/
