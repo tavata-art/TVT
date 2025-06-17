@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-17 12:03+0000\n"
-"PO-Revision-Date: 2025-06-17 14:06+0200\n"
+"POT-Creation-Date: 2025-06-17 16:20+0000\n"
+"PO-Revision-Date: 2025-06-17 18:33+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "Language: ca\n"
@@ -30,11 +30,11 @@ msgstr "El vostre correu electrònic"
 msgid "Your Comment"
 msgstr "El vostre comentari"
 
-#: blog/forms.py:21 blog/models.py:10 pages/models.py:8
+#: blog/forms.py:21 blog/models.py:10 contact/models.py:21 pages/models.py:8
 msgid "Name"
 msgstr "Nom"
 
-#: blog/forms.py:22
+#: blog/forms.py:22 contact/models.py:22
 msgid "Email"
 msgstr "Correu electrònic"
 
@@ -96,7 +96,7 @@ msgstr "Estat"
 
 #: blog/models.py:47
 #: blog/templates/blog/partials/_blog_categories_widget.html:6
-#: blog/templates/blog/post_detail.html:50 pages/admin.py:45 pages/models.py:45
+#: blog/templates/blog/post_detail.html:50 pages/models.py:45
 #: pages/templates/pages/page_detail.html:39
 msgid "Categories"
 msgstr "Categories"
@@ -212,12 +212,12 @@ msgstr "Cancel·la la resposta"
 msgid "Reply to"
 msgstr "Respon a"
 
-#: blog/templates/blog/post_list.html:5 blog/templates/blog/post_list.html:9
-#: blog/templates/blog/post_list.html:17
+#: blog/templates/blog/post_list.html:6 blog/templates/blog/post_list.html:8
+#: blog/templates/blog/post_list.html:16
 msgid "Our Blog"
 msgstr "El Nostre Blog"
 
-#: blog/templates/blog/post_list.html:6
+#: blog/templates/blog/post_list.html:7
 msgid ""
 "Latest articles and updates on Computer Vision, Natural Language Processing, "
 "and more from the Tavata team."
@@ -225,11 +225,11 @@ msgstr ""
 "Últims articles i novetats sobre Visió per Computador, Processament de "
 "Llenguatge Natural i més de l'equip de Tavata."
 
-#: blog/templates/blog/post_list.html:18
+#: blog/templates/blog/post_list.html:17
 msgid "News, articles, and insights from our team."
 msgstr "Notícies, articles i idees del nostre equip."
 
-#: blog/templates/blog/post_list.html:41
+#: blog/templates/blog/post_list.html:38
 #: blog/templates/blog/post_list_by_category.html:49
 #, python-format
 msgid ""
@@ -243,34 +243,14 @@ msgstr ""
 "%(author)s\n"
 "                                "
 
-#: blog/templates/blog/post_list.html:47
+#: blog/templates/blog/post_list.html:43
 #: blog/templates/blog/post_list_by_category.html:55
 msgid "Read More"
 msgstr "Llegir Més"
 
-#: blog/templates/blog/post_list.html:55
+#: blog/templates/blog/post_list.html:51
 msgid "There are no blog posts yet. Come back soon!"
 msgstr "Encara no hi ha entrades al blog. Torna aviat!"
-
-#: blog/templates/blog/post_list.html:70 blog/templates/blog/post_list.html:74
-#: blog/templates/blog/post_list_by_category.html:77
-#: blog/templates/blog/post_list_by_category.html:79
-#: search/templates/search/partials/_pagination.html:10
-#: search/templates/search/partials/_pagination.html:12
-#: search/templates/search/partials/_pagination_component.html:9
-#: search/templates/search/partials/_pagination_component.html:11
-msgid "Previous"
-msgstr "Anterior"
-
-#: blog/templates/blog/post_list.html:94 blog/templates/blog/post_list.html:98
-#: blog/templates/blog/post_list_by_category.html:93
-#: blog/templates/blog/post_list_by_category.html:95
-#: search/templates/search/partials/_pagination.html:26
-#: search/templates/search/partials/_pagination.html:28
-#: search/templates/search/partials/_pagination_component.html:23
-#: search/templates/search/partials/_pagination_component.html:25
-msgid "Next"
-msgstr "El proper"
 
 #: blog/templates/blog/post_list_by_category.html:11
 #, python-format
@@ -294,13 +274,135 @@ msgstr ""
 msgid "There are currently no published posts in this category."
 msgstr "Actualment no hi ha entrades publicades en aquesta categoria."
 
-#: blog/views.py:94
+#: blog/views.py:99
 msgid "Thank you! Your comment has been published."
 msgstr "Gràcies! El vostre comentari ha estat publicat."
 
-#: blog/views.py:97
+#: blog/views.py:102
 msgid "Thank you! Your comment has been submitted and is awaiting moderation."
 msgstr "Gràcies! El vostre comentari ha estat enviat i espera la moderació."
+
+#: contact/forms.py:21
+msgid "Your Full Name"
+msgstr "El vostre nom complet"
+
+#: contact/forms.py:25
+msgid "Your Email Address"
+msgstr "El vostre correu electrònic"
+
+#: contact/forms.py:29
+msgid "Message Subject"
+msgstr "Assumpte del missatge"
+
+#: contact/forms.py:34
+msgid "Write your message here..."
+msgstr "Escriu el teu missatge aquí..."
+
+#: contact/forms.py:41
+msgid "Full Name"
+msgstr "Nom complet"
+
+#: contact/forms.py:42
+msgid "Email Address"
+msgstr "Adreça de correu electrònic"
+
+#: contact/models.py:14
+msgid "Low"
+msgstr "Baixa"
+
+#: contact/models.py:15
+msgid "Medium"
+msgstr "Mitjana"
+
+#: contact/models.py:16
+msgid "High"
+msgstr "Alt"
+
+#: contact/models.py:17
+msgid "Urgent"
+msgstr "Urgent"
+
+#: contact/models.py:18
+msgid "Critical"
+msgstr "Crític"
+
+#: contact/models.py:23
+msgid "Subject"
+msgstr "Assumpte"
+
+#: contact/models.py:24
+msgid "Message"
+msgstr "Missatge"
+
+#: contact/models.py:30
+msgid "Priority"
+msgstr "Prioritat"
+
+#: contact/models.py:34
+msgid "Has been read?"
+msgstr "S'ha llegit?"
+
+#: contact/models.py:35
+msgid "Indicates if an admin has reviewed this message."
+msgstr "Indica si un administrador ha revisat aquest missatge."
+
+#: contact/models.py:41
+msgid "Received At"
+msgstr "Rebutjat a"
+
+#: contact/models.py:46
+msgid "Responded At"
+msgstr "Va respondre a"
+
+#: contact/models.py:47
+msgid "Automatically set when the message is first marked as read."
+msgstr ""
+"Fixeu-vos automàticament quan el missatge es marca per primera vegada com a "
+"llegit."
+
+#: contact/models.py:55
+msgid "Responded By"
+msgstr "Respondat per"
+
+#: contact/models.py:60
+msgid "Contact Message"
+msgstr "Missatge de contacte"
+
+#: contact/models.py:61
+msgid "Contact Messages"
+msgstr "Missatges de contacte"
+
+#: contact/templates/contact/contact_form.html:6
+msgid "Contact Us"
+msgstr "Contacta amb nosaltres"
+
+#: contact/templates/contact/contact_form.html:7
+msgid ""
+"Get in touch with the Tavata team. We would love to hear about your project "
+"in Computer Vision or Natural Language Processing."
+msgstr ""
+"Poseu-vos en contacte amb l’equip de Tavata. Ens encantaria parlar del "
+"vostre projecte en visió informàtica o processament d’idiomes naturals."
+
+#: contact/templates/contact/contact_form.html:17
+msgid "Get in Touch"
+msgstr "Poseu-vos en contacte"
+
+#: contact/templates/contact/contact_form.html:19
+msgid ""
+"Have a question or a project in mind? We're here to help. Fill out the form "
+"below and we will get back to you as soon as possible."
+msgstr ""
+"Teniu en compte una pregunta o un projecte? Estem aquí per ajudar-vos. "
+"Ompliu el formulari següent i us tornarem al més aviat possible."
+
+#: contact/templates/contact/contact_form.html:77
+msgid "Send Message"
+msgstr "Enviar missatge"
+
+#: contact/views.py:20
+msgid "Thank you for your message! We will get back to you shortly."
+msgstr "Gràcies pel vostre missatge! Tornarem a arribar aviat."
 
 #: core/templates/core/partials/_footer.html:9
 #, python-format
@@ -311,14 +413,24 @@ msgstr ""
 "&copy; %(year)s Tavata.art - Construït amb Django i <i class=\"fas fa-"
 "bee\"></i> per Gustavo i Tavata."
 
-#: core/templates/core/partials/_header.html:29
+#: core/templates/core/partials/_header.html:30
 msgid "Search..."
 msgstr "Cercar..."
 
-#: core/templates/core/partials/_header.html:30
-#: search/templates/search/search_results.html:25
+#: core/templates/core/partials/_header.html:31
+#: search/templates/search/search_results.html:22
 msgid "Search"
 msgstr "Cercar"
+
+#: core/templates/core/partials/_pagination.html:13
+#: core/templates/core/partials/_pagination.html:15
+msgid "Previous"
+msgstr "Anterior"
+
+#: core/templates/core/partials/_pagination.html:29
+#: core/templates/core/partials/_pagination.html:31
+msgid "Next"
+msgstr "El proper"
 
 #: menus/models.py:9
 msgid "Menu Title"
@@ -418,11 +530,24 @@ msgstr "Data de Creació"
 msgid "Last Updated"
 msgstr "Última Actualització"
 
-#: pages/models.py:63
+#: pages/models.py:64
+msgid "Importance Order"
+msgstr "Ordre d’importació"
+
+#: pages/models.py:65
+msgid ""
+"A lower number means higher priority in search results. E.g., 1 for 'About "
+"Us', 2 for 'Contact', 99 for others."
+msgstr ""
+"Un nombre inferior significa una prioritat més alta en els resultats de la "
+"cerca. Per exemple, 1 per a \"Sobre nosaltres\", 2 per a \"Contacte\", 99 "
+"per a altres."
+
+#: pages/models.py:69
 msgid "page"
 msgstr "pàgina"
 
-#: pages/models.py:64
+#: pages/models.py:70
 msgid "pages"
 msgstr "pàgines"
 
@@ -449,12 +574,12 @@ msgstr ""
 "Lloc en construcció. Si us plau, configura una pàgina d'inici des del panell "
 "d'administració."
 
-#: pages/templates/pages/pages_by_category.html:10
+#: pages/templates/pages/pages_by_category.html:7
 #, python-format
 msgid "Pages in %(category.name)s"
 msgstr "Pàgines a %(category.name)s"
 
-#: pages/templates/pages/pages_by_category.html:20
+#: pages/templates/pages/pages_by_category.html:17
 #, python-format
 msgid ""
 "\n"
@@ -467,7 +592,7 @@ msgstr ""
 "primary\">%(category.name)s</span>\n"
 "         "
 
-#: pages/templates/pages/pages_by_category.html:44
+#: pages/templates/pages/pages_by_category.html:41
 #, python-format
 msgid ""
 "\n"
@@ -478,97 +603,125 @@ msgstr ""
 "                                    Publicat el %(updated_date)s\n"
 "                                    "
 
-#: pages/templates/pages/pages_by_category.html:55
+#: pages/templates/pages/pages_by_category.html:52
 msgid "There are currently no published pages in this category."
 msgstr "Actualment no hi ha pàgines publicades en aquesta categoria."
 
-#: search/templates/search/search_results.html:5
-#, python-format
-msgid "Search results for \"%(query)s\""
-msgstr "Resultats de la cerca per a \"%(query)s\""
-
-#: search/templates/search/search_results.html:12
+#: search/templates/search/search_results.html:9
 msgid "Search results for:"
 msgstr "Resultats de la cerca per a:"
 
-#: search/templates/search/search_results.html:17
+#: search/templates/search/search_results.html:14
 msgid "1 result found."
 msgstr "1 resultat trobat."
 
-#: search/templates/search/search_results.html:19
+#: search/templates/search/search_results.html:16
 #, python-format
 msgid "%(count)s results found."
 msgstr "%(count)s resultats trobats."
 
-#: search/templates/search/search_results.html:26
+#: search/templates/search/search_results.html:23
 msgid "Please enter a term in the search bar above."
 msgstr "Si us plau, introdueix un terme a la barra de cerca."
 
-#: search/templates/search/search_results.html:33
+#: search/templates/search/search_results.html:31
 msgid "Pages Found"
 msgstr "Pàgines Trobades"
 
-#: search/templates/search/search_results.html:43
+#: search/templates/search/search_results.html:49
 msgid "Blog Posts Found"
 msgstr "Entrades de Blog Trobades"
+
+#: search/templates/search/search_results.html:54
+msgid "Published on"
+msgstr "Publicat el"
 
 #: site_settings/models.py:14
 msgid "Items per Page in Blog/Category lists"
 msgstr "Articles per pàgina a llistes de blocs / categories"
 
-#: site_settings/models.py:18 site_settings/models.py:47
+#: site_settings/models.py:15
+msgid "Number of posts to show on the main blog page and on category pages."
+msgstr ""
+"Nombre de publicacions a mostrar a la pàgina principal del bloc i a les "
+"pàgines de categories."
+
+#: site_settings/models.py:19
+msgid "Pages per Page in Search Results"
+msgstr "Pàgines per pàgina en resultats de cerca"
+
+#: site_settings/models.py:23
+msgid "Posts per Page in Search Results"
+msgstr "Publicacions per pàgina en resultats de cerca"
+
+#: site_settings/models.py:27
 msgid "Results per Page in Search"
 msgstr "Resultats per pàgina a la cerca"
 
-#: site_settings/models.py:24
+#: site_settings/models.py:28
+msgid ""
+"Number of items to show per section (Pages/Posts) on the search results page."
+msgstr ""
+"Nombre d’elements a mostrar per secció ( Pàgines / Publicacions ) a la "
+"pàgina de resultats de la cerca."
+
+#: site_settings/models.py:33
+msgid "Number of 'Important' Pages to show first in search"
+msgstr "Nombre de pàgines \"Importants\" per mostrar-se primer a la cerca"
+
+#: site_settings/models.py:34
+msgid "How many top-priority pages to display before regular search results."
+msgstr ""
+"Quantes pàgines de primera prioritat es mostren abans dels resultats de "
+"cerca regulars."
+
+#: site_settings/models.py:39
 msgid "Number of Posts in 'Recent Posts' Widget"
 msgstr "Nombre de publicacions a Widget \"Postes recents\""
 
-#: site_settings/models.py:29
+#: site_settings/models.py:44
 msgid "Number of Posts in 'Most Viewed' Widget"
 msgstr "Nombre de publicacions en Widget \"Most Viewed\""
 
-#: site_settings/models.py:35
+#: site_settings/models.py:50
 msgid "Comment Indentation (in pixels)"
 msgstr "Indentació del comentari ( en píxels )"
 
-#: site_settings/models.py:36
-msgid ""
-"Controls how much space is added for each level of nested comments in the "
-"admin list view."
+#: site_settings/models.py:51
+msgid "Controls the visual indentation for nested comments in the admin."
 msgstr ""
-"Controla quina quantitat d’espai s’afegeix per a cada nivell de comentaris "
-"nidificats a la vista de la llista d’administració."
+"Controla la sagnia visual per a comentaris nidificats a l'administrador."
 
-#: site_settings/models.py:41
+#: site_settings/models.py:57
 msgid "Auto-approve comments"
 msgstr "Comentaris aprovats automàticament"
 
-#: site_settings/models.py:42
+#: site_settings/models.py:58
 msgid ""
 "If checked, new comments will be published immediately without moderation."
 msgstr ""
 "Si es comprova, es publicaran immediatament nous comentaris sense moderació."
 
-#: site_settings/models.py:61 site_settings/models.py:63
-#: site_settings/models.py:67
+#: site_settings/models.py:62 site_settings/models.py:63
+#: site_settings/models.py:66
 msgid "Site Configuration"
 msgstr "Configuració del lloc"
 
-#: tvt/settings.py:165
+#: tvt/settings.py:168
 msgid "Spanish"
 msgstr "Espanyol"
 
-#: tvt/settings.py:166
+#: tvt/settings.py:169
 msgid "English"
 msgstr "Anglès"
 
-#: tvt/settings.py:167
+#: tvt/settings.py:170
 msgid "Català"
 msgstr "Català"
 
-#~ msgid "Published on"
-#~ msgstr "Publicat el"
+#, python-format
+#~ msgid "Search results for \"%(query)s\""
+#~ msgstr "Resultats de la cerca per a \"%(query)s\""
 
 #, python-format
 #~ msgid ""

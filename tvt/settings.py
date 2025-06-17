@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     'menus.apps.MenusConfig', 
     'site_settings.apps.SiteSettingsConfig', 
     'search.apps.SearchConfig', 
+    'contact.apps.ContactConfig',
 ]
 
 MIDDLEWARE = [

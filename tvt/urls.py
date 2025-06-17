@@ -16,6 +16,7 @@ urlpatterns += i18n_patterns(
     path('search/', include('search.urls', namespace='search')), # <-- new line with namespace
     path('pages/', include('pages.urls', namespace='pages')),
     path('blog/', include('blog.urls', namespace='blog')),
+    path('contact/', include('contact.urls', namespace='contact')),
     path('', include('core.urls')),
 )
 
