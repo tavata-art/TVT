@@ -1,6 +1,19 @@
 {% extends 'core/base.html' %}
 {% load i18n %}
 {% load static %}
+{% load widget_tags %}
+{% load mptt_tags %}
+
+{# --- Page Metadata Blocks --- #}
+{# This block is used to set the page's metadata for SEO purposes. #}
+{% block meta %}
+    <meta name="description" content="{{ page.meta_description|default:page.title }}">
+    <meta name="keywords" content="{{ page.meta_keywords|default:"" }}">
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:description" content="{{ page.meta_description|default:page.title }}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+{% endblock meta %}
 
 {# --- SEO and Browser Tab Title Blocks --- #}
 {# Override the base templates SEO blocks with this page's specific data #}
@@ -65,3 +78,24 @@
     {% endif %}
 </div>
 {% endblock %}
+
+{# --- SIDEBAR DINÁMICO PARA LA PÁGINA --- #}
+{# --- Left Sidebar --- #}
+{% block sidebar_left %}
+    {% if page and page.is_homepage %}
+        <div class="sticky-top pt-5">
+            {# 2. Llamamos a la zona de widgets para el sidebar izquierdo del blog #}
+            {% show_widget_zone 'homepage-sidebar-left' %}
+        </div>
+    {% endif %}
+{% endblock sidebar_left %}
+
+{# Este bloque se renderizará en el sidebar derecho definido en base.html #}
+{% block sidebar_right %}
+    {% if page and page.is_homepage %}
+        <div class="sticky-top pt-5">
+            {# Llamamos a la zona de widgets específica para la homepage #}
+            {% show_widget_zone 'homepage-sidebar-right' %}
+        </div>
+    {% endif %}
+{% endblock sidebar_right %}
