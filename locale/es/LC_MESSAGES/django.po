@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-18 16:01+0000\n"
-"PO-Revision-Date: 2025-06-18 18:02+0200\n"
+"POT-Creation-Date: 2025-06-18 17:20+0000\n"
+"PO-Revision-Date: 2025-06-18 19:22+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -52,7 +52,7 @@ msgstr "Apellido(s)"
 
 #: accounts/forms.py:53
 msgid "Contact Email"
-msgstr " Correo electrónico de contacto"
+msgstr "Correo electrónico de contacto"
 
 #: accounts/forms.py:54
 msgid "Your first name"
@@ -65,6 +65,10 @@ msgstr "Tus Apellidos"
 #: accounts/forms.py:65
 msgid "Profile Picture"
 msgstr "Foto de Perfil"
+
+#: accounts/forms.py:70
+msgid "Use default avatar"
+msgstr "Usar avatar predeterminado"
 
 #: accounts/models.py:19
 msgid "Don't specify"
@@ -170,7 +174,7 @@ msgstr "Detalles del Perfil"
 msgid "Current Avatar"
 msgstr "Avatar Actual"
 
-#: accounts/templates/registration/profile_edit.html:70
+#: accounts/templates/registration/profile_edit.html:77
 msgid "Save Changes"
 msgstr "Guardar Cambios"
 
@@ -200,11 +204,11 @@ msgstr "¿Ya tienes una cuenta?"
 msgid "Log in here"
 msgstr "Iniciar sesión aquí"
 
-#: accounts/views.py:23
+#: accounts/views.py:25
 msgid "Welcome! Your account has been created successfully."
 msgstr "¡Bienvenido! Su acceso ha sido creado con éxito."
 
-#: accounts/views.py:55
+#: accounts/views.py:74
 msgid "Your profile has been updated successfully!"
 msgstr "¡Su perfil ha sido actualizado con éxito!"
 

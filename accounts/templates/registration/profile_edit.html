@@ -62,6 +62,13 @@
                                 {% if field.errors %}<div class="invalid-feedback d-block">{{ field.errors|striptags }}</div>{% endif %}
                             </div>
                         {% endfor %}
+                        <div class="form-check mt-3">
+                            {{ profile_form.clear_avatar }} {# Renderiza el <input type="checkbox"> #}
+                            <label class="form-check-label" for="{{ profile_form.clear_avatar.id_for_label }}">
+                                {{ profile_form.clear_avatar.label }}
+                            </label>
+                            <div class="form-text">{{ profile_form.clear_avatar.help_text }}</div>
+                        </div>
                     </div>
                 </div>
                 

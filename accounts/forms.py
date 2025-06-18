@@ -64,9 +64,14 @@ class ProfileUpdateForm(forms.ModelForm):
     avatar = forms.ImageField(
         label=_("Profile Picture"),
         required=False,
-        widget=CustomClearableFileInput()
+        widget=CustomClearableFileInput() # Custom widget for file input
     )
-
+    clear_avatar = forms.BooleanField(
+        label=_("Use default avatar"),
+        required=False,
+        # Le damos una clase de Bootstrap para que se vea bien
+        widget=forms.CheckboxInput(attrs={'class': 'form-check-input'})
+    )
     class Meta:
         model = Profile
         fields = [
