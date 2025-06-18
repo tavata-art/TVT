@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-18 10:24+0000\n"
-"PO-Revision-Date: 2025-06-18 12:28+0200\n"
+"POT-Creation-Date: 2025-06-18 11:55+0000\n"
+"PO-Revision-Date: 2025-06-18 13:57+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -155,132 +155,128 @@ msgstr "Iniciar sesión aquí"
 msgid "Welcome! Your account has been created successfully."
 msgstr "¡Bienvenido! Su acceso ha sido creado con éxito."
 
-#: blog/forms.py:14
-msgid "Your Name"
-msgstr "Tu Nombre"
+#: blog/forms.py:39
+msgid "Write your comment here..."
+msgstr "Escribe tu mensaje aquí..."
 
-#: blog/forms.py:15
-msgid "Your Email"
-msgstr "Tu Correo"
+#: blog/forms.py:43
+msgid "Your Name (required)"
+msgstr "Tu Nombre (requerido)"
 
-#: blog/forms.py:16
-msgid "Your Comment"
-msgstr "Tu Comentario"
+#: blog/forms.py:47
+msgid "Your Email (required, not published)"
+msgstr "Su correo electrónico (requerido, no es público)"
 
-#: blog/forms.py:21 blog/models.py:10 contact/models.py:21 pages/models.py:8
+#: blog/models.py:11 contact/models.py:21 pages/models.py:8
 msgid "Name"
 msgstr "Nombre"
 
-#: blog/forms.py:22 contact/models.py:22
-msgid "Email"
-msgstr "E-mail"
-
-#: blog/forms.py:23
-msgid "Comment"
-msgstr "Comentario"
-
-#: blog/models.py:11 blog/models.py:37 pages/models.py:9
+#: blog/models.py:12 blog/models.py:38 pages/models.py:9
 msgid "Slug"
 msgstr "Slug"
 
-#: blog/models.py:13 blog/models.py:49 pages/models.py:12 pages/models.py:56
+#: blog/models.py:14 blog/models.py:50 pages/models.py:12 pages/models.py:56
 msgid "Meta Title (SEO)"
 msgstr "Meta Título (SEO)"
 
-#: blog/models.py:14 blog/models.py:50 pages/models.py:13 pages/models.py:57
+#: blog/models.py:15 blog/models.py:51 pages/models.py:13 pages/models.py:57
 msgid "Meta Description (SEO)"
 msgstr "Meta Descripción (SEO)"
 
-#: blog/models.py:17
+#: blog/models.py:18
 msgid "blog category"
 msgstr "categoría de blog"
 
-#: blog/models.py:18
+#: blog/models.py:19
 msgid "blog categories"
 msgstr "categorías de blog"
 
-#: blog/models.py:33 pages/models.py:32
+#: blog/models.py:34 pages/models.py:32
 msgid "Draft"
 msgstr "Borrador"
 
-#: blog/models.py:34 pages/models.py:33
+#: blog/models.py:35 pages/models.py:33
 msgid "Published"
 msgstr "Publicado"
 
-#: blog/models.py:36 pages/models.py:36
+#: blog/models.py:37 pages/models.py:36
 msgid "Title"
 msgstr "Título"
 
-#: blog/models.py:38 pages/models.py:40
+#: blog/models.py:39 pages/models.py:40
 msgid "Author"
 msgstr "Autor"
 
-#: blog/models.py:40 blog/models.py:101 pages/models.py:38
+#: blog/models.py:41 blog/models.py:111 pages/models.py:38
 msgid "Content"
 msgstr "Contenido"
 
-#: blog/models.py:41
+#: blog/models.py:42
 msgid "Featured Image"
 msgstr "Imagen Destacada"
 
-#: blog/models.py:43
+#: blog/models.py:44
 msgid "Published Date"
 msgstr "Fecha de Publicación"
 
-#: blog/models.py:45 pages/models.py:41
+#: blog/models.py:46 pages/models.py:41
 msgid "Status"
 msgstr "Estado"
 
-#: blog/models.py:47 blog/templates/blog/post_detail.html:51 pages/models.py:45
+#: blog/models.py:48 pages/models.py:45
 #: pages/templates/pages/page_detail.html:52
 msgid "Categories"
 msgstr "Categorías"
 
-#: blog/models.py:55
+#: blog/models.py:56
 msgid "View Count"
 msgstr "Número de vistas"
 
-#: blog/models.py:58
+#: blog/models.py:59
 msgid "blog post"
 msgstr "entrada de blog"
 
-#: blog/models.py:59
+#: blog/models.py:60
 msgid "blog posts"
 msgstr "entradas de blog"
 
-#: blog/models.py:82
+#: blog/models.py:84
 msgid "Post"
 msgstr "Post"
 
-#: blog/models.py:94
+#: blog/models.py:93
 msgid "Parent Comment"
 msgstr "Comentario Padre"
 
-#: blog/models.py:98
+#: blog/models.py:104
+msgid "User"
+msgstr "Usuario"
+
+#: blog/models.py:107
 msgid "Author Name"
 msgstr "Nombre del Autor"
 
-#: blog/models.py:99
+#: blog/models.py:108
 msgid "Author Email"
 msgstr "Email del Autor"
 
-#: blog/models.py:103
+#: blog/models.py:112
 msgid "Created At"
 msgstr "Fecha de Creación"
 
-#: blog/models.py:107
+#: blog/models.py:115
 msgid "Is Approved?"
 msgstr "¿Está aprobado?"
 
-#: blog/models.py:117
+#: blog/models.py:124
 msgid "comment"
 msgstr "comentario"
 
-#: blog/models.py:118
+#: blog/models.py:125
 msgid "comments"
 msgstr "comentarios"
 
-#: blog/templates/blog/post_detail.html:43
+#: blog/templates/blog/post_detail.html:35
 #, python-format
 msgid ""
 "\n"
@@ -291,34 +287,34 @@ msgstr ""
 "                 Publicado el %(published_date)s por %(author)s\n"
 "                "
 
-#: blog/templates/blog/post_detail.html:71
+#: blog/templates/blog/post_detail.html:52
 #, python-format
 msgid "%(count)s Comment"
 msgid_plural "%(count)s Comments"
 msgstr[0] "%(count)s Comentario"
 msgstr[1] "%(count)s Comentarios"
 
-#: blog/templates/blog/post_detail.html:85
+#: blog/templates/blog/post_detail.html:70
 msgid "ago"
 msgstr "hace"
 
-#: blog/templates/blog/post_detail.html:86
+#: blog/templates/blog/post_detail.html:71
 msgid "Reply"
 msgstr "Respuesta"
 
-#: blog/templates/blog/post_detail.html:118
+#: blog/templates/blog/post_detail.html:102
 msgid "Leave a Comment"
 msgstr "Deja un Comentario"
 
-#: blog/templates/blog/post_detail.html:139
+#: blog/templates/blog/post_detail.html:124
 msgid "Submit Comment"
 msgstr "Comenta"
 
-#: blog/templates/blog/post_detail.html:174
+#: blog/templates/blog/post_detail.html:155
 msgid "Cancel Reply"
 msgstr "Cancelar respuesta"
 
-#: blog/templates/blog/post_detail.html:183
+#: blog/templates/blog/post_detail.html:164
 msgid "Reply to"
 msgstr "Responder a"
 
@@ -384,11 +380,11 @@ msgstr ""
 msgid "There are currently no published posts in this category."
 msgstr "Actualmente no hay entradas publicadas en esta categoría."
 
-#: blog/views.py:108
+#: blog/views.py:114
 msgid "Thank you! Your comment has been published."
 msgstr "¡Gracias! Su comentario ha sido publicado."
 
-#: blog/views.py:111
+#: blog/views.py:117
 msgid "Thank you! Your comment has been submitted and is awaiting moderation."
 msgstr ""
 "¡Gracias! Su comentario ha sido enviado y está a la espera de moderación."
@@ -436,6 +432,10 @@ msgstr "Urgente"
 #: contact/models.py:18
 msgid "Critical"
 msgstr "Crítico"
+
+#: contact/models.py:22
+msgid "Email"
+msgstr "E-mail"
 
 #: contact/models.py:23
 msgid "Subject"
@@ -930,6 +930,15 @@ msgstr "No hay categorías con publicaciones disponibles."
 #: widgets/templates/widgets/partials/_posts_widget.html:32
 msgid "No items to display."
 msgstr "No hay elementos para mostrar."
+
+#~ msgid "Your Email"
+#~ msgstr "Tu Correo"
+
+#~ msgid "Your Comment"
+#~ msgstr "Tu Comentario"
+
+#~ msgid "Comment"
+#~ msgstr "Comentario"
 
 #, python-format
 #~ msgid "Hello, %(user_name)s!"

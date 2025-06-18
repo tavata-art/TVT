@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from mptt.models import MPTTModel, TreeForeignKey # ¡Importamos las herramientas de mptt!
+from mptt.models import MPTTModel, TreeForeignKey 
+from django.conf import settings
 
 class PostCategory(models.Model):
     """ Represents a category for grouping blog posts. """
@@ -69,21 +70,19 @@ class Post(models.Model):
             self.slug
         ])
     
-# --- NEW, NESTABLE COMMENT MODEL ---
+# --- NESTABLE COMMENT MODEL WITH USER INTEGRATION ---
 class Comment(MPTTModel):
     """
     Represents a single, nestable comment on a blog post.
-    Inherits from MPTTModel to handle the tree structure.
+    A comment can be posted by a registered user or an anonymous guest.
     """
+    # === Core Relationships ===
     post = models.ForeignKey(
         Post, 
         on_delete=models.CASCADE, 
         related_name='comments', 
         verbose_name=_("Post")
     )
-    
-    # The 'parent' field allows for nested comments (replies).
-    # TreeForeignKey is a special field from django-mptt.
     parent = TreeForeignKey(
         'self', 
         on_delete=models.CASCADE, 
@@ -94,30 +93,65 @@ class Comment(MPTTModel):
         verbose_name=_("Parent Comment")
     )
     
-    # We allow anonymous comments, so we store the name and email directly.
-    author_name = models.CharField(max_length=100, verbose_name=_("Author Name"))
-    author_email = models.EmailField(verbose_name=_("Author Email"))
+    # === Author Information ===
+    # This field links to a registered user. It's optional for guest comments.
+    user = models.ForeignKey(
+        User, 
+        on_delete=models.SET_NULL, # If user is deleted, keep the comment as anonymous
+        null=True, 
+        blank=True,
+        related_name='comments_made', 
+        verbose_name=_("User")
+    )
+    # These fields are required for guest comments, but can be auto-filled for registered users.
+    author_name = models.CharField(max_length=100, verbose_name=_("Author Name"), blank=True)
+    author_email = models.EmailField(verbose_name=_("Author Email"), blank=True)
     
+    # === Comment Content & Status ===
     content = models.TextField(verbose_name=_("Content"))
-    
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created At"))
-    
-    # This is crucial for moderation.
-    # We'll set the default to True for easier testing. Change to False for production.
-    is_approved = models.BooleanField(default=False, verbose_name=_("Is Approved?"))
-    
+    is_approved = models.BooleanField(
+        default=False, # Default to False for production to enable moderation
+        verbose_name=_("Is Approved?")
+    )
 
     class MPTTMeta:
-        # This tells django-mptt how to order the comments within the tree structure.
-        # Here, we order by the creation date to show comments chronologically.
-        order_insertion_by = ['-created_at']
+        # This tells django-mptt how to order comments within the tree.
+        # Oldest comments will appear first.
+        order_insertion_by = ['created_at']
 
     class Meta:
-        # The default ordering is now handled by MPTTMeta, so we can remove it from here.
         verbose_name = _("comment")
         verbose_name_plural = _("comments")
 
     def __str__(self):
-        # A small visual trick to show the comment's nesting level in the admin list.
-        # 'self.level' is a field automatically provided by mptt.
-        return f"{'--' * self.level} Comment by {self.author_name}"
+        # A visual trick to show nesting levels in the admin.
+        return f"{'--' * self.level} Comment by {self.author_name} on \"{self.post.title[:20]}...\""
+    
+    # --- Helper Methods for Templates ---
+    def get_author_name(self):
+        """
+        Returns the author's display name, preferring the registered user's profile.
+        """
+        if self.user and hasattr(self.user, 'profile'):
+            return self.user.profile.get_display_name()
+        return self.author_name
+
+    def get_author_avatar_url(self):
+        """
+        Returns the author's avatar URL.
+        Falls back to a generic anonymous avatar if the user is not registered or has no avatar.
+        """
+        # Define a fallback URL for a generic guest avatar
+        # You must create this image and place it in your static files.
+        anonymous_avatar_url = f"{settings.STATIC_URL}images/avatars/default_anonymous.png"
+
+        if self.user and hasattr(self.user, 'profile') and self.user.profile.avatar:
+            # Check if the user has a custom avatar uploaded
+            if self.user.profile.avatar.name != self.user.profile._meta.get_field('avatar').get_default():
+                return self.user.profile.avatar.url
+            # If not, return the user's chosen default avatar
+            return f"{settings.STATIC_URL}{self.user.profile.avatar.name}"
+        
+        # If all else fails, return the anonymous avatar
+        return anonymous_avatar_url

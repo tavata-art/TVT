@@ -60,10 +60,10 @@ def post_list_view(request):
 
 def post_detail_view(request, year, month, day, slug):
     """
-    Displays a single blog post, its comments, and handles new comment submissions.
+    Displays a single blog post and handles the entire comment submission process,
+    including view counting, moderation logic, and user association.
     """
-    # 1. Retrieve the main Post object
-    # ---------------------------------
+    # 1. Retrieve the Post object.
     # Fetches a single post that matches the URL parameters and is published.
     # Raises a 404 error automatically if not found.
     post = get_object_or_404(Post,
@@ -73,36 +73,42 @@ def post_detail_view(request, year, month, day, slug):
                              published_date__day=day,
                              slug=slug)
 
-    # 2. Increment the View Count
-    # ---------------------------------
-    # Uses an F() expression for a race-condition-safe, atomic database update.
+    # 2. Increment the View Count.
+    # This uses an F() expression for a race-condition-safe database update.
     post.views_count = F('views_count') + 1
     post.save(update_fields=['views_count'])
-    # Refreshes the object from the database to get the latest view count.
+    # Refresh the object from the DB to get the latest view count.
     post.refresh_from_db()
 
-    # 3. Handle Comment Submission and Retrieval
-    # -------------------------------------------
-    # Get the site-wide configuration settings.
-    site_config = SiteConfiguration.objects.get()
-    
-    # Retrieve all approved comments for this post to display.
+    # 3. Prepare for Comment Handling.
+    # Get all approved, top-level comments for this post to display.
     comments = post.comments.filter(is_approved=True)
     
-    # Initialize the form.
-    comment_form = CommentForm()
-
+    # Get the site-wide configuration.
+    try:
+        site_config = SiteConfiguration.objects.get()
+    except SiteConfiguration.DoesNotExist:
+        # Fallback to a default config object if none exists in DB
+        # This makes the site resilient even if setup is incomplete.
+        class FallbackConfig:
+            auto_approve_comments = False
+        site_config = FallbackConfig()
+    
+    # This logic handles both GET requests and form submissions (POST).
     if request.method == 'POST':
-        # If the form was submitted, bind the POST data to the form.
-        comment_form = CommentForm(data=request.POST)
-
+        # If form is submitted, bind POST data and the request user to a form instance.
+        comment_form = CommentForm(request.POST, user=request.user)
         if comment_form.is_valid():
-            # Create a Comment object but don't save to the DB yet.
             new_comment = comment_form.save(commit=False)
-            # Associate the comment with the current post.
             new_comment.post = post
             
-            # Set the approval status based on the site configuration.
+            # Associate comment with the logged-in user, if any.
+            if request.user.is_authenticated:
+                new_comment.user = request.user
+                new_comment.author_name = request.user.profile.get_display_name()
+                new_comment.author_email = request.user.email
+
+            # Set approval status based on the site configuration.
             if site_config.auto_approve_comments:
                 new_comment.is_approved = True
                 success_message = gettext("Thank you! Your comment has been published.")
@@ -110,29 +116,28 @@ def post_detail_view(request, year, month, day, slug):
                 new_comment.is_approved = False
                 success_message = gettext("Thank you! Your comment has been submitted and is awaiting moderation.")
 
-            # Now, save the comment to the database.
             new_comment.save()
-
-            # Add the success message to be displayed on the next page load.
             messages.success(request, success_message)
             
-            # --- Post/Redirect/Get Pattern ---
-            # Redirect to the same page to prevent form resubmission on refresh.
-            # Add an HTML anchor to scroll the user down to the comments section.
+            # Use the Post/Redirect/Get pattern to prevent form resubmission.
             post_url = post.get_absolute_url()
             redirect_url = f"{post_url}#comments-section"
             return HttpResponseRedirect(redirect_url)
+        else:
+            # If the form is invalid, log the errors for debugging.
+            logger.warning(f"Invalid comment submission on post '{post.slug}'. Errors: {comment_form.errors.as_json()}")
+    else:
+        # For a GET request, create a blank form instance, passing the user.
+        comment_form = CommentForm(user=request.user)
 
-    # 4. Prepare the Context and Render
-    # ---------------------------------
-    # This context is used for GET requests or when a POST form is invalid.
-    # If the form was invalid, 'comment_form' will contain error messages to display.
+    # 4. Prepare the final context and render the template.
     context = {
         'post': post,
         'comments': comments,
         'comment_form': comment_form,
     }
     return render(request, 'blog/post_detail.html', context)
+
 
 def posts_by_category_view(request, category_slug):
     """
