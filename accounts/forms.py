@@ -3,6 +3,7 @@ import logging
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from widgets.widgets import CustomClearableFileInput
 from django.utils.translation import gettext_lazy as _
 from .models import Profile
 
@@ -14,6 +15,13 @@ class CustomUserCreationForm(UserCreationForm):
     """
     A custom user creation form to enhance styling and user experience.
     """
+    # We explicitly define the avatar field to override the default widget.
+    avatar = forms.ImageField(
+        label=_("Profile Picture"),
+        required=False,
+        widget=CustomClearableFileInput() # <-- Using our new custom widget
+    )
+
     class Meta(UserCreationForm.Meta):
         model = User
         fields = ("username",)
