@@ -71,31 +71,15 @@ class Profile(models.Model):
         verbose_name = _("Profile")
         verbose_name_plural = _("Profiles")
 
+    # accounts/models.py
     def get_avatar_url(self):
-        """
-        Returns the correct avatar URL, handling all cases:
-        1. User has uploaded a custom avatar.
-        2. User is using a default avatar.
-        3. The avatar field is somehow empty/null (fallback).
-        """
-        try:
-            # First, check if the avatar field has a file associated with it.
-            # Accessing .url will fail if there is no file.
-            if self.avatar and self.avatar.url:
-                # To be 100% sure it's not just pointing to the default text path...
-                default_path = self._meta.get_field('avatar').get_default()
-                if self.avatar.name == default_path:
-                    # It's a new user, pointing to the default. Return the static path.
-                    return static(default_path)
-                else:
-                    # It's a custom uploaded image. Return its media path.
-                    return self.avatar.url
-        except ValueError:
-            # This catches the "The 'avatar' attribute has no file associated with it." error
-            pass # Continue to the fallback below
+        # Si el usuario ha subido un archivo, su nombre NO será una de las rutas por defecto.
+        default_paths = [c[0] for c in self.AvatarChoice.choices]
+        if self.avatar and self.avatar.name not in default_paths:
+            return self.avatar.url
 
-        # Fallback for any other case: return the default static path.
-        return static('images/avatars/default_private.png')
+        # Si no, mostramos el avatar por defecto que el usuario haya elegido.
+        return static(self.default_avatar_choice)
         
     def __str__(self):
         return f"{self.user.username}'s Profile"

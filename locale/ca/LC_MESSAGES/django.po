@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-18 13:23+0000\n"
-"PO-Revision-Date: 2025-06-18 15:31+0200\n"
+"POT-Creation-Date: 2025-06-18 16:01+0000\n"
+"PO-Revision-Date: 2025-06-18 18:02+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "Language: ca\n"
@@ -18,49 +18,53 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.6\n"
 
-#: accounts/forms.py:24
+#: accounts/forms.py:27
 msgid "Choose a username"
 msgstr "Trieu un nom d’usuari"
 
-#: accounts/forms.py:25
+#: accounts/forms.py:28
 msgid "Enter password"
 msgstr "Introduïu la contrasenya"
 
-#: accounts/forms.py:26
+#: accounts/forms.py:29
 msgid "Confirm password"
 msgstr "Confirmeu la contrasenya"
 
-#: accounts/forms.py:27 accounts/templates/registration/login.html:22
+#: accounts/forms.py:30 accounts/templates/registration/login.html:22
 msgid "Username"
 msgstr "Nom d'usuari"
 
-#: accounts/forms.py:28 accounts/templates/registration/login.html:26
+#: accounts/forms.py:31 accounts/templates/registration/login.html:26
 msgid "Password"
 msgstr "Contrasenya"
 
-#: accounts/forms.py:29
+#: accounts/forms.py:32
 msgid "Confirm Password"
 msgstr "Confirmeu la contrasenya"
 
-#: accounts/forms.py:49
+#: accounts/forms.py:51
 msgid "First Name"
 msgstr "Nom de visualització"
 
-#: accounts/forms.py:50
+#: accounts/forms.py:52
 msgid "Last Name"
 msgstr "Últim nom"
 
-#: accounts/forms.py:51
+#: accounts/forms.py:53
 msgid "Contact Email"
 msgstr "Contacte Correu electrònic"
 
-#: accounts/forms.py:52
+#: accounts/forms.py:54
 msgid "Your first name"
 msgstr "El vostre nom"
 
-#: accounts/forms.py:53
+#: accounts/forms.py:55
 msgid "Your last name"
 msgstr "El vostre cognom"
+
+#: accounts/forms.py:65
+msgid "Profile Picture"
+msgstr "Perfil Imatge"
 
 #: accounts/models.py:19
 msgid "Don't specify"
@@ -154,20 +158,19 @@ msgstr "Edita el perfil"
 msgid "Edit Your Profile"
 msgstr "Edita el teu perfil"
 
-#: accounts/templates/registration/profile_edit.html:21
+#: accounts/templates/registration/profile_edit.html:20
 msgid "User Information"
 msgstr "Informació de l'usuari"
 
-#: accounts/templates/registration/profile_edit.html:39
+#: accounts/templates/registration/profile_edit.html:37
 msgid "Profile Details"
 msgstr "Detalls del perfil"
 
-#: accounts/templates/registration/profile_edit.html:47
-#: accounts/templates/registration/profile_edit.html:50
+#: accounts/templates/registration/profile_edit.html:49
 msgid "Current Avatar"
 msgstr "Avatar actual"
 
-#: accounts/templates/registration/profile_edit.html:65
+#: accounts/templates/registration/profile_edit.html:70
 msgid "Save Changes"
 msgstr "Desa els canvis"
 
@@ -196,11 +199,11 @@ msgstr "Ja teniu un compte?"
 msgid "Log in here"
 msgstr "Inicieu la sessió aquí"
 
-#: accounts/views.py:36
+#: accounts/views.py:23
 msgid "Welcome! Your account has been created successfully."
 msgstr "Benvingut! El vostre compte s’ha creat amb èxit."
 
-#: accounts/views.py:69
+#: accounts/views.py:55
 msgid "Your profile has been updated successfully!"
 msgstr "El vostre perfil s’ha actualitzat amb èxit!"
 

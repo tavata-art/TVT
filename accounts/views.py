@@ -13,19 +13,17 @@ logger = logging.getLogger(__name__)
 
 # --- SIGNUP VIEW ---
 def signup_view(request):
-    """
-    Handles new user registration.
-    """
+    """ Handles new user registration. """
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             logger.info(f"New user account created: '{user.username}' (ID: {user.id})")
-            
             login(request, user)
-            
             messages.success(request, gettext("Welcome! Your account has been created successfully."))
             return redirect('home')
+        else:
+            logger.warning(f"Signup form failed validation. Errors: {form.errors.as_json()}")
     else:
         form = CustomUserCreationForm()
         
@@ -36,27 +34,34 @@ def signup_view(request):
 @login_required 
 def profile_edit_view(request):
     """
-    Handles the display and submission of the user and profile update forms.
+    Handles the display and submission of the forms for updating
+    both the User model and its related Profile model.
+    The view's role is to validate and save the forms. The model handles the logic
+    for which avatar URL to display.
     """
     if request.method == 'POST':
+        # Bind submitted data to form instances, linked to the current user.
         user_form = UserUpdateForm(request.POST, instance=request.user)
         profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
 
         if user_form.is_valid() and profile_form.is_valid():
+            # If both forms are valid, save them directly.
+            # The ProfileUpdateForm will save the user's choice for 'default_avatar_choice'.
+            # If a new avatar file was uploaded, it will also be saved automatically.
             user_form.save()
-            profile = profile_form.save(commit=False)
-            
-            # Avatar sync logic
-            if 'avatar' not in request.FILES:
-                chosen_default = profile_form.cleaned_data.get('default_avatar_choice')
-                if chosen_default and profile.avatar.name != chosen_default:
-                    profile.avatar = chosen_default
-            
-            profile.save()
+            profile_form.save()
 
+            logger.info(f"User '{request.user.username}' updated their profile successfully.")
             messages.success(request, gettext("Your profile has been updated successfully!"))
+            
+            # Redirect to the same page to show changes and prevent resubmission.
             return redirect('accounts:profile_edit')
+        else:
+            logger.warning(f"Profile update failed for user '{request.user.username}'. "
+                           f"User form errors: {user_form.errors.as_json()}, "
+                           f"Profile form errors: {profile_form.errors.as_json()}.")
     else:
+        # For a GET request, create forms pre-filled with the user's current data.
         user_form = UserUpdateForm(instance=request.user)
         profile_form = ProfileUpdateForm(instance=request.user.profile)
 

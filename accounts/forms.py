@@ -3,8 +3,8 @@ import logging
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from widgets.widgets import CustomClearableFileInput
 from django.utils.translation import gettext_lazy as _
+from widgets.widgets import CustomClearableFileInput
 from .models import Profile
 
 logger = logging.getLogger(__name__)
@@ -13,17 +13,12 @@ logger = logging.getLogger(__name__)
 # --- 1. Custom SIGNUP Form (for new user registration) ---
 class CustomUserCreationForm(UserCreationForm):
     """
-    A custom user creation form to enhance styling and user experience.
+    A custom form for new user registration. It only handles User model fields.
     """
-    # We explicitly define the avatar field to override the default widget.
-    avatar = forms.ImageField(
-        label=_("Profile Picture"),
-        required=False,
-        widget=CustomClearableFileInput() # <-- Using our new custom widget
-    )
-
     class Meta(UserCreationForm.Meta):
         model = User
+        # The 'fields' tuple should only contain fields from the User model.
+        # 'password1' and 'password2' are handled automatically by UserCreationForm.
         fields = ("username",)
 
     def __init__(self, *args, **kwargs):
@@ -40,7 +35,7 @@ class CustomUserCreationForm(UserCreationForm):
 # --- 2. Custom User UPDATE Form (for editing basic User data) ---
 class UserUpdateForm(forms.ModelForm):
     """
-    A form to update basic, non-sensitive user information like name and email.
+    A form for updating basic, non-sensitive user information.
     """
     email = forms.EmailField(
         required=True, 
@@ -53,7 +48,6 @@ class UserUpdateForm(forms.ModelForm):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Add labels and placeholders for better UI
         self.fields['first_name'].label = _('First Name')
         self.fields['last_name'].label = _('Last Name')
         self.fields['email'].label = _('Contact Email')
@@ -64,9 +58,15 @@ class UserUpdateForm(forms.ModelForm):
 # --- 3. Custom Profile UPDATE Form (for editing extended Profile data) ---
 class ProfileUpdateForm(forms.ModelForm):
     """
-    A form to update the extended profile information, including the avatar.
-    This form dynamically hides the default avatar choice if a custom one is uploaded.
+    A form for updating the extended profile, using a custom widget for the avatar.
     """
+    # We explicitly define the avatar field to force our custom widget.
+    avatar = forms.ImageField(
+        label=_("Profile Picture"),
+        required=False,
+        widget=CustomClearableFileInput()
+    )
+
     class Meta:
         model = Profile
         fields = [
@@ -77,34 +77,15 @@ class ProfileUpdateForm(forms.ModelForm):
             'avatar', 
             'default_avatar_choice'
         ]
-
+        
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         
-        # --- Add Bootstrap classes to all widgets ---
+        # Apply Bootstrap classes to the rest of the fields.
         self.fields['display_name'].widget.attrs.update({'class': 'form-control'})
         self.fields['bio'].widget.attrs.update({'class': 'form-control', 'rows': 4})
         self.fields['location'].widget.attrs.update({'class': 'form-control'})
         self.fields['website_url'].widget.attrs.update({'class': 'form-control', 'placeholder': 'https://...'})
-        self.fields['avatar'].widget.attrs.update({'class': 'form-control'}) # For file inputs
-        
-        # --- Smart logic for the default avatar choice field ---
-        # The 'self.instance' is the Profile object being edited.
-        # We only run this logic if the form is bound to an existing Profile.
-        if self.instance and self.instance.pk:
-            current_avatar_path = self.instance.avatar.name
-            default_avatar_path = self.instance._meta.get_field('avatar').get_default()
-
-            # If the user's current avatar is NOT the default one...
-            if current_avatar_path != default_avatar_path:
-                # ...then we don't need to show the default avatar choice field.
-                # We remove it dynamically from the form.
-                del self.fields['default_avatar_choice']
-            else:
-                # If they are using a default avatar, style the dropdown.
-                self.fields['default_avatar_choice'].widget.attrs.update({'class': 'form-select'})
-        else:
-            # If this is a new, unbound form, style the dropdown by default.
-            self.fields['default_avatar_choice'].widget.attrs.update({'class': 'form-select'})
+        self.fields['default_avatar_choice'].widget.attrs.update({'class': 'form-select'})
 
         logger.debug(f"ProfileUpdateForm initialized for instance: {self.instance}")
