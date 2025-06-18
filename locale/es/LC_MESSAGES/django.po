@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-18 17:20+0000\n"
-"PO-Revision-Date: 2025-06-18 19:22+0200\n"
+"POT-Creation-Date: 2025-06-18 18:21+0000\n"
+"PO-Revision-Date: 2025-06-18 20:23+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -208,7 +208,7 @@ msgstr "Iniciar sesión aquí"
 msgid "Welcome! Your account has been created successfully."
 msgstr "¡Bienvenido! Su acceso ha sido creado con éxito."
 
-#: accounts/views.py:74
+#: accounts/views.py:83
 msgid "Your profile has been updated successfully!"
 msgstr "¡Su perfil ha sido actualizado con éxito!"
 
@@ -539,7 +539,7 @@ msgstr "Mensaje de contacto"
 msgid "Contact Messages"
 msgstr "Mensajes de contacto"
 
-#: contact/templates/contact/contact_form.html:6
+#: contact/templates/contact/contact_form.html:6 templates/404.html:36
 msgid "Contact Us"
 msgstr "Contáctanos"
 
@@ -875,6 +875,20 @@ msgstr ""
 #: site_settings/models.py:56
 msgid "Site Configuration"
 msgstr "Configuración del Sitio"
+
+#: templates/404.html:6 templates/404.html:23
+msgid "Page Not Found"
+msgstr "Página no Encontrada"
+
+#: templates/404.html:27
+msgid ""
+"Oops! It seems the page you were looking for doesn't exist or has been moved."
+msgstr ""
+"¡Oops! Parece que la página que estabas buscando no existe o se ha movido."
+
+#: templates/404.html:33
+msgid "Go to Homepage"
+msgstr "Ir a la página de inicio"
 
 #: tvt/settings.py:172
 msgid "Spanish"
