@@ -1,0 +1,72 @@
+<!-- File: accounts/templates/registration/profile_edit.html -->
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Edit Profile" %}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <h1 class="display-5 mb-4">{% translate "Edit Your Profile" %}</h1>
+
+            {# We need a single <form> tag that can handle file uploads #}
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- USER DETAILS CARD -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">{% translate "User Information" %}</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Loop through the fields of the user_form -->
+                        {% for field in user_form %}
+                            <div class="mb-3">
+                                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                                {{ field }}
+                                {% if field.help_text %}<div class="form-text">{{ field.help_text }}</div>{% endif %}
+                                {% if field.errors %}<div class="invalid-feedback d-block">{{ field.errors|striptags }}</div>{% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- PROFILE DETAILS CARD -->
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h5 class="mb-0">{% translate "Profile Details" %}</h5>
+                    </div>
+                    <div class="card-body">
+                        {# Loop through the fields of the profile_form #}
+                        {% for field in profile_form %}
+                            <div class="mb-3">
+                                {# Special case for the avatar to show the current image #}
+                                {% if field.name == 'avatar' and profile_form.instance %}
+                                    <p class="mb-2">{% translate "Current Avatar" %}:</p>
+                                    {# We call our smart method from the Profile model instance #}
+                                    <img src="{{ profile_form.instance.get_avatar_url }}" 
+                                        alt="{% translate 'Current Avatar' %}"
+                                        class="img-thumbnail mb-2" 
+                                        style="max-width: 150px; height: auto;">
+                                {% endif %}
+
+                                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                                {{ field }}
+                                ...
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- SUBMIT BUTTON -->
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg">{% translate "Save Changes" %}</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

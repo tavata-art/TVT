@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-18 11:55+0000\n"
-"PO-Revision-Date: 2025-06-18 13:59+0200\n"
+"POT-Creation-Date: 2025-06-18 13:23+0000\n"
+"PO-Revision-Date: 2025-06-18 15:31+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "Language: ca\n"
@@ -18,96 +18,116 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.6\n"
 
-#: accounts/forms.py:26
+#: accounts/forms.py:24
 msgid "Choose a username"
 msgstr "Trieu un nom d’usuari"
 
-#: accounts/forms.py:30
+#: accounts/forms.py:25
 msgid "Enter password"
 msgstr "Introduïu la contrasenya"
 
-#: accounts/forms.py:34
+#: accounts/forms.py:26
 msgid "Confirm password"
 msgstr "Confirmeu la contrasenya"
 
-#: accounts/forms.py:38 accounts/templates/registration/login.html:22
+#: accounts/forms.py:27 accounts/templates/registration/login.html:22
 msgid "Username"
 msgstr "Nom d'usuari"
 
-#: accounts/forms.py:39 accounts/templates/registration/login.html:26
+#: accounts/forms.py:28 accounts/templates/registration/login.html:26
 msgid "Password"
 msgstr "Contrasenya"
 
-#: accounts/forms.py:40
+#: accounts/forms.py:29
 msgid "Confirm Password"
 msgstr "Confirmeu la contrasenya"
 
-#: accounts/models.py:17
+#: accounts/forms.py:49
+msgid "First Name"
+msgstr "Nom de visualització"
+
+#: accounts/forms.py:50
+msgid "Last Name"
+msgstr "Últim nom"
+
+#: accounts/forms.py:51
+msgid "Contact Email"
+msgstr "Contacte Correu electrònic"
+
+#: accounts/forms.py:52
+msgid "Your first name"
+msgstr "El vostre nom"
+
+#: accounts/forms.py:53
+msgid "Your last name"
+msgstr "El vostre cognom"
+
+#: accounts/models.py:19
 msgid "Don't specify"
 msgstr "No especifiqueu"
 
-#: accounts/models.py:18
+#: accounts/models.py:20
 msgid "Female"
 msgstr "Femenina"
 
-#: accounts/models.py:19
+#: accounts/models.py:21
 msgid "Male"
 msgstr "Home"
 
-#: accounts/models.py:20
+#: accounts/models.py:22
 msgid "Non-binary"
 msgstr "No binari"
 
-#: accounts/models.py:30
+#: accounts/models.py:32
 msgid "Display Name"
 msgstr "Nom de visualització"
 
-#: accounts/models.py:31
+#: accounts/models.py:33
 msgid "Your full name or a nickname, which will be shown publicly."
 msgstr "El vostre nom complet o un sobrenom, que es mostrarà públicament."
 
-#: accounts/models.py:35
+#: accounts/models.py:37
 msgid "Public Email"
 msgstr "Correu electrònic públic"
 
-#: accounts/models.py:36
+#: accounts/models.py:38
 msgid "An email address you don't mind sharing publicly for contact."
 msgstr ""
 "Una adreça de correu electrònic a la qual no t'importa compartir públicament "
 "el contacte."
 
-#: accounts/models.py:41
+#: accounts/models.py:43
 msgid "Website URL"
 msgstr "URL del lloc web"
 
-#: accounts/models.py:48
+#: accounts/models.py:50
 msgid "Location"
 msgstr "Ubicació"
 
-#: accounts/models.py:52
+#: accounts/models.py:54
 msgid "Biography"
 msgstr "Biografia"
 
-#: accounts/models.py:59
+#: accounts/models.py:61
 msgid "Avatar"
 msgstr "Avatar"
 
-#: accounts/models.py:65
+#: accounts/models.py:67
 msgid "Default Avatar Preference"
 msgstr "Preferència avatar predeterminada"
 
-#: accounts/models.py:69
+#: accounts/models.py:71
 msgid "Profile"
 msgstr "Perfil"
 
-#: accounts/models.py:70
+#: accounts/models.py:72
 msgid "Profiles"
 msgstr "Perfils"
 
 #: accounts/templates/registration/login.html:5
 #: accounts/templates/registration/login.html:12
 #: accounts/templates/registration/login.html:30
-#: core/templates/core/partials/_header.html:66
+#: core/templates/core/partials/_header.html:60
 msgid "Log In"
 msgstr "Iniciar sessió"
 
@@ -124,6 +144,32 @@ msgstr "No teniu cap compte?"
 #: accounts/templates/registration/login.html:40
 msgid "Sign up here"
 msgstr "Registra't aquí"
+
+#: accounts/templates/registration/profile_edit.html:5
+#: core/templates/core/partials/_header.html:40
+msgid "Edit Profile"
+msgstr "Edita el perfil"
+
+#: accounts/templates/registration/profile_edit.html:12
+msgid "Edit Your Profile"
+msgstr "Edita el teu perfil"
+
+#: accounts/templates/registration/profile_edit.html:21
+msgid "User Information"
+msgstr "Informació de l'usuari"
+
+#: accounts/templates/registration/profile_edit.html:39
+msgid "Profile Details"
+msgstr "Detalls del perfil"
+
+#: accounts/templates/registration/profile_edit.html:47
+#: accounts/templates/registration/profile_edit.html:50
+msgid "Current Avatar"
+msgstr "Avatar actual"
+
+#: accounts/templates/registration/profile_edit.html:65
+msgid "Save Changes"
+msgstr "Desa els canvis"
 
 #: accounts/templates/registration/signup.html:5
 #: accounts/templates/registration/signup.html:50
@@ -150,9 +196,13 @@ msgstr "Ja teniu un compte?"
 msgid "Log in here"
 msgstr "Inicieu la sessió aquí"
 
-#: accounts/views.py:34
+#: accounts/views.py:36
 msgid "Welcome! Your account has been created successfully."
 msgstr "Benvingut! El vostre compte s’ha creat amb èxit."
+
+#: accounts/views.py:69
+msgid "Your profile has been updated successfully!"
+msgstr "El vostre perfil s’ha actualitzat amb èxit!"
 
 #: blog/forms.py:39
 msgid "Write your comment here..."
@@ -531,15 +581,12 @@ msgstr "Cercar..."
 msgid "Search"
 msgstr "Cercar"
 
-#: core/templates/core/partials/_header.html:40
-msgid "View Profile"
-msgstr "Veure perfil"
+#: core/templates/core/partials/_header.html:49
+#, python-format
+msgid "Hello, %(user_name)s"
+msgstr "Hola,%(user_name)s"
 
-#: core/templates/core/partials/_header.html:53
-msgid "Default Avatar"
-msgstr "Avatar predeterminat"
-
-#: core/templates/core/partials/_header.html:62
+#: core/templates/core/partials/_header.html:55
 msgid "Log Out"
 msgstr "Tanqueu"
 
@@ -937,10 +984,6 @@ msgstr "No hi ha articles a mostrar."
 
 #~ msgid "Comment"
 #~ msgstr "Comentari"
-
-#, python-format
-#~ msgid "Hello, %(user_name)s!"
-#~ msgstr "Hola,%(user_name)s!"
 
 #~ msgid "Number of Posts in 'Recent Posts' Widget"
 #~ msgstr "Nombre de publicacions a Widget \"Postes recents\""

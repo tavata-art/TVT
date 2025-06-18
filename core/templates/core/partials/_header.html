@@ -31,42 +31,36 @@
                     <button class="btn btn-primary" type="submit">{% translate "Search" %}</button>
                 </form>
 
-                <!-- User Authentication Block -->
+                <!-- --- USER AUTHENTICATION BLOCK --- -->
                 <div class="d-flex align-items-center ms-lg-3">
                     {% if user.is_authenticated %}
-                        <!-- If user is logged in, show their avatar and a logout form -->
-                        
-                        <!-- User Avatar -->
-                        <a href="#" title="{% translate 'View Profile' %}">
-                            {# We check if the user has uploaded a custom avatar #}
-                            {# by comparing its URL to the default avatar's URL. #}
-                            
-                            {% if user.profile.avatar and user.profile.avatar.name != 'images/avatars/default_private.png' %}
-                                {# If the user has a custom avatar, use its media URL. #}
-                                <img src="{{ user.profile.avatar.url }}" 
-                                    alt="{{ user.username }}'s Avatar" 
-                                    class="rounded-circle" 
-                                    style="width: 32px; height: 32px; object-fit: cover;">
-                            {% else %}
-                                {# Otherwise, fall back to the static default avatar. #}
-                                <img src="{% static 'images/avatars/default_private.png' %}" 
-                                    alt="{% translate 'Default Avatar' %}" 
-                                    class="rounded-circle" 
-                                    style="width: 32px; height: 32px; object-fit: cover;">
-                            {% endif %}
+                        <!-- If user is logged in, show their avatar, name, and a logout form -->
+
+                        <!-- User Avatar (links to profile edit page) -->
+                        <a href="{% url 'accounts:profile_edit' %}" title="{% translate 'Edit Profile' %}">
+                            {# We simply call our new smart method. It will return the correct URL. #}
+                            <img src="{{ user.profile.get_avatar_url }}" 
+                                alt="{{ user.username }}'s Avatar"
+                                class="rounded-circle" style="width: 32px; height: 32px; object-fit: cover;">
                         </a>
 
+                        <!-- User Greeting (Reinstated) -->
+                        <span class="navbar-text ms-2 me-3">
+                            {% blocktranslate with user_name=user.profile.get_display_name %}Hello, {{ user_name }}{% endblocktranslate %}
+                        </span>
+
                         <!-- Logout Form -->
-                        <form class="ms-3" id="logout-form" action="{% url 'logout' %}" method="post">
+                        <form id="logout-form" action="{% url 'logout' %}" method="post">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-outline-warning btn-sm">{% translate "Log Out" %}</button>
                         </form>
+
                     {% else %}
                         <!-- If user is anonymous, show a login link -->
                         <a class="nav-link text-white" href="{% url 'login' %}">{% translate "Log In" %}</a>
                     {% endif %}
                 </div>
-                <!-- END USER AUTHENTICATION BLOCK -->
+                <!-- --- END USER AUTHENTICATION BLOCK --- -->
                 
             </div>
         </div>

@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
+from django.templatetags.static import static 
 
 class Profile(models.Model):
     """
@@ -69,6 +71,32 @@ class Profile(models.Model):
         verbose_name = _("Profile")
         verbose_name_plural = _("Profiles")
 
+    def get_avatar_url(self):
+        """
+        Returns the correct avatar URL, handling all cases:
+        1. User has uploaded a custom avatar.
+        2. User is using a default avatar.
+        3. The avatar field is somehow empty/null (fallback).
+        """
+        try:
+            # First, check if the avatar field has a file associated with it.
+            # Accessing .url will fail if there is no file.
+            if self.avatar and self.avatar.url:
+                # To be 100% sure it's not just pointing to the default text path...
+                default_path = self._meta.get_field('avatar').get_default()
+                if self.avatar.name == default_path:
+                    # It's a new user, pointing to the default. Return the static path.
+                    return static(default_path)
+                else:
+                    # It's a custom uploaded image. Return its media path.
+                    return self.avatar.url
+        except ValueError:
+            # This catches the "The 'avatar' attribute has no file associated with it." error
+            pass # Continue to the fallback below
+
+        # Fallback for any other case: return the default static path.
+        return static('images/avatars/default_private.png')
+        
     def __str__(self):
         return f"{self.user.username}'s Profile"
 
