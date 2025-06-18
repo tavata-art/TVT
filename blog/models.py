@@ -52,8 +52,15 @@ class Post(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    # For tracking the number of views
     views_count = models.PositiveIntegerField(default=0, verbose_name=_("View Count"))
+
+    # --- NEW FIELD FOR EDITORIAL CURATION ---
+    editor_rating = models.PositiveIntegerField(
+        default=0,
+        verbose_name=_("Editor's Rating"),
+        help_text=_("A score from 0-100 to feature this post. Higher numbers appear first.")
+    )
+
     class Meta:
         ordering = ('-published_date',)
         verbose_name = _("blog post")

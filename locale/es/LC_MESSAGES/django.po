@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-18 18:21+0000\n"
-"PO-Revision-Date: 2025-06-18 20:23+0200\n"
+"POT-Creation-Date: 2025-06-18 19:48+0000\n"
+"PO-Revision-Date: 2025-06-18 21:51+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -264,7 +264,7 @@ msgstr "Título"
 msgid "Author"
 msgstr "Autor"
 
-#: blog/models.py:41 blog/models.py:111 pages/models.py:38
+#: blog/models.py:41 blog/models.py:118 pages/models.py:38
 msgid "Content"
 msgstr "Contenido"
 
@@ -285,51 +285,61 @@ msgstr "Estado"
 msgid "Categories"
 msgstr "Categorías"
 
-#: blog/models.py:56
+#: blog/models.py:55
 msgid "View Count"
 msgstr "Número de vistas"
 
-#: blog/models.py:59
+#: blog/models.py:60
+msgid "Editor's Rating"
+msgstr "Calificación del Editor"
+
+#: blog/models.py:61
+msgid "A score from 0-100 to feature this post. Higher numbers appear first."
+msgstr ""
+"Una puntuación de 0-100 para presentar esta publicación. Los números más "
+"altos aparecen primero."
+
+#: blog/models.py:66
 msgid "blog post"
 msgstr "entrada de blog"
 
-#: blog/models.py:60
+#: blog/models.py:67
 msgid "blog posts"
 msgstr "entradas de blog"
 
-#: blog/models.py:84
+#: blog/models.py:91
 msgid "Post"
 msgstr "Post"
 
-#: blog/models.py:93
+#: blog/models.py:100
 msgid "Parent Comment"
 msgstr "Comentario Padre"
 
-#: blog/models.py:104
+#: blog/models.py:111
 msgid "User"
 msgstr "Usuario"
 
-#: blog/models.py:107
+#: blog/models.py:114
 msgid "Author Name"
 msgstr "Nombre del Autor"
 
-#: blog/models.py:108
+#: blog/models.py:115
 msgid "Author Email"
 msgstr "Email del Autor"
 
-#: blog/models.py:112
+#: blog/models.py:119
 msgid "Created At"
 msgstr "Fecha de Creación"
 
-#: blog/models.py:115
+#: blog/models.py:122
 msgid "Is Approved?"
 msgstr "¿Está aprobado?"
 
-#: blog/models.py:124
+#: blog/models.py:131
 msgid "comment"
 msgstr "comentario"
 
-#: blog/models.py:125
+#: blog/models.py:132
 msgid "comments"
 msgstr "comentarios"
 
@@ -914,7 +924,7 @@ msgstr "Nombre de la Zona"
 msgid "Slug (used in templates)"
 msgstr "Slug (used en plantillas)"
 
-#: widgets/models.py:16 widgets/models.py:41
+#: widgets/models.py:16 widgets/models.py:42
 msgid "Widget Zone"
 msgstr "Zona del Widget"
 
@@ -938,27 +948,31 @@ msgstr "Publicaciones de Blog Más Comentadas"
 msgid "Blog Category List"
 msgstr "Lista de Categorías de Blog"
 
-#: widgets/models.py:46
+#: widgets/models.py:33
+msgid "Editor's Picks (Blog Posts)"
+msgstr "Selección del Editor (Publicaciones de blog)"
+
+#: widgets/models.py:47
 msgid "Widget Type"
 msgstr "Tipo de Widget"
 
-#: widgets/models.py:50
+#: widgets/models.py:51
 msgid "Widget Title"
 msgstr "Título del Widget"
 
-#: widgets/models.py:51
+#: widgets/models.py:52
 msgid "The title that will be displayed above the widget."
 msgstr "El título que se mostrará encima del widget."
 
-#: widgets/models.py:55
+#: widgets/models.py:56
 msgid "Display Order"
 msgstr "Mostrar Orden"
 
-#: widgets/models.py:61
+#: widgets/models.py:62
 msgid "Number of items to show"
 msgstr "Número de artículos a mostrar"
 
-#: widgets/models.py:63
+#: widgets/models.py:64
 msgid ""
 "Used by widgets that display a list of items, like 'Recent Posts' or 'Blog "
 "Categories'."
@@ -966,28 +980,28 @@ msgstr ""
 "Utilizado por widgets que muestran una lista de elementos, como "
 "'Publicaciones recientes' o 'Categorías de blogs'."
 
-#: widgets/models.py:70
+#: widgets/models.py:71
 msgid "Filter by Blog Category (optional)"
 msgstr "Filtrar por Categoría de Blog (opcional)"
 
-#: widgets/models.py:71
+#: widgets/models.py:72
 msgid "If selected, the widget will only show posts from this category."
 msgstr ""
 "Si se selecciona, el widget solo mostrará publicaciones de esta categoría."
 
-#: widgets/models.py:78
+#: widgets/models.py:79
 msgid "Filter by Page Category (optional)"
 msgstr "Filtrar por categoría de página (opcional)"
 
-#: widgets/models.py:79
+#: widgets/models.py:80
 msgid "Used for a future 'List of Pages' widget."
 msgstr "Utilizado para un futuro widget 'Lista de páginas."
 
-#: widgets/models.py:84
+#: widgets/models.py:85
 msgid "Widget"
 msgstr "Widget"
 
-#: widgets/models.py:85
+#: widgets/models.py:86
 msgid "Widgets"
 msgstr "Widgets"
 
@@ -998,6 +1012,19 @@ msgstr "No hay categorías con publicaciones disponibles."
 #: widgets/templates/widgets/partials/_posts_widget.html:32
 msgid "No items to display."
 msgstr "No hay elementos para mostrar."
+
+#: widgets/templates/widgets/render_zone.html:25
+#, python-format
+msgid ""
+"\n"
+"                <strong>Widget Error:</strong> Template for widget type "
+"\"%(widget_type)s\" not found in the dispatcher.\n"
+"            "
+msgstr ""
+"\n"
+"                 <strong>Widget Error:</strong> Plantilla para el tipo de "
+"widget \"%(widget_type)s\" no se encuentra en el despachador.\n"
+"             "
 
 #~ msgid "Your Email"
 #~ msgstr "Tu Correo"

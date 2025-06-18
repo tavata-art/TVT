@@ -30,6 +30,7 @@ class Widget(models.Model):
         MOST_VIEWED_POSTS = 'most_viewed_posts', _('Most Viewed Blog Posts')
         MOST_COMMENTED_POSTS = 'most_commented_posts', _('Most Commented Blog Posts')
         BLOG_CATEGORIES = 'blog_categories', _('Blog Category List')
+        EDITOR_PICKS_POSTS = 'editor_picks_posts', _("Editor's Picks (Blog Posts)")
         # We can easily add more types in the future:
         # PAGE_LIST = 'page_list', _('List of Pages')
         # HTML_CONTENT = 'html_content', _('Custom HTML Content')

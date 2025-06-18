@@ -22,11 +22,12 @@ class PostCategoryAdmin(TabbedTranslationAdmin):
 class PostAdmin(SummernoteModelAdmin, TabbedTranslationAdmin):
     """ Admin options for the Post model, integrating Summernote and ModelTranslation. """
     
-    list_display = ('title', 'author', 'status', 'published_date')
+    list_display = ('title', 'author', 'status', 'published_date', 'views_count', 'editor_rating')
     list_filter = ('status', 'published_date', 'author', 'categories')
     search_fields = ('title', 'content')
     date_hierarchy = 'published_date'
     ordering = ('status', '-published_date')
+    list_editable = ('status', 'editor_rating')
     
     prepopulated_fields = {'slug': ('title',)}
     filter_horizontal = ('categories',)

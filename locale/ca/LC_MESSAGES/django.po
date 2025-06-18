@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-18 18:21+0000\n"
-"PO-Revision-Date: 2025-06-18 20:24+0200\n"
+"POT-Creation-Date: 2025-06-18 19:48+0000\n"
+"PO-Revision-Date: 2025-06-18 21:54+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "Language: ca\n"
@@ -263,7 +263,7 @@ msgstr "Títol"
 msgid "Author"
 msgstr "Autor"
 
-#: blog/models.py:41 blog/models.py:111 pages/models.py:38
+#: blog/models.py:41 blog/models.py:118 pages/models.py:38
 msgid "Content"
 msgstr "Contingut"
 
@@ -284,51 +284,61 @@ msgstr "Estat"
 msgid "Categories"
 msgstr "Categories"
 
-#: blog/models.py:56
+#: blog/models.py:55
 msgid "View Count"
 msgstr "Veure comte"
 
-#: blog/models.py:59
+#: blog/models.py:60
+msgid "Editor's Rating"
+msgstr "Qualificació de l'editor"
+
+#: blog/models.py:61
+msgid "A score from 0-100 to feature this post. Higher numbers appear first."
+msgstr ""
+"Una puntuació de 0-100 per presentar aquesta publicació. Primer apareixen "
+"números més alts."
+
+#: blog/models.py:66
 msgid "blog post"
 msgstr "entrada de blog"
 
-#: blog/models.py:60
+#: blog/models.py:67
 msgid "blog posts"
 msgstr "entrades de blog"
 
-#: blog/models.py:84
+#: blog/models.py:91
 msgid "Post"
 msgstr "Post"
 
-#: blog/models.py:93
+#: blog/models.py:100
 msgid "Parent Comment"
 msgstr "Comentari dels pares"
 
-#: blog/models.py:104
+#: blog/models.py:111
 msgid "User"
 msgstr "Usuari"
 
-#: blog/models.py:107
+#: blog/models.py:114
 msgid "Author Name"
 msgstr "Nom de l'autor"
 
-#: blog/models.py:108
+#: blog/models.py:115
 msgid "Author Email"
 msgstr "Correu electrònic de l’autor"
 
-#: blog/models.py:112
+#: blog/models.py:119
 msgid "Created At"
 msgstr "Data de Creació"
 
-#: blog/models.py:115
+#: blog/models.py:122
 msgid "Is Approved?"
 msgstr "S’aprova?"
 
-#: blog/models.py:124
+#: blog/models.py:131
 msgid "comment"
 msgstr "comentari"
 
-#: blog/models.py:125
+#: blog/models.py:132
 msgid "comments"
 msgstr "comentaris"
 
@@ -911,7 +921,7 @@ msgstr "Nom de la zona"
 msgid "Slug (used in templates)"
 msgstr "Slug (utilitzat en plantilla)"
 
-#: widgets/models.py:16 widgets/models.py:41
+#: widgets/models.py:16 widgets/models.py:42
 msgid "Widget Zone"
 msgstr "Zona Widget"
 
@@ -935,27 +945,31 @@ msgstr "Publicacions de blocs més comentades"
 msgid "Blog Category List"
 msgstr "Llista de categories de blocs"
 
-#: widgets/models.py:46
+#: widgets/models.py:33
+msgid "Editor's Picks (Blog Posts)"
+msgstr "Picks de l'editor (Publicacions de blocs)"
+
+#: widgets/models.py:47
 msgid "Widget Type"
 msgstr "Tipus de widget"
 
-#: widgets/models.py:50
+#: widgets/models.py:51
 msgid "Widget Title"
 msgstr "Títol de l'idget"
 
-#: widgets/models.py:51
+#: widgets/models.py:52
 msgid "The title that will be displayed above the widget."
 msgstr "El títol que es mostrarà per sobre del widget."
 
-#: widgets/models.py:55
+#: widgets/models.py:56
 msgid "Display Order"
 msgstr "Ordre de visualització"
 
-#: widgets/models.py:61
+#: widgets/models.py:62
 msgid "Number of items to show"
 msgstr "Nombre d’articles a mostrar"
 
-#: widgets/models.py:63
+#: widgets/models.py:64
 msgid ""
 "Used by widgets that display a list of items, like 'Recent Posts' or 'Blog "
 "Categories'."
@@ -963,28 +977,28 @@ msgstr ""
 "Utilitzat per widgets que mostren una llista d’elements, com ara “Postes "
 "recents” o “categories de blocs”'."
 
-#: widgets/models.py:70
+#: widgets/models.py:71
 msgid "Filter by Blog Category (optional)"
 msgstr "Filtre per categoria de blocs ( opcional )"
 
-#: widgets/models.py:71
+#: widgets/models.py:72
 msgid "If selected, the widget will only show posts from this category."
 msgstr ""
 "Si es selecciona, el widget només mostrarà publicacions d’aquesta categoria."
 
-#: widgets/models.py:78
+#: widgets/models.py:79
 msgid "Filter by Page Category (optional)"
 msgstr "Filtre per categoria de pàgina ( opcional )"
 
-#: widgets/models.py:79
+#: widgets/models.py:80
 msgid "Used for a future 'List of Pages' widget."
 msgstr "S'utilitza per a un futur widget \"Llista de pàgines."
 
-#: widgets/models.py:84
+#: widgets/models.py:85
 msgid "Widget"
 msgstr "Widget"
 
-#: widgets/models.py:85
+#: widgets/models.py:86
 msgid "Widgets"
 msgstr "Widgets"
 
@@ -995,6 +1009,19 @@ msgstr "No hi ha categories disponibles."
 #: widgets/templates/widgets/partials/_posts_widget.html:32
 msgid "No items to display."
 msgstr "No hi ha articles a mostrar."
+
+#: widgets/templates/widgets/render_zone.html:25
+#, python-format
+msgid ""
+"\n"
+"                <strong>Widget Error:</strong> Template for widget type "
+"\"%(widget_type)s\" not found in the dispatcher.\n"
+"            "
+msgstr ""
+"\n"
+"                <strong>Error de widget: </strong> Plantilla per a tipus "
+"widget \"%(widget_type)s\" que no es troba al despatxador.\n"
+"            "
 
 #~ msgid "Your Email"
 #~ msgstr "El vostre correu electrònic"

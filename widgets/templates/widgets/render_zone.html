@@ -1,23 +1,33 @@
-{# widgets/templates/widgets/render_zone.html (VERSIÓN CORREGIDA) #}
+{% load i18n %}
+{# File: widgets/templates/widgets/render_zone.html #}
+{# This template acts as a dispatcher. It receives the processed widget data #}
+{# and decides which partial template to include based on the widget's type. #}
 
 {% for data in processed_widgets %}
-    {# We check the widget type to decide which partial template to include. #}
 
-    {% if data.widget.widget_type == 'recent_posts' or data.widget.widget_type == 'most_viewed_posts' or data.widget.widget_type == 'most_commented_posts' %}
+    {# --- WIDGET TYPE DISPATCHER --- #}
 
-        {# For all post-list type widgets, we include the same partial. #}
+    {# Case 1: The widget is any type that displays a list of posts #}
+    {% if data.widget.widget_type == 'recent_posts' or data.widget.widget_type == 'most_viewed_posts' or data.widget.widget_type == 'most_commented_posts' or data.widget.widget_type == 'editor_picks_posts' %}
+        
         {% include 'widgets/partials/_posts_widget.html' with widget=data.widget items=data.items request=request %}
 
+    {# Case 2: The widget is for displaying blog categories #}
     {% elif data.widget.widget_type == 'blog_categories' %}
-
-        {# For the category widget, we include its specific partial. #}
+        
         {% include 'widgets/partials/_blog_categories_widget.html' with widget=data.widget items=data.items request=request %}
+    
+    {# You can add more 'elif' blocks here for future widget types, like 'page_list', etc. #}
 
+    {# Default Case: If the widget type is not recognized, show a helpful debug message. #}
     {% else %}
-        {# Fallback or for future widgets - you can add more elifs here #}
-        <div class="alert alert-warning">
-            Widget template for type "{{ data.widget.widget_type }}" not found.
+        <div class="alert alert-warning small">
+            {% blocktranslate with widget_type=data.widget.widget_type %}
+                <strong>Widget Error:</strong> Template for widget type "{{ widget_type }}" not found in the dispatcher.
+            {% endblocktranslate %}
         </div>
     {% endif %}
+    
+    {# --- END WIDGET TYPE DISPATCHER --- #}
 
 {% endfor %}

@@ -15,48 +15,59 @@ register = template.Library()
 @register.inclusion_tag('widgets/render_zone.html', takes_context=True)
 def show_widget_zone(context, zone_slug):
     """
-    Renders all widgets assigned to a specific WidgetZone.
-    Each widget type can have its own template and logic.
+    Renders all widgets assigned to a specific WidgetZone using a match/case dispatcher.
     """
     try:
-        # prefetch_related is a performance optimization
         zone = WidgetZone.objects.prefetch_related('widgets').get(slug=zone_slug)
         widgets = zone.widgets.all()
     except WidgetZone.DoesNotExist:
-        logger.warning(f"Widget zone with slug '{zone_slug}' not found in database.")
-        widgets = []
+        logger.warning(f"Widget zone with slug '{zone_slug}' not found.")
+        return {'processed_widgets': []} # Return early if zone doesn't exist
 
-    # We process the data for each widget before sending to the template
     processed_widgets = []
     for widget in widgets:
-        widget_data = {
-            'widget': widget,
-            'items': None, # Default to None
-        }
+        # Initialize with a default empty queryset
+        items_qs = Post.objects.none() 
 
-        # --- WIDGET LOGIC DISPATCHER ---
-        # Based on the widget type, we perform a specific query
+        # --- WIDGET LOGIC DISPATCHER using match/case ---
+        match widget.widget_type:
+            case 'recent_posts':
+                items_qs = Post.objects.filter(status='published').order_by('-published_date')
+            
+            case 'most_viewed_posts':
+                items_qs = Post.objects.filter(status='published').order_by('-views_count', '-published_date')
 
-        if widget.widget_type == 'recent_posts':
-            widget_data['items'] = Post.objects.filter(status='published').order_by('-published_date')[:widget.item_count]
+            case 'most_commented_posts':
+                items_qs = Post.objects.filter(status='published') \
+                                       .annotate(num_comments=Count('comments', filter=Q(comments__is_approved=True))) \
+                                       .filter(num_comments__gt=0) \
+                                       .order_by('-num_comments', '-published_date')
+            
+            case 'editor_picks_posts':
+                items_qs = Post.objects.filter(status='published', editor_rating__gt=0) \
+                                       .order_by('-editor_rating', '-published_date')
+            
+            case 'blog_categories':
+                # This case returns a different model, so we handle it separately
+                category_qs = PostCategory.objects.annotate(
+                                    num_posts=Count('posts', filter=Q(posts__status='published'))
+                                ).filter(num_posts__gt=0).order_by('-num_posts', 'name')
+                
+                # We limit the categories here if item_count should apply
+                widget_data = {'widget': widget, 'items': category_qs[:widget.item_count]}
+                processed_widgets.append(widget_data)
+                logger.debug(f"Widget '{widget.title}': Found {category_qs.count()} categories.")
+                continue  # Skip the common logic below for this special case
 
-        elif widget.widget_type == 'most_viewed_posts':
-            widget_data['items'] = Post.objects.filter(status='published').order_by('-views_count', '-published_date')[:widget.item_count]
-
-        elif widget.widget_type == 'most_commented_posts':
-            widget_data['items'] = Post.objects.filter(status='published') \
-                                               .annotate(num_comments=Count('comments', filter=Q(comments__is_approved=True))) \
-                                               .filter(num_comments__gt=0) \
-                                               .order_by('-num_comments', '-published_date')[:widget.item_count]
-
-        elif widget.widget_type == 'blog_categories':
-            widget_data['items'] = PostCategory.objects.annotate(
-                                        num_posts=Count('posts', filter=Q(posts__status='published'))
-                                    ).filter(num_posts__gt=0).order_by('-num_posts', 'name')[:widget.item_count]
-        logger.debug(f"Widget '{widget.title}': Found {widget_data['items'].count()} elements.")
-        # Add more elif blocks here for future widget types...
-
+            case _: # Default case for unrecognized widget types
+                logger.warning(f"Widget type '{widget.widget_type}' for widget '{widget.title}' has no defined logic.")
+                # items_qs remains an empty queryset
+        
+        # Common logic for all Post-based widgets (slicing)
+        final_items = items_qs[:widget.item_count]
+        
+        widget_data = {'widget': widget, 'items': final_items}
         processed_widgets.append(widget_data)
-
-    # Pass the request object from the main context into our tag's context
+        logger.debug(f"Widget '{widget.title}': Found {final_items.count()} items.")
+        
     return {'processed_widgets': processed_widgets, 'request': context['request']}
