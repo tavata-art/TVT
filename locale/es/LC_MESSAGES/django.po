@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-17 22:14+0000\n"
-"PO-Revision-Date: 2025-06-18 00:17+0200\n"
+"POT-Creation-Date: 2025-06-18 10:24+0000\n"
+"PO-Revision-Date: 2025-06-18 12:28+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -18,10 +18,96 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.6\n"
 
+#: accounts/forms.py:26
+msgid "Choose a username"
+msgstr "Elige un nombre de usuario"
+
+#: accounts/forms.py:30
+msgid "Enter password"
+msgstr "Introduzca contraseña"
+
+#: accounts/forms.py:34
+msgid "Confirm password"
+msgstr "Confirmar contraseña"
+
+#: accounts/forms.py:38 accounts/templates/registration/login.html:22
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: accounts/forms.py:39 accounts/templates/registration/login.html:26
+msgid "Password"
+msgstr "Contraseña"
+
+#: accounts/forms.py:40
+msgid "Confirm Password"
+msgstr "Confirmar contraseña"
+
+#: accounts/models.py:17
+msgid "Don't specify"
+msgstr "No especificado"
+
+#: accounts/models.py:18
+msgid "Female"
+msgstr "Femenino"
+
+#: accounts/models.py:19
+msgid "Male"
+msgstr "Masculino"
+
+#: accounts/models.py:20
+msgid "Non-binary"
+msgstr "No binario"
+
+#: accounts/models.py:30
+msgid "Display Name"
+msgstr "Nombre a mostrar"
+
+#: accounts/models.py:31
+msgid "Your full name or a nickname, which will be shown publicly."
+msgstr "Su nombre completo o un apodo, que se mostrará públicamente."
+
+#: accounts/models.py:35
+msgid "Public Email"
+msgstr "Correo Público"
+
+#: accounts/models.py:36
+msgid "An email address you don't mind sharing publicly for contact."
+msgstr ""
+"Una dirección de correo electrónico que no le importa compartir públicamente "
+"para el contacto."
+
+#: accounts/models.py:41
+msgid "Website URL"
+msgstr "Sitio Web URL"
+
+#: accounts/models.py:48
+msgid "Location"
+msgstr "Ubicación"
+
+#: accounts/models.py:52
+msgid "Biography"
+msgstr "Biografía"
+
+#: accounts/models.py:59
+msgid "Avatar"
+msgstr "Avatar"
+
+#: accounts/models.py:65
+msgid "Default Avatar Preference"
+msgstr "Preferencia de Avatar Predeterminada"
+
+#: accounts/models.py:69
+msgid "Profile"
+msgstr "Perfil"
+
+#: accounts/models.py:70
+msgid "Profiles"
+msgstr "Perfiles"
+
 #: accounts/templates/registration/login.html:5
 #: accounts/templates/registration/login.html:12
 #: accounts/templates/registration/login.html:30
-#: core/templates/core/partials/_header.html:49
+#: core/templates/core/partials/_header.html:66
 msgid "Log In"
 msgstr "Iniciar sesión"
 
@@ -31,13 +117,43 @@ msgstr ""
 "Su nombre de usuario y contraseña no coincidían. Por favor inténtalo de "
 "nuevo."
 
-#: accounts/templates/registration/login.html:22
-msgid "Username"
-msgstr "Nombre de usuario"
+#: accounts/templates/registration/login.html:40
+msgid "Don't have an account?"
+msgstr "¿No tiene una cuenta?"
 
-#: accounts/templates/registration/login.html:26
-msgid "Password"
-msgstr "Contraseña"
+#: accounts/templates/registration/login.html:40
+msgid "Sign up here"
+msgstr "Regístrate aquí"
+
+#: accounts/templates/registration/signup.html:5
+#: accounts/templates/registration/signup.html:50
+msgid "Sign Up"
+msgstr "Registrarse"
+
+#: accounts/templates/registration/signup.html:12
+msgid "Create an Account"
+msgstr "Crear una Cuenta"
+
+#: accounts/templates/registration/signup.html:30
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+"Requerido. 150 caracteres o menos. Letras, dígitos y @/./+/-/_ solamente."
+
+#: accounts/templates/registration/signup.html:38
+msgid "Your password must contain at least 8 characters."
+msgstr "Su contraseña debe contactar con los 8 caracteres."
+
+#: accounts/templates/registration/signup.html:56
+msgid "Already have an account?"
+msgstr "¿Ya tienes una cuenta?"
+
+#: accounts/templates/registration/signup.html:56
+msgid "Log in here"
+msgstr "Iniciar sesión aquí"
+
+#: accounts/views.py:34
+msgid "Welcome! Your account has been created successfully."
+msgstr "¡Bienvenido! Su acceso ha sido creado con éxito."
 
 #: blog/forms.py:14
 msgid "Your Name"
@@ -418,11 +534,14 @@ msgid "Search"
 msgstr "Buscar"
 
 #: core/templates/core/partials/_header.html:40
-#, python-format
-msgid "Hello, %(user_name)s!"
-msgstr "¡Hola, %(user_name)s!"
+msgid "View Profile"
+msgstr "Ver Perfil"
 
-#: core/templates/core/partials/_header.html:45
+#: core/templates/core/partials/_header.html:53
+msgid "Default Avatar"
+msgstr "Avatar por Default"
+
+#: core/templates/core/partials/_header.html:62
 msgid "Log Out"
 msgstr "Cerrar sesión"
 
@@ -811,6 +930,10 @@ msgstr "No hay categorías con publicaciones disponibles."
 #: widgets/templates/widgets/partials/_posts_widget.html:32
 msgid "No items to display."
 msgstr "No hay elementos para mostrar."
+
+#, python-format
+#~ msgid "Hello, %(user_name)s!"
+#~ msgstr "¡Hola, %(user_name)s!"
 
 #~ msgid "Number of Posts in 'Recent Posts' Widget"
 #~ msgstr "Widget: Número de Posts en 'Post Recientes'"

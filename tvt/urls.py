@@ -4,6 +4,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 
 # ==============================================================================
 # URLS THAT SHOULD NOT BE TRANSLATED (e.g., admin, auth process)
@@ -49,4 +51,10 @@ urlpatterns += i18n_patterns(
 # This is only for development (DEBUG=True) and should not be used in production.
 # The web server (e.g., Nginx) should be configured to serve media files.
 if settings.DEBUG:
+    # Añadimos las URLs para los archivos MEDIA
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    
+    # Este es para tus archivos de app (CSS, JS, imágenes por defecto)
+    # Es la forma recomendada por Django para desarrollo.
+    urlpatterns += staticfiles_urlpatterns()
+# ==============================================================================
