@@ -139,7 +139,21 @@ if ENVIRONMENT == 'testing' or ENVIRONMENT == 'production':
     }
 
 
+# --- CACHING CONFIGURATION ---
+# https://docs.djangoproject.com/en/5.2/topics/cache/
+CACHES = {
+    'default': {
+        # In-memory cache for development. Fast but resets with every server restart.
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'tavata-cms-unique-cache',
+    }
+}
 
+# Para producción, podríamos usar algo más robusto como Redis:
+# 'default': {
+#     'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+#     'LOCATION': 'redis://127.0.0.1:6379/1',
+# }
 
 
 # Password validation

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-18 19:48+0000\n"
-"PO-Revision-Date: 2025-06-18 21:51+0200\n"
+"POT-Creation-Date: 2025-06-18 20:41+0000\n"
+"PO-Revision-Date: 2025-06-18 22:52+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -900,19 +900,19 @@ msgstr ""
 msgid "Go to Homepage"
 msgstr "Ir a la página de inicio"
 
-#: tvt/settings.py:172
+#: tvt/settings.py:186
 msgid "Spanish"
 msgstr "Español"
 
-#: tvt/settings.py:173
+#: tvt/settings.py:187
 msgid "English"
 msgstr "Inglés"
 
-#: tvt/settings.py:174
+#: tvt/settings.py:188
 msgid "Català"
 msgstr "Catalán"
 
-#: widgets/admin.py:27
+#: widgets/admin.py:32
 msgid "Number of Widgets"
 msgstr "Número de Widgets"
 
@@ -980,28 +980,40 @@ msgstr ""
 "Utilizado por widgets que muestran una lista de elementos, como "
 "'Publicaciones recientes' o 'Categorías de blogs'."
 
-#: widgets/models.py:71
+#: widgets/models.py:69
+msgid "Cache Timeout (in seconds)"
+msgstr "Tiempo de espera en caché (en segundos)"
+
+#: widgets/models.py:70
+msgid ""
+"How long the results of this widget should be stored in cache. 0 to disable "
+"caching for this widget."
+msgstr ""
+"Cuánto tiempo deben almacenarse los resultados de este widget en caché. 0 "
+"para deshabilitar el almacenamiento en caché de este widget."
+
+#: widgets/models.py:77
 msgid "Filter by Blog Category (optional)"
 msgstr "Filtrar por Categoría de Blog (opcional)"
 
-#: widgets/models.py:72
+#: widgets/models.py:78
 msgid "If selected, the widget will only show posts from this category."
 msgstr ""
 "Si se selecciona, el widget solo mostrará publicaciones de esta categoría."
 
-#: widgets/models.py:79
+#: widgets/models.py:85
 msgid "Filter by Page Category (optional)"
 msgstr "Filtrar por categoría de página (opcional)"
 
-#: widgets/models.py:80
+#: widgets/models.py:86
 msgid "Used for a future 'List of Pages' widget."
 msgstr "Utilizado para un futuro widget 'Lista de páginas."
 
-#: widgets/models.py:85
+#: widgets/models.py:91
 msgid "Widget"
 msgstr "Widget"
 
-#: widgets/models.py:86
+#: widgets/models.py:92
 msgid "Widgets"
 msgstr "Widgets"
 

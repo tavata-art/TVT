@@ -64,6 +64,12 @@ class Widget(models.Model):
         help_text=_("Used by widgets that display a list of items, like 'Recent Posts' or 'Blog Categories'.")
     )
     
+    cache_timeout = models.PositiveIntegerField(
+        default=900, # Default to 15 minutes (900 seconds)
+        verbose_name=_("Cache Timeout (in seconds)"),
+        help_text=_("How long the results of this widget should be stored in cache. 0 to disable caching for this widget.")
+    )
+    
     blog_category_filter = models.ForeignKey(
         PostCategory, 
         null=True, blank=True, 
