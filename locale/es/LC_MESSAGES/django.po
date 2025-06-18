@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-18 20:41+0000\n"
-"PO-Revision-Date: 2025-06-18 22:52+0200\n"
+"POT-Creation-Date: 2025-06-18 22:05+0000\n"
+"PO-Revision-Date: 2025-06-19 00:08+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -619,6 +619,15 @@ msgstr "Anterior"
 msgid "Next"
 msgstr "Siguiente"
 
+#: core/templates/core/partials/_topbar.html:17 site_settings/models.py:55
+msgid "Site Logo"
+msgstr "Logotipo del Sitio"
+
+#: core/templates/core/partials/_topbar.html:35
+#: core/templates/core/partials/_topbar.html:38
+msgid "Advertisement"
+msgstr "Publicidad"
+
 #: menus/models.py:9
 msgid "Menu Title"
 msgstr "Título del Menú"
@@ -881,8 +890,36 @@ msgstr ""
 "Si está marcado, los nuevos comentarios se publicarán inmediatamente sin "
 "moderación."
 
-#: site_settings/models.py:52 site_settings/models.py:53
 #: site_settings/models.py:56
+msgid "The main logo displayed in the top bar."
+msgstr "El logotipo principal que se muestra en la barra superior."
+
+#: site_settings/models.py:61
+msgid "Site Slogan"
+msgstr "Sitio Slogan"
+
+#: site_settings/models.py:62
+msgid "A short tagline displayed next to the logo."
+msgstr "Un eslogan corto que se muestra junto al logotipo."
+
+#: site_settings/models.py:69
+msgid "Top Bar Banner Image"
+msgstr "Imagen de Top Bar Banner"
+
+#: site_settings/models.py:70
+msgid "An optional banner image displayed in the top bar."
+msgstr "Una imagen de banner opcional que se muestra en la barra superior."
+
+#: site_settings/models.py:75
+msgid "Top Bar Banner Link"
+msgstr "Enlace de Banner de Barra Superior"
+
+#: site_settings/models.py:76
+msgid "The URL the banner image will link to."
+msgstr "La URL a la que se vinculará la imagen del banner."
+
+#: site_settings/models.py:80 site_settings/models.py:81
+#: site_settings/models.py:84
 msgid "Site Configuration"
 msgstr "Configuración del Sitio"
 

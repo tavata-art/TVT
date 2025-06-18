@@ -20,3 +20,11 @@ def show_menu(menu_slug):
         logger.warning(f"Menu with slug '{menu_slug}' not found in database.")
         # Si el menú no existe, devolvemos una lista vacía para no romper la plantilla
         return {'menu_items': []}
+    
+@register.inclusion_tag('menus/social_links_menu.html')
+def show_social_links():
+    try:
+        menu = Menu.objects.get(slug='social-links')
+        return {'menu_items': menu.items.all()}
+    except Menu.DoesNotExist:
+        return {'menu_items': []}

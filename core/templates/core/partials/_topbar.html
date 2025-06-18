@@ -1,0 +1,49 @@
+<!-- File: core/templates/core/partials/_topbar.html -->
+{% load static %}
+{% load i18n %}
+{% load settings_tags %}
+{% load menu_tags %}
+
+{# Get the global site configuration object once #}
+{% get_site_config as site_config %}
+
+<div class="top-bar bg-tavata-primary py-2 shadow-sm">
+    <div class="container d-flex justify-content-between align-items-center">
+
+        <!-- Left Side: Logo and Slogan -->
+        <div class="brand-identity">
+            <a href="{% url 'home' %}" class="text-decoration-none d-flex align-items-center">
+                {% if site_config.site_logo %}
+                    <img src="{{ site_config.site_logo.url }}" alt="{% translate 'Site Logo' %}" style="height: 40px;" class="me-3">
+                {% else %}
+                    <i class="fas fa-bee text-dark fa-2x me-3"></i>
+                {% endif %}
+                <div>
+                    <span class="fw-bold fs-5 text-dark d-block">Tavata CMS</span>
+                    {% if site_config.site_slogan %}
+                        <small class="text-dark d-block">{{ site_config.site_slogan }}</small>
+                    {% endif %}
+                </div>
+            </a>
+        </div>
+
+        <!-- Center: Banner/Ad (optional) -->
+        <div class="top-bar-banner mx-auto">
+            {% if site_config.top_bar_banner_image and site_config.top_bar_banner_image.url %}
+                {% if site_config.top_bar_banner_link %}
+                    <a href="{{ site_config.top_bar_banner_link }}" target="_blank" rel="noopener noreferrer">
+                        <img src="{{ site_config.top_bar_banner_image.url }}" alt="{% translate 'Advertisement' %}" style="max-height: 50px;">
+                    </a>
+                {% else %}
+                    <img src="{{ site_config.top_bar_banner_image.url }}" alt="{% translate 'Advertisement' %}" style="max-height: 50px;">
+                {% endif %}
+            {% endif %}
+        </div>
+
+        <!-- Right Side: Social Media Links -->
+        <div class="social-links">
+            {% show_social_links %}
+        </div>
+
+    </div>
+</div>

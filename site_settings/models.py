@@ -48,6 +48,34 @@ class SiteConfiguration(SingletonModel):
         help_text=_("If checked, new comments will be published immediately without moderation.")
     )
 
+    # --- Branding Settings ---
+    site_logo = models.ImageField(
+        upload_to='site_branding/',
+        blank=True, null=True,
+        verbose_name=_("Site Logo"),
+        help_text=_("The main logo displayed in the top bar.")
+    )
+    site_slogan = models.CharField(
+        max_length=150, 
+        blank=True, 
+        verbose_name=_("Site Slogan"),
+        help_text=_("A short tagline displayed next to the logo.")
+    )
+
+    # --- Top Bar Banner/Ad Settings ---
+    top_bar_banner_image = models.ImageField(
+        upload_to='site_branding/banners/',
+        blank=True, null=True,
+        verbose_name=_("Top Bar Banner Image"),
+        help_text=_("An optional banner image displayed in the top bar.")
+    )
+    top_bar_banner_link = models.URLField(
+        max_length=255, 
+        blank=True, 
+        verbose_name=_("Top Bar Banner Link"),
+        help_text=_("The URL the banner image will link to.")
+    )
+
     class Meta:
         verbose_name = _("Site Configuration")
         verbose_name_plural = _("Site Configuration")

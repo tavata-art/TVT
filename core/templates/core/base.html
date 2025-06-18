@@ -20,15 +20,21 @@
     {% block extra_css %}{% endblock %}
 </head>
 
-{# These body classes help with styling and keeping the footer at the bottom #}
 {# These body classes use Flexbox to ensure the footer sticks to the bottom on short pages #}
 <body class="d-flex flex-column min-vh-100 bg-light">
 
-    {# 1. Include the Header partial from a separate file for organization #}
+    {# --- TOP BAR FOR BRANDING AND SOCIALS --- #}
+    {# This is the new top section for the site's main identity. #}
+    {% include 'core/partials/_topbar.html' %}
+    {# --- END TOP BAR --- #}
+
+    {# --- MAIN HEADER / NAVBAR --- #}
+    {# This includes the main navigation menu. #}
     {% include 'core/partials/_header.html' %}
+    {# --- END MAIN HEADER --- #}
 
 
-    {# 2. Main Content Area #}
+    {# --- MAIN CONTENT AREA --- #}
     <main class="container-fluid flex-grow-1 py-4">
         <div class="row">
 
@@ -41,8 +47,6 @@
             <div class="col-lg-6 col-md-9 col-sm-12">
                 
                 {# --- FLASH MESSAGES BLOCK --- #}
-                {# This block is where Django's messages will be displayed. #}
-                {# Child templates can override this to move or disable messages. #}
                 {% block messages %}
                     {% if messages %}
                         <div class="messages-container">
@@ -74,11 +78,12 @@
     </main>
 
     
-    {# 3. Include the Footer partial #}
+    {# --- FOOTER --- #}
     {% include 'core/partials/_footer.html' %}
+    {# --- END FOOTER --- #}
     
 
-    {# --- JavaScripts --- #}
+    {# --- JAVASCRIPTS --- #}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
     {# Block for extra, page-specific JavaScript #}
