@@ -1,35 +1,52 @@
-# tvt/urls.py
-from django.conf.urls.i18n import i18n_patterns
-from django.urls import path, include
 from django.conf import settings
+from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth import views as auth_views 
+from django.contrib.auth import views as auth_views
 
+# ==============================================================================
+# URLS THAT SHOULD NOT BE TRANSLATED (e.g., admin, auth process)
+# ==============================================================================
 urlpatterns = [
+    # 1. Django Admin
     path('admin/', admin.site.urls),
-    # 1. Definimos nuestra propia URL de logout para que redirija inmediatamente.
-    #    La vista LogoutView, si no encuentra una plantilla de confirmación,
-    #    redirige al LOGOUT_REDIRECT_URL que definimos en settings.py.
-    #    Para forzarlo en algunos casos, se puede especificar next_page.
-    #    Pero la clave es NO tener una plantilla logged_out.html.
-    # Vamos a probar la forma más limpia.
-    path('accounts/logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
-
-    # 2. Incluimos el resto de las URLs de auth (login, password_reset, etc.)
-    path('accounts/', include('django.contrib.auth.urls')),
+    
+    # 2. Third-party app URLs (like summernote)
     path('summernote/', include('django_summernote.urls')),
+    
+    # 3. Custom Authentication URLs
+    # This URL for signup comes from our own 'accounts' app.
+    # It must come BEFORE the generic include below.
+    path('accounts/', include('accounts.urls', namespace='accounts')),
+
+    # This includes all of Django's built-in auth URLs (login, password reset, etc.)
+    # Our custom logout is technically handled by django.contrib.auth.urls's default logout,
+    # as we now handle the POST request in the template. If we needed a custom
+    # next_page, we'd define a specific logout path here BEFORE this include.
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
-# URLs que SÍ tendrán el prefijo de idioma (/es/..., /en/...)
+
+# ==============================================================================
+# URLS THAT WILL BE PREFIXED WITH A LANGUAGE CODE (e.g., /en/blog/, /es/blog/)
+# ==============================================================================
 urlpatterns += i18n_patterns(
-    path('search/', include('search.urls', namespace='search')), # <-- new line with namespace
+    # Our own apps with content visible to the user
+    path('search/', include('search.urls', namespace='search')),
     path('pages/', include('pages.urls', namespace='pages')),
     path('blog/', include('blog.urls', namespace='blog')),
     path('contact/', include('contact.urls', namespace='contact')),
+
+    # Homepage must be the last one in this block
     path('', include('core.urls')),
 )
 
+
+# ==============================================================================
+# SERVING MEDIA FILES IN DEVELOPMENT
+# ==============================================================================
+# This is only for development (DEBUG=True) and should not be used in production.
+# The web server (e.g., Nginx) should be configured to serve media files.
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
