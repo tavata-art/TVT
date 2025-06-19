@@ -1,16 +1,8 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
-from .models import Page, Category
+from .models import Page
 from django_summernote.admin import SummernoteModelAdmin
 from modeltranslation.admin import TabbedTranslationAdmin
-
-@admin.register(Category)
-class CategoryAdmin(TabbedTranslationAdmin):
-    """ Admin options for the Category model. """
-    list_display = ('name', 'slug')
-    prepopulated_fields = {'slug': ('name',)}
-    search_fields = ('name',)
-
 
 @admin.register(Page)
 class PageAdmin(SummernoteModelAdmin, TabbedTranslationAdmin):

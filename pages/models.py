@@ -2,28 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-
-class Category(models.Model):
-    """ Represents a category for grouping static pages. """
-    name = models.CharField(max_length=100, unique=True, verbose_name=_("Name"))
-    slug = models.SlugField(max_length=100, unique=True, verbose_name=_("Slug"))
-    description = models.TextField(blank=True, verbose_name=_("Description"))
-    
-    meta_title = models.CharField(max_length=70, blank=True, null=True, verbose_name=_("Meta Title (SEO)"))
-    meta_description = models.CharField(max_length=160, blank=True, null=True, verbose_name=_("Meta Description (SEO)"))
-    
-    class Meta:
-        verbose_name = _("page category")
-        verbose_name_plural = _("page categories")
-        ordering = ['name']
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        # This generates the URL to list all pages within this category.
-        return reverse('pages:pages_by_category', args=[self.slug])
-
+from django.contrib.contenttypes.fields import GenericRelation
+from categories.models import Category
 
 class Page(models.Model):
     """ Represents a single static page in the CMS, like 'About Us'. """
@@ -41,10 +21,10 @@ class Page(models.Model):
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft', verbose_name=_("Status"))
     
     categories = models.ManyToManyField(
-        Category, 
-        verbose_name=_("Categories"), 
-        related_name="pages",
-        blank=True
+        Category,
+        blank=True,
+        verbose_name=_("Categories"),
+        related_name="pages"
     )
     
     is_homepage = models.BooleanField(

@@ -7,7 +7,8 @@ from django.shortcuts import render, get_object_or_404
 from django.utils.translation import gettext
 
 from .forms import CommentForm
-from .models import Post, PostCategory, Comment
+from .models import Post, Comment
+from categories.models import Category
 from site_settings.models import SiteConfiguration
 
 logger = logging.getLogger(__name__)
@@ -144,8 +145,8 @@ def posts_by_category_view(request, category_slug):
     belonging to a specific blog category.
     """
     # --- 1. Get Base Data ---
-    category = get_object_or_404(PostCategory, slug=category_slug)
-    all_posts_in_category = category.posts.filter(status='published').order_by('-published_date')
+    category = get_object_or_404(Category, slug=category_slug)
+    all_posts_in_category = category.blog_posts.filter(status='published').order_by('-published_date')
 
     # --- 2. Get Pagination Settings ---
     try:

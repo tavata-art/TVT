@@ -1,10 +1,9 @@
-# blog/translation.py   
+# File: blog/translation.py
 from modeltranslation.translator import register, TranslationOptions
-from .models import Post, PostCategory, Comment
+# Solo importamos los modelos que SÍ existen en blog.models
+from .models import Post, Comment 
 
-@register(PostCategory)
-class PostCategoryTranslationOptions(TranslationOptions):
-    fields = ('name', 'slug', 'meta_title', 'meta_description')
+# La clase para PostCategory ha sido eliminada.
 
 @register(Post)
 class PostTranslationOptions(TranslationOptions):
