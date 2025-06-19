@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
-from django.conf import settings
 from django.templatetags.static import static 
 
 class Profile(models.Model):
@@ -66,7 +65,11 @@ class Profile(models.Model):
         default=AvatarChoice.PRIVATE,
         verbose_name=_("Default Avatar Preference")
     )
-
+    is_trusted_commenter = models.BooleanField(
+        default=False,
+        verbose_name=_("Is a Trusted Commenter?"),
+        help_text=_("If checked, comments are automatically approved.")
+    )
     class Meta:
         verbose_name = _("Profile")
         verbose_name_plural = _("Profiles")

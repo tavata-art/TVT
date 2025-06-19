@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-19 07:55+0000\n"
-"PO-Revision-Date: 2025-06-19 09:56+0200\n"
+"POT-Creation-Date: 2025-06-19 11:25+0000\n"
+"PO-Revision-Date: 2025-06-19 13:27+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -70,65 +70,73 @@ msgstr "Foto de Perfil"
 msgid "Use default avatar"
 msgstr "Usar avatar predeterminado"
 
-#: accounts/models.py:19
+#: accounts/models.py:18
 msgid "Don't specify"
 msgstr "No especificado"
 
-#: accounts/models.py:20
+#: accounts/models.py:19
 msgid "Female"
 msgstr "Femenino"
 
-#: accounts/models.py:21
+#: accounts/models.py:20
 msgid "Male"
 msgstr "Masculino"
 
-#: accounts/models.py:22
+#: accounts/models.py:21
 msgid "Non-binary"
 msgstr "No binario"
 
-#: accounts/models.py:32
+#: accounts/models.py:31
 msgid "Display Name"
 msgstr "Nombre a mostrar"
 
-#: accounts/models.py:33
+#: accounts/models.py:32
 msgid "Your full name or a nickname, which will be shown publicly."
 msgstr "Su nombre completo o un apodo, que se mostrará públicamente."
 
-#: accounts/models.py:37
+#: accounts/models.py:36
 msgid "Public Email"
 msgstr "Correo Público"
 
-#: accounts/models.py:38
+#: accounts/models.py:37
 msgid "An email address you don't mind sharing publicly for contact."
 msgstr ""
 "Una dirección de correo electrónico que no le importa compartir públicamente "
 "para el contacto."
 
-#: accounts/models.py:43
+#: accounts/models.py:42
 msgid "Website URL"
 msgstr "Sitio Web URL"
 
-#: accounts/models.py:50
+#: accounts/models.py:49
 msgid "Location"
 msgstr "Ubicación"
 
-#: accounts/models.py:54
+#: accounts/models.py:53
 msgid "Biography"
 msgstr "Biografía"
 
-#: accounts/models.py:61
+#: accounts/models.py:60
 msgid "Avatar"
 msgstr "Avatar"
 
-#: accounts/models.py:67
+#: accounts/models.py:66
 msgid "Default Avatar Preference"
 msgstr "Preferencia de Avatar Predeterminada"
 
+#: accounts/models.py:70
+msgid "Is a Trusted Commenter?"
+msgstr "¿Es un Comentarista de Confianza?"
+
 #: accounts/models.py:71
+msgid "If checked, comments are automatically approved."
+msgstr "Si se comprueba, los comentarios se aprueban automáticamente."
+
+#: accounts/models.py:74
 msgid "Profile"
 msgstr "Perfil"
 
-#: accounts/models.py:72
+#: accounts/models.py:75
 msgid "Profiles"
 msgstr "Perfiles"
 
@@ -447,7 +455,7 @@ msgstr ""
 msgid "There are currently no published posts in this category."
 msgstr "Actualmente no hay entradas publicadas en esta categoría."
 
-#: blog/views.py:114
+#: blog/views.py:112
 msgid "Thank you! Your comment has been published."
 msgstr "¡Gracias! Su comentario ha sido publicado."
 
@@ -914,24 +922,36 @@ msgstr "Sitio Slogan"
 msgid "A short tagline displayed next to the logo."
 msgstr "Un eslogan corto que se muestra junto al logotipo."
 
-#: site_settings/models.py:74
+#: site_settings/models.py:71
+msgid "Trusted Commenter Threshold"
+msgstr "Umbral de Comentario de Confianza"
+
+#: site_settings/models.py:72
+msgid ""
+"The number of approved comments a user needs to post before their future "
+"comments are auto-approved."
+msgstr ""
+"El número de comentarios aprobados que un usuario debe publicar antes de que "
+"sus comentarios futuros sean aprobados automáticamente."
+
+#: site_settings/models.py:78
 msgid "Top Bar Banner Image"
 msgstr "Imagen de Top Bar Banner"
 
-#: site_settings/models.py:75
+#: site_settings/models.py:79
 msgid "An optional banner image displayed in the top bar."
 msgstr "Una imagen de banner opcional que se muestra en la barra superior."
 
-#: site_settings/models.py:80
+#: site_settings/models.py:84
 msgid "Top Bar Banner Link"
 msgstr "Enlace de Banner de Barra Superior"
 
-#: site_settings/models.py:81
+#: site_settings/models.py:85
 msgid "The URL the banner image will link to."
 msgstr "La URL a la que se vinculará la imagen del banner."
 
-#: site_settings/models.py:85 site_settings/models.py:86
-#: site_settings/models.py:89
+#: site_settings/models.py:89 site_settings/models.py:90
+#: site_settings/models.py:93
 msgid "Site Configuration"
 msgstr "Configuración del Sitio"
 
