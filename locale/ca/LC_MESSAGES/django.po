@@ -1,0 +1,1133 @@
+# Catalan translations for tvt-cms project.
+# Copyright (C) 2025 Gustavo
+# This file is distributed under the same license as the tvt-cms package.
+# Gustavo <tu_email@ejemplo.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tvt-cms 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-19 07:55+0000\n"
+"PO-Revision-Date: 2025-06-19 09:57+0200\n"
+"Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
+"Language-Team: Catalan <ca@li.org>\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
+
+#: accounts/forms.py:27
+msgid "Choose a username"
+msgstr "Trieu un nom d’usuari"
+
+#: accounts/forms.py:28
+msgid "Enter password"
+msgstr "Introduïu la contrasenya"
+
+#: accounts/forms.py:29
+msgid "Confirm password"
+msgstr "Confirmeu la contrasenya"
+
+#: accounts/forms.py:30 accounts/templates/registration/login.html:22
+msgid "Username"
+msgstr "Nom d'usuari"
+
+#: accounts/forms.py:31 accounts/templates/registration/login.html:26
+msgid "Password"
+msgstr "Contrasenya"
+
+#: accounts/forms.py:32
+msgid "Confirm Password"
+msgstr "Confirmeu la contrasenya"
+
+#: accounts/forms.py:51
+msgid "First Name"
+msgstr "Nom de visualització"
+
+#: accounts/forms.py:52
+msgid "Last Name"
+msgstr "Últim nom"
+
+#: accounts/forms.py:53
+msgid "Contact Email"
+msgstr "Contacte Correu electrònic"
+
+#: accounts/forms.py:54
+msgid "Your first name"
+msgstr "El vostre nom"
+
+#: accounts/forms.py:55
+msgid "Your last name"
+msgstr "El vostre cognom"
+
+#: accounts/forms.py:65
+msgid "Profile Picture"
+msgstr "Perfil Imatge"
+
+#: accounts/forms.py:70
+msgid "Use default avatar"
+msgstr "Utilitzeu avatar predeterminat"
+
+#: accounts/models.py:19
+msgid "Don't specify"
+msgstr "No especifiqueu"
+
+#: accounts/models.py:20
+msgid "Female"
+msgstr "Femenina"
+
+#: accounts/models.py:21
+msgid "Male"
+msgstr "Home"
+
+#: accounts/models.py:22
+msgid "Non-binary"
+msgstr "No binari"
+
+#: accounts/models.py:32
+msgid "Display Name"
+msgstr "Nom de visualització"
+
+#: accounts/models.py:33
+msgid "Your full name or a nickname, which will be shown publicly."
+msgstr "El vostre nom complet o un sobrenom, que es mostrarà públicament."
+
+#: accounts/models.py:37
+msgid "Public Email"
+msgstr "Correu electrònic públic"
+
+#: accounts/models.py:38
+msgid "An email address you don't mind sharing publicly for contact."
+msgstr ""
+"Una adreça de correu electrònic a la qual no t'importa compartir públicament "
+"el contacte."
+
+#: accounts/models.py:43
+msgid "Website URL"
+msgstr "URL del lloc web"
+
+#: accounts/models.py:50
+msgid "Location"
+msgstr "Ubicació"
+
+#: accounts/models.py:54
+msgid "Biography"
+msgstr "Biografia"
+
+#: accounts/models.py:61
+msgid "Avatar"
+msgstr "Avatar"
+
+#: accounts/models.py:67
+msgid "Default Avatar Preference"
+msgstr "Preferència avatar predeterminada"
+
+#: accounts/models.py:71
+msgid "Profile"
+msgstr "Perfil"
+
+#: accounts/models.py:72
+msgid "Profiles"
+msgstr "Perfils"
+
+#: accounts/templates/registration/login.html:5
+#: accounts/templates/registration/login.html:12
+#: accounts/templates/registration/login.html:30
+#: core/templates/core/partials/_header.html:60
+msgid "Log In"
+msgstr "Iniciar sessió"
+
+#: accounts/templates/registration/login.html:16
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+"El vostre nom d’usuari i la vostra contrasenya no coincideixen. Torneu-ho a "
+"provar."
+
+#: accounts/templates/registration/login.html:40
+msgid "Don't have an account?"
+msgstr "No teniu cap compte?"
+
+#: accounts/templates/registration/login.html:40
+msgid "Sign up here"
+msgstr "Registra't aquí"
+
+#: accounts/templates/registration/profile_edit.html:5
+#: core/templates/core/partials/_header.html:40
+msgid "Edit Profile"
+msgstr "Edita el perfil"
+
+#: accounts/templates/registration/profile_edit.html:12
+msgid "Edit Your Profile"
+msgstr "Edita el teu perfil"
+
+#: accounts/templates/registration/profile_edit.html:20
+msgid "User Information"
+msgstr "Informació de l'usuari"
+
+#: accounts/templates/registration/profile_edit.html:37
+msgid "Profile Details"
+msgstr "Detalls del perfil"
+
+#: accounts/templates/registration/profile_edit.html:49
+msgid "Current Avatar"
+msgstr "Avatar actual"
+
+#: accounts/templates/registration/profile_edit.html:77
+msgid "Save Changes"
+msgstr "Desa els canvis"
+
+#: accounts/templates/registration/signup.html:5
+#: accounts/templates/registration/signup.html:50
+msgid "Sign Up"
+msgstr "Registra't"
+
+#: accounts/templates/registration/signup.html:12
+msgid "Create an Account"
+msgstr "Crear un compte"
+
+#: accounts/templates/registration/signup.html:30
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "Obligat. 150 caràcters o menys. Cartes, dígits i @/./ + / - / _ només."
+
+#: accounts/templates/registration/signup.html:38
+msgid "Your password must contain at least 8 characters."
+msgstr "La vostra contrasenya ha de contenir almenys 8 caràcters."
+
+#: accounts/templates/registration/signup.html:56
+msgid "Already have an account?"
+msgstr "Ja teniu un compte?"
+
+#: accounts/templates/registration/signup.html:56
+msgid "Log in here"
+msgstr "Inicieu la sessió aquí"
+
+#: accounts/views.py:25
+msgid "Welcome! Your account has been created successfully."
+msgstr "Benvingut! El vostre compte s’ha creat amb èxit."
+
+#: accounts/views.py:83
+msgid "Your profile has been updated successfully!"
+msgstr "El vostre perfil s’ha actualitzat amb èxit!"
+
+#: blog/forms.py:39
+msgid "Write your comment here..."
+msgstr "Escriu el teu missatge aquí..."
+
+#: blog/forms.py:43
+msgid "Your Name (required)"
+msgstr "El vostre nom (obligatori)"
+
+#: blog/forms.py:47
+msgid "Your Email (required, not published)"
+msgstr "El vostre correu electrònic (obligatori, no publicat)"
+
+#: blog/models.py:11 contact/models.py:21 pages/models.py:8
+msgid "Name"
+msgstr "Nom"
+
+#: blog/models.py:12 blog/models.py:38 pages/models.py:9
+msgid "Slug"
+msgstr "Slug"
+
+#: blog/models.py:14 blog/models.py:50 pages/models.py:12 pages/models.py:56
+msgid "Meta Title (SEO)"
+msgstr "Meta Títol (SEO)"
+
+#: blog/models.py:15 blog/models.py:51 pages/models.py:13 pages/models.py:57
+msgid "Meta Description (SEO)"
+msgstr "Meta Descripció (SEO)"
+
+#: blog/models.py:18
+msgid "blog category"
+msgstr "categoria de blog"
+
+#: blog/models.py:19
+msgid "blog categories"
+msgstr "categories de blog"
+
+#: blog/models.py:34 pages/models.py:32
+msgid "Draft"
+msgstr "Esborrany"
+
+#: blog/models.py:35 pages/models.py:33
+msgid "Published"
+msgstr "Publicat"
+
+#: blog/models.py:37 pages/models.py:36
+msgid "Title"
+msgstr "Títol"
+
+#: blog/models.py:39 pages/models.py:40
+msgid "Author"
+msgstr "Autor"
+
+#: blog/models.py:41 blog/models.py:118 pages/models.py:38
+msgid "Content"
+msgstr "Contingut"
+
+#: blog/models.py:42
+msgid "Featured Image"
+msgstr "Imatge Destacada"
+
+#: blog/models.py:44
+msgid "Published Date"
+msgstr "Data de Publicació"
+
+#: blog/models.py:46 pages/models.py:41
+msgid "Status"
+msgstr "Estat"
+
+#: blog/models.py:48 pages/models.py:45
+#: pages/templates/pages/page_detail.html:52
+msgid "Categories"
+msgstr "Categories"
+
+#: blog/models.py:55
+msgid "View Count"
+msgstr "Veure comte"
+
+#: blog/models.py:60
+msgid "Editor's Rating"
+msgstr "Qualificació de l'editor"
+
+#: blog/models.py:61
+msgid "A score from 0-100 to feature this post. Higher numbers appear first."
+msgstr ""
+"Una puntuació de 0-100 per presentar aquesta publicació. Primer apareixen "
+"números més alts."
+
+#: blog/models.py:66
+msgid "blog post"
+msgstr "entrada de blog"
+
+#: blog/models.py:67
+msgid "blog posts"
+msgstr "entrades de blog"
+
+#: blog/models.py:91
+msgid "Post"
+msgstr "Post"
+
+#: blog/models.py:100
+msgid "Parent Comment"
+msgstr "Comentari dels pares"
+
+#: blog/models.py:111
+msgid "User"
+msgstr "Usuari"
+
+#: blog/models.py:114
+msgid "Author Name"
+msgstr "Nom de l'autor"
+
+#: blog/models.py:115
+msgid "Author Email"
+msgstr "Correu electrònic de l’autor"
+
+#: blog/models.py:119
+msgid "Created At"
+msgstr "Data de Creació"
+
+#: blog/models.py:122
+msgid "Is Approved?"
+msgstr "S’aprova?"
+
+#: blog/models.py:131
+msgid "comment"
+msgstr "comentari"
+
+#: blog/models.py:132
+msgid "comments"
+msgstr "comentaris"
+
+#: blog/templates/blog/post_detail.html:35
+#, python-format
+msgid ""
+"\n"
+"                Published on %(published_date)s by %(author)s\n"
+"            "
+msgstr ""
+"\n"
+"                Publicat el %(published_date)s per %(author)s\n"
+"                "
+
+#: blog/templates/blog/post_detail.html:52
+#, python-format
+msgid "%(count)s Comment"
+msgid_plural "%(count)s Comments"
+msgstr[0] "%(count)s Comentari"
+msgstr[1] "%(count)s Comentaris"
+
+#: blog/templates/blog/post_detail.html:70
+msgid "ago"
+msgstr "fa"
+
+#: blog/templates/blog/post_detail.html:71
+msgid "Reply"
+msgstr "Respon"
+
+#: blog/templates/blog/post_detail.html:102
+msgid "Leave a Comment"
+msgstr "Deixa un comentari"
+
+#: blog/templates/blog/post_detail.html:124
+msgid "Submit Comment"
+msgstr "Envieu comentari"
+
+#: blog/templates/blog/post_detail.html:155
+msgid "Cancel Reply"
+msgstr "Cancel·la la resposta"
+
+#: blog/templates/blog/post_detail.html:164
+msgid "Reply to"
+msgstr "Respon a"
+
+#: blog/templates/blog/post_list.html:6 blog/templates/blog/post_list.html:8
+#: blog/templates/blog/post_list.html:16
+msgid "Our Blog"
+msgstr "El Nostre Blog"
+
+#: blog/templates/blog/post_list.html:7
+msgid ""
+"Latest articles and updates on Computer Vision, Natural Language Processing, "
+"and more from the Tavata team."
+msgstr ""
+"Últims articles i novetats sobre Visió per Computador, Processament de "
+"Llenguatge Natural i més de l'equip de Tavata."
+
+#: blog/templates/blog/post_list.html:17
+msgid "News, articles, and insights from our team."
+msgstr "Notícies, articles i idees del nostre equip."
+
+#: blog/templates/blog/post_list.html:38
+#: blog/templates/blog/post_list_by_category.html:49
+#, python-format
+msgid ""
+"\n"
+"                                    Published on %(published_date)s by "
+"%(author)s\n"
+"                                "
+msgstr ""
+"\n"
+"                                    Publicat el %(published_date)s per "
+"%(author)s\n"
+"                                "
+
+#: blog/templates/blog/post_list.html:43
+#: blog/templates/blog/post_list_by_category.html:55
+msgid "Read More"
+msgstr "Llegir Més"
+
+#: blog/templates/blog/post_list.html:51
+msgid "There are no blog posts yet. Come back soon!"
+msgstr "Encara no hi ha entrades al blog. Torna aviat!"
+
+#: blog/templates/blog/post_list_by_category.html:11
+#, python-format
+msgid "Posts in %(category.name)s"
+msgstr "Entrades a %(category.name)s"
+
+#: blog/templates/blog/post_list_by_category.html:21
+#, python-format
+msgid ""
+"\n"
+"                Posts in category: <span class=\"text-"
+"primary\">%(category.name)s</span>\n"
+"            "
+msgstr ""
+"\n"
+"                 Entrades a la categoria: <span class=\"text-"
+"primary\">%(category.name)s</span>\n"
+"             "
+
+#: blog/templates/blog/post_list_by_category.html:63
+msgid "There are currently no published posts in this category."
+msgstr "Actualment no hi ha entrades publicades en aquesta categoria."
+
+#: blog/views.py:114
+msgid "Thank you! Your comment has been published."
+msgstr "Gràcies! El vostre comentari ha estat publicat."
+
+#: blog/views.py:117
+msgid "Thank you! Your comment has been submitted and is awaiting moderation."
+msgstr "Gràcies! El vostre comentari ha estat enviat i espera la moderació."
+
+#: contact/forms.py:21
+msgid "Your Full Name"
+msgstr "El vostre nom complet"
+
+#: contact/forms.py:25
+msgid "Your Email Address"
+msgstr "El vostre correu electrònic"
+
+#: contact/forms.py:29
+msgid "Message Subject"
+msgstr "Assumpte del missatge"
+
+#: contact/forms.py:34
+msgid "Write your message here..."
+msgstr "Escriu el teu missatge aquí..."
+
+#: contact/forms.py:41
+msgid "Full Name"
+msgstr "Nom complet"
+
+#: contact/forms.py:42
+msgid "Email Address"
+msgstr "Adreça de correu electrònic"
+
+#: contact/models.py:14
+msgid "Low"
+msgstr "Baixa"
+
+#: contact/models.py:15
+msgid "Medium"
+msgstr "Mitjana"
+
+#: contact/models.py:16
+msgid "High"
+msgstr "Alt"
+
+#: contact/models.py:17
+msgid "Urgent"
+msgstr "Urgent"
+
+#: contact/models.py:18
+msgid "Critical"
+msgstr "Crític"
+
+#: contact/models.py:22
+msgid "Email"
+msgstr "Correu electrònic"
+
+#: contact/models.py:23
+msgid "Subject"
+msgstr "Assumpte"
+
+#: contact/models.py:24
+msgid "Message"
+msgstr "Missatge"
+
+#: contact/models.py:30
+msgid "Priority"
+msgstr "Prioritat"
+
+#: contact/models.py:34
+msgid "Has been read?"
+msgstr "S'ha llegit?"
+
+#: contact/models.py:35
+msgid "Indicates if an admin has reviewed this message."
+msgstr "Indica si un administrador ha revisat aquest missatge."
+
+#: contact/models.py:41
+msgid "Received At"
+msgstr "Rebutjat a"
+
+#: contact/models.py:46
+msgid "Responded At"
+msgstr "Va respondre a"
+
+#: contact/models.py:47
+msgid "Automatically set when the message is first marked as read."
+msgstr ""
+"Fixeu-vos automàticament quan el missatge es marca per primera vegada com a "
+"llegit."
+
+#: contact/models.py:55
+msgid "Responded By"
+msgstr "Respondat per"
+
+#: contact/models.py:60
+msgid "Contact Message"
+msgstr "Missatge de contacte"
+
+#: contact/models.py:61
+msgid "Contact Messages"
+msgstr "Missatges de contacte"
+
+#: contact/templates/contact/contact_form.html:6 templates/404.html:36
+msgid "Contact Us"
+msgstr "Contacta amb nosaltres"
+
+#: contact/templates/contact/contact_form.html:7
+msgid ""
+"Get in touch with the Tavata team. We would love to hear about your project "
+"in Computer Vision or Natural Language Processing."
+msgstr ""
+"Poseu-vos en contacte amb l’equip de Tavata. Ens encantaria parlar del "
+"vostre projecte en visió informàtica o processament d’idiomes naturals."
+
+#: contact/templates/contact/contact_form.html:17
+msgid "Get in Touch"
+msgstr "Poseu-vos en contacte"
+
+#: contact/templates/contact/contact_form.html:19
+msgid ""
+"Have a question or a project in mind? We're here to help. Fill out the form "
+"below and we will get back to you as soon as possible."
+msgstr ""
+"Teniu en compte una pregunta o un projecte? Estem aquí per ajudar-vos. "
+"Ompliu el formulari següent i us tornarem al més aviat possible."
+
+#: contact/templates/contact/contact_form.html:77
+msgid "Send Message"
+msgstr "Enviar missatge"
+
+#: contact/views.py:20
+msgid "Thank you for your message! We will get back to you shortly."
+msgstr "Gràcies pel vostre missatge! Tornarem a arribar aviat."
+
+#: core/templates/core/partials/_footer.html:9
+#, python-format
+msgid ""
+"&copy; %(year)s Tavata.art - Built with Django and <i class=\"fas fa-bee\"></"
+"i> by Gustavo and Tavata."
+msgstr ""
+"&copy; %(year)s Tavata.art - Construït amb Django i <i class=\"fas fa-"
+"bee\"></i> per Gustavo i Tavata."
+
+#: core/templates/core/partials/_header.html:30
+msgid "Search..."
+msgstr "Cercar..."
+
+#: core/templates/core/partials/_header.html:31
+#: search/templates/search/search_results.html:22
+msgid "Search"
+msgstr "Cercar"
+
+#: core/templates/core/partials/_header.html:49
+#, python-format
+msgid "Hello, %(user_name)s"
+msgstr "Hola,%(user_name)s"
+
+#: core/templates/core/partials/_header.html:55
+msgid "Log Out"
+msgstr "Tanqueu"
+
+#: core/templates/core/partials/_pagination.html:13
+#: core/templates/core/partials/_pagination.html:15
+msgid "Previous"
+msgstr "Anterior"
+
+#: core/templates/core/partials/_pagination.html:29
+#: core/templates/core/partials/_pagination.html:31
+msgid "Next"
+msgstr "El proper"
+
+#: core/templates/core/partials/_topbar.html:17 site_settings/models.py:60
+msgid "Site Logo"
+msgstr "Logotip del lloc"
+
+#: core/templates/core/partials/_topbar.html:35
+#: core/templates/core/partials/_topbar.html:38
+msgid "Advertisement"
+msgstr "Publicitat"
+
+#: menus/models.py:9
+msgid "Menu Title"
+msgstr "Títol del Menú"
+
+#: menus/models.py:10
+msgid "Slug (identifier for code)"
+msgstr "Slug (identificador per al codi)"
+
+#: menus/models.py:13
+msgid "Menu"
+msgstr "Menú"
+
+#: menus/models.py:14
+msgid "Menus"
+msgstr "Menús"
+
+#: menus/models.py:28
+msgid "Menu it belongs to"
+msgstr "Menú al qual pertany"
+
+#: menus/models.py:35
+msgid "Link Text"
+msgstr "Text de l'Enllaç"
+
+#: menus/models.py:36
+msgid "Order"
+msgstr "Ordre"
+
+#: menus/models.py:43
+msgid "Link to a Page"
+msgstr "Enllaçar a una Pàgina"
+
+#: menus/models.py:44
+msgid "Select an internal page to link to. Leave blank if using a manual URL."
+msgstr ""
+"Selecciona una pàgina interna per enllaçar. Deixa en blanc si fas servir una "
+"URL manual."
+
+#: menus/models.py:49
+msgid "Link to a manual URL"
+msgstr "Enllaçar a una URL manual"
+
+#: menus/models.py:50
+msgid ""
+"Use for external URLs (e.g., https://google.com) or fixed paths (e.g., /"
+"blog/)."
+msgstr ""
+"Fes servir per a URLs externes (ex: https://google.com) o rutes fixes (ex: /"
+"blog/)."
+
+#: menus/models.py:52
+msgid "Icon Class (e.g., fab fa-facebook)"
+msgstr "Classe d'Icona (ex: fab fa-facebook)"
+
+#: menus/models.py:56
+msgid "Menu Item"
+msgstr "Element de Menú"
+
+#: menus/models.py:57
+msgid "Menu Items"
+msgstr "Elements de Menú"
+
+#: pages/models.py:10
+msgid "Description"
+msgstr "Descripció"
+
+#: pages/models.py:16
+msgid "page category"
+msgstr "categoria de pàgina"
+
+#: pages/models.py:17
+msgid "page categories"
+msgstr "categories de pàgina"
+
+#: pages/models.py:37
+msgid "Slug (URL friendly)"
+msgstr "Slug (URL amigable)"
+
+#: pages/models.py:52
+msgid "Is Homepage?"
+msgstr "És la pàgina d'inici?"
+
+#: pages/models.py:53
+msgid ""
+"Mark only one page with this option. If multiple are marked, the most recent "
+"one will be used."
+msgstr ""
+"Marca només una pàgina amb aquesta opció. Si se'n marquen diverses, "
+"s'utilitzarà la més recent."
+
+#: pages/models.py:59
+msgid "Creation Date"
+msgstr "Data de Creació"
+
+#: pages/models.py:60
+msgid "Last Updated"
+msgstr "Última Actualització"
+
+#: pages/models.py:64
+msgid "Importance Order"
+msgstr "Ordre d’importació"
+
+#: pages/models.py:65
+msgid ""
+"A lower number means higher priority in search results. E.g., 1 for 'About "
+"Us', 2 for 'Contact', 99 for others."
+msgstr ""
+"Un nombre inferior significa una prioritat més alta en els resultats de la "
+"cerca. Per exemple, 1 per a \"Sobre nosaltres\", 2 per a \"Contacte\", 99 "
+"per a altres."
+
+#: pages/models.py:69
+msgid "page"
+msgstr "pàgina"
+
+#: pages/models.py:70
+msgid "pages"
+msgstr "pàgines"
+
+#: pages/templates/pages/page_detail.html:44
+#, python-format
+msgid ""
+"\n"
+"                        By %(author)s | Last updated: %(updated_date)s\n"
+"                    "
+msgstr ""
+"\n"
+"                        Per %(author)s | Última Actualització: "
+"%(updated_date)s\n"
+"                  "
+
+#: pages/templates/pages/page_detail.html:75
+msgid "Welcome!"
+msgstr "Benvingut!"
+
+#: pages/templates/pages/page_detail.html:76
+msgid ""
+"Site under construction. Please configure a homepage from the admin panel."
+msgstr ""
+"Lloc en construcció. Si us plau, configura una pàgina d'inici des del panell "
+"d'administració."
+
+#: pages/templates/pages/pages_by_category.html:7
+#, python-format
+msgid "Pages in %(category.name)s"
+msgstr "Pàgines a %(category.name)s"
+
+#: pages/templates/pages/pages_by_category.html:17
+#, python-format
+msgid ""
+"\n"
+"                Pages in category: <span class=\"text-"
+"primary\">%(category.name)s</span>\n"
+"            "
+msgstr ""
+"\n"
+"            Entrades a la categoria: <span class=\"text-"
+"primary\">%(category.name)s</span>\n"
+"         "
+
+#: pages/templates/pages/pages_by_category.html:41
+#, python-format
+msgid ""
+"\n"
+"                            Updated on %(updated_date)s\n"
+"                            "
+msgstr ""
+"\n"
+"                                    Publicat el %(updated_date)s\n"
+"                                    "
+
+#: pages/templates/pages/pages_by_category.html:52
+msgid "There are currently no published pages in this category."
+msgstr "Actualment no hi ha pàgines publicades en aquesta categoria."
+
+#: search/templates/search/search_results.html:9
+msgid "Search results for:"
+msgstr "Resultats de la cerca per a:"
+
+#: search/templates/search/search_results.html:14
+msgid "1 result found."
+msgstr "1 resultat trobat."
+
+#: search/templates/search/search_results.html:16
+#, python-format
+msgid "%(count)s results found."
+msgstr "%(count)s resultats trobats."
+
+#: search/templates/search/search_results.html:23
+msgid "Please enter a term in the search bar above."
+msgstr "Si us plau, introdueix un terme a la barra de cerca."
+
+#: search/templates/search/search_results.html:31
+msgid "Pages Found"
+msgstr "Pàgines Trobades"
+
+#: search/templates/search/search_results.html:49
+msgid "Blog Posts Found"
+msgstr "Entrades de Blog Trobades"
+
+#: search/templates/search/search_results.html:54
+msgid "Published on"
+msgstr "Publicat el"
+
+#: site_settings/models.py:14
+msgid "Items per Page in Blog/Category lists"
+msgstr "Articles per pàgina a llistes de blocs / categories"
+
+#: site_settings/models.py:15
+msgid "Number of posts to show on the main blog page and on category pages."
+msgstr ""
+"Nombre de publicacions a mostrar a la pàgina principal del bloc i a les "
+"pàgines de categories."
+
+#: site_settings/models.py:19
+msgid "Pages per Page in Search Results"
+msgstr "Pàgines per pàgina en resultats de cerca"
+
+#: site_settings/models.py:23
+msgid "Posts per Page in Search Results"
+msgstr "Publicacions per pàgina en resultats de cerca"
+
+#: site_settings/models.py:27
+msgid "Results per Page in Search"
+msgstr "Resultats per pàgina a la cerca"
+
+#: site_settings/models.py:28
+msgid ""
+"Number of items to show per section (Pages/Posts) on the search results page."
+msgstr ""
+"Nombre d’elements a mostrar per secció ( Pàgines / Publicacions ) a la "
+"pàgina de resultats de la cerca."
+
+#: site_settings/models.py:33
+msgid "Number of 'Important' Pages to show first in search"
+msgstr "Nombre de pàgines \"Importants\" per mostrar-se primer a la cerca"
+
+#: site_settings/models.py:34
+msgid "How many top-priority pages to display before regular search results."
+msgstr ""
+"Quantes pàgines de primera prioritat es mostren abans dels resultats de "
+"cerca regulars."
+
+#: site_settings/models.py:40
+msgid "Comment Indentation (in pixels)"
+msgstr "Indentació del comentari ( en píxels )"
+
+#: site_settings/models.py:41
+msgid "Controls the visual indentation for nested comments in the admin."
+msgstr ""
+"Controla la sagnia visual per a comentaris nidificats a l'administrador."
+
+#: site_settings/models.py:47
+msgid "Auto-approve comments"
+msgstr "Comentaris aprovats automàticament"
+
+#: site_settings/models.py:48
+msgid ""
+"If checked, new comments will be published immediately without moderation."
+msgstr ""
+"Si es comprova, es publicaran immediatament nous comentaris sense moderació."
+
+#: site_settings/models.py:53
+msgid "Menu Cache Timeout (in seconds)"
+msgstr "Cache Timeout (en segons)"
+
+#: site_settings/models.py:54
+msgid ""
+"How long the site menus should be stored in cache. Set to 0 to disable menu "
+"caching (not recommended)."
+msgstr ""
+"Quant de temps s’han d’emmagatzemar els resultats d’aquest widget a la "
+"memòria cau. 0 per desactivar la memòria cau per a aquest widget."
+
+#: site_settings/models.py:61
+msgid "The main logo displayed in the top bar."
+msgstr "El logotip principal que es mostra a la barra superior."
+
+#: site_settings/models.py:66
+msgid "Site Slogan"
+msgstr "Lloc Slegà"
+
+#: site_settings/models.py:67
+msgid "A short tagline displayed next to the logo."
+msgstr "Una breu etiqueta que es mostra al costat del logotip."
+
+#: site_settings/models.py:74
+msgid "Top Bar Banner Image"
+msgstr "Imatge de Banner de barres superiors"
+
+#: site_settings/models.py:75
+msgid "An optional banner image displayed in the top bar."
+msgstr "Una imatge de pancarta opcional que es mostra a la barra superior."
+
+#: site_settings/models.py:80
+msgid "Top Bar Banner Link"
+msgstr "Enllaç de banner de barres superiors"
+
+#: site_settings/models.py:81
+msgid "The URL the banner image will link to."
+msgstr "L’URL a la qual s’enllaçarà la imatge de la pancarta."
+
+#: site_settings/models.py:85 site_settings/models.py:86
+#: site_settings/models.py:89
+msgid "Site Configuration"
+msgstr "Configuració del lloc"
+
+#: templates/404.html:6 templates/404.html:23
+msgid "Page Not Found"
+msgstr "Pàgina no trobada"
+
+#: templates/404.html:27
+msgid ""
+"Oops! It seems the page you were looking for doesn't exist or has been moved."
+msgstr "Vaja! Sembla que la pàgina que buscaves no existeix ni s’ha mogut."
+
+#: templates/404.html:33
+msgid "Go to Homepage"
+msgstr "Vés a la pàgina d'inici"
+
+#: tvt/settings.py:186
+msgid "Spanish"
+msgstr "Espanyol"
+
+#: tvt/settings.py:187
+msgid "English"
+msgstr "Anglès"
+
+#: tvt/settings.py:188
+msgid "Català"
+msgstr "Català"
+
+#: widgets/admin.py:32
+msgid "Number of Widgets"
+msgstr "Nombre de widgets"
+
+#: widgets/models.py:12
+msgid "Zone Name"
+msgstr "Nom de la zona"
+
+#: widgets/models.py:13
+msgid "Slug (used in templates)"
+msgstr "Slug (utilitzat en plantilla)"
+
+#: widgets/models.py:16 widgets/models.py:42
+msgid "Widget Zone"
+msgstr "Zona Widget"
+
+#: widgets/models.py:17
+msgid "Widget Zones"
+msgstr "Zonas Widget"
+
+#: widgets/models.py:29
+msgid "Recent Blog Posts"
+msgstr "Publicacions recents de blocs"
+
+#: widgets/models.py:30
+msgid "Most Viewed Blog Posts"
+msgstr "La majoria de publicacions de blocs vistos"
+
+#: widgets/models.py:31
+msgid "Most Commented Blog Posts"
+msgstr "Publicacions de blocs més comentades"
+
+#: widgets/models.py:32
+msgid "Blog Category List"
+msgstr "Llista de categories de blocs"
+
+#: widgets/models.py:33
+msgid "Editor's Picks (Blog Posts)"
+msgstr "Picks de l'editor (Publicacions de blocs)"
+
+#: widgets/models.py:47
+msgid "Widget Type"
+msgstr "Tipus de widget"
+
+#: widgets/models.py:51
+msgid "Widget Title"
+msgstr "Títol de l'idget"
+
+#: widgets/models.py:52
+msgid "The title that will be displayed above the widget."
+msgstr "El títol que es mostrarà per sobre del widget."
+
+#: widgets/models.py:56
+msgid "Display Order"
+msgstr "Ordre de visualització"
+
+#: widgets/models.py:62
+msgid "Number of items to show"
+msgstr "Nombre d’articles a mostrar"
+
+#: widgets/models.py:64
+msgid ""
+"Used by widgets that display a list of items, like 'Recent Posts' or 'Blog "
+"Categories'."
+msgstr ""
+"Utilitzat per widgets que mostren una llista d’elements, com ara “Postes "
+"recents” o “categories de blocs”'."
+
+#: widgets/models.py:69
+msgid "Cache Timeout (in seconds)"
+msgstr "Cache Timeout (en segons)"
+
+#: widgets/models.py:70
+msgid ""
+"How long the results of this widget should be stored in cache. 0 to disable "
+"caching for this widget."
+msgstr ""
+"Quant de temps s’han d’emmagatzemar els resultats d’aquest widget a la "
+"memòria cau. 0 per desactivar la memòria cau per a aquest widget."
+
+#: widgets/models.py:77
+msgid "Filter by Blog Category (optional)"
+msgstr "Filtre per categoria de blocs ( opcional )"
+
+#: widgets/models.py:78
+msgid "If selected, the widget will only show posts from this category."
+msgstr ""
+"Si es selecciona, el widget només mostrarà publicacions d’aquesta categoria."
+
+#: widgets/models.py:85
+msgid "Filter by Page Category (optional)"
+msgstr "Filtre per categoria de pàgina ( opcional )"
+
+#: widgets/models.py:86
+msgid "Used for a future 'List of Pages' widget."
+msgstr "S'utilitza per a un futur widget \"Llista de pàgines."
+
+#: widgets/models.py:91
+msgid "Widget"
+msgstr "Widget"
+
+#: widgets/models.py:92
+msgid "Widgets"
+msgstr "Widgets"
+
+#: widgets/templates/widgets/partials/_blog_categories_widget.html:37
+msgid "No categories with posts available."
+msgstr "No hi ha categories disponibles."
+
+#: widgets/templates/widgets/partials/_posts_widget.html:32
+msgid "No items to display."
+msgstr "No hi ha articles a mostrar."
+
+#: widgets/templates/widgets/render_zone.html:25
+#, python-format
+msgid ""
+"\n"
+"                <strong>Widget Error:</strong> Template for widget type "
+"\"%(widget_type)s\" not found in the dispatcher.\n"
+"            "
+msgstr ""
+"\n"
+"                <strong>Error de widget: </strong> Plantilla per a tipus "
+"widget \"%(widget_type)s\" que no es troba al despatxador.\n"
+"            "
+
+#~ msgid "Your Email"
+#~ msgstr "El vostre correu electrònic"
+
+#~ msgid "Your Comment"
+#~ msgstr "El vostre comentari"
+
+#~ msgid "Comment"
+#~ msgstr "Comentari"
+
+#~ msgid "Number of Posts in 'Recent Posts' Widget"
+#~ msgstr "Nombre de publicacions a Widget \"Postes recents\""
+
+#~ msgid "Number of Posts in 'Most Viewed' Widget"
+#~ msgstr "Nombre de publicacions en Widget \"Most Viewed\""
+
+#~ msgid "No posts available."
+#~ msgstr "No hi ha entrades recents disponibles."
+
+#~ msgid "No recent posts available."
+#~ msgstr "No hi ha entrades recents disponibles."
+
+#, python-format
+#~ msgid "Search results for \"%(query)s\""
+#~ msgstr "Resultats de la cerca per a \"%(query)s\""
+
+#, python-format
+#~ msgid ""
+#~ "\n"
+#~ "                                    Published %(published_date)s by "
+#~ "%(author)s\n"
+#~ "                                "
+#~ msgstr ""
+#~ "\n"
+#~ "                                     Publicat el %(published_date)s per "
+#~ "%(author)s\n"
+#~ "                                "
+
+#, python-format
+#~ msgid ""
+#~ "Pages in category: <span class=\"text-primary\">%(category.name)s</span>"
+#~ msgstr ""
+#~ "Pàgines a la categoria: <span class=\"text-primary\">%(category.name)s</"
+#~ "span>"
+
+#, python-format
+#~ msgid "Updated on %(updated_date)s"
+#~ msgstr "Actualitzat el %(updated_date)s"

@@ -27,3 +27,10 @@ dist/
 
 # SQLite database
 db.sqlite3
+
+# Archivos generados por Django (estáticos y media)
+staticfiles/
+media/
+media/*   # <--- ¡ESTA ES LA LÍNEA QUE NECESITAS!
+/logs/
+django-summernote/

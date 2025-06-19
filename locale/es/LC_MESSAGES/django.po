@@ -1,0 +1,1129 @@
+# Spanish translations for tvt-cms project.
+# Copyright (C) 2025 Gustavo
+# This file is distributed under the same license as the tvt-cms package.
+# Gustavo <tu_email@ejemplo.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tvt-cms 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-19 07:55+0000\n"
+"PO-Revision-Date: 2025-06-19 09:56+0200\n"
+"Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
+"Language-Team: Spanish <es@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
+
+#: accounts/forms.py:27
+msgid "Choose a username"
+msgstr "Elige un nombre de usuario"
+
+#: accounts/forms.py:28
+msgid "Enter password"
+msgstr "Introduzca contraseña"
+
+#: accounts/forms.py:29
+msgid "Confirm password"
+msgstr "Confirmar contraseña"
+
+#: accounts/forms.py:30 accounts/templates/registration/login.html:22
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: accounts/forms.py:31 accounts/templates/registration/login.html:26
+msgid "Password"
+msgstr "Contraseña"
+
+#: accounts/forms.py:32
+msgid "Confirm Password"
+msgstr "Confirmar contraseña"
+
+#: accounts/forms.py:51
+msgid "First Name"
+msgstr "Nombre"
+
+#: accounts/forms.py:52
+msgid "Last Name"
+msgstr "Apellido(s)"
+
+#: accounts/forms.py:53
+msgid "Contact Email"
+msgstr "Correo electrónico de contacto"
+
+#: accounts/forms.py:54
+msgid "Your first name"
+msgstr "Tu Primer Nombre"
+
+#: accounts/forms.py:55
+msgid "Your last name"
+msgstr "Tus Apellidos"
+
+#: accounts/forms.py:65
+msgid "Profile Picture"
+msgstr "Foto de Perfil"
+
+#: accounts/forms.py:70
+msgid "Use default avatar"
+msgstr "Usar avatar predeterminado"
+
+#: accounts/models.py:19
+msgid "Don't specify"
+msgstr "No especificado"
+
+#: accounts/models.py:20
+msgid "Female"
+msgstr "Femenino"
+
+#: accounts/models.py:21
+msgid "Male"
+msgstr "Masculino"
+
+#: accounts/models.py:22
+msgid "Non-binary"
+msgstr "No binario"
+
+#: accounts/models.py:32
+msgid "Display Name"
+msgstr "Nombre a mostrar"
+
+#: accounts/models.py:33
+msgid "Your full name or a nickname, which will be shown publicly."
+msgstr "Su nombre completo o un apodo, que se mostrará públicamente."
+
+#: accounts/models.py:37
+msgid "Public Email"
+msgstr "Correo Público"
+
+#: accounts/models.py:38
+msgid "An email address you don't mind sharing publicly for contact."
+msgstr ""
+"Una dirección de correo electrónico que no le importa compartir públicamente "
+"para el contacto."
+
+#: accounts/models.py:43
+msgid "Website URL"
+msgstr "Sitio Web URL"
+
+#: accounts/models.py:50
+msgid "Location"
+msgstr "Ubicación"
+
+#: accounts/models.py:54
+msgid "Biography"
+msgstr "Biografía"
+
+#: accounts/models.py:61
+msgid "Avatar"
+msgstr "Avatar"
+
+#: accounts/models.py:67
+msgid "Default Avatar Preference"
+msgstr "Preferencia de Avatar Predeterminada"
+
+#: accounts/models.py:71
+msgid "Profile"
+msgstr "Perfil"
+
+#: accounts/models.py:72
+msgid "Profiles"
+msgstr "Perfiles"
+
+#: accounts/templates/registration/login.html:5
+#: accounts/templates/registration/login.html:12
+#: accounts/templates/registration/login.html:30
+#: core/templates/core/partials/_header.html:60
+msgid "Log In"
+msgstr "Iniciar sesión"
+
+#: accounts/templates/registration/login.html:16
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+"Su nombre de usuario y contraseña no coincidían. Por favor inténtalo de "
+"nuevo."
+
+#: accounts/templates/registration/login.html:40
+msgid "Don't have an account?"
+msgstr "¿No tiene una cuenta?"
+
+#: accounts/templates/registration/login.html:40
+msgid "Sign up here"
+msgstr "Regístrate aquí"
+
+#: accounts/templates/registration/profile_edit.html:5
+#: core/templates/core/partials/_header.html:40
+msgid "Edit Profile"
+msgstr "Editar Perfil"
+
+#: accounts/templates/registration/profile_edit.html:12
+msgid "Edit Your Profile"
+msgstr "Editar tu Perfil"
+
+#: accounts/templates/registration/profile_edit.html:20
+msgid "User Information"
+msgstr "Información de usuario"
+
+#: accounts/templates/registration/profile_edit.html:37
+msgid "Profile Details"
+msgstr "Detalles del Perfil"
+
+#: accounts/templates/registration/profile_edit.html:49
+msgid "Current Avatar"
+msgstr "Avatar Actual"
+
+#: accounts/templates/registration/profile_edit.html:77
+msgid "Save Changes"
+msgstr "Guardar Cambios"
+
+#: accounts/templates/registration/signup.html:5
+#: accounts/templates/registration/signup.html:50
+msgid "Sign Up"
+msgstr "Registrarse"
+
+#: accounts/templates/registration/signup.html:12
+msgid "Create an Account"
+msgstr "Crear una Cuenta"
+
+#: accounts/templates/registration/signup.html:30
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+"Requerido. 150 caracteres o menos. Letras, dígitos y @/./+/-/_ solamente."
+
+#: accounts/templates/registration/signup.html:38
+msgid "Your password must contain at least 8 characters."
+msgstr "Su contraseña debe contactar con los 8 caracteres."
+
+#: accounts/templates/registration/signup.html:56
+msgid "Already have an account?"
+msgstr "¿Ya tienes una cuenta?"
+
+#: accounts/templates/registration/signup.html:56
+msgid "Log in here"
+msgstr "Iniciar sesión aquí"
+
+#: accounts/views.py:25
+msgid "Welcome! Your account has been created successfully."
+msgstr "¡Bienvenido! Su acceso ha sido creado con éxito."
+
+#: accounts/views.py:83
+msgid "Your profile has been updated successfully!"
+msgstr "¡Su perfil ha sido actualizado con éxito!"
+
+#: blog/forms.py:39
+msgid "Write your comment here..."
+msgstr "Escribe tu mensaje aquí..."
+
+#: blog/forms.py:43
+msgid "Your Name (required)"
+msgstr "Tu Nombre (requerido)"
+
+#: blog/forms.py:47
+msgid "Your Email (required, not published)"
+msgstr "Su correo electrónico (requerido, no es público)"
+
+#: blog/models.py:11 contact/models.py:21 pages/models.py:8
+msgid "Name"
+msgstr "Nombre"
+
+#: blog/models.py:12 blog/models.py:38 pages/models.py:9
+msgid "Slug"
+msgstr "Slug"
+
+#: blog/models.py:14 blog/models.py:50 pages/models.py:12 pages/models.py:56
+msgid "Meta Title (SEO)"
+msgstr "Meta Título (SEO)"
+
+#: blog/models.py:15 blog/models.py:51 pages/models.py:13 pages/models.py:57
+msgid "Meta Description (SEO)"
+msgstr "Meta Descripción (SEO)"
+
+#: blog/models.py:18
+msgid "blog category"
+msgstr "categoría de blog"
+
+#: blog/models.py:19
+msgid "blog categories"
+msgstr "categorías de blog"
+
+#: blog/models.py:34 pages/models.py:32
+msgid "Draft"
+msgstr "Borrador"
+
+#: blog/models.py:35 pages/models.py:33
+msgid "Published"
+msgstr "Publicado"
+
+#: blog/models.py:37 pages/models.py:36
+msgid "Title"
+msgstr "Título"
+
+#: blog/models.py:39 pages/models.py:40
+msgid "Author"
+msgstr "Autor"
+
+#: blog/models.py:41 blog/models.py:118 pages/models.py:38
+msgid "Content"
+msgstr "Contenido"
+
+#: blog/models.py:42
+msgid "Featured Image"
+msgstr "Imagen Destacada"
+
+#: blog/models.py:44
+msgid "Published Date"
+msgstr "Fecha de Publicación"
+
+#: blog/models.py:46 pages/models.py:41
+msgid "Status"
+msgstr "Estado"
+
+#: blog/models.py:48 pages/models.py:45
+#: pages/templates/pages/page_detail.html:52
+msgid "Categories"
+msgstr "Categorías"
+
+#: blog/models.py:55
+msgid "View Count"
+msgstr "Número de vistas"
+
+#: blog/models.py:60
+msgid "Editor's Rating"
+msgstr "Calificación del Editor"
+
+#: blog/models.py:61
+msgid "A score from 0-100 to feature this post. Higher numbers appear first."
+msgstr ""
+"Una puntuación de 0-100 para presentar esta publicación. Los números más "
+"altos aparecen primero."
+
+#: blog/models.py:66
+msgid "blog post"
+msgstr "entrada de blog"
+
+#: blog/models.py:67
+msgid "blog posts"
+msgstr "entradas de blog"
+
+#: blog/models.py:91
+msgid "Post"
+msgstr "Post"
+
+#: blog/models.py:100
+msgid "Parent Comment"
+msgstr "Comentario Padre"
+
+#: blog/models.py:111
+msgid "User"
+msgstr "Usuario"
+
+#: blog/models.py:114
+msgid "Author Name"
+msgstr "Nombre del Autor"
+
+#: blog/models.py:115
+msgid "Author Email"
+msgstr "Email del Autor"
+
+#: blog/models.py:119
+msgid "Created At"
+msgstr "Fecha de Creación"
+
+#: blog/models.py:122
+msgid "Is Approved?"
+msgstr "¿Está aprobado?"
+
+#: blog/models.py:131
+msgid "comment"
+msgstr "comentario"
+
+#: blog/models.py:132
+msgid "comments"
+msgstr "comentarios"
+
+#: blog/templates/blog/post_detail.html:35
+#, python-format
+msgid ""
+"\n"
+"                Published on %(published_date)s by %(author)s\n"
+"            "
+msgstr ""
+"\n"
+"                 Publicado el %(published_date)s por %(author)s\n"
+"                "
+
+#: blog/templates/blog/post_detail.html:52
+#, python-format
+msgid "%(count)s Comment"
+msgid_plural "%(count)s Comments"
+msgstr[0] "%(count)s Comentario"
+msgstr[1] "%(count)s Comentarios"
+
+#: blog/templates/blog/post_detail.html:70
+msgid "ago"
+msgstr "hace"
+
+#: blog/templates/blog/post_detail.html:71
+msgid "Reply"
+msgstr "Respuesta"
+
+#: blog/templates/blog/post_detail.html:102
+msgid "Leave a Comment"
+msgstr "Deja un Comentario"
+
+#: blog/templates/blog/post_detail.html:124
+msgid "Submit Comment"
+msgstr "Comenta"
+
+#: blog/templates/blog/post_detail.html:155
+msgid "Cancel Reply"
+msgstr "Cancelar respuesta"
+
+#: blog/templates/blog/post_detail.html:164
+msgid "Reply to"
+msgstr "Responder a"
+
+#: blog/templates/blog/post_list.html:6 blog/templates/blog/post_list.html:8
+#: blog/templates/blog/post_list.html:16
+msgid "Our Blog"
+msgstr "Nuestro Blog"
+
+#: blog/templates/blog/post_list.html:7
+msgid ""
+"Latest articles and updates on Computer Vision, Natural Language Processing, "
+"and more from the Tavata team."
+msgstr ""
+"Últimos artículos y novedades sobre Visión por Computador, Procesamiento de "
+"Lenguaje Natural y más del equipo de Tavata."
+
+#: blog/templates/blog/post_list.html:17
+msgid "News, articles, and insights from our team."
+msgstr "Noticias, artículos e ideas de nuestro equipo."
+
+#: blog/templates/blog/post_list.html:38
+#: blog/templates/blog/post_list_by_category.html:49
+#, python-format
+msgid ""
+"\n"
+"                                    Published on %(published_date)s by "
+"%(author)s\n"
+"                                "
+msgstr ""
+"\n"
+"                                    Publicado en %(published_date)s por "
+"%(author)s\n"
+"                                "
+
+#: blog/templates/blog/post_list.html:43
+#: blog/templates/blog/post_list_by_category.html:55
+msgid "Read More"
+msgstr "Leer Más"
+
+#: blog/templates/blog/post_list.html:51
+msgid "There are no blog posts yet. Come back soon!"
+msgstr "Aún no hay entradas en el blog. ¡Vuelve pronto!"
+
+#: blog/templates/blog/post_list_by_category.html:11
+#, python-format
+msgid "Posts in %(category.name)s"
+msgstr "Entradas en %(category.name)s"
+
+#: blog/templates/blog/post_list_by_category.html:21
+#, python-format
+msgid ""
+"\n"
+"                Posts in category: <span class=\"text-"
+"primary\">%(category.name)s</span>\n"
+"            "
+msgstr ""
+"\n"
+"                Entradas en la categoría: <span class=\"text-"
+"primary\">%(category.name)s</span>\n"
+"             "
+
+#: blog/templates/blog/post_list_by_category.html:63
+msgid "There are currently no published posts in this category."
+msgstr "Actualmente no hay entradas publicadas en esta categoría."
+
+#: blog/views.py:114
+msgid "Thank you! Your comment has been published."
+msgstr "¡Gracias! Su comentario ha sido publicado."
+
+#: blog/views.py:117
+msgid "Thank you! Your comment has been submitted and is awaiting moderation."
+msgstr ""
+"¡Gracias! Su comentario ha sido enviado y está a la espera de moderación."
+
+#: contact/forms.py:21
+msgid "Your Full Name"
+msgstr "Tu Nombre"
+
+#: contact/forms.py:25
+msgid "Your Email Address"
+msgstr "Tu Correo"
+
+#: contact/forms.py:29
+msgid "Message Subject"
+msgstr "Asunto del mensaje"
+
+#: contact/forms.py:34
+msgid "Write your message here..."
+msgstr "Escribe tu mensaje aquí..."
+
+#: contact/forms.py:41
+msgid "Full Name"
+msgstr "Nombre"
+
+#: contact/forms.py:42
+msgid "Email Address"
+msgstr "Dirección de correo electrónico"
+
+#: contact/models.py:14
+msgid "Low"
+msgstr "Bajo"
+
+#: contact/models.py:15
+msgid "Medium"
+msgstr "Medio"
+
+#: contact/models.py:16
+msgid "High"
+msgstr "Alto"
+
+#: contact/models.py:17
+msgid "Urgent"
+msgstr "Urgente"
+
+#: contact/models.py:18
+msgid "Critical"
+msgstr "Crítico"
+
+#: contact/models.py:22
+msgid "Email"
+msgstr "E-mail"
+
+#: contact/models.py:23
+msgid "Subject"
+msgstr "Asunto"
+
+#: contact/models.py:24
+msgid "Message"
+msgstr "Mensaje"
+
+#: contact/models.py:30
+msgid "Priority"
+msgstr "Prioridad"
+
+#: contact/models.py:34
+msgid "Has been read?"
+msgstr "¿Ha sido leido?"
+
+#: contact/models.py:35
+msgid "Indicates if an admin has reviewed this message."
+msgstr "Indica si un administrador ha revisado este mensaje."
+
+#: contact/models.py:41
+msgid "Received At"
+msgstr "Recibido en"
+
+#: contact/models.py:46
+msgid "Responded At"
+msgstr "Respondió en"
+
+#: contact/models.py:47
+msgid "Automatically set when the message is first marked as read."
+msgstr ""
+"Establecido automáticamente cuando el mensaje se marca primero como leído."
+
+#: contact/models.py:55
+msgid "Responded By"
+msgstr "Respondido por"
+
+#: contact/models.py:60
+msgid "Contact Message"
+msgstr "Mensaje de contacto"
+
+#: contact/models.py:61
+msgid "Contact Messages"
+msgstr "Mensajes de contacto"
+
+#: contact/templates/contact/contact_form.html:6 templates/404.html:36
+msgid "Contact Us"
+msgstr "Contáctanos"
+
+#: contact/templates/contact/contact_form.html:7
+msgid ""
+"Get in touch with the Tavata team. We would love to hear about your project "
+"in Computer Vision or Natural Language Processing."
+msgstr ""
+"Ponte en contacto con el equipo de Tavata. Nos encantaría conocer su "
+"proyecto en Visión por Computadora o Procesamiento del Lenguaje Natural."
+
+#: contact/templates/contact/contact_form.html:17
+msgid "Get in Touch"
+msgstr "Mantente en contacto"
+
+#: contact/templates/contact/contact_form.html:19
+msgid ""
+"Have a question or a project in mind? We're here to help. Fill out the form "
+"below and we will get back to you as soon as possible."
+msgstr ""
+"¿Tienes alguna pregunta o un proyecto en mente? Estamos aquí para ayudar. "
+"Complete el siguiente formulario y nos comunicaremos con usted lo antes "
+"posible."
+
+#: contact/templates/contact/contact_form.html:77
+msgid "Send Message"
+msgstr "Enviar mensaje"
+
+#: contact/views.py:20
+msgid "Thank you for your message! We will get back to you shortly."
+msgstr "¡Gracias por tu mensaje! Nos pondremos en contacto con usted en breve."
+
+#: core/templates/core/partials/_footer.html:9
+#, python-format
+msgid ""
+"&copy; %(year)s Tavata.art - Built with Django and <i class=\"fas fa-bee\"></"
+"i> by Gustavo and Tavata."
+msgstr ""
+"&copy; %(year)s Tavata.art - Construido con Django y <i class=\"fas fa-"
+"bee\"></i> por Gustavo y Tavata."
+
+#: core/templates/core/partials/_header.html:30
+msgid "Search..."
+msgstr "Búsqueda..."
+
+#: core/templates/core/partials/_header.html:31
+#: search/templates/search/search_results.html:22
+msgid "Search"
+msgstr "Buscar"
+
+#: core/templates/core/partials/_header.html:49
+#, python-format
+msgid "Hello, %(user_name)s"
+msgstr "¡Hola, %(user_name)s"
+
+#: core/templates/core/partials/_header.html:55
+msgid "Log Out"
+msgstr "Cerrar sesión"
+
+#: core/templates/core/partials/_pagination.html:13
+#: core/templates/core/partials/_pagination.html:15
+msgid "Previous"
+msgstr "Anterior"
+
+#: core/templates/core/partials/_pagination.html:29
+#: core/templates/core/partials/_pagination.html:31
+msgid "Next"
+msgstr "Siguiente"
+
+#: core/templates/core/partials/_topbar.html:17 site_settings/models.py:60
+msgid "Site Logo"
+msgstr "Logotipo del Sitio"
+
+#: core/templates/core/partials/_topbar.html:35
+#: core/templates/core/partials/_topbar.html:38
+msgid "Advertisement"
+msgstr "Publicidad"
+
+#: menus/models.py:9
+msgid "Menu Title"
+msgstr "Título del Menú"
+
+#: menus/models.py:10
+msgid "Slug (identifier for code)"
+msgstr "Slug (identificador para el código)"
+
+#: menus/models.py:13
+msgid "Menu"
+msgstr "Menú"
+
+#: menus/models.py:14
+msgid "Menus"
+msgstr "Menús"
+
+#: menus/models.py:28
+msgid "Menu it belongs to"
+msgstr "Menú al que pertenece"
+
+#: menus/models.py:35
+msgid "Link Text"
+msgstr "Texto del Enlace"
+
+#: menus/models.py:36
+msgid "Order"
+msgstr "Orden"
+
+#: menus/models.py:43
+msgid "Link to a Page"
+msgstr "Enlazar a una Página"
+
+#: menus/models.py:44
+msgid "Select an internal page to link to. Leave blank if using a manual URL."
+msgstr ""
+"Selecciona una página interna para enlazar. Deja en blanco si usas una URL "
+"manual."
+
+#: menus/models.py:49
+msgid "Link to a manual URL"
+msgstr "Enlazar a una URL manual"
+
+#: menus/models.py:50
+msgid ""
+"Use for external URLs (e.g., https://google.com) or fixed paths (e.g., /"
+"blog/)."
+msgstr ""
+"Úsalo para URLs externas (ej: https://google.com) o rutas fijas (ej: /blog/)."
+
+#: menus/models.py:52
+msgid "Icon Class (e.g., fab fa-facebook)"
+msgstr "Clase de Ícono (ej: fab fa-facebook)"
+
+#: menus/models.py:56
+msgid "Menu Item"
+msgstr "Elemento de Menú"
+
+#: menus/models.py:57
+msgid "Menu Items"
+msgstr "Elementos de Menú"
+
+#: pages/models.py:10
+msgid "Description"
+msgstr "Descripción"
+
+#: pages/models.py:16
+msgid "page category"
+msgstr "categoría de página"
+
+#: pages/models.py:17
+msgid "page categories"
+msgstr "categorías de página"
+
+#: pages/models.py:37
+msgid "Slug (URL friendly)"
+msgstr "Slug (URL amigable)"
+
+#: pages/models.py:52
+msgid "Is Homepage?"
+msgstr "¿Es la página de inicio?"
+
+#: pages/models.py:53
+msgid ""
+"Mark only one page with this option. If multiple are marked, the most recent "
+"one will be used."
+msgstr ""
+"Marcar solo una página con esta opción. Si varias están marcadas, se usará "
+"la más reciente."
+
+#: pages/models.py:59
+msgid "Creation Date"
+msgstr "Fecha de Creación"
+
+#: pages/models.py:60
+msgid "Last Updated"
+msgstr "Última Actualización"
+
+#: pages/models.py:64
+msgid "Importance Order"
+msgstr "Orden de importancia"
+
+#: pages/models.py:65
+msgid ""
+"A lower number means higher priority in search results. E.g., 1 for 'About "
+"Us', 2 for 'Contact', 99 for others."
+msgstr ""
+"Un número menor significa mayor prioridad en los resultados de búsqueda. Por "
+"ejemplo, 1 para 'Acerca de nosotros', 2 para 'Contacto', 99 para otros."
+
+#: pages/models.py:69
+msgid "page"
+msgstr "página"
+
+#: pages/models.py:70
+msgid "pages"
+msgstr "páginas"
+
+#: pages/templates/pages/page_detail.html:44
+#, python-format
+msgid ""
+"\n"
+"                        By %(author)s | Last updated: %(updated_date)s\n"
+"                    "
+msgstr ""
+"\n"
+"                        Por %(author)s | Última Actualización: "
+"%(updated_date)s                    "
+
+#: pages/templates/pages/page_detail.html:75
+msgid "Welcome!"
+msgstr "¡Bienvenido!"
+
+#: pages/templates/pages/page_detail.html:76
+msgid ""
+"Site under construction. Please configure a homepage from the admin panel."
+msgstr ""
+"Sitio en construcción. Por favor, configura una página de inicio desde el "
+"panel de administración."
+
+#: pages/templates/pages/pages_by_category.html:7
+#, python-format
+msgid "Pages in %(category.name)s"
+msgstr "Páginas en %(category.name)s"
+
+#: pages/templates/pages/pages_by_category.html:17
+#, python-format
+msgid ""
+"\n"
+"                Pages in category: <span class=\"text-"
+"primary\">%(category.name)s</span>\n"
+"            "
+msgstr ""
+"\n"
+"                Páginas en la categoría: <span class=\"text-"
+"primary\">%(category.name)s</span>\n"
+"            "
+
+#: pages/templates/pages/pages_by_category.html:41
+#, python-format
+msgid ""
+"\n"
+"                            Updated on %(updated_date)s\n"
+"                            "
+msgstr ""
+"\n"
+"                            Actualizado en %(updated_date)s\n"
+"                            "
+
+#: pages/templates/pages/pages_by_category.html:52
+msgid "There are currently no published pages in this category."
+msgstr "Actualmente no hay páginas publicadas en esta categoría."
+
+#: search/templates/search/search_results.html:9
+msgid "Search results for:"
+msgstr "Resultados de búsqueda para:"
+
+#: search/templates/search/search_results.html:14
+msgid "1 result found."
+msgstr "1 resultado encontrado."
+
+#: search/templates/search/search_results.html:16
+#, python-format
+msgid "%(count)s results found."
+msgstr "%(count)s resultados encontrados."
+
+#: search/templates/search/search_results.html:23
+msgid "Please enter a term in the search bar above."
+msgstr "Por favor ingrese una consulta en la barra de búsqueda."
+
+#: search/templates/search/search_results.html:31
+msgid "Pages Found"
+msgstr "Páginas Encontradas"
+
+#: search/templates/search/search_results.html:49
+msgid "Blog Posts Found"
+msgstr "Entradas de blog encontradas"
+
+#: search/templates/search/search_results.html:54
+msgid "Published on"
+msgstr "Publicado"
+
+#: site_settings/models.py:14
+msgid "Items per Page in Blog/Category lists"
+msgstr "Posts por Página en el Blog/Lista de Categorias"
+
+#: site_settings/models.py:15
+msgid "Number of posts to show on the main blog page and on category pages."
+msgstr ""
+"Número de publicaciones para mostrar en la página principal del blog y en "
+"las páginas de categorías."
+
+#: site_settings/models.py:19
+msgid "Pages per Page in Search Results"
+msgstr "Resultados por Página en la Búsqueda"
+
+#: site_settings/models.py:23
+msgid "Posts per Page in Search Results"
+msgstr "Resultados por Blogs en la Búsqueda"
+
+#: site_settings/models.py:27
+msgid "Results per Page in Search"
+msgstr "Resultados por Página en la Búsqueda"
+
+#: site_settings/models.py:28
+msgid ""
+"Number of items to show per section (Pages/Posts) on the search results page."
+msgstr ""
+"Número de elementos a mostrar por sección (Páginas/Publicaciones) en la "
+"página de resultados de búsqueda."
+
+#: site_settings/models.py:33
+msgid "Number of 'Important' Pages to show first in search"
+msgstr ""
+"Número de páginas 'importantes' que se mostrarán primero en la búsqueda"
+
+#: site_settings/models.py:34
+msgid "How many top-priority pages to display before regular search results."
+msgstr ""
+"Cuántas páginas de alta prioridad mostrar antes de los resultados de "
+"búsqueda regulares."
+
+#: site_settings/models.py:40
+msgid "Comment Indentation (in pixels)"
+msgstr "Comentario Indentación (en pixels)"
+
+#: site_settings/models.py:41
+msgid "Controls the visual indentation for nested comments in the admin."
+msgstr ""
+"Controla cuánto espacio se agrega para cada nivel de comentarios anidados en "
+"la vista de lista de administración."
+
+#: site_settings/models.py:47
+msgid "Auto-approve comments"
+msgstr "Comentario auto aprobado"
+
+#: site_settings/models.py:48
+msgid ""
+"If checked, new comments will be published immediately without moderation."
+msgstr ""
+"Si está marcado, los nuevos comentarios se publicarán inmediatamente sin "
+"moderación."
+
+#: site_settings/models.py:53
+msgid "Menu Cache Timeout (in seconds)"
+msgstr "Tiempo de espera en caché (en segundos)"
+
+#: site_settings/models.py:54
+msgid ""
+"How long the site menus should be stored in cache. Set to 0 to disable menu "
+"caching (not recommended)."
+msgstr ""
+"Cuánto tiempo deben almacenarse los resultados de este widget en caché. 0 "
+"para deshabilitar el almacenamiento en caché de este widget."
+
+#: site_settings/models.py:61
+msgid "The main logo displayed in the top bar."
+msgstr "El logotipo principal que se muestra en la barra superior."
+
+#: site_settings/models.py:66
+msgid "Site Slogan"
+msgstr "Sitio Slogan"
+
+#: site_settings/models.py:67
+msgid "A short tagline displayed next to the logo."
+msgstr "Un eslogan corto que se muestra junto al logotipo."
+
+#: site_settings/models.py:74
+msgid "Top Bar Banner Image"
+msgstr "Imagen de Top Bar Banner"
+
+#: site_settings/models.py:75
+msgid "An optional banner image displayed in the top bar."
+msgstr "Una imagen de banner opcional que se muestra en la barra superior."
+
+#: site_settings/models.py:80
+msgid "Top Bar Banner Link"
+msgstr "Enlace de Banner de Barra Superior"
+
+#: site_settings/models.py:81
+msgid "The URL the banner image will link to."
+msgstr "La URL a la que se vinculará la imagen del banner."
+
+#: site_settings/models.py:85 site_settings/models.py:86
+#: site_settings/models.py:89
+msgid "Site Configuration"
+msgstr "Configuración del Sitio"
+
+#: templates/404.html:6 templates/404.html:23
+msgid "Page Not Found"
+msgstr "Página no Encontrada"
+
+#: templates/404.html:27
+msgid ""
+"Oops! It seems the page you were looking for doesn't exist or has been moved."
+msgstr ""
+"¡Oops! Parece que la página que estabas buscando no existe o se ha movido."
+
+#: templates/404.html:33
+msgid "Go to Homepage"
+msgstr "Ir a la página de inicio"
+
+#: tvt/settings.py:186
+msgid "Spanish"
+msgstr "Español"
+
+#: tvt/settings.py:187
+msgid "English"
+msgstr "Inglés"
+
+#: tvt/settings.py:188
+msgid "Català"
+msgstr "Catalán"
+
+#: widgets/admin.py:32
+msgid "Number of Widgets"
+msgstr "Número de Widgets"
+
+#: widgets/models.py:12
+msgid "Zone Name"
+msgstr "Nombre de la Zona"
+
+#: widgets/models.py:13
+msgid "Slug (used in templates)"
+msgstr "Slug (used en plantillas)"
+
+#: widgets/models.py:16 widgets/models.py:42
+msgid "Widget Zone"
+msgstr "Zona del Widget"
+
+#: widgets/models.py:17
+msgid "Widget Zones"
+msgstr "Zonas del Widget"
+
+#: widgets/models.py:29
+msgid "Recent Blog Posts"
+msgstr "Publicaciones Recientes de Blog"
+
+#: widgets/models.py:30
+msgid "Most Viewed Blog Posts"
+msgstr "Publicaciones de Blog Más Vistas"
+
+#: widgets/models.py:31
+msgid "Most Commented Blog Posts"
+msgstr "Publicaciones de Blog Más Comentadas"
+
+#: widgets/models.py:32
+msgid "Blog Category List"
+msgstr "Lista de Categorías de Blog"
+
+#: widgets/models.py:33
+msgid "Editor's Picks (Blog Posts)"
+msgstr "Selección del Editor (Publicaciones de blog)"
+
+#: widgets/models.py:47
+msgid "Widget Type"
+msgstr "Tipo de Widget"
+
+#: widgets/models.py:51
+msgid "Widget Title"
+msgstr "Título del Widget"
+
+#: widgets/models.py:52
+msgid "The title that will be displayed above the widget."
+msgstr "El título que se mostrará encima del widget."
+
+#: widgets/models.py:56
+msgid "Display Order"
+msgstr "Mostrar Orden"
+
+#: widgets/models.py:62
+msgid "Number of items to show"
+msgstr "Número de artículos a mostrar"
+
+#: widgets/models.py:64
+msgid ""
+"Used by widgets that display a list of items, like 'Recent Posts' or 'Blog "
+"Categories'."
+msgstr ""
+"Utilizado por widgets que muestran una lista de elementos, como "
+"'Publicaciones recientes' o 'Categorías de blogs'."
+
+#: widgets/models.py:69
+msgid "Cache Timeout (in seconds)"
+msgstr "Tiempo de espera en caché (en segundos)"
+
+#: widgets/models.py:70
+msgid ""
+"How long the results of this widget should be stored in cache. 0 to disable "
+"caching for this widget."
+msgstr ""
+"Cuánto tiempo deben almacenarse los resultados de este widget en caché. 0 "
+"para deshabilitar el almacenamiento en caché de este widget."
+
+#: widgets/models.py:77
+msgid "Filter by Blog Category (optional)"
+msgstr "Filtrar por Categoría de Blog (opcional)"
+
+#: widgets/models.py:78
+msgid "If selected, the widget will only show posts from this category."
+msgstr ""
+"Si se selecciona, el widget solo mostrará publicaciones de esta categoría."
+
+#: widgets/models.py:85
+msgid "Filter by Page Category (optional)"
+msgstr "Filtrar por categoría de página (opcional)"
+
+#: widgets/models.py:86
+msgid "Used for a future 'List of Pages' widget."
+msgstr "Utilizado para un futuro widget 'Lista de páginas."
+
+#: widgets/models.py:91
+msgid "Widget"
+msgstr "Widget"
+
+#: widgets/models.py:92
+msgid "Widgets"
+msgstr "Widgets"
+
+#: widgets/templates/widgets/partials/_blog_categories_widget.html:37
+msgid "No categories with posts available."
+msgstr "No hay categorías con publicaciones disponibles."
+
+#: widgets/templates/widgets/partials/_posts_widget.html:32
+msgid "No items to display."
+msgstr "No hay elementos para mostrar."
+
+#: widgets/templates/widgets/render_zone.html:25
+#, python-format
+msgid ""
+"\n"
+"                <strong>Widget Error:</strong> Template for widget type "
+"\"%(widget_type)s\" not found in the dispatcher.\n"
+"            "
+msgstr ""
+"\n"
+"                 <strong>Widget Error:</strong> Plantilla para el tipo de "
+"widget \"%(widget_type)s\" no se encuentra en el despachador.\n"
+"             "
+
+#~ msgid "Your Email"
+#~ msgstr "Tu Correo"
+
+#~ msgid "Your Comment"
+#~ msgstr "Tu Comentario"
+
+#~ msgid "Comment"
+#~ msgstr "Comentario"
+
+#~ msgid "Number of Posts in 'Recent Posts' Widget"
+#~ msgstr "Widget: Número de Posts en 'Post Recientes'"
+
+#~ msgid "Number of Posts in 'Most Viewed' Widget"
+#~ msgstr "Widget: Número de Post en 'Más Vistos'"
+
+#~ msgid "No posts available."
+#~ msgstr "No hay post recientes."
+
+#~ msgid "No recent posts available."
+#~ msgstr "No hay post recientes."
+
+#, python-format
+#~ msgid "Search results for \"%(query)s\""
+#~ msgstr "Resultados de búsqueda para \"%(query)s\""
+
+#, python-format
+#~ msgid ""
+#~ "\n"
+#~ "                                    Published %(published_date)s by "
+#~ "%(author)s\n"
+#~ "                                "
+#~ msgstr ""
+#~ "\n"
+#~ "                                    Publicado en %(published_date)s por "
+#~ "%(author)s\n"
+#~ "                                "
+
+#, python-format
+#~ msgid "Updated on %(updated_date)s"
+#~ msgstr "Actualizado el %(updated_date)s"

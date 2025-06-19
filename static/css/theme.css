@@ -32,13 +32,37 @@
 
 /* Asegurarnos de que el texto en botones primarios sea negro para legibilidad */
 .btn-primary {
+    /* 1. Definimos explícitamente el color de fondo normal */
+    --bs-btn-bg: var(--tavata-yellow);
+    --bs-btn-border-color: var(--tavata-yellow);
+
+    /* 2. Definimos el color del texto para buen contraste */
     --bs-btn-color: var(--tavata-dark);
     --bs-btn-hover-color: var(--tavata-dark);
     --bs-btn-active-color: var(--tavata-dark);
-    --bs-btn-border-color: var(--tavata-yellow);
-    --bs-btn-hover-bg: #ffca2c; /* Un amarillo un poco más claro al pasar el ratón */
-    --bs-btn-hover-border-color: #ffca2c;
+
+    /* 3. Definimos los colores para el estado :hover */
+    --bs-btn-hover-bg: #e6ac00; /* Un dorado un poco más oscuro al pasar el ratón */
+    --bs-btn-hover-border-color: #e6ac00;
 }
+
+/* --- NEW THEME UTILITY CLASS --- */
+/* A background class for our primary theme color with dark text for contrast */
+.bg-tavata-primary {
+    background-color: var(--tavata-yellow) !important;
+    color: var(--tavata-dark) !important;
+}
+
+/* Ensure links within this background are also dark */
+.bg-tavata-primary a {
+    color: var(--tavata-dark) !important;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.bg-tavata-primary a:hover {
+    opacity: 0.75;
+}
+/* --- END NEW CLASS --- */
 
 /* Clases de utilidad para usar nuestros colores directamente */
 .text-tavata-yellow {
@@ -47,4 +71,17 @@
 
 .bg-tavata-dark {
     background-color: var(--tavata-dark) !important;
+}
+
+
+/* --- Collapsible Widget Icon (Bootstrap Native Rotation) --- */
+
+.TAVATA-collapse-icon {
+    transition: transform 0.25s ease-in-out;
+}
+
+/* Cuando el botón NO está colapsado (es decir, el contenido es visible)... */
+[aria-expanded="true"] .TAVATA-collapse-icon {
+    /* ...la flecha apunta hacia arriba. */
+    transform: rotate(-180deg);
 }

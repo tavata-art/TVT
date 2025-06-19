@@ -15,6 +15,9 @@ from pathlib import Path
 import os
 import pymysql
 pymysql.install_as_MySQLdb()
+from django.utils.translation import gettext_lazy as _
+
+ADMINS = [('Tavata', 'tavata.art@outlook.com')]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,36 +33,56 @@ print("*********************************************")
 print(f"**** EJECUTANDO EN AMBIENTE: {ENVIRONMENT.upper()} ****")
 print("*********************************************")
 
-
 # 2. Configurar otras variables basadas en el ambiente
 if ENVIRONMENT == 'development':
     SECRET_KEY = config('SECRET_KEY', default='django-insecure-dev-key-default')
     DEBUG = True
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else: # Para 'testing', 'production' u otros
     SECRET_KEY = config('SECRET_KEY')
     # DEBUG es False por defecto, a menos que un ambiente específico lo active
     DEBUG = config('DEBUG', default=False, cast=bool)
     ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv()) #-> Permite múltiples hosts separados por comas
-
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Application definition
 
 INSTALLED_APPS = [
+    # 1. modeltranslation PRIMERO. Esto asegura que su "magia" de
+    #    parcheo y registro se ejecute antes que cualquier otra cosa,
+    #    especialmente antes que el 'admin'.
+    'modeltranslation',
+
+    # 2. Las apps de Django Core
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # 3. Otras apps de Terceros
     'django_summernote',
+    'solo',
+    'mptt',
+
+    # 4. Nuestras Propias Aplicaciones
     'core.apps.CoreConfig',
     'pages.apps.PagesConfig',
+    'blog.apps.BlogConfig',
+    'menus.apps.MenusConfig', 
+    'site_settings.apps.SiteSettingsConfig', 
+    'search.apps.SearchConfig', 
+    'contact.apps.ContactConfig',
+    'widgets.apps.WidgetsConfig',
+    'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',  # <-- ¡Localization!
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -72,13 +95,15 @@ ROOT_URLCONF = 'tvt.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -114,7 +139,21 @@ if ENVIRONMENT == 'testing' or ENVIRONMENT == 'production':
     }
 
 
+# --- CACHING CONFIGURATION ---
+# https://docs.djangoproject.com/en/5.2/topics/cache/
+CACHES = {
+    'default': {
+        # In-memory cache for development. Fast but resets with every server restart.
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'tavata-cms-unique-cache',
+    }
+}
 
+# Para producción, podríamos usar algo más robusto como Redis:
+# 'default': {
+#     'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+#     'LOCATION': 'redis://127.0.0.1:6379/1',
+# }
 
 
 # Password validation
@@ -139,7 +178,20 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# Idioma por defecto
+LANGUAGE_CODE = 'en' 
+
+# Lista de idiomas disponibles
+LANGUAGES = [
+    ('es', _('Spanish')),
+    ('en', _('English')),
+    ('ca', _('Català')),
+]
+
+# Rutas donde Django buscará los archivos de traducción (.po/.mo)
+LOCALE_PATHS = [
+    BASE_DIR / 'locale/',
+]
 
 TIME_ZONE = 'UTC'
 
@@ -172,3 +224,81 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+# ==============================================================================
+# LOGGING CONFIGURATION
+# ==============================================================================
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False, # No desactiva los loggers por defecto de Django
+
+    # --- FORMATTERS: Cómo se verá cada línea del log ---
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+
+    # --- FILTERS: Para añadir contexto o filtrar logs ---
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+    },
+
+    # --- HANDLERS: A dónde se envía cada log (consola, archivo, email) ---
+    'handlers': {
+        # Handler para la consola de desarrollo
+        'console': {
+            'level': 'DEBUG',
+            'filters': ['require_debug_true'], # Solo funciona si DEBUG=True
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+        # Handler para guardar en un archivo los warnings y errores
+        'file_error': {
+            'level': 'WARNING',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': BASE_DIR / 'logs/error.log', # Ruta al archivo
+            'maxBytes': 1024 * 1024 * 5,  # 5 MB
+            'backupCount': 2,
+            'formatter': 'verbose',
+        },
+        # Handler para que los administradores reciban un email en caso de error 500
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'], # Solo funciona si DEBUG=False
+            'class': 'django.utils.log.AdminEmailHandler',
+        },
+    },
+
+    # --- LOGGERS: El cerebro que une todo ---
+    'loggers': {
+        # Logger principal de Django. Capturará todo lo que pase en el framework.
+        'django': {
+            'handlers': ['console', 'file_error', 'mail_admins'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        # Podemos crear loggers para nuestras propias apps si queremos
+        # 'blog': {
+        #     'handlers': ['console', 'file_error'],
+        #     'level': 'DEBUG',
+        # },
+    },
+}
+
+# URL to redirect to after a successful login.
+LOGIN_REDIRECT_URL = '/'
+
+# URL to redirect to after a successful logout.
+LOGOUT_REDIRECT_URL = '/'

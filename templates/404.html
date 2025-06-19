@@ -1,0 +1,43 @@
+<!-- File: templates/404.html -->
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% translate "Page Not Found" %}{% endblock %}
+
+{# We don't need sidebars on the 404 page, so we override them to be empty #}
+{% block sidebar_left %}{% endblock %}
+{% block sidebar_right %}{% endblock %}
+
+
+{% block content %}
+<div class="container text-center py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <!-- A large, friendly icon -->
+            <i class="fas fa-ghost fa-5x text-warning mb-4"></i>
+
+            <!-- The main error message -->
+            <h1 class="display-1 fw-bold">404</h1>
+            <h2 class="display-5">{% translate "Page Not Found" %}</h2>
+            
+            <!-- A helpful message for the user -->
+            <p class="lead text-muted my-4">
+                {% translate "Oops! It seems the page you were looking for doesn't exist or has been moved." %}
+            </p>
+
+            <!-- Action buttons to guide the user back -->
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="{% url 'home' %}" class="btn btn-primary btn-lg px-4 gap-3">
+                    <i class="fas fa-home me-2"></i> {% translate "Go to Homepage" %}
+                </a>
+                <a href="{% url 'contact:contact_form' %}" class="btn btn-outline-secondary btn-lg px-4">
+                    <i class="fas fa-envelope me-2"></i> {% translate "Contact Us" %}
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

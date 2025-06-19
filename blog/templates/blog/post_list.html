@@ -1,0 +1,79 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% load widget_tags %}
+
+{# --- SEO and Browser Tab Title Blocks --- #}
+{% block seo_title %}{% translate "Our Blog" %} | Tavata.art{% endblock %}
+{% block seo_description %}{% translate "Latest articles and updates on Computer Vision, Natural Language Processing, and more from the Tavata team." %}{% endblock %}
+{% block title %}{% translate "Our Blog" %}{% endblock %}
+
+
+{% block content %}
+<div class="container mt-5">
+    
+    {# --- Blog Page Header --- #}
+    <div class="blog-header pb-3 mb-5 text-center border-bottom">
+        <h1 class="display-4">{% translate "Our Blog" %}</h1>
+        <p class="lead text-muted">{% translate "News, articles, and insights from our team." %}</p>
+    </div>
+
+    {# --- Grid of Posts --- #}
+    <div class="row">
+        {# Loop through the 'posts' Page object from the view #}
+        {% for post in posts %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    {# Display the featured image if it exists #}
+                    {% if post.featured_image %}
+                        <a href="{{ post.get_absolute_url }}">
+                            <img src="{{ post.featured_image.url }}" class="card-img-top" loading="lazy" alt="{{ post.title }}">
+                        </a>
+                    {% endif %}
+                    <div class="card-body d-flex flex-column"> 
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text text-muted">
+                            {# Post metadata, fully internationalized #}
+                            {% firstof post.author.get_full_name post.author.username as author_name %}
+                            <small>
+                                {% blocktranslate with published_date=post.published_date|date:"DATE_FORMAT" author=author_name %}
+                                    Published on {{ published_date }} by {{ author }}
+                                {% endblocktranslate %}
+                            </small>
+                        </p>
+                        <a href="{{ post.get_absolute_url }}" class="btn btn-primary mt-auto">{% translate "Read More" %}</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            {# This message is displayed if the 'posts' queryset is empty #}
+            <div class="col">
+                <div class="alert alert-info" role="alert">
+                    {% translate "There are no blog posts yet. Come back soon!" %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {# --- PAGINATION --- #}
+    {# We include our single, centralized pagination component. #}
+    {# We pass the 'posts' object to the 'page_obj' variable that the component expects. #}
+    {# Since this is a simple list, we don't need to pass a 'param_name'. It will default to 'page'. #}
+    {% include 'core/partials/_pagination.html' with page_obj=posts %}
+
+</div>
+{% endblock %}
+
+
+{# Y si tienes sidebar izquierdo... #}
+{% block sidebar_left %}
+    <div class="sticky-top pt-5">
+        {% show_widget_zone 'blog-sidebar-left' %}
+    </div>
+{% endblock %}
+
+{% block sidebar_right %}
+    <div class="sticky-top pt-5">
+        {# Llamamos a la zona de widgets que hemos definido en el admin #}
+        {% show_widget_zone 'blog-sidebar-right' %}
+    </div>
+{% endblock %}

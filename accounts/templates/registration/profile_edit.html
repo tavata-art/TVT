@@ -1,0 +1,84 @@
+<!-- File: accounts/templates/registration/profile_edit.html -->
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Edit Profile" %}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            
+            <h1 class="display-5 mb-4">{% translate "Edit Your Profile" %}</h1>
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- USER DETAILS CARD -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">{% translate "User Information" %}</h5>
+                    </div>
+                    <div class="card-body">
+                        {% for field in user_form %}
+                            <div class="mb-3">
+                                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                                {{ field }}
+                                {% if field.help_text %}<div class="form-text">{{ field.help_text|safe }}</div>{% endif %}
+                                {% if field.errors %}<div class="invalid-feedback d-block">{{ field.errors|striptags }}</div>{% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- PROFILE DETAILS CARD -->
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h5 class="mb-0">{% translate "Profile Details" %}</h5>
+                    </div>
+                    <div class="card-body">
+                        {% for field in profile_form %}
+                            <div class="mb-3">
+                                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+
+                                {# === SPECIAL PREVIEW FOR AVATAR FIELD === #}
+                                {# We show the current avatar image above the file input field for better UX. #}
+                                {% if field.name == 'avatar' %}
+                                <div class="mb-2">
+                                    <img src="{{ profile_form.instance.get_avatar_url }}" 
+                                         alt="{% translate 'Current Avatar' %}"
+                                         class="img-thumbnail" 
+                                         style="max-width: 150px; height: auto;">
+                                </div>
+                                {% endif %}
+                                
+                                {# Render the form field itself. #}
+                                {# Because we defined a custom widget in forms.py, #}
+                                {# this will now render our clean 'custom_clearable_file_input.html' #}
+                                {# without the "Currently: ..." text. #}
+                                {{ field }}
+                                
+                                {% if field.help_text %}<div class="form-text">{{ field.help_text|safe }}</div>{% endif %}
+                                {% if field.errors %}<div class="invalid-feedback d-block">{{ field.errors|striptags }}</div>{% endif %}
+                            </div>
+                        {% endfor %}
+                        <div class="form-check mt-3">
+                            {{ profile_form.clear_avatar }} {# Renderiza el <input type="checkbox"> #}
+                            <label class="form-check-label" for="{{ profile_form.clear_avatar.id_for_label }}">
+                                {{ profile_form.clear_avatar.label }}
+                            </label>
+                            <div class="form-text">{{ profile_form.clear_avatar.help_text }}</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SUBMIT BUTTON -->
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg">{% translate "Save Changes" %}</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

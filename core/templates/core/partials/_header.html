@@ -1,0 +1,68 @@
+<!-- File: core/templates/core/partials/_header.html -->
+{% load i18n %}
+{% load static %}
+{% load menu_tags %}
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+
+            <!-- Site Brand/Logo -->
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <i class="fas fa-bee"></i> Tavata CMS
+            </a>
+
+            <!-- Mobile Navigation Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Collapsible Navigation Container -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                
+                <!-- Main Menu (Dynamically rendered) -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% show_menu 'main-menu' %}
+                </ul>
+
+                <!-- Search Form -->
+                <form class="d-flex" role="search" action="{% url 'search:search_results' %}" method="get">
+                    <input class="form-control me-2" type="search" name="q" value="{{ request.GET.q|default:'' }}" placeholder="{% translate 'Search...' %}" aria-label="Search">
+                    <button class="btn btn-primary" type="submit">{% translate "Search" %}</button>
+                </form>
+
+                <!-- --- USER AUTHENTICATION BLOCK --- -->
+                <div class="d-flex align-items-center ms-lg-3">
+                    {% if user.is_authenticated %}
+                        <!-- If user is logged in, show their avatar, name, and a logout form -->
+
+                        <!-- User Avatar (links to profile edit page) -->
+                        <a href="{% url 'accounts:profile_edit' %}" title="{% translate 'Edit Profile' %}">
+                            {# We simply call our new smart method. It will return the correct URL. #}
+                            <img src="{{ user.profile.get_avatar_url }}" 
+                                alt="{{ user.username }}'s Avatar"
+                                class="rounded-circle" style="width: 32px; height: 32px; object-fit: cover;">
+                        </a>
+
+                        <!-- User Greeting (Reinstated) -->
+                        <span class="navbar-text ms-2 me-3">
+                            {% blocktranslate with user_name=user.profile.get_display_name %}Hello, {{ user_name }}{% endblocktranslate %}
+                        </span>
+
+                        <!-- Logout Form -->
+                        <form id="logout-form" action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-warning btn-sm">{% translate "Log Out" %}</button>
+                        </form>
+
+                    {% else %}
+                        <!-- If user is anonymous, show a login link -->
+                        <a class="nav-link text-white" href="{% url 'login' %}">{% translate "Log In" %}</a>
+                    {% endif %}
+                </div>
+                <!-- --- END USER AUTHENTICATION BLOCK --- -->
+                
+            </div>
+        </div>
+    </nav>
+</header>
