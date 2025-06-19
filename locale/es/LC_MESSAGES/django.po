@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-19 21:09+0000\n"
-"PO-Revision-Date: 2025-06-19 23:12+0200\n"
+"POT-Creation-Date: 2025-06-19 22:37+0000\n"
+"PO-Revision-Date: 2025-06-20 00:41+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -253,7 +253,7 @@ msgstr "Publicado"
 msgid "Title"
 msgstr "Título"
 
-#: blog/models.py:19 categories/models.py:20
+#: blog/models.py:19 categories/models.py:20 menus/models.py:10
 msgid "Slug"
 msgstr "Slug"
 
@@ -676,11 +676,7 @@ msgstr "Publicidad"
 msgid "Menu Title"
 msgstr "Título del Menú"
 
-#: menus/models.py:10
-msgid "Slug (identifier for code)"
-msgstr "Slug (identificador para el código)"
-
-#: menus/models.py:13
+#: menus/models.py:13 menus/models.py:26
 msgid "Menu"
 msgstr "Menú"
 
@@ -688,48 +684,51 @@ msgstr "Menú"
 msgid "Menus"
 msgstr "Menús"
 
-#: menus/models.py:28
-msgid "Menu it belongs to"
-msgstr "Menú al que pertenece"
+#: menus/models.py:21 menus/models.py:47
+msgid "Manual URL"
+msgstr "Enlazar a una URL manual"
 
-#: menus/models.py:35
+#: menus/models.py:22
+msgid "Single Page"
+msgstr "Página Única"
+
+#: menus/models.py:23
+msgid "Blog Categories Tree (Dropdown)"
+msgstr "Blog Categorías Árbol (Desplegable)"
+
+#: menus/models.py:24
+msgid "Important Pages List (Dropdown)"
+msgstr "Lista de Páginas Importantes (Desplegable)"
+
+#: menus/models.py:33
+msgid "Parent Menu Item"
+msgstr "Artículo de Menú Padre"
+
+#: menus/models.py:36
 msgid "Link Text"
 msgstr "Texto del Enlace"
 
-#: menus/models.py:36
-msgid "Order"
-msgstr "Orden"
+#: menus/models.py:37 widgets/models.py:55
+msgid "Display Order"
+msgstr "Mostrar Orden"
 
 #: menus/models.py:43
-msgid "Link to a Page"
-msgstr "Enlazar a una Página"
+msgid "Link Type"
+msgstr "Tipo de Enlace"
 
-#: menus/models.py:44
-msgid "Select an internal page to link to. Leave blank if using a manual URL."
-msgstr ""
-"Selecciona una página interna para enlazar. Deja en blanco si usas una URL "
-"manual."
+#: menus/models.py:46
+msgid "Page Link"
+msgstr "Enlace de la Página"
 
-#: menus/models.py:49
-msgid "Link to a manual URL"
-msgstr "Enlazar a una URL manual"
+#: menus/models.py:48
+msgid "Icon Class"
+msgstr "Class Icono"
 
-#: menus/models.py:50
-msgid ""
-"Use for external URLs (e.g., https://google.com) or fixed paths (e.g., /"
-"blog/)."
-msgstr ""
-"Úsalo para URLs externas (ej: https://google.com) o rutas fijas (ej: /blog/)."
-
-#: menus/models.py:52
-msgid "Icon Class (e.g., fab fa-facebook)"
-msgstr "Clase de Ícono (ej: fab fa-facebook)"
-
-#: menus/models.py:56
+#: menus/models.py:54
 msgid "Menu Item"
 msgstr "Elemento de Menú"
 
-#: menus/models.py:57
+#: menus/models.py:55
 msgid "Menu Items"
 msgstr "Elementos de Menú"
 
@@ -779,6 +778,7 @@ msgstr "páginas"
 
 #: pages/templates/pages/page_detail.html:18
 #: pages/templates/pages/page_detail.html:23
+#, fuzzy
 msgid "Welcome"
 msgstr "¡Bienvenido!"
 
@@ -1075,10 +1075,6 @@ msgstr "Título del Widget"
 msgid "The title that will be displayed above the widget."
 msgstr "El título que se mostrará encima del widget."
 
-#: widgets/models.py:55
-msgid "Display Order"
-msgstr "Mostrar Orden"
-
 #: widgets/models.py:61
 msgid "Number of items to show"
 msgstr "Número de artículos a mostrar"
@@ -1141,6 +1137,34 @@ msgstr ""
 "                 <strong>Widget Error:</strong> Plantilla para el tipo de "
 "widget \"%(widget_type)s\" no se encuentra en el despachador.\n"
 "             "
+
+#~ msgid "Slug (identifier for code)"
+#~ msgstr "Slug (identificador para el código)"
+
+#~ msgid "Menu it belongs to"
+#~ msgstr "Menú al que pertenece"
+
+#~ msgid "Order"
+#~ msgstr "Orden"
+
+#~ msgid "Link to a Page"
+#~ msgstr "Enlazar a una Página"
+
+#~ msgid ""
+#~ "Select an internal page to link to. Leave blank if using a manual URL."
+#~ msgstr ""
+#~ "Selecciona una página interna para enlazar. Deja en blanco si usas una "
+#~ "URL manual."
+
+#~ msgid ""
+#~ "Use for external URLs (e.g., https://google.com) or fixed paths (e.g., /"
+#~ "blog/)."
+#~ msgstr ""
+#~ "Úsalo para URLs externas (ej: https://google.com) o rutas fijas (ej: /"
+#~ "blog/)."
+
+#~ msgid "Icon Class (e.g., fab fa-facebook)"
+#~ msgstr "Clase de Ícono (ej: fab fa-facebook)"
 
 #~ msgid "blog category"
 #~ msgstr "categoría de blog"

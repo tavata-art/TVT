@@ -1,31 +1,38 @@
 # File: menus/admin.py
 from django.contrib import admin
-from .models import Menu, MenuItem
+from mptt.admin import DraggableMPTTAdmin
 from modeltranslation.admin import TabbedTranslationAdmin
-
-# Usamos StackedInline que visualmente es mejor para campos con pestañas
-class MenuItemInline(admin.StackedInline):
-    model = MenuItem
-    extra = 1
-    ordering = ('order',)
-    
-    # ¡LA CLAVE! Definimos fieldsets DENTRO del inline
-    fieldsets = (
-        (None, {
-            'fields': ('title', 'order'), # El título será renderizado con pestañas por modeltranslation
-        }),
-        ('Link (choose one)', {
-            'classes': ('collapse',), # Hacemos esta sección colapsable
-            'fields': ('link_page', 'link_url', 'icon_class'),
-        }),
-    )
+from .models import Menu, MenuItem
 
 @admin.register(Menu)
 class MenuAdmin(TabbedTranslationAdmin):
+    """
+    Admin for the main Menu containers.
+    It's kept simple, as the real management happens in MenuItemAdmin.
+    """
     list_display = ('title', 'slug')
-    inlines = [MenuItemInline]
+    search_fields = ('title_en', 'title_es', 'title_ca')
+    prepopulated_fields = {'slug': ('title_en',)}
 
-# También registramos MenuItem para poder editarlo por separado si queremos
+
 @admin.register(MenuItem)
-class MenuItemAdmin(TabbedTranslationAdmin):
-     list_display = ('title', 'menu', 'order')
+class MenuItemAdmin(DraggableMPTTAdmin, TabbedTranslationAdmin):
+    """
+    Admin for the hierarchical MenuItem model.
+    This provides a draggable, nested interface for easy menu management.
+    """
+    # The fields to display in the tree view list
+    list_display = (
+        'tree_actions',    # The drag handle and actions
+        'indented_title',  # The item's title, indented correctly
+        'link_type',
+    )
+
+    # Make the main title clickable
+    list_display_links = ('indented_title',)
+
+    # Allow filtering by the parent menu
+    list_filter = ('menu',)
+
+    # MPTT-specific setting for the indentation width
+    mptt_level_indent = 25

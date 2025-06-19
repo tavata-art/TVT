@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-19 21:09+0000\n"
-"PO-Revision-Date: 2025-06-19 23:14+0200\n"
+"POT-Creation-Date: 2025-06-19 22:37+0000\n"
+"PO-Revision-Date: 2025-06-20 00:44+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "Language: ca\n"
@@ -252,7 +252,7 @@ msgstr "Publicat"
 msgid "Title"
 msgstr "Títol"
 
-#: blog/models.py:19 categories/models.py:20
+#: blog/models.py:19 categories/models.py:20 menus/models.py:10
 msgid "Slug"
 msgstr "Slug"
 
@@ -673,11 +673,7 @@ msgstr "Publicitat"
 msgid "Menu Title"
 msgstr "Títol del Menú"
 
-#: menus/models.py:10
-msgid "Slug (identifier for code)"
-msgstr "Slug (identificador per al codi)"
-
-#: menus/models.py:13
+#: menus/models.py:13 menus/models.py:26
 msgid "Menu"
 msgstr "Menú"
 
@@ -685,49 +681,51 @@ msgstr "Menú"
 msgid "Menus"
 msgstr "Menús"
 
-#: menus/models.py:28
-msgid "Menu it belongs to"
-msgstr "Menú al qual pertany"
+#: menus/models.py:21 menus/models.py:47
+msgid "Manual URL"
+msgstr "URL manual"
 
-#: menus/models.py:35
+#: menus/models.py:22
+msgid "Single Page"
+msgstr "Pàgina única"
+
+#: menus/models.py:23
+msgid "Blog Categories Tree (Dropdown)"
+msgstr "Blog Categories Tree (d'abandonament)"
+
+#: menus/models.py:24
+msgid "Important Pages List (Dropdown)"
+msgstr "Llista de pàgines importants (d'abandonament)"
+
+#: menus/models.py:33
+msgid "Parent Menu Item"
+msgstr "Menú de pares Article"
+
+#: menus/models.py:36
 msgid "Link Text"
 msgstr "Text de l'Enllaç"
 
-#: menus/models.py:36
-msgid "Order"
-msgstr "Ordre"
+#: menus/models.py:37 widgets/models.py:55
+msgid "Display Order"
+msgstr "Ordre de visualització"
 
 #: menus/models.py:43
-msgid "Link to a Page"
-msgstr "Enllaçar a una Pàgina"
+msgid "Link Type"
+msgstr "Tipus d’enllaç"
 
-#: menus/models.py:44
-msgid "Select an internal page to link to. Leave blank if using a manual URL."
-msgstr ""
-"Selecciona una pàgina interna per enllaçar. Deixa en blanc si fas servir una "
-"URL manual."
+#: menus/models.py:46
+msgid "Page Link"
+msgstr "Enllaç de pàgina"
 
-#: menus/models.py:49
-msgid "Link to a manual URL"
-msgstr "Enllaçar a una URL manual"
+#: menus/models.py:48
+msgid "Icon Class"
+msgstr "Classe Icon"
 
-#: menus/models.py:50
-msgid ""
-"Use for external URLs (e.g., https://google.com) or fixed paths (e.g., /"
-"blog/)."
-msgstr ""
-"Fes servir per a URLs externes (ex: https://google.com) o rutes fixes (ex: /"
-"blog/)."
-
-#: menus/models.py:52
-msgid "Icon Class (e.g., fab fa-facebook)"
-msgstr "Classe d'Icona (ex: fab fa-facebook)"
-
-#: menus/models.py:56
+#: menus/models.py:54
 msgid "Menu Item"
 msgstr "Element de Menú"
 
-#: menus/models.py:57
+#: menus/models.py:55
 msgid "Menu Items"
 msgstr "Elements de Menú"
 
@@ -1071,10 +1069,6 @@ msgstr "Títol de l'idget"
 msgid "The title that will be displayed above the widget."
 msgstr "El títol que es mostrarà per sobre del widget."
 
-#: widgets/models.py:55
-msgid "Display Order"
-msgstr "Ordre de visualització"
-
 #: widgets/models.py:61
 msgid "Number of items to show"
 msgstr "Nombre d’articles a mostrar"
@@ -1138,6 +1132,34 @@ msgstr ""
 "                <strong>Error de widget: </strong> Plantilla per a tipus "
 "widget \"%(widget_type)s\" que no es troba al despatxador.\n"
 "            "
+
+#~ msgid "Slug (identifier for code)"
+#~ msgstr "Slug (identificador per al codi)"
+
+#~ msgid "Menu it belongs to"
+#~ msgstr "Menú al qual pertany"
+
+#~ msgid "Order"
+#~ msgstr "Ordre"
+
+#~ msgid "Link to a Page"
+#~ msgstr "Enllaçar a una Pàgina"
+
+#~ msgid ""
+#~ "Select an internal page to link to. Leave blank if using a manual URL."
+#~ msgstr ""
+#~ "Selecciona una pàgina interna per enllaçar. Deixa en blanc si fas servir "
+#~ "una URL manual."
+
+#~ msgid ""
+#~ "Use for external URLs (e.g., https://google.com) or fixed paths (e.g., /"
+#~ "blog/)."
+#~ msgstr ""
+#~ "Fes servir per a URLs externes (ex: https://google.com) o rutes fixes "
+#~ "(ex: /blog/)."
+
+#~ msgid "Icon Class (e.g., fab fa-facebook)"
+#~ msgstr "Classe d'Icona (ex: fab fa-facebook)"
 
 #~ msgid "blog category"
 #~ msgstr "categoria de blog"
