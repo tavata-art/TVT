@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-19 18:08+0000\n"
-"PO-Revision-Date: 2025-06-19 20:10+0200\n"
+"POT-Creation-Date: 2025-06-19 21:09+0000\n"
+"PO-Revision-Date: 2025-06-19 23:12+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -220,11 +220,11 @@ msgstr "¡Bienvenido! Su acceso ha sido creado con éxito."
 msgid "Your profile has been updated successfully!"
 msgstr "¡Su perfil ha sido actualizado con éxito!"
 
-#: blog/admin.py:28 categories/models.py:46
+#: blog/admin.py:28 categories/models.py:57
 msgid "Category"
 msgstr "Categoría"
 
-#: blog/admin.py:29 blog/models.py:38 categories/models.py:47
+#: blog/admin.py:29 blog/models.py:38 categories/models.py:58
 #: pages/models.py:26 pages/templates/pages/page_detail.html:53
 msgid "Categories"
 msgstr "Categorías"
@@ -253,7 +253,7 @@ msgstr "Publicado"
 msgid "Title"
 msgstr "Título"
 
-#: blog/models.py:19 categories/models.py:13
+#: blog/models.py:19 categories/models.py:20
 msgid "Slug"
 msgstr "Slug"
 
@@ -277,11 +277,11 @@ msgstr "Fecha de Publicación"
 msgid "Status"
 msgstr "Estado"
 
-#: blog/models.py:43 categories/models.py:32 pages/models.py:36
+#: blog/models.py:43 categories/models.py:45 pages/models.py:36
 msgid "Meta Title (SEO)"
 msgstr "Meta Título (SEO)"
 
-#: blog/models.py:44 categories/models.py:38 pages/models.py:37
+#: blog/models.py:44 categories/models.py:51 pages/models.py:37
 msgid "Meta Description (SEO)"
 msgstr "Meta Descripción (SEO)"
 
@@ -456,36 +456,49 @@ msgid "Thank you! Your comment has been submitted and is awaiting moderation."
 msgstr ""
 "¡Gracias! Su comentario ha sido enviado y está a la espera de moderación."
 
-#: categories/models.py:12 contact/models.py:21
+#: categories/models.py:15 contact/models.py:21
 msgid "Name"
 msgstr "Nombre"
 
-#: categories/models.py:21
+#: categories/models.py:30
 msgid "Parent Category"
 msgstr "Categoría Padre"
 
-#: categories/models.py:25
+#: categories/models.py:31
+msgid "Select a parent to create a sub-category."
+msgstr "Seleccione un padre para crear una subcategoría."
+
+#: categories/models.py:37
 msgid "Description"
 msgstr "Descripción"
 
-#: categories/models.py:26
-msgid ""
-"An optional description for the category, can be shown on category pages."
-msgstr ""
-"Una descripción opcional para la categoría, se puede mostrar en las páginas "
-"de categoría."
+#: categories/models.py:38
+msgid "An optional description for the category."
+msgstr "Una descripción opcional para la categoría."
 
-#: categories/models.py:33
+#: categories/models.py:46
 msgid "A precise title for search engine results (max 70 chars)."
 msgstr ""
 "Un título preciso para los resultados del motor de búsqueda (máximo 70 "
 "caracteres)."
 
-#: categories/models.py:39
+#: categories/models.py:52
 msgid "A short description for search engine previews (max 160 chars)."
 msgstr ""
 "Una breve descripción de las vistas previas de los motores de búsqueda "
 "(máximo 160 caracteres)."
+
+#: categories/templates/categories/category_tree.html:6
+msgid "All Categories"
+msgstr "Todas las Categorías"
+
+#: categories/templates/categories/category_tree.html:15
+msgid "Explore Our Topics"
+msgstr "Explore Nuestros Temas"
+
+#: categories/templates/categories/category_tree.html:16
+msgid "Navigate through our content organized by category."
+msgstr "Navega por nuestro contenido organizado por categoría."
 
 #: contact/forms.py:21
 msgid "Your Full Name"
@@ -951,24 +964,36 @@ msgstr ""
 "El número de comentarios aprobados que un usuario debe publicar antes de que "
 "sus comentarios futuros sean aprobados automáticamente."
 
-#: site_settings/models.py:78
+#: site_settings/models.py:76
+msgid "Category Tree Cache Timeout (in seconds)"
+msgstr "Tiempo de espera en caché (en segundos)"
+
+#: site_settings/models.py:77
+msgid ""
+"How long the full category tree should be stored in cache. High values are "
+"recommended."
+msgstr ""
+"Cuánto tiempo debe almacenarse el árbol de categorías completo en caché. Se "
+"recomiendan valores altos."
+
+#: site_settings/models.py:83
 msgid "Top Bar Banner Image"
 msgstr "Imagen de Top Bar Banner"
 
-#: site_settings/models.py:79
+#: site_settings/models.py:84
 msgid "An optional banner image displayed in the top bar."
 msgstr "Una imagen de banner opcional que se muestra en la barra superior."
 
-#: site_settings/models.py:84
+#: site_settings/models.py:89
 msgid "Top Bar Banner Link"
 msgstr "Enlace de Banner de Barra Superior"
 
-#: site_settings/models.py:85
+#: site_settings/models.py:90
 msgid "The URL the banner image will link to."
 msgstr "La URL a la que se vinculará la imagen del banner."
 
-#: site_settings/models.py:89 site_settings/models.py:90
-#: site_settings/models.py:93
+#: site_settings/models.py:94 site_settings/models.py:95
+#: site_settings/models.py:98
 msgid "Site Configuration"
 msgstr "Configuración del Sitio"
 

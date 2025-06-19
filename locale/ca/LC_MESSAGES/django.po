@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-19 18:08+0000\n"
-"PO-Revision-Date: 2025-06-19 20:13+0200\n"
+"POT-Creation-Date: 2025-06-19 21:09+0000\n"
+"PO-Revision-Date: 2025-06-19 23:14+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "Language: ca\n"
@@ -219,11 +219,11 @@ msgstr "Benvingut! El vostre compte s’ha creat amb èxit."
 msgid "Your profile has been updated successfully!"
 msgstr "El vostre perfil s’ha actualitzat amb èxit!"
 
-#: blog/admin.py:28 categories/models.py:46
+#: blog/admin.py:28 categories/models.py:57
 msgid "Category"
 msgstr "Categoria"
 
-#: blog/admin.py:29 blog/models.py:38 categories/models.py:47
+#: blog/admin.py:29 blog/models.py:38 categories/models.py:58
 #: pages/models.py:26 pages/templates/pages/page_detail.html:53
 msgid "Categories"
 msgstr "Categories"
@@ -252,7 +252,7 @@ msgstr "Publicat"
 msgid "Title"
 msgstr "Títol"
 
-#: blog/models.py:19 categories/models.py:13
+#: blog/models.py:19 categories/models.py:20
 msgid "Slug"
 msgstr "Slug"
 
@@ -276,11 +276,11 @@ msgstr "Data de Publicació"
 msgid "Status"
 msgstr "Estat"
 
-#: blog/models.py:43 categories/models.py:32 pages/models.py:36
+#: blog/models.py:43 categories/models.py:45 pages/models.py:36
 msgid "Meta Title (SEO)"
 msgstr "Meta Títol (SEO)"
 
-#: blog/models.py:44 categories/models.py:38 pages/models.py:37
+#: blog/models.py:44 categories/models.py:51 pages/models.py:37
 msgid "Meta Description (SEO)"
 msgstr "Meta Descripció (SEO)"
 
@@ -454,35 +454,48 @@ msgstr "Gràcies! El vostre comentari ha estat publicat."
 msgid "Thank you! Your comment has been submitted and is awaiting moderation."
 msgstr "Gràcies! El vostre comentari ha estat enviat i espera la moderació."
 
-#: categories/models.py:12 contact/models.py:21
+#: categories/models.py:15 contact/models.py:21
 msgid "Name"
 msgstr "Nom"
 
-#: categories/models.py:21
+#: categories/models.py:30
 msgid "Parent Category"
 msgstr "Categoria dels pares"
 
-#: categories/models.py:25
+#: categories/models.py:31
+msgid "Select a parent to create a sub-category."
+msgstr "Seleccioneu un progenitor per crear una subcategoria."
+
+#: categories/models.py:37
 msgid "Description"
 msgstr "Descripció"
 
-#: categories/models.py:26
-msgid ""
-"An optional description for the category, can be shown on category pages."
-msgstr ""
-"Es pot mostrar una descripció opcional de la categoria a les pàgines de "
-"categoria."
+#: categories/models.py:38
+msgid "An optional description for the category."
+msgstr "Una descripció opcional de la categoria."
 
-#: categories/models.py:33
+#: categories/models.py:46
 msgid "A precise title for search engine results (max 70 chars)."
 msgstr ""
 "Un títol precís per als resultats del motor de cerca (màxim 70 caràcters)."
 
-#: categories/models.py:39
+#: categories/models.py:52
 msgid "A short description for search engine previews (max 160 chars)."
 msgstr ""
 "Una breu descripció de les previsualitzacions del motor de cerca (màxim 160 "
 "caràcters)."
+
+#: categories/templates/categories/category_tree.html:6
+msgid "All Categories"
+msgstr "Totes les categories"
+
+#: categories/templates/categories/category_tree.html:15
+msgid "Explore Our Topics"
+msgstr "Exploreu els nostres temes"
+
+#: categories/templates/categories/category_tree.html:16
+msgid "Navigate through our content organized by category."
+msgstr "Navegueu pel nostre contingut organitzat per categoria."
 
 #: contact/forms.py:21
 msgid "Your Full Name"
@@ -948,24 +961,36 @@ msgstr ""
 "El nombre de comentaris aprovats que un usuari ha de publicar abans que els "
 "seus futurs comentaris siguin aprovats automàticament."
 
-#: site_settings/models.py:78
+#: site_settings/models.py:76
+msgid "Category Tree Cache Timeout (in seconds)"
+msgstr "Temps de velocitat de la categoria Tree (en segons)"
+
+#: site_settings/models.py:77
+msgid ""
+"How long the full category tree should be stored in cache. High values are "
+"recommended."
+msgstr ""
+"Quant de temps s’ha d’emmagatzemar l’arbre de categoria completa a la "
+"memòria cau. Es recomana valors alts."
+
+#: site_settings/models.py:83
 msgid "Top Bar Banner Image"
 msgstr "Imatge de Banner de barres superiors"
 
-#: site_settings/models.py:79
+#: site_settings/models.py:84
 msgid "An optional banner image displayed in the top bar."
 msgstr "Una imatge de pancarta opcional que es mostra a la barra superior."
 
-#: site_settings/models.py:84
+#: site_settings/models.py:89
 msgid "Top Bar Banner Link"
 msgstr "Enllaç de banner de barres superiors"
 
-#: site_settings/models.py:85
+#: site_settings/models.py:90
 msgid "The URL the banner image will link to."
 msgstr "L’URL a la qual s’enllaçarà la imatge de la pancarta."
 
-#: site_settings/models.py:89 site_settings/models.py:90
-#: site_settings/models.py:93
+#: site_settings/models.py:94 site_settings/models.py:95
+#: site_settings/models.py:98
 msgid "Site Configuration"
 msgstr "Configuració del lloc"
 

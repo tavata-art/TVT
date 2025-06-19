@@ -6,62 +6,76 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 class Category(MPTTModel):
     """
-    A universal, hierarchical category model.
-    It can be linked from other models via ForeignKey or ManyToManyField.
+    A universal, hierarchical category model using a simple self-referencing
+    ForeignKey to handle nesting.
     """
-    name = models.CharField(max_length=100, verbose_name=_("Name"))
-    slug = models.SlugField(max_length=100, unique=True, verbose_name=_("Slug"))
+    # Basic category fields
+    name = models.CharField(
+        max_length=100, 
+        verbose_name=_("Name")
+    )
+    slug = models.SlugField(
+        max_length=100, 
+        unique=True, 
+        verbose_name=_("Slug")
+    )
     
+    # Simple hierarchy field
     parent = TreeForeignKey(
         'self', 
         on_delete=models.CASCADE, 
         null=True, 
         blank=True, 
         related_name='children',
-        verbose_name=_("Parent Category")
+        verbose_name=_("Parent Category"),
+        help_text=_("Select a parent to create a sub-category.")
     )
+    
+    # Optional descriptive fields
     description = models.TextField(
         blank=True, 
         verbose_name=_("Description"),
-        help_text=_("An optional description for the category, can be shown on category pages.")
+        help_text=_("An optional description for the category.")
     )
-    # --- SEO Fields ---
+    
+    # SEO Fields
     meta_title = models.CharField(
         max_length=70, 
-        blank=True, 
+        blank=True, null=True,
         verbose_name=_("Meta Title (SEO)"),
         help_text=_("A precise title for search engine results (max 70 chars).")
     )
     meta_description = models.CharField(
         max_length=160, 
-        blank=True, 
+        blank=True, null=True,
         verbose_name=_("Meta Description (SEO)"),
         help_text=_("A short description for search engine previews (max 160 chars).")
     )
 
-    class MPTTMeta:
-        order_insertion_by = ['name']
-
     class Meta:
+        """ Standard Django model metadata. """
         verbose_name = _("Category")
         verbose_name_plural = _("Categories")
+        # Order alphabetically by default in the admin and queries.
+        ordering = ['name']
 
     def __str__(self):
-        return f"{'--' * self.level} {self.name}"
+        """ Provides a clear representation in the admin, showing hierarchy. """
+        if self.parent:
+            return f"{self.parent.name} -> {self.name}"
+        return self.name
     
     @property
-    def is_for_blog(self):
-        # A simple heuristic: if it's related to any blog post, it's a blog category.
-        return self.blog_posts.exists()
+    def is_blog_category(self):
+        """ Checks if this category is used for blog posts. """
+        return hasattr(self, 'blog_posts') and self.blog_posts.exists()
 
     def get_absolute_url(self):
-        # We need a way to know if this is a blog or page category to build the URL.
-        # This is a challenge of a universal model. We will solve this later.
-        # For now, let's return a placeholder.
-        # A better solution would be to have different URL patterns based on some logic.
-        # For now, we assume it's for the blog as it's the primary use case.
-        if self.is_for_blog:
+        """
+        Generates the correct URL for the category's list page.
+        """
+        if self.is_blog_category:
             return reverse('blog:posts_by_category', args=[self.slug])
         else:
-            # Default to page categories.
+            # Fallback to the pages category list view
             return reverse('pages:pages_by_category', args=[self.slug])
