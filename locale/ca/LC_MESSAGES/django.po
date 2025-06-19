@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-18 22:05+0000\n"
-"PO-Revision-Date: 2025-06-19 00:11+0200\n"
+"POT-Creation-Date: 2025-06-19 07:55+0000\n"
+"PO-Revision-Date: 2025-06-19 09:57+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "Language: ca\n"
@@ -617,7 +617,7 @@ msgstr "Anterior"
 msgid "Next"
 msgstr "El proper"
 
-#: core/templates/core/partials/_topbar.html:17 site_settings/models.py:55
+#: core/templates/core/partials/_topbar.html:17 site_settings/models.py:60
 msgid "Site Logo"
 msgstr "Logotip del lloc"
 
@@ -888,36 +888,48 @@ msgid ""
 msgstr ""
 "Si es comprova, es publicaran immediatament nous comentaris sense moderació."
 
-#: site_settings/models.py:56
+#: site_settings/models.py:53
+msgid "Menu Cache Timeout (in seconds)"
+msgstr "Cache Timeout (en segons)"
+
+#: site_settings/models.py:54
+msgid ""
+"How long the site menus should be stored in cache. Set to 0 to disable menu "
+"caching (not recommended)."
+msgstr ""
+"Quant de temps s’han d’emmagatzemar els resultats d’aquest widget a la "
+"memòria cau. 0 per desactivar la memòria cau per a aquest widget."
+
+#: site_settings/models.py:61
 msgid "The main logo displayed in the top bar."
 msgstr "El logotip principal que es mostra a la barra superior."
 
-#: site_settings/models.py:61
+#: site_settings/models.py:66
 msgid "Site Slogan"
 msgstr "Lloc Slegà"
 
-#: site_settings/models.py:62
+#: site_settings/models.py:67
 msgid "A short tagline displayed next to the logo."
 msgstr "Una breu etiqueta que es mostra al costat del logotip."
 
-#: site_settings/models.py:69
+#: site_settings/models.py:74
 msgid "Top Bar Banner Image"
 msgstr "Imatge de Banner de barres superiors"
 
-#: site_settings/models.py:70
+#: site_settings/models.py:75
 msgid "An optional banner image displayed in the top bar."
 msgstr "Una imatge de pancarta opcional que es mostra a la barra superior."
 
-#: site_settings/models.py:75
+#: site_settings/models.py:80
 msgid "Top Bar Banner Link"
 msgstr "Enllaç de banner de barres superiors"
 
-#: site_settings/models.py:76
+#: site_settings/models.py:81
 msgid "The URL the banner image will link to."
 msgstr "L’URL a la qual s’enllaçarà la imatge de la pancarta."
 
-#: site_settings/models.py:80 site_settings/models.py:81
-#: site_settings/models.py:84
+#: site_settings/models.py:85 site_settings/models.py:86
+#: site_settings/models.py:89
 msgid "Site Configuration"
 msgstr "Configuració del lloc"
 

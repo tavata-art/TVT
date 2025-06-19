@@ -5,6 +5,7 @@ from django.db.models import Count, Q
 from django.core.cache import cache
 
 from blog.models import Post, PostCategory
+from django.conf import settings
 from widgets.models import Widget, WidgetZone 
 
 logger = logging.getLogger(__name__)
@@ -25,8 +26,9 @@ def show_widget_zone(context, zone_slug):
 
     processed_widgets = []
     for widget in widgets:
+        language_code = context.get('LANGUAGE_CODE', settings.LANGUAGE_CODE)
         # 1. Create a unique cache key for this specific widget instance.
-        cache_key = f'widget_items_{widget.id}_v1'
+        cache_key = f'widget_items_{widget.id}_{language_code}_v1'
         
         # 2. Try to get the items from the cache first.
         #    If cache_timeout is 0, we bypass the cache get.

@@ -47,7 +47,12 @@ class SiteConfiguration(SingletonModel):
         verbose_name=_("Auto-approve comments"),
         help_text=_("If checked, new comments will be published immediately without moderation.")
     )
-
+        # --- Caching Settings ---
+    menu_cache_timeout = models.PositiveIntegerField(
+        default=3600, # Default to 1 hour (3600 seconds)
+        verbose_name=_("Menu Cache Timeout (in seconds)"),
+        help_text=_("How long the site menus should be stored in cache. Set to 0 to disable menu caching (not recommended).")
+    )
     # --- Branding Settings ---
     site_logo = models.ImageField(
         upload_to='site_branding/',

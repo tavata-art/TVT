@@ -11,13 +11,10 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 # URLS THAT SHOULD NOT BE TRANSLATED (e.g., admin, auth process)
 # ==============================================================================
 urlpatterns = [
-    # 1. Django Admin
-    path('admin/', admin.site.urls),
-    
-    # 2. Third-party app URLs (like summernote)
+    # 1. Third-party app URLs (like summernote)
     path('summernote/', include('django_summernote.urls')),
     
-    # 3. Custom Authentication URLs
+    # 2. Custom Authentication URLs
     # This URL for signup comes from our own 'accounts' app.
     # It must come BEFORE the generic include below.
     path('accounts/', include('accounts.urls', namespace='accounts')),
@@ -34,6 +31,8 @@ urlpatterns = [
 # URLS THAT WILL BE PREFIXED WITH A LANGUAGE CODE (e.g., /en/blog/, /es/blog/)
 # ==============================================================================
 urlpatterns += i18n_patterns(
+    # 1. Django Admin
+    path('admin/', admin.site.urls),
     # Our own apps with content visible to the user
     path('search/', include('search.urls', namespace='search')),
     path('pages/', include('pages.urls', namespace='pages')),
