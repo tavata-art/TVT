@@ -1,35 +1,38 @@
+# File: menus/admin.py
 from django.contrib import admin
-from django.utils.translation import gettext_lazy as _
-from .models import Menu, MenuItem
+from mptt.admin import DraggableMPTTAdmin
 from modeltranslation.admin import TabbedTranslationAdmin
-
-class MenuItemInline(admin.TabularInline):
-    """
-    Allows editing MenuItems directly within the Menu admin page.
-    This is a more user-friendly approach.
-    """
-    model = MenuItem
-    extra = 1 # Shows one empty slot for a new item
-    ordering = ['order']
-    # If the inline form gets too wide, you can specify fields to show:
-    # fields = ('title', 'order', 'link_page', 'link_url', 'icon_class')
-
+from .models import Menu, MenuItem
 
 @admin.register(Menu)
-class MenuAdmin(TabbedTranslationAdmin): # Making Menu title translatable
-    """ Admin options for the Menu model. """
+class MenuAdmin(TabbedTranslationAdmin):
+    """
+    Admin for the main Menu containers.
+    It's kept simple, as the real management happens in MenuItemAdmin.
+    """
     list_display = ('title', 'slug')
-    prepopulated_fields = {'slug': ('title',)}
-    inlines = [MenuItemInline] # This embeds the MenuItem editor
+    search_fields = ('title_en', 'title_es', 'title_ca')
+    prepopulated_fields = {'slug': ('title_en',)}
 
 
 @admin.register(MenuItem)
-class MenuItemAdmin(TabbedTranslationAdmin):
+class MenuItemAdmin(DraggableMPTTAdmin, TabbedTranslationAdmin):
     """
-    Provides a separate admin view for all MenuItems,
-    which is useful for managing all links at once.
+    Admin for the hierarchical MenuItem model.
+    This provides a draggable, nested interface for easy menu management.
     """
-    list_display = ('title', 'menu', 'order', 'link_page', 'link_url')
+    # The fields to display in the tree view list
+    list_display = (
+        'tree_actions',    # The drag handle and actions
+        'indented_title',  # The item's title, indented correctly
+        'link_type',
+    )
+
+    # Make the main title clickable
+    list_display_links = ('indented_title',)
+
+    # Allow filtering by the parent menu
     list_filter = ('menu',)
-    list_editable = ('order',)
-    search_fields = ('title', 'link_url')
+
+    # MPTT-specific setting for the indentation width
+    mptt_level_indent = 25

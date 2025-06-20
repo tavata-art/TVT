@@ -6,4 +6,6 @@ class MenusConfig(AppConfig):
     name = 'menus'
 
     def ready(self):
-        import menus.signals # Import the signals module
+        # This line is crucial. It tells Django to connect the signals
+        # defined in menus/signals.py when the application starts.
+        import menus.signals 

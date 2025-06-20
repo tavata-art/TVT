@@ -3,10 +3,12 @@ import logging
 from django import template
 from django.db.models import Count, Q
 from django.core.cache import cache
-
-from blog.models import Post, PostCategory
 from django.conf import settings
-from widgets.models import Widget, WidgetZone 
+
+# Import all needed models at the top
+from blog.models import Post
+from categories.models import Category
+from widgets.models import Widget, WidgetZone
 
 logger = logging.getLogger(__name__)
 register = template.Library()
@@ -26,58 +28,55 @@ def show_widget_zone(context, zone_slug):
 
     processed_widgets = []
     for widget in widgets:
+        # 1. Create a unique, versioned, and language-specific cache key.
         language_code = context.get('LANGUAGE_CODE', settings.LANGUAGE_CODE)
-        # 1. Create a unique cache key for this specific widget instance.
         cache_key = f'widget_items_{widget.id}_{language_code}_v1'
         
         # 2. Try to get the items from the cache first.
-        #    If cache_timeout is 0, we bypass the cache get.
         items = None
         if widget.cache_timeout > 0:
             items = cache.get(cache_key)
 
-        # 3. If it's a "cache miss" (items is None), we query the database.
+        # 3. If it's a "cache miss" (items is None), query the database.
         if items is None:
-            # We only log the DB query if caching was attempted.
             if widget.cache_timeout > 0:
                 logger.info(f"CACHE MISS for widget '{widget.title}' (ID: {widget.id}). Querying database.")
             
-            items_qs = Post.objects.none()
+            items_qs = Post.objects.none() # Default empty queryset
 
             # --- WIDGET LOGIC DISPATCHER (match/case) ---
             match widget.widget_type:
-                case 'recent_posts':
-                    items_qs = Post.objects.filter(status='published').order_by('-published_date')
-                
-                case 'most_viewed_posts':
-                    items_qs = Post.objects.filter(status='published').order_by('-views_count', '-published_date')
+                case 'recent_posts' | 'most_viewed_posts' | 'most_commented_posts' | 'editor_picks_posts':
+                    # This block handles all post-based widgets
+                    if widget.widget_type == 'recent_posts':
+                        items_qs = Post.objects.filter(status='published').order_by('-published_date')
+                    elif widget.widget_type == 'most_viewed_posts':
+                        items_qs = Post.objects.filter(status='published').order_by('-views_count', '-published_date')
+                    elif widget.widget_type == 'most_commented_posts':
+                        items_qs = Post.objects.filter(status='published') \
+                                               .annotate(num_comments=Count('comments', filter=Q(comments__is_approved=True))) \
+                                               .filter(num_comments__gt=0) \
+                                               .order_by('-num_comments', '-published_date')
+                    elif widget.widget_type == 'editor_picks_posts':
+                        items_qs = Post.objects.filter(status='published', editor_rating__gt=0) \
+                                               .order_by('-editor_rating', '-published_date')
+                    
+                    # Apply slicing and evaluate the queryset
+                    items = list(items_qs[:widget.item_count])
 
-                case 'most_commented_posts':
-                    items_qs = Post.objects.filter(status='published') \
-                                           .annotate(num_comments=Count('comments', filter=Q(comments__is_approved=True))) \
-                                           .filter(num_comments__gt=0) \
-                                           .order_by('-num_comments', '-published_date')
-                
-                case 'editor_picks_posts':
-                    items_qs = Post.objects.filter(status='published', editor_rating__gt=0) \
-                                           .order_by('-editor_rating', '-published_date')
-                
                 case 'blog_categories':
-                    category_qs = PostCategory.objects.annotate(
-                                        num_posts=Count('posts', filter=Q(posts__status='published'))
-                                    ).filter(num_posts__gt=0).order_by('-num_posts', 'name')
-                    # We slice this queryset directly.
-                    items = list(category_qs[:widget.item_count])
-
+                    # This case handles the blog category widget specifically
+                    items = list(
+                        Category.objects.annotate(
+                            num_blog_posts=Count('blog_posts', filter=Q(blog_posts__status='published'))
+                        ).filter(num_blog_posts__gt=0).order_by('-num_blog_posts', 'name')[:widget.item_count]
+                    )
+                
                 case _:
                     logger.warning(f"Unrecognized widget type '{widget.widget_type}' for widget '{widget.title}'.")
-                    items = []
-
-            # If the widget type was post-based, we apply the slicing here.
-            if widget.widget_type != 'blog_categories' and widget.widget_type in Widget.WidgetType.values:
-                items = list(items_qs[:widget.item_count])
-
-            # 4. Store the result in the cache if timeout is greater than 0.
+                    items = [] # Default to an empty list
+            
+            # 4. Store the result in the cache if a timeout is set.
             if widget.cache_timeout > 0:
                 cache.set(cache_key, items, widget.cache_timeout)
         else:

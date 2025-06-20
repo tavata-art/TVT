@@ -76,7 +76,8 @@ INSTALLED_APPS = [
     'search.apps.SearchConfig', 
     'contact.apps.ContactConfig',
     'widgets.apps.WidgetsConfig',
-    'accounts.apps.AccountsConfig'
+    'accounts.apps.AccountsConfig',
+    'categories.apps.CategoriesConfig',
 ]
 
 MIDDLEWARE = [

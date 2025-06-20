@@ -1,13 +1,14 @@
 import logging
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.db.models import F, Q
+from django.db.models import F
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.utils.translation import gettext
 
 from .forms import CommentForm
-from .models import Post, PostCategory, Comment
+from .models import Post, Comment
+from categories.models import Category
 from site_settings.models import SiteConfiguration
 
 logger = logging.getLogger(__name__)
@@ -61,11 +62,10 @@ def post_list_view(request):
 def post_detail_view(request, year, month, day, slug):
     """
     Displays a single blog post and handles the entire comment submission process,
-    including view counting, moderation logic, and user association.
+    including view counting, smart comment approval, and user association.
     """
-    # 1. Retrieve the Post object.
-    # Fetches a single post that matches the URL parameters and is published.
-    # Raises a 404 error automatically if not found.
+    # 1. Retrieve the Post and Site Configuration objects.
+    # ----------------------------------------------------
     post = get_object_or_404(Post,
                              status='published',
                              published_date__year=year,
@@ -73,45 +73,46 @@ def post_detail_view(request, year, month, day, slug):
                              published_date__day=day,
                              slug=slug)
 
-    # 2. Increment the View Count.
-    # This uses an F() expression for a race-condition-safe database update.
-    post.views_count = F('views_count') + 1
-    post.save(update_fields=['views_count'])
-    # Refresh the object from the DB to get the latest view count.
-    post.refresh_from_db()
-
-    # 3. Prepare for Comment Handling.
-    # Get all approved, top-level comments for this post to display.
-    comments = post.comments.filter(is_approved=True)
-    
-    # Get the site-wide configuration.
     try:
         site_config = SiteConfiguration.objects.get()
     except SiteConfiguration.DoesNotExist:
-        # Fallback to a default config object if none exists in DB
-        # This makes the site resilient even if setup is incomplete.
+        logger.error("CRITICAL: SiteConfiguration object not found. Site may not function correctly.")
+        # Create a fallback object to prevent crashes.
         class FallbackConfig:
             auto_approve_comments = False
         site_config = FallbackConfig()
-    
-    # This logic handles both GET requests and form submissions (POST).
+
+    # 2. Increment the View Count.
+    # ---------------------------------
+    post.views_count = F('views_count') + 1
+    post.save(update_fields=['views_count'])
+    post.refresh_from_db()
+
+    # 3. Handle Comment Submission and Retrieval.
+    # -------------------------------------------
+    comments = post.comments.filter(is_approved=True)
+
     if request.method == 'POST':
-        # If form is submitted, bind POST data and the request user to a form instance.
         comment_form = CommentForm(request.POST, user=request.user)
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
             new_comment.post = post
             
-            # Associate comment with the logged-in user, if any.
+            # --- Smart Approval Logic ---
+            is_trusted = False
             if request.user.is_authenticated:
                 new_comment.user = request.user
                 new_comment.author_name = request.user.profile.get_display_name()
                 new_comment.author_email = request.user.email
-
-            # Set approval status based on the site configuration.
-            if site_config.auto_approve_comments:
+                # Check if the user has been promoted to 'Trusted'.
+                is_trusted = request.user.profile.is_trusted_commenter
+            
+            # Approve the comment if global auto-approval is ON, OR if the specific user is trusted.
+            if site_config.auto_approve_comments or is_trusted:
                 new_comment.is_approved = True
                 success_message = gettext("Thank you! Your comment has been published.")
+                if is_trusted and not site_config.auto_approve_comments:
+                    logger.info(f"Comment from trusted user '{request.user.username}' was auto-approved.")
             else:
                 new_comment.is_approved = False
                 success_message = gettext("Thank you! Your comment has been submitted and is awaiting moderation.")
@@ -119,18 +120,18 @@ def post_detail_view(request, year, month, day, slug):
             new_comment.save()
             messages.success(request, success_message)
             
-            # Use the Post/Redirect/Get pattern to prevent form resubmission.
+            # Redirect using the Post/Redirect/Get pattern.
             post_url = post.get_absolute_url()
             redirect_url = f"{post_url}#comments-section"
             return HttpResponseRedirect(redirect_url)
         else:
-            # If the form is invalid, log the errors for debugging.
             logger.warning(f"Invalid comment submission on post '{post.slug}'. Errors: {comment_form.errors.as_json()}")
     else:
-        # For a GET request, create a blank form instance, passing the user.
+        # For a GET request, create a blank form instance.
         comment_form = CommentForm(user=request.user)
 
-    # 4. Prepare the final context and render the template.
+    # 4. Prepare the final context for the template.
+    # ----------------------------------------------------
     context = {
         'post': post,
         'comments': comments,
@@ -138,15 +139,14 @@ def post_detail_view(request, year, month, day, slug):
     }
     return render(request, 'blog/post_detail.html', context)
 
-
 def posts_by_category_view(request, category_slug):
     """
     Filters and displays a paginated list of published posts
     belonging to a specific blog category.
     """
     # --- 1. Get Base Data ---
-    category = get_object_or_404(PostCategory, slug=category_slug)
-    all_posts_in_category = category.posts.filter(status='published').order_by('-published_date')
+    category = get_object_or_404(Category, slug=category_slug)
+    all_posts_in_category = category.blog_posts.filter(status='published').order_by('-published_date')
 
     # --- 2. Get Pagination Settings ---
     try:

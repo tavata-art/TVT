@@ -1,8 +1,7 @@
 # widgets/models.py
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from blog.models import PostCategory
-from pages.models import Category as PageCategory # Import with an alias to avoid name conflict
+from categories.models import Category
 
 class WidgetZone(models.Model):
     """
@@ -70,20 +69,12 @@ class Widget(models.Model):
         help_text=_("How long the results of this widget should be stored in cache. 0 to disable caching for this widget.")
     )
     
-    blog_category_filter = models.ForeignKey(
-        PostCategory, 
-        null=True, blank=True, 
-        on_delete=models.SET_NULL, 
-        verbose_name=_("Filter by Blog Category (optional)"),
-        help_text=_("If selected, the widget will only show posts from this category.")
-    )
-
-    page_category_filter = models.ForeignKey(
-        PageCategory,
+    category_filter = models.ForeignKey(
+        Category,
         null=True, blank=True,
         on_delete=models.SET_NULL,
-        verbose_name=_("Filter by Page Category (optional)"),
-        help_text=_("Used for a future 'List of Pages' widget.")
+        verbose_name=_("Filter by Category (optional)"),
+        help_text=_("If selected, the widget will only show items from this specific category.")
     )
 
     class Meta:

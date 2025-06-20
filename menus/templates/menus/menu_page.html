@@ -1,0 +1,11 @@
+<!-- File: menus/templates/menus/menu_page.html -->
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% load menu_tags %}
+
+{% block title %}Menu Test Page{% endblock %}
+
+{% block content %}
+    <h1>Visualización del Menú Principal</h1>
+    {% render_menu_tree 'main-menu' %}
+{% endblock %}

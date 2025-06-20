@@ -66,7 +66,16 @@ class SiteConfiguration(SingletonModel):
         verbose_name=_("Site Slogan"),
         help_text=_("A short tagline displayed next to the logo.")
     )
-
+    trusted_commenter_threshold = models.PositiveIntegerField(
+        default=10,
+        verbose_name=_("Trusted Commenter Threshold"),
+        help_text=_("The number of approved comments a user needs to post before their future comments are auto-approved.")
+    )
+    category_tree_cache_timeout = models.PositiveIntegerField(
+        default=43200, # Default to 12 hours
+        verbose_name=_("Category Tree Cache Timeout (in seconds)"),
+        help_text=_("How long the full category tree should be stored in cache. High values are recommended.")
+    )
     # --- Top Bar Banner/Ad Settings ---
     top_bar_banner_image = models.ImageField(
         upload_to='site_branding/banners/',

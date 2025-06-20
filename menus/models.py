@@ -1,13 +1,13 @@
+# File: menus/models.py
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+from mptt.models import MPTTModel, TreeForeignKey
 from pages.models import Page
 
 class Menu(models.Model):
-    """
-    Represents a menu location on the site, like 'Main Menu' or 'Footer Menu'.
-    """
     title = models.CharField(max_length=100, unique=True, verbose_name=_("Menu Title"))
-    slug = models.SlugField(max_length=100, unique=True, verbose_name=_("Slug (identifier for code)"))
+    slug = models.SlugField(max_length=100, unique=True, verbose_name=_("Slug"))
 
     class Meta:
         verbose_name = _("Menu")
@@ -16,54 +16,50 @@ class Menu(models.Model):
     def __str__(self):
         return self.title
 
+class MenuItem(MPTTModel):
+    class LinkType(models.TextChoices):
+        URL = 'url', _('Manual URL')
+        PAGE = 'page', _('Single Page')
+        ALL_BLOG_CATEGORIES = 'all_blog_categories', _('Blog Categories Tree (Dropdown)')
+        IMPORTANT_PAGES = 'important_pages', _('Important Pages List (Dropdown)')
 
-class MenuItem(models.Model):
-    """
-    Represents a single link item within a specific Menu.
-    """
-    menu = models.ForeignKey(
-        Menu, 
-        on_delete=models.CASCADE, 
-        related_name="items", 
-        verbose_name=_("Menu it belongs to"),
-        # We keep these True for now to allow a smooth data migration.
-        # Later, we can set them to False for data integrity.
-        null=True,
-        blank=True
+    menu = models.ForeignKey(Menu, on_delete=models.CASCADE, related_name="items", verbose_name=_("Menu"))
+    
+    parent = TreeForeignKey(
+        'self',
+        on_delete=models.CASCADE,
+        null=True, blank=True,
+        related_name='children',
+        verbose_name=_("Parent Menu Item")
     )
     
     title = models.CharField(max_length=100, verbose_name=_("Link Text"))
-    order = models.PositiveIntegerField(default=0, verbose_name=_("Order"))
-    
-    link_page = models.ForeignKey(
-        Page, 
-        on_delete=models.CASCADE, 
-        blank=True, 
-        null=True, 
-        verbose_name=_("Link to a Page"),
-        help_text=_("Select an internal page to link to. Leave blank if using a manual URL.")
+    order = models.PositiveIntegerField(default=0, verbose_name=_("Display Order"))
+
+    link_type = models.CharField(
+        max_length=50,
+        choices=LinkType.choices,
+        default=LinkType.URL,
+        verbose_name=_("Link Type")
     )
-    link_url = models.CharField(
-        max_length=255, 
-        blank=True, 
-        verbose_name=_("Link to a manual URL"),
-        help_text=_("Use for external URLs (e.g., https://google.com) or fixed paths (e.g., /blog/).")
-    )
-    icon_class = models.CharField(max_length=100, blank=True, null=True, verbose_name=_("Icon Class (e.g., fab fa-facebook)"))
+
+    link_page = models.ForeignKey(Page, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Page Link"))
+    link_url = models.CharField(max_length=255, blank=True, verbose_name=_("Manual URL"))
+    icon_class = models.CharField(max_length=100, blank=True, verbose_name=_("Icon Class"))
+
+    class MPTTMeta:
+        order_insertion_by = ['order']
 
     class Meta:
-        ordering = ['order']
-        verbose_name = _("Menu Item")
-        verbose_name_plural = _("Menu Items")
+        verbose_name=_("Menu Item")
+        verbose_name_plural=_("Menu Items")
 
     def __str__(self):
-        if self.menu:
-            return f"{self.menu.title} - {self.title}"
-        return self.title
+        return f"{'--' * self.level} {self.title}"
 
     def get_url(self):
-        if self.link_page:
+        if self.link_type == 'page' and self.link_page:
             return self.link_page.get_absolute_url()
-        if self.link_url:
+        elif self.link_type == 'url':
             return self.link_url
         return "#"

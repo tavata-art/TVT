@@ -1,7 +1,8 @@
 # pages/views.py
 import logging
 from django.shortcuts import render, get_object_or_404
-from .models import Page, Category
+from .models import Page
+from categories.models import Category
 from django.core.paginator import Paginator # Asegúrate de importar Paginator
 from site_settings.models import SiteConfiguration
 
