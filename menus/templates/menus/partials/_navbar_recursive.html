@@ -1,0 +1,28 @@
+<!-- File: menus/templates/menus/partials/_navbar_recursive.html -->
+{% for node in nodes %}
+    {% with children=node.children.all %}
+        {% if children %}
+            {# This item IS a dropdown/sub-dropdown #}
+            <li class="{% if node.parent %}dropend{% else %}dropdown{% endif %}">
+                <a class="{% if node.parent %}dropdown-item dropdown-submenu-toggle{% else %}nav-link dropdown-toggle{% endif %}" 
+                   href="#" 
+                   role="button" 
+                   data-bs-toggle="dropdown" 
+                   aria-expanded="false">
+                    {{ node.title }}
+                </a>
+                <ul class="dropdown-menu {% if node.parent %}dropdown-submenu{% endif %}">
+                    {# Recursion! Call this same template for the children #}
+                    {% include "menus/partials/_navbar_recursive.html" with nodes=children %}
+                </ul>
+            </li>
+        {% else %}
+            {# This is a simple link with no children #}
+            <li>
+                <a class="{% if node.parent %}dropdown-item{% else %}nav-link{% endif %}" href="{{ node.get_url }}">
+                    {{ node.title }}
+                </a>
+            </li>
+        {% endif %}
+    {% endwith %}
+{% endfor %}

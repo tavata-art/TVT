@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 register = template.Library()
 
 
-@register.inclusion_tag('categories/partials/_category_tree_component.html', takes_context=True)
+@register.inclusion_tag('core/partials/_tree_node_component.html', takes_context=True)
 def render_category_tree(context):
     """
     Fetches and renders the entire category tree.

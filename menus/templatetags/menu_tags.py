@@ -13,8 +13,16 @@ from site_settings.models import SiteConfiguration
 logger = logging.getLogger(__name__)
 register = template.Library()
 
+@register.inclusion_tag('core/partials/_tree_node_component.html')
+def render_menu_tree(menu_slug):
+    try:
+        menu = Menu.objects.get(slug=menu_slug)
+        nodes = menu.items.all() # Pasamos todos los items
+        return {'nodes': nodes}
+    except Menu.DoesNotExist:
+        return {'nodes': []}
 
-@register.inclusion_tag('menus/partials/_menu_component.html', takes_context=True)
+@register.inclusion_tag('menus/partials/_navbar_recursive.html', takes_context=True)
 def show_menu(context, menu_slug):
     """
     Fetches and renders a full menu tree by its slug.
@@ -59,6 +67,33 @@ def show_menu(context, menu_slug):
             
     return {'nodes': nodes}
 
+@register.inclusion_tag('menus/partials/_navbar_recursive.html', takes_context=True)
+def render_navbar_menu(context, menu_slug):
+    """
+    Fetches and prepares the menu tree specifically for Bootstrap navbar rendering.
+    """
+    # La lógica de caché y de obtención de datos es la misma
+    language_code = context.get('LANGUAGE_CODE', settings.LANGUAGE_CODE)
+    cache_key = f'navbar_nodes_{menu_slug}_{language_code}_v1'
+
+    nodes = cache.get(cache_key)
+
+    if nodes is None:
+        logger.info(f"CACHE MISS for navbar menu '{menu_slug}' (lang: {language_code}).")
+        try:
+            menu = Menu.objects.get(slug=menu_slug)
+            # Obtenemos solo los nodos raíz, la plantilla hará la recursión
+            nodes = menu.items.filter(parent__isnull=True)
+
+            timeout = SiteConfiguration.objects.get().menu_cache_timeout
+            cache.set(cache_key, list(nodes), timeout)
+
+        except Menu.DoesNotExist:
+            nodes = []
+    else:
+        logger.debug(f"CACHE HIT for navbar menu '{menu_slug}' (lang: {language_code}).")
+
+    return {'nodes': nodes, 'request': context['request']}
 
 # The show_social_links tag can be kept as it is, as its logic is simple
 # or refactored into the main show_menu if desired. We'll keep it separate for clarity.
