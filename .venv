@@ -1,0 +1,12 @@
+# Archivo: .env
+SECRET_KEY=django-insecure-tuf(w&z*f9hnsjfd5%$pt%fh$06cf-9*%c_@+a2xidum)
+ENVIRONMENT=development
+DEBUG=True
+ALLOWED_HOSTS=127.0.0.1, localhost
+
+# --- Datos de la DB de PRODUCCIÓN ---
+DB_NAME=sextavac_tvt_db
+DB_USER=sextavac_tvt_user
+DB_PASSWORD=tu_contraseña_segura
+DB_HOST=tavata.art  # O la IP del servidor. ¡NO localhost!
+DB_PORT=3306

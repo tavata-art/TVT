@@ -39,8 +39,7 @@ urlpatterns += i18n_patterns(
     path('pages/', include('pages.urls', namespace='pages')),
     path('blog/', include('blog.urls', namespace='blog')),
     path('contact/', include('contact.urls', namespace='contact')),
-
-    # Homepage must be the last one in this block
+    path('gallery/', include('gallery.urls')),
     path('', include('core.urls')),
 )
 

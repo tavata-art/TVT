@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # 1. Leer la variable de entorno principal.
 #    Por seguridad, si no se define, se asume 'production'.
-ENVIRONMENT = config('ENVIRONMENT', default='production')
+ENVIRONMENT = config('ENVIRONMENT', default='development', cast=str)
 
 print("*********************************************")
 print(f"**** EJECUTANDO EN AMBIENTE: {ENVIRONMENT.upper()} ****")
@@ -78,6 +78,7 @@ INSTALLED_APPS = [
     'widgets.apps.WidgetsConfig',
     'accounts.apps.AccountsConfig',
     'categories.apps.CategoriesConfig',
+    'gallery.apps.GalleryConfig',
 ]
 
 MIDDLEWARE = [
