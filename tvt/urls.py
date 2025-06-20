@@ -33,7 +33,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     # 1. Django Admin
     path('admin/', admin.site.urls),
-    # Our own apps with content visible to the user
+    path('menus/', include('menus.urls', namespace='menus')),
     path('categories/', include('categories.urls', namespace='categories')),
     path('search/', include('search.urls', namespace='search')),
     path('pages/', include('pages.urls', namespace='pages')),

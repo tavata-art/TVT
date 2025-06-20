@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-19 22:37+0000\n"
-"PO-Revision-Date: 2025-06-20 00:41+0200\n"
+"PO-Revision-Date: 2025-06-20 12:46+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -778,7 +778,6 @@ msgstr "páginas"
 
 #: pages/templates/pages/page_detail.html:18
 #: pages/templates/pages/page_detail.html:23
-#, fuzzy
 msgid "Welcome"
 msgstr "¡Bienvenido!"
 

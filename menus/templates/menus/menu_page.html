@@ -1,0 +1,18 @@
+<!-- File: menus/templates/menus/menu_page.html -->
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{% block title %}Menu Test Page{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Menu Rendering Test</h1>
+    <hr>
+    <p>This page tests the `_menu_recursive.html` partial by rendering the 'main-menu'.</p>
+
+    <div class="mt-4 p-3 border">
+        <!-- We start the recursion with our root nodes -->
+        {% include "menus/partials/_menu_recursive.html" with nodes=nodes %}
+    </div>
+</div>
+{% endblock %}
