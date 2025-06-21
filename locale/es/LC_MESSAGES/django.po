@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-19 22:37+0000\n"
-"PO-Revision-Date: 2025-06-20 12:46+0200\n"
+"POT-Creation-Date: 2025-06-21 09:54+0000\n"
+"PO-Revision-Date: 2025-06-21 11:56+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -249,7 +249,7 @@ msgstr "Borrador"
 msgid "Published"
 msgstr "Publicado"
 
-#: blog/models.py:18 pages/models.py:16
+#: blog/models.py:18 gallery/admin.py:16 gallery/models.py:6 pages/models.py:16
 msgid "Title"
 msgstr "Título"
 
@@ -672,6 +672,34 @@ msgstr "Logotipo del Sitio"
 msgid "Advertisement"
 msgstr "Publicidad"
 
+#: gallery/models.py:7
+msgid "Image"
+msgstr "Imagen"
+
+#: gallery/models.py:8
+msgid "Uploaded at"
+msgstr "Actualizado el"
+
+#: gallery/templates/gallery/gallery.html:6
+msgid "Image Gallery"
+msgstr "Galería de imágenes"
+
+#: gallery/templates/gallery/gallery.html:16
+#, python-format
+msgid ""
+"\n"
+"                  Uploaded: %(date)s\n"
+"                "
+msgstr ""
+"\n"
+"                            Actualizado en %(date)s\n"
+"                            "
+
+#: gallery/templates/gallery/gallery.html:26
+#, fuzzy
+msgid "No images in the gallery."
+msgstr "No hay imágenes en esta galería"
+
 #: menus/models.py:9
 msgid "Menu Title"
 msgstr "Título del Menú"
@@ -778,6 +806,7 @@ msgstr "páginas"
 
 #: pages/templates/pages/page_detail.html:18
 #: pages/templates/pages/page_detail.html:23
+#, fuzzy
 msgid "Welcome"
 msgstr "¡Bienvenido!"
 
@@ -1010,15 +1039,15 @@ msgstr ""
 msgid "Go to Homepage"
 msgstr "Ir a la página de inicio"
 
-#: tvt/settings.py:187
+#: tvt/settings.py:188
 msgid "Spanish"
 msgstr "Español"
 
-#: tvt/settings.py:188
+#: tvt/settings.py:189
 msgid "English"
 msgstr "Inglés"
 
-#: tvt/settings.py:189
+#: tvt/settings.py:190
 msgid "Català"
 msgstr "Catalán"
 
