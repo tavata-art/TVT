@@ -10,6 +10,8 @@ from ..models import Menu, MenuItem # Relative import for models within the same
 from pages.models import Page # For Important Pages list
 from categories.models import Category # For Blog Categories list
 
+logger = logging.getLogger(__name__)
+
 # Import SiteConfiguration for cache timeout settings (handle potential ImportError or DoesNotExist)
 try:
     from site_settings.models import SiteConfiguration
