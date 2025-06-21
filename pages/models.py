@@ -44,7 +44,12 @@ class Page(models.Model):
         verbose_name=_("Importance Order"),
         help_text=_("A lower number means higher priority in search results. E.g., 1 for 'About Us', 2 for 'Contact', 99 for others.")
     )
-
+    featured_image = models.ImageField(
+        upload_to='blog/featured/', 
+        blank=True, 
+        null=True, 
+        verbose_name=_("Featured Image")
+    )
     class Meta:
         verbose_name = _("page")
         verbose_name_plural = _("pages")

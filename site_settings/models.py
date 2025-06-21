@@ -76,6 +76,11 @@ class SiteConfiguration(SingletonModel):
         verbose_name=_("Category Tree Cache Timeout (in seconds)"),
         help_text=_("How long the full category tree should be stored in cache. High values are recommended.")
     )
+    gallery_items_per_page = models.PositiveIntegerField(
+        default=9,
+        verbose_name=_("Items per Page in Gallery"),
+        help_text=_("Number of images to show on the image gallery page.")
+    )
     # --- Top Bar Banner/Ad Settings ---
     top_bar_banner_image = models.ImageField(
         upload_to='site_branding/banners/',

@@ -1,6 +1,10 @@
+# File: gallery/urls.py
 from django.urls import path
-from .views import gallery_view
+from . import views
+
+app_name = 'gallery'
 
 urlpatterns = [
-    path('', gallery_view, name='gallery'),
+    path('', views.gallery_view, name='gallery_view'),
+    path('image/<int:pk>/', views.image_detail_view, name='image_detail'), # NEW: for individual image detail
 ]
