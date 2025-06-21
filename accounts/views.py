@@ -169,3 +169,40 @@ def user_profile_public_view(request, username):
     except Exception as e:
         logger.error(f"Error accessing public profile for user '{username}': {e}", exc_info=True)
         raise # Re-raise for Django to handle 500 error page
+
+def user_directory_view(request):
+    """
+    Displays a paginated list of all active users in the system.
+    """
+    # 1. Get all active users, ordered by username.
+    # You might want to filter out staff/superusers if you don't want them listed.
+    all_users = User.objects.filter(is_active=True).order_by('username')
+    
+    # 2. Get pagination settings.
+    try:
+        site_config = SiteConfiguration.objects.get()
+        items_per_page = getattr(site_config, 'user_directory_items_per_page', 25)
+    except SiteConfiguration.DoesNotExist:
+        items_per_page = 25
+        logger.warning("SiteConfiguration not found. Using default user directory items per page (25).")
+
+    # 3. Apply pagination.
+    paginator = Paginator(all_users, items_per_page)
+    page_number = request.GET.get('page')
+
+    try:
+        users_on_page = paginator.get_page(page_number)
+    except PageNotAnInteger:
+        users_on_page = paginator.get_page(1)
+    except EmptyPage:
+        if paginator.num_pages > 0:
+            users_on_page = paginator.get_page(paginator.num_pages)
+        else:
+            users_on_page = []
+
+    logger.info(f"User directory view accessed. Showing page {getattr(users_on_page, 'number', 0)} of {getattr(users_on_page, 'paginator.num_pages', 0)} users.")
+
+    context = {
+        'users': users_on_page, # Pass the paginated user objects
+    }
+    return render(request, 'accounts/user_directory.html', context)

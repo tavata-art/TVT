@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-21 12:01+0000\n"
-"PO-Revision-Date: 2025-06-21 14:04+0200\n"
+"POT-Creation-Date: 2025-06-21 14:25+0000\n"
+"PO-Revision-Date: 2025-06-21 16:31+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -140,6 +140,57 @@ msgstr "Perfil"
 msgid "Profiles"
 msgstr "Perfiles"
 
+#: accounts/templates/accounts/public_profile_view.html:34
+msgid "About Me"
+msgstr "Sobre Mí"
+
+#: accounts/templates/accounts/public_profile_view.html:42
+msgid "Posts by"
+msgstr "Publicaciones de"
+
+#: accounts/templates/accounts/public_profile_view.html:47
+#: search/templates/search/search_results.html:54
+msgid "Published on"
+msgstr "Publicado"
+
+#: accounts/templates/accounts/public_profile_view.html:50
+msgid "This user has not published any blog posts yet."
+msgstr "Este usuario aún no ha publicado ninguna publicación de blog."
+
+#: accounts/templates/accounts/public_profile_view.html:58
+msgid "Comments by"
+msgstr "Comentarios de"
+
+#: accounts/templates/accounts/public_profile_view.html:63
+#: blog/templates/blog/post_detail.html:70
+msgid "ago"
+msgstr "hace"
+
+#: accounts/templates/accounts/public_profile_view.html:65
+msgid "View in context"
+msgstr "Ver en contexto"
+
+#: accounts/templates/accounts/public_profile_view.html:69
+msgid "This user has not posted any comments yet."
+msgstr "Este usuario no ha publicado ningún comentario todavía."
+
+#: accounts/templates/accounts/user_directory.html:6
+msgid "User Directory"
+msgstr "Directorio de Usuarios"
+
+#: accounts/templates/accounts/user_directory.html:10
+msgid "Our Community Members"
+msgstr "Nuestros Miembros de la Comunidad"
+
+#: accounts/templates/accounts/user_directory.html:11
+msgid "Explore profiles of users who are part of our community."
+msgstr ""
+"Explore los perfiles de los usuarios que forman parte de nuestra comunidad."
+
+#: accounts/templates/accounts/user_directory.html:38
+msgid "No users found in the directory."
+msgstr "No se encuentran usuarios en el directorio."
+
 #: accounts/templates/registration/login.html:5
 #: accounts/templates/registration/login.html:12
 #: accounts/templates/registration/login.html:30
@@ -212,11 +263,11 @@ msgstr "¿Ya tienes una cuenta?"
 msgid "Log in here"
 msgstr "Iniciar sesión aquí"
 
-#: accounts/views.py:25
+#: accounts/views.py:34
 msgid "Welcome! Your account has been created successfully."
 msgstr "¡Bienvenido! Su acceso ha sido creado con éxito."
 
-#: accounts/views.py:83
+#: accounts/views.py:92
 msgid "Your profile has been updated successfully!"
 msgstr "¡Su perfil ha sido actualizado con éxito!"
 
@@ -357,10 +408,6 @@ msgid "%(count)s Comment"
 msgid_plural "%(count)s Comments"
 msgstr[0] "%(count)s Comentario"
 msgstr[1] "%(count)s Comentarios"
-
-#: blog/templates/blog/post_detail.html:70
-msgid "ago"
-msgstr "hace"
 
 #: blog/templates/blog/post_detail.html:71
 msgid "Reply"
@@ -910,10 +957,6 @@ msgstr "Páginas Encontradas"
 msgid "Blog Posts Found"
 msgstr "Entradas de blog encontradas"
 
-#: search/templates/search/search_results.html:54
-msgid "Published on"
-msgstr "Publicado"
-
 #: site_settings/models.py:14
 msgid "Items per Page in Blog/Category lists"
 msgstr "Posts por Página en el Blog/Lista de Categorias"
@@ -1032,24 +1075,34 @@ msgid "Number of images to show on the image gallery page."
 msgstr ""
 "Número de imágenes para mostrar en la página de la galería de imágenes."
 
-#: site_settings/models.py:88
+#: site_settings/models.py:86
+msgid "Items per Page on Public Profile"
+msgstr "Artículos por Página en Perfil Público"
+
+#: site_settings/models.py:87
+msgid "Number of posts/comments to show per page on a user's public profile."
+msgstr ""
+"Número de publicaciones/comentarios para mostrar por página en el perfil "
+"público de un usuario."
+
+#: site_settings/models.py:93
 msgid "Top Bar Banner Image"
 msgstr "Imagen de Top Bar Banner"
 
-#: site_settings/models.py:89
+#: site_settings/models.py:94
 msgid "An optional banner image displayed in the top bar."
 msgstr "Una imagen de banner opcional que se muestra en la barra superior."
 
-#: site_settings/models.py:94
+#: site_settings/models.py:99
 msgid "Top Bar Banner Link"
 msgstr "Enlace de Banner de Barra Superior"
 
-#: site_settings/models.py:95
+#: site_settings/models.py:100
 msgid "The URL the banner image will link to."
 msgstr "La URL a la que se vinculará la imagen del banner."
 
-#: site_settings/models.py:99 site_settings/models.py:100
-#: site_settings/models.py:103
+#: site_settings/models.py:104 site_settings/models.py:105
+#: site_settings/models.py:108
 msgid "Site Configuration"
 msgstr "Configuración del Sitio"
 
@@ -1067,15 +1120,15 @@ msgstr ""
 msgid "Go to Homepage"
 msgstr "Ir a la página de inicio"
 
-#: tvt/settings.py:188
+#: tvt/settings.py:189
 msgid "Spanish"
 msgstr "Español"
 
-#: tvt/settings.py:189
+#: tvt/settings.py:190
 msgid "English"
 msgstr "Inglés"
 
-#: tvt/settings.py:190
+#: tvt/settings.py:191
 msgid "Català"
 msgstr "Catalán"
 
@@ -1242,9 +1295,6 @@ msgstr ""
 
 #~ msgid "Your Comment"
 #~ msgstr "Tu Comentario"
-
-#~ msgid "Comment"
-#~ msgstr "Comentario"
 
 #~ msgid "Number of Posts in 'Recent Posts' Widget"
 #~ msgstr "Widget: Número de Posts en 'Post Recientes'"
