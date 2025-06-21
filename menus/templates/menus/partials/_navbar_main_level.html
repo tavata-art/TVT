@@ -1,0 +1,38 @@
+<!-- File: menus/templates/menus/partials/_navbar_main_level.html -->
+{% load menu_tags %} 
+{% load i18n %}
+
+{# This template receives 'nodes' which are ONLY the top-level (level=0) MenuItem objects. #}
+{# It renders the initial <li> containers for the main navbar. #}
+
+{% for node in nodes %}
+    {% if node.level == 0 %} {# Process only top-level items in this template #}
+        {# Direct evaluation of conditions for dropdown type #}
+        {% if not node.is_leaf_node or node.dynamic_children %} {# <--- CORREGIDO #}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbar-item-{{ node.id }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {% if node.icon_class %}<i class="{{ node.icon_class }} me-1"></i>{% endif %}
+                    {{ node.title }}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbar-item-{{ node.id }}">
+                    {# Render static children #}
+                    {% if not node.is_leaf_node %} {# <--- Use this condition #}
+                        {% include "menus/partials/_navbar_recursive_children.html" with parent_node=node %}
+                    {% endif %}
+                    {# Render dynamic children #}
+                    {% for dynamic_child in node.dynamic_children %}
+                        <li><a class="dropdown-item" href="{{ dynamic_child.get_absolute_url }}">{{ dynamic_child.name|default:dynamic_child.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% else %}
+            {# Simple link for top-level item with no children #}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ node.get_url }}">
+                    {% if node.icon_class %}<i class="{{ node.icon_class }} me-1"></i>{% endif %}
+                    {{ node.title }}
+                </a>
+            </li>
+        {% endif %}
+    {% endif %} {# End if node.level == 0 #}
+{% endfor %}

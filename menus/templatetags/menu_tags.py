@@ -21,94 +21,72 @@ logger = logging.getLogger(__name__) # Get logger specific to this module
 register = template.Library() # Register this as a Django template library
 
 
-@register.inclusion_tag('menus/partials/_navbar_recursive.html', takes_context=True)
+@register.inclusion_tag('menus/partials/_navbar_main_level.html', takes_context=True)
 def show_menu(context, menu_slug):
     """
-    Fetches and renders a full menu tree by its slug.
-    It utilizes a configurable cache and handles dynamically generating sub-items
-    for special menu item types (e.g., categories tree, important pages).
+    Fetches and renders the top-level menu items for a main navigation bar.
+    Handles caching and prepares dynamic sub-items.
     """
-    # 1. Determine current language for cache key (ensures language-aware caching)
     language_code = context.get('LANGUAGE_CODE', settings.LANGUAGE_CODE)
+    cache_key = f'menu_nodes_main_level_{menu_slug}_{language_code}_v1'
     
-    # 2. Define a unique and versioned cache key for this specific menu and language.
-    cache_key = f'menu_nodes_{menu_slug}_{language_code}_v1' # Increment v1 to v2 to invalidate all caches
+    # Try getting the top-level nodes (with attached dynamic_children) from cache
+    top_level_nodes = cache.get(cache_key)
 
-    # 3. Try to fetch the processed menu items from the cache first.
-    menu_items_processed = cache.get(cache_key)
-
-    if menu_items_processed is None:
-        logger.info(f"CACHE MISS for menu '{menu_slug}' (lang: {language_code}). Building menu tree.")
-
-        # Get SiteConfiguration for cache timeout and dynamic content limits
-        site_config = None
+    if top_level_nodes is None:
+        logger.info(f"CACHE MISS for main level menu '{menu_slug}' (lang: {language_code}). Building.")
         try:
-            site_config = SiteConfiguration.objects.get()
-            timeout = site_config.menu_cache_timeout
-        except SiteConfiguration.DoesNotExist:
-            timeout = 3600 # Fallback 1 hour
-            logger.warning("SiteConfiguration not found. Using default menu cache timeout of 3600s.")
-        except AttributeError: # Handles case if SiteConfiguration was not imported
-            timeout = 3600
-            logger.warning("SiteConfiguration model not accessible. Using default menu cache timeout of 3600s.")
-
-        try:
-            # Fetch the specific Menu container (e.g., 'Main Menu')
             menu = Menu.objects.get(slug=menu_slug)
             
-            # Fetch all MenuItem instances belonging to this menu.
-            # MPTT already ensures they are correctly ordered for tree traversal implicitly.
-            all_menu_items = list(menu.items.all()) # Evaluate to list to ensure direct access and caching
-
-            # --- DYNAMIC SUB-MENU GENERATION LOGIC ---
-            # Iterate through all menu items to check for dynamic content generation.
-            # This attaches `dynamic_children` attribute to the `MenuItem` instances which
-            # will be used by the recursive template.
+            # Fetch ALL menu items for this menu. 
+            # We need them all to attach dynamic children to parents properly.
+            all_menu_items = list(menu.items.all().order_by('tree_id', 'lft'))
+            
+            # --- ATTACH DYNAMIC CHILDREN LOGIC ---
+            # This loop attaches 'dynamic_children' to the relevant parent MenuItem instances,
+            # which will be used by the template during rendering.
             for item_obj in all_menu_items: 
-                item_obj.dynamic_children = [] # Initialize dynamic_children for every item
+                item_obj.dynamic_children = [] # Initialize for all items
 
-                # Determine display limits for dynamic content from SiteConfiguration
-                blog_cat_limit = getattr(site_config, 'blog_items_per_page', 9) if site_config else 9
-                important_pages_limit = getattr(site_config, 'search_importance_limit', 3) if site_config else 3
+                blog_cat_limit = getattr(SiteConfiguration.objects.get(), 'blog_items_per_page', 9) if SiteConfiguration else 9
+                important_pages_limit = getattr(SiteConfiguration.objects.get(), 'search_importance_limit', 3) if SiteConfiguration else 3
 
                 if item_obj.link_type == MenuItem.LinkType.ALL_BLOG_CATEGORIES:
-                    # Fetch and process the entire category tree for the blog.
-                    # Filters: only categories with published posts, ordered by post count.
                     blog_categories = Category.objects.annotate(
                         num_blog_posts=Count('blog_posts', filter=Q(blog_posts__status='published'))
-                    ).filter(num_blog_posts__gt=0).order_by('tree_id', 'lft') # MPTT order for categories
-                    
-                    item_obj.dynamic_children = list(blog_categories[:blog_cat_limit]) 
-                    logger.debug(f"Attached {len(item_obj.dynamic_children)} blog categories to menu item '{item_obj.title}'.")
-
+                    ).filter(num_blog_posts__gt=0).order_by('tree_id', 'lft')
+                    item_obj.dynamic_children = list(blog_categories[:blog_cat_limit])
 
                 elif item_obj.link_type == MenuItem.LinkType.IMPORTANT_PAGES:
-                    # Fetch and process important pages.
-                    # Filters: published, importance_order below 99, ordered by importance.
                     important_pages_qs = Page.objects.filter(
                         status='published', 
-                        importance_order__lt=99 
-                    ).order_by('importance_order', 'title')[:important_pages_limit]
-                    
-                    item_obj.dynamic_children = list(important_pages_qs)
-                    logger.debug(f"Attached {len(item_obj.dynamic_children)} important pages to menu item '{item_obj.title}'.")
+                        importance_order__lt=99
+                    ).order_by('importance_order', 'title')
+                    item_obj.dynamic_children = list(important_pages_qs[:important_pages_limit])
 
-            # Store the processed items (with dynamic_children attached) in cache.
-            # Only cache if timeout is greater than 0.
-            if timeout > 0: 
-                cache.set(cache_key, all_menu_items, timeout)
+            # Now, filter for only the top-level nodes (level 0) for the main navbar.
+            # The children will be accessed in the template using .children.all() and .dynamic_children
+            # on these top-level nodes.
+            raw_top_level_nodes = [item for item in all_menu_items if item.level == 0]
+
+            # Get cache timeout and set cache.
+            try:
+                config = SiteConfiguration.objects.get()
+                timeout = config.menu_cache_timeout
+            except SiteConfiguration.DoesNotExist:
+                timeout = 3600
             
-            menu_items_processed = all_menu_items 
-
+            cache.set(cache_key, raw_top_level_nodes, timeout) # Cache only top-level nodes for efficiency
+            top_level_nodes = raw_top_level_nodes
+            
         except Menu.DoesNotExist:
-            logger.warning(f"Menu with slug '{menu_slug}' does not exist. Cannot display menu.")
-            menu_items_processed = [] # Return empty list if menu does not exist
-        
+            logger.warning(f"Menu with slug '{menu_slug}' does not exist.")
+            top_level_nodes = [] # Return empty list if menu does not exist
     else:
-        logger.debug(f"CACHE HIT for menu '{menu_slug}' (lang: {language_code}). Serving from cache.")
+        logger.debug(f"CACHE HIT for main level menu '{menu_slug}' (lang: {language_code}). Serving from cache.")
             
-    # The 'nodes' variable is what the '_navbar_recursive.html' template expects.
-    return {'nodes': menu_items_processed} 
+    return {'nodes': top_level_nodes} # Pass only top-level nodes to _navbar_main_level.html
+
 
 
 # --- show_social_links_menu ---
