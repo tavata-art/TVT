@@ -13,11 +13,6 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     # 1. Third-party app URLs (like summernote)
     path('summernote/', include('django_summernote.urls')),
-    
-    # 2. Custom Authentication URLs
-    # This URL for signup comes from our own 'accounts' app.
-    # It must come BEFORE the generic include below.
-    path('accounts/', include('accounts.urls', namespace='accounts')),
 
     # This includes all of Django's built-in auth URLs (login, password reset, etc.)
     # Our custom logout is technically handled by django.contrib.auth.urls's default logout,
@@ -33,6 +28,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     # 1. Django Admin
     path('admin/', admin.site.urls),
+    path('accounts/', include('accounts.urls', namespace='accounts')),
     path('menus/', include('menus.urls', namespace='menus')),
     path('categories/', include('categories.urls', namespace='categories')),
     path('search/', include('search.urls', namespace='search')),

@@ -2,16 +2,25 @@
 import logging
 import os
 import uuid
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import get_user_model
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.conf import settings 
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import gettext
 from .forms import CustomUserCreationForm, UserUpdateForm, ProfileUpdateForm
 
+# Import the models required for the public profile view
+from .models import Profile # Model for user profiles
+from blog.models import Post, Comment # Models for posts and comments
+
+from site_settings.models import SiteConfiguration 
+
 # Get a logger instance for this module.
 logger = logging.getLogger(__name__)
-
+User = get_user_model()
 
 # --- SIGNUP VIEW ---
 def signup_view(request):
@@ -96,3 +105,67 @@ def profile_edit_view(request):
     }
     
     return render(request, 'registration/profile_edit.html', context)
+
+def user_profile_public_view(request, username):
+    """
+    Displays public information for a given user, including their profile details
+    and a paginated list of their public contributions (posts, comments).
+    """
+    try:
+        # Get the user by username, or return a 404
+        user_obj = get_object_or_404(User, username=username)
+        # Ensure the user has an associated profile
+        if not hasattr(user_obj, 'profile') or user_obj.profile is None:
+            logger.warning(f"User '{username}' does not have an associated profile. Creating one.")
+            # This should ideally not happen due to the signal, but as a failsafe
+            profile = user_obj.profile = Profile.objects.create(user=user_obj)
+        else:
+            profile = user_obj.profile
+
+        logger.info(f"Public profile view accessed for user: '{username}'.")
+
+        # --- User's Blog Posts (Publicly visible) ---
+        user_posts = Post.objects.filter(
+            author=user_obj, 
+            status='published'
+        ).order_by('-published_date')
+
+        # --- User's Comments (Approved and publicly visible) ---
+        user_comments = Comment.objects.filter(
+            user=user_obj, 
+            is_approved=True
+        ).order_by('-created_at')
+
+        # --- Pagination for User's Content ---
+        # Assuming you'll have a setting for this in SiteConfiguration
+        try:
+            site_config = SiteConfiguration.objects.get()
+            items_per_page = getattr(site_config, 'user_profile_items_per_page', 5) # Fallback to 5
+        except SiteConfiguration.DoesNotExist:
+            items_per_page = 5
+            logger.warning("SiteConfiguration not found. Using default user profile items per page (5).")
+
+        # Paginate Posts
+        posts_paginator = Paginator(user_posts, items_per_page)
+        posts_page_number = request.GET.get('posts_page', 1)
+        paginated_user_posts = posts_paginator.get_page(posts_page_number)
+
+        # Paginate Comments
+        comments_paginator = Paginator(user_comments, items_per_page)
+        comments_page_number = request.GET.get('comments_page', 1)
+        paginated_user_comments = comments_paginator.get_page(comments_page_number)
+
+        context = {
+            'user_obj': user_obj, # The User object
+            'profile': profile,   # The associated Profile object
+            'user_posts': paginated_user_posts,
+            'user_comments': paginated_user_comments,
+        }
+        return render(request, 'accounts/public_profile_view.html', context)
+
+    except User.DoesNotExist:
+        logger.warning(f"Public profile requested for non-existent user: '{username}'.")
+        raise
+    except Exception as e:
+        logger.error(f"Error accessing public profile for user '{username}': {e}", exc_info=True)
+        raise # Re-raise for Django to handle 500 error page

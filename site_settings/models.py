@@ -81,6 +81,11 @@ class SiteConfiguration(SingletonModel):
         verbose_name=_("Items per Page in Gallery"),
         help_text=_("Number of images to show on the image gallery page.")
     )
+    user_profile_items_per_page = models.PositiveIntegerField(
+        default=5, 
+        verbose_name=_("Items per Page on Public Profile"),
+        help_text=_("Number of posts/comments to show per page on a user's public profile.")
+    )
     # --- Top Bar Banner/Ad Settings ---
     top_bar_banner_image = models.ImageField(
         upload_to='site_branding/banners/',
