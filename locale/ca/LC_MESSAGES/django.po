@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-21 09:54+0000\n"
-"PO-Revision-Date: 2025-06-21 11:58+0200\n"
+"POT-Creation-Date: 2025-06-21 12:01+0000\n"
+"PO-Revision-Date: 2025-06-21 14:06+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "Language: ca\n"
@@ -219,11 +219,7 @@ msgstr "Benvingut! El vostre compte s’ha creat amb èxit."
 msgid "Your profile has been updated successfully!"
 msgstr "El vostre perfil s’ha actualitzat amb èxit!"
 
-#: blog/admin.py:28 categories/models.py:57
-msgid "Category"
-msgstr "Categoria"
-
-#: blog/admin.py:29 blog/models.py:38 categories/models.py:58
+#: blog/admin.py:76 blog/models.py:38 categories/models.py:58 pages/admin.py:85
 #: pages/models.py:26 pages/templates/pages/page_detail.html:53
 msgid "Categories"
 msgstr "Categories"
@@ -248,7 +244,8 @@ msgstr "Esborrany"
 msgid "Published"
 msgstr "Publicat"
 
-#: blog/models.py:18 gallery/admin.py:16 gallery/models.py:6 pages/models.py:16
+#: blog/models.py:18 gallery/admin.py:42 gallery/models.py:14
+#: pages/models.py:16
 msgid "Title"
 msgstr "Títol"
 
@@ -264,7 +261,7 @@ msgstr "Autor"
 msgid "Content"
 msgstr "Contingut"
 
-#: blog/models.py:27
+#: blog/models.py:27 pages/models.py:51
 msgid "Featured Image"
 msgstr "Imatge Destacada"
 
@@ -466,7 +463,7 @@ msgstr "Categoria dels pares"
 msgid "Select a parent to create a sub-category."
 msgstr "Seleccioneu un progenitor per crear una subcategoria."
 
-#: categories/models.py:37
+#: categories/models.py:37 gallery/models.py:20
 msgid "Description"
 msgstr "Descripció"
 
@@ -484,6 +481,10 @@ msgid "A short description for search engine previews (max 160 chars)."
 msgstr ""
 "Una breu descripció de les previsualitzacions del motor de cerca (màxim 160 "
 "caràcters)."
+
+#: categories/models.py:57
+msgid "Category"
+msgstr "Categoria"
 
 #: categories/templates/categories/category_tree.html:6
 msgid "All Categories"
@@ -669,19 +670,27 @@ msgstr "Logotip del lloc"
 msgid "Advertisement"
 msgstr "Publicitat"
 
-#: gallery/models.py:7
+#: gallery/models.py:17 gallery/models.py:27
 msgid "Image"
 msgstr "Imatge"
 
-#: gallery/models.py:8
+#: gallery/models.py:23
 msgid "Uploaded at"
 msgstr "Carregada a"
 
-#: gallery/templates/gallery/gallery.html:6
+#: gallery/models.py:28
+msgid "Images"
+msgstr "Imatge"
+
+#: gallery/templates/gallery/gallery_page.html:5
 msgid "Image Gallery"
 msgstr "Galeria d'imatges"
 
-#: gallery/templates/gallery/gallery.html:16
+#: gallery/templates/gallery/gallery_page.html:18
+msgid "Read more"
+msgstr "Llegir Més"
+
+#: gallery/templates/gallery/gallery_page.html:23
 #, python-format
 msgid ""
 "\n"
@@ -692,9 +701,21 @@ msgstr ""
 "                                    Publicat el %(date)s\n"
 "                                    "
 
-#: gallery/templates/gallery/gallery.html:26
+#: gallery/templates/gallery/gallery_page.html:33
 msgid "No images in the gallery."
 msgstr "No hi ha imatges a la galeria."
+
+#: gallery/templates/gallery/image_detail.html:6
+msgid "Image Detail"
+msgstr "Deteriorament de la imatge"
+
+#: gallery/templates/gallery/image_detail.html:17
+msgid "Uploaded on"
+msgstr "Carregada a"
+
+#: gallery/templates/gallery/image_detail.html:18
+msgid "Back to Gallery"
+msgstr "Tornar a la Galeria"
 
 #: menus/models.py:9
 msgid "Menu Title"
@@ -793,11 +814,11 @@ msgstr ""
 "cerca. Per exemple, 1 per a \"Sobre nosaltres\", 2 per a \"Contacte\", 99 "
 "per a altres."
 
-#: pages/models.py:49
+#: pages/models.py:54
 msgid "page"
 msgstr "pàgina"
 
-#: pages/models.py:50
+#: pages/models.py:55
 msgid "pages"
 msgstr "pàgines"
 
@@ -998,24 +1019,32 @@ msgstr ""
 "Quant de temps s’ha d’emmagatzemar l’arbre de categoria completa a la "
 "memòria cau. Es recomana valors alts."
 
-#: site_settings/models.py:83
+#: site_settings/models.py:81
+msgid "Items per Page in Gallery"
+msgstr "Articles per pàgina a la galeria"
+
+#: site_settings/models.py:82
+msgid "Number of images to show on the image gallery page."
+msgstr "Nombre d’imatges a mostrar a la pàgina de la galeria d’imatges."
+
+#: site_settings/models.py:88
 msgid "Top Bar Banner Image"
 msgstr "Imatge de Banner de barres superiors"
 
-#: site_settings/models.py:84
+#: site_settings/models.py:89
 msgid "An optional banner image displayed in the top bar."
 msgstr "Una imatge de pancarta opcional que es mostra a la barra superior."
 
-#: site_settings/models.py:89
+#: site_settings/models.py:94
 msgid "Top Bar Banner Link"
 msgstr "Enllaç de banner de barres superiors"
 
-#: site_settings/models.py:90
+#: site_settings/models.py:95
 msgid "The URL the banner image will link to."
 msgstr "L’URL a la qual s’enllaçarà la imatge de la pancarta."
 
-#: site_settings/models.py:94 site_settings/models.py:95
-#: site_settings/models.py:98
+#: site_settings/models.py:99 site_settings/models.py:100
+#: site_settings/models.py:103
 msgid "Site Configuration"
 msgstr "Configuració del lloc"
 

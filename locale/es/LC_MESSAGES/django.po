@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-21 09:54+0000\n"
-"PO-Revision-Date: 2025-06-21 11:56+0200\n"
+"POT-Creation-Date: 2025-06-21 12:01+0000\n"
+"PO-Revision-Date: 2025-06-21 14:04+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -220,11 +220,7 @@ msgstr "¡Bienvenido! Su acceso ha sido creado con éxito."
 msgid "Your profile has been updated successfully!"
 msgstr "¡Su perfil ha sido actualizado con éxito!"
 
-#: blog/admin.py:28 categories/models.py:57
-msgid "Category"
-msgstr "Categoría"
-
-#: blog/admin.py:29 blog/models.py:38 categories/models.py:58
+#: blog/admin.py:76 blog/models.py:38 categories/models.py:58 pages/admin.py:85
 #: pages/models.py:26 pages/templates/pages/page_detail.html:53
 msgid "Categories"
 msgstr "Categorías"
@@ -249,7 +245,8 @@ msgstr "Borrador"
 msgid "Published"
 msgstr "Publicado"
 
-#: blog/models.py:18 gallery/admin.py:16 gallery/models.py:6 pages/models.py:16
+#: blog/models.py:18 gallery/admin.py:42 gallery/models.py:14
+#: pages/models.py:16
 msgid "Title"
 msgstr "Título"
 
@@ -265,7 +262,7 @@ msgstr "Autor"
 msgid "Content"
 msgstr "Contenido"
 
-#: blog/models.py:27
+#: blog/models.py:27 pages/models.py:51
 msgid "Featured Image"
 msgstr "Imagen Destacada"
 
@@ -468,7 +465,7 @@ msgstr "Categoría Padre"
 msgid "Select a parent to create a sub-category."
 msgstr "Seleccione un padre para crear una subcategoría."
 
-#: categories/models.py:37
+#: categories/models.py:37 gallery/models.py:20
 msgid "Description"
 msgstr "Descripción"
 
@@ -487,6 +484,10 @@ msgid "A short description for search engine previews (max 160 chars)."
 msgstr ""
 "Una breve descripción de las vistas previas de los motores de búsqueda "
 "(máximo 160 caracteres)."
+
+#: categories/models.py:57
+msgid "Category"
+msgstr "Categoría"
 
 #: categories/templates/categories/category_tree.html:6
 msgid "All Categories"
@@ -672,19 +673,27 @@ msgstr "Logotipo del Sitio"
 msgid "Advertisement"
 msgstr "Publicidad"
 
-#: gallery/models.py:7
+#: gallery/models.py:17 gallery/models.py:27
 msgid "Image"
 msgstr "Imagen"
 
-#: gallery/models.py:8
+#: gallery/models.py:23
 msgid "Uploaded at"
 msgstr "Actualizado el"
 
-#: gallery/templates/gallery/gallery.html:6
+#: gallery/models.py:28
+msgid "Images"
+msgstr "Imagen"
+
+#: gallery/templates/gallery/gallery_page.html:5
 msgid "Image Gallery"
 msgstr "Galería de imágenes"
 
-#: gallery/templates/gallery/gallery.html:16
+#: gallery/templates/gallery/gallery_page.html:18
+msgid "Read more"
+msgstr "Leer Más"
+
+#: gallery/templates/gallery/gallery_page.html:23
 #, python-format
 msgid ""
 "\n"
@@ -695,10 +704,21 @@ msgstr ""
 "                            Actualizado en %(date)s\n"
 "                            "
 
-#: gallery/templates/gallery/gallery.html:26
-#, fuzzy
+#: gallery/templates/gallery/gallery_page.html:33
 msgid "No images in the gallery."
 msgstr "No hay imágenes en esta galería"
+
+#: gallery/templates/gallery/image_detail.html:6
+msgid "Image Detail"
+msgstr "Galería de imágenes"
+
+#: gallery/templates/gallery/image_detail.html:17
+msgid "Uploaded on"
+msgstr "Actualizado el"
+
+#: gallery/templates/gallery/image_detail.html:18
+msgid "Back to Gallery"
+msgstr "Volver a la Galería"
 
 #: menus/models.py:9
 msgid "Menu Title"
@@ -796,17 +816,16 @@ msgstr ""
 "Un número menor significa mayor prioridad en los resultados de búsqueda. Por "
 "ejemplo, 1 para 'Acerca de nosotros', 2 para 'Contacto', 99 para otros."
 
-#: pages/models.py:49
+#: pages/models.py:54
 msgid "page"
 msgstr "página"
 
-#: pages/models.py:50
+#: pages/models.py:55
 msgid "pages"
 msgstr "páginas"
 
 #: pages/templates/pages/page_detail.html:18
 #: pages/templates/pages/page_detail.html:23
-#, fuzzy
 msgid "Welcome"
 msgstr "¡Bienvenido!"
 
@@ -1004,24 +1023,33 @@ msgstr ""
 "Cuánto tiempo debe almacenarse el árbol de categorías completo en caché. Se "
 "recomiendan valores altos."
 
-#: site_settings/models.py:83
+#: site_settings/models.py:81
+msgid "Items per Page in Gallery"
+msgstr "Item por Página en la galería"
+
+#: site_settings/models.py:82
+msgid "Number of images to show on the image gallery page."
+msgstr ""
+"Número de imágenes para mostrar en la página de la galería de imágenes."
+
+#: site_settings/models.py:88
 msgid "Top Bar Banner Image"
 msgstr "Imagen de Top Bar Banner"
 
-#: site_settings/models.py:84
+#: site_settings/models.py:89
 msgid "An optional banner image displayed in the top bar."
 msgstr "Una imagen de banner opcional que se muestra en la barra superior."
 
-#: site_settings/models.py:89
+#: site_settings/models.py:94
 msgid "Top Bar Banner Link"
 msgstr "Enlace de Banner de Barra Superior"
 
-#: site_settings/models.py:90
+#: site_settings/models.py:95
 msgid "The URL the banner image will link to."
 msgstr "La URL a la que se vinculará la imagen del banner."
 
-#: site_settings/models.py:94 site_settings/models.py:95
-#: site_settings/models.py:98
+#: site_settings/models.py:99 site_settings/models.py:100
+#: site_settings/models.py:103
 msgid "Site Configuration"
 msgstr "Configuración del Sitio"
 
