@@ -1,28 +1,53 @@
-<!-- File: menus/templates/menus/partials/_navbar_recursive.html -->
+{% load i18n %}
 {% for node in nodes %}
     {% with children=node.children.all %}
-        {% if children %}
-            {# This item IS a dropdown/sub-dropdown #}
-            <li class="{% if node.parent %}dropend{% else %}dropdown{% endif %}">
-                <a class="{% if node.parent %}dropdown-item dropdown-submenu-toggle{% else %}nav-link dropdown-toggle{% endif %}" 
-                   href="#" 
-                   role="button" 
-                   data-bs-toggle="dropdown" 
-                   aria-expanded="false">
-                    {{ node.title }}
-                </a>
-                <ul class="dropdown-menu {% if node.parent %}dropdown-submenu{% endif %}">
-                    {# Recursion! Call this same template for the children #}
-                    {% include "menus/partials/_navbar_recursive.html" with nodes=children %}
-                </ul>
-            </li>
+        {% if children or node.dynamic_children %}
+            {% if node.parent %}
+                {# Submenú (nivel > 0) #}
+                <li class="dropend">
+                    <a class="dropdown-item dropdown-toggle" href="#" id="submenu-{{ node.id }}" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ node.title }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-submenu" aria-labelledby="submenu-{{ node.id }}">
+                        {% if children %}
+                            {% include "menus/partials/_navbar_recursive.html" with nodes=children %}
+                        {% endif %}
+                        {% for child in node.dynamic_children %}
+                            <li>
+                                <a class="dropdown-item" href="{{ child.get_absolute_url }}">{{ child.name|default:child.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% else %}
+                {# Primer nivel (navbar principal) #}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-{{ node.id }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ node.title }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown-{{ node.id }}">
+                        {% if children %}
+                            {% include "menus/partials/_navbar_recursive.html" with nodes=children %}
+                        {% endif %}
+                        {% for child in node.dynamic_children %}
+                            <li>
+                                <a class="dropdown-item" href="{{ child.get_absolute_url }}">{{ child.name|default:child.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endif %}
         {% else %}
-            {# This is a simple link with no children #}
-            <li>
-                <a class="{% if node.parent %}dropdown-item{% else %}nav-link{% endif %}" href="{{ node.get_url }}">
-                    {{ node.title }}
-                </a>
-            </li>
+            {# Enlace simple sin hijos #}
+            {% if node.parent %}
+                <li>
+                    <a class="dropdown-item" href="{{ node.get_url }}">{{ node.title }}</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ node.get_url }}">{{ node.title }}</a>
+                </li>
+            {% endif %}
         {% endif %}
     {% endwith %}
 {% endfor %}
