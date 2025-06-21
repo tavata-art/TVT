@@ -11,7 +11,7 @@ class WidgetInline(admin.TabularInline):
     """
     model = Widget
     # We now use the single, universal 'category_filter' field.
-    fields = ('title', 'widget_type', 'order', 'item_count', 'cache_timeout', 'category_filter')
+    fields = ('title', 'widget_type', 'order', 'item_count', 'cache_timeout', 'category_filter', 'column_count', 'section_title', 'view_all_link_text', 'view_all_link_url')
     extra = 1
     ordering = ['order']
     # Adding a class to make the inline editor more compact

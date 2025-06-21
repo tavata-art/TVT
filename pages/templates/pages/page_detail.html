@@ -2,29 +2,39 @@
 {% extends 'core/base.html' %}
 {% load i18n %}
 {% load static %}
-{% load widget_tags %}
+{% load widget_tags %} {# Ensure widget_tags is loaded for show_widget_zone #}
 
 {# This template is used to render single static pages and the dynamic homepage. #}
 {# It checks if a 'page' object exists in the context to handle both cases. #}
 
 
-{# --- SEO and Browser Tab Title Blocks --- #}
-{# We only set these meta tags if the 'page' object actually exists. #}
+{# --- SEO AND BROWSER TAB TITLE BLOCKS (CORRECTED) --- #}
+
 {% block title %}
-    {# We define the block ONCE, and use an if/else INSIDE it. #}
+    {# The 'title' block is defined only ONCE. The conditional logic is inside. #}
     {% if page %}
         {{ page.title }}
     {% else %}
-        {% translate "Welcome" %}
+        {% translate "Welcome to Tavata CMS!" %}
     {% endif %}
 {% endblock title %}
 
 {% block seo_title %}
-    {% if page %}{{ page.meta_title|default:page.title }}{% else %}{% translate "Welcome" %} | Tavata.art{% endif %}
+    {# The 'seo_title' block is defined only ONCE. The conditional logic is inside. #}
+    {% if page %}
+        {{ page.meta_title|default:page.title }}
+    {% else %}
+        {% translate "Welcome" %} | Tavata.art 
+    {% endif %}
 {% endblock seo_title %}
 
 {% block seo_description %}
-    {% if page %}{{ page.meta_description|default:"" }}{% endif %}
+    {# The 'seo_description' block is defined only ONCE. The conditional logic is inside. #}
+    {% if page %}
+        {{ page.meta_description|default:"" }}
+    {% else %}
+        {% translate "Content is being prepared. An administrator needs to configure a homepage from the admin panel." %}
+    {% endif %}
 {% endblock seo_description %}
 
 
@@ -68,6 +78,16 @@
 
             </div>
         </div>
+
+        <hr class="my-5"> {# Separator before the dynamic content grid #}
+
+        {# --- NEW: Widget Zone for Post Grids on the Homepage --- #}
+        {# This section will render any widgets assigned to 'homepage-content-grid' zone #}
+        {# This specific zone is intended for larger content blocks like post grids. #}
+        <div class="homepage-post-grid">
+            {% show_widget_zone 'homepage-content-grid' %} {# Renders widgets configured for this zone #}
+        </div>
+
     {% else %}
         {# If no page is configured as the homepage, show this friendly message. #}
         <div class="text-center py-5">
@@ -81,8 +101,8 @@
 
 
 {# --- LEFT SIDEBAR BLOCK (Conditional) --- #}
+{# This sidebar will only appear if we are rendering the designated homepage. #}
 {% block sidebar_left %}
-    {# This sidebar will only appear if we are rendering the designated homepage. #}
     {% if page and page.is_homepage %}
         <div class="sticky-top pt-5">
             {% show_widget_zone 'homepage-sidebar-left' %}
@@ -92,8 +112,8 @@
 
 
 {# --- RIGHT SIDEBAR BLOCK (Conditional) --- #}
+{# This sidebar will also only appear on the designated homepage. #}
 {% block sidebar_right %}
-    {# This sidebar will also only appear on the designated homepage. #}
     {% if page and page.is_homepage %}
         <div class="sticky-top pt-5">
             {% show_widget_zone 'homepage-sidebar-right' %}

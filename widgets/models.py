@@ -30,6 +30,12 @@ class Widget(models.Model):
         MOST_COMMENTED_POSTS = 'most_commented_posts', _('Most Commented Blog Posts')
         BLOG_CATEGORIES = 'blog_categories', _('Blog Category List')
         EDITOR_PICKS_POSTS = 'editor_picks_posts', _("Editor's Picks (Blog Posts)")
+        
+        # --- NEW WIDGET TYPES FOR FLEXIBLE POST GRIDS ---
+        POST_GRID_RECENT = 'post_grid_recent', _("Post Grid: Recent Posts")
+        POST_GRID_POPULAR = 'post_grid_popular', _("Post Grid: Most Viewed")
+        POST_GRID_COMMENTED = 'post_grid_commented', _("Post Grid: Most Commented")
+        POST_GRID_EDITOR = 'post_grid_editor', _("Post Grid: Editor's Picks")
         # We can easily add more types in the future:
         # PAGE_LIST = 'page_list', _('List of Pages')
         # HTML_CONTENT = 'html_content', _('Custom HTML Content')
@@ -77,6 +83,62 @@ class Widget(models.Model):
         help_text=_("If selected, the widget will only show items from this specific category.")
     )
 
+    # --- NEW: Grid/Column Configuration ---
+    column_count = models.PositiveIntegerField(
+        default=3,
+        verbose_name=_("Column Count"),
+        help_text=_("Number of columns for grid display (e.g., 2, 3, 4).")
+    )
+    
+    # --- NEW: Section Title (optional, if widget contains its own section title) ---
+    section_title = models.CharField(
+        max_length=200,
+        blank=True, null=True,
+        verbose_name=_("Section Title (Optional)"),
+        help_text=_("A main title for this grid section (e.g., 'Latest Posts', 'Our Bestsellers').")
+    )
+
+    # --- NEW: Text for 'View All' link for the grid ---
+    view_all_link_text = models.CharField(
+        max_length=100,
+        blank=True, null=True,
+        verbose_name=_("View All Link Text"),
+        help_text=_("Text for the 'View All' link below the grid (e.g., 'View All Posts').")
+    )
+    view_all_link_url = models.CharField( # Storing as CharField to allow direct URLs or URL names
+        max_length=255,
+        blank=True, null=True,
+        verbose_name=_("View All Link URL"),
+        help_text=_("URL for the 'View All' link (e.g., '/blog/').")
+    )
+    # --- NEW: Grid/Column Configuration ---
+    column_count = models.PositiveIntegerField(
+        default=3,
+        verbose_name=_("Column Count"),
+        help_text=_("Number of columns for grid display (e.g., 2, 3, 4).")
+    )
+    
+    # --- NEW: Section Title (optional, if widget contains its own section title) ---
+    section_title = models.CharField(
+        max_length=200,
+        blank=True, null=True,
+        verbose_name=_("Section Title (Optional)"),
+        help_text=_("A main title for this grid section (e.g., 'Latest Posts', 'Our Bestsellers').")
+    )
+
+    # --- NEW: Text for 'View All' link for the grid ---
+    view_all_link_text = models.CharField(
+        max_length=100,
+        blank=True, null=True,
+        verbose_name=_("View All Link Text"),
+        help_text=_("Text for the 'View All' link below the grid (e.g., 'View All Posts').")
+    )
+    view_all_link_url = models.CharField( # Storing as CharField to allow direct URLs or URL names
+        max_length=255,
+        blank=True, null=True,
+        verbose_name=_("View All Link URL"),
+        help_text=_("URL for the 'View All' link (e.g., '/blog/').")
+    )
     class Meta:
         ordering = ['zone', 'order']
         verbose_name = _("Widget")

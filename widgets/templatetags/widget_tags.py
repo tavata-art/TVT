@@ -91,6 +91,29 @@ def show_widget_zone(context, zone_slug):
                     ).filter(num_blog_posts__gt=0).order_by('-num_blog_posts', 'name')
                     items_container = list(categories_qs[:widget_instance.item_count])
                 
+                # --- NEW CASES FOR POST GRIDS ---
+                case 'post_grid_recent':
+                    items_qs = Post.objects.filter(status='published').order_by('-published_date')
+                    items_container = list(items_qs[:widget_instance.item_count])
+                    # No new thumbnail_url required here, as the template will handle it dynamically.
+
+                case 'post_grid_popular':
+                    items_qs = Post.objects.filter(status='published').order_by('-views_count', '-published_date')
+                    items_container = list(items_qs[:widget_instance.item_count])
+
+                case 'post_grid_commented':
+                    items_qs = Post.objects.filter(status='published') \
+                                           .annotate(num_comments=Count('comments', filter=Q(comments__is_approved=True))) \
+                                           .filter(num_comments__gt=0) \
+                                           .order_by('-num_comments', '-published_date')
+                    items_container = list(items_qs[:widget_instance.item_count])
+                
+                case 'post_grid_editor':
+                    items_qs = Post.objects.filter(status='published', editor_rating__gt=0) \
+                                           .order_by('-editor_rating', '-published_date')
+                    items_container = list(items_qs[:widget_instance.item_count])
+
+
                 case _: # Unrecognized widget type
                     logger.warning(f"Unrecognized widget type '{widget_instance.widget_type}' for widget '{widget_instance.title}'.")
                     items_container = [] # Empty list for safety.
@@ -98,7 +121,7 @@ def show_widget_zone(context, zone_slug):
             # --- Common Post-based Processing (Applies only to Post items) ---
             # Attach thumbnail_url to Post objects. This runs once per item on cache miss.
             # This should not run for categories.
-            if widget_instance.widget_type in ['recent_posts', 'most_viewed_posts', 'most_commented_posts', 'editor_picks_posts']:
+            if widget_instance.widget_type in ['recent_posts', 'most_viewed_posts', 'most_commented_posts', 'editor_picks_posts', 'post_grid_recent', 'post_grid_popular', 'post_grid_commented', 'post_grid_editor']:
                 for post_obj in items_container: 
                     # post_obj is already a Post instance here (from items_container)
                     post_obj.thumbnail_url = _get_thumbnail_url(post_obj)
