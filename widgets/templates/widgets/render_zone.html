@@ -17,9 +17,13 @@
         
         {% include 'widgets/partials/_blog_categories_widget.html' with widget=data.widget items=data.items request=request %}
     
-        {# --- NEW CASES FOR POST GRIDS --- #}
+    {# --- WXISTING CASES FOR POST GRIDS --- #}
     {% elif data.widget.widget_type == 'post_grid_recent' or data.widget.widget_type == 'post_grid_popular' or data.widget.widget_type == 'post_grid_commented' or data.widget.widget_type == 'post_grid_editor' %}
         {% include 'widgets/partials/_post_grid.html' with widget=data.widget items=data.items request=request %}
+    
+    {# --- NEW CASE FOR POST CAROUSEL --- #}
+    {% elif data.widget.widget_type == 'post_carousel' %}
+        {% include 'widgets/partials/_post_carousel.html' with widget=data.widget items=data.items request=request %}
 
     {# You can add more 'elif' blocks here for future widget types, like 'page_list', etc. #}
     {# Default Case: If the widget type is not recognized, show a helpful debug message. #}

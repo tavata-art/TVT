@@ -113,6 +113,13 @@ def show_widget_zone(context, zone_slug):
                                            .order_by('-editor_rating', '-published_date')
                     items_container = list(items_qs[:widget_instance.item_count])
 
+                case 'post_carousel':
+                    # You can configure which posts go into the carousel.
+                    # For simplicity, let's use a "top N" most recent posts or highly rated posts.
+                    # This example uses editor_rating > 0.
+                    items_qs = Post.objects.filter(status='published', editor_rating__gt=0) \
+                                           .order_by('-editor_rating', '-published_date')
+                    items_container = list(items_qs[:widget_instance.item_count])
 
                 case _: # Unrecognized widget type
                     logger.warning(f"Unrecognized widget type '{widget_instance.widget_type}' for widget '{widget_instance.title}'.")
@@ -121,7 +128,7 @@ def show_widget_zone(context, zone_slug):
             # --- Common Post-based Processing (Applies only to Post items) ---
             # Attach thumbnail_url to Post objects. This runs once per item on cache miss.
             # This should not run for categories.
-            if widget_instance.widget_type in ['recent_posts', 'most_viewed_posts', 'most_commented_posts', 'editor_picks_posts', 'post_grid_recent', 'post_grid_popular', 'post_grid_commented', 'post_grid_editor']:
+            if widget_instance.widget_type in ['recent_posts', 'most_viewed_posts', 'most_commented_posts', 'editor_picks_posts', 'post_grid_recent', 'post_grid_popular', 'post_grid_commented', 'post_grid_editor', 'post_carousel']:
                 for post_obj in items_container: 
                     # post_obj is already a Post instance here (from items_container)
                     post_obj.thumbnail_url = _get_thumbnail_url(post_obj)

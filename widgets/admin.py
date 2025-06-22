@@ -11,7 +11,7 @@ class WidgetInline(admin.TabularInline):
     """
     model = Widget
     # We now use the single, universal 'category_filter' field.
-    fields = ('title', 'widget_type', 'order', 'item_count', 'cache_timeout', 'category_filter', 'column_count', 'section_title', 'view_all_link_text', 'view_all_link_url')
+    fields = ('title', 'widget_type', 'order', 'item_count', 'cache_timeout', 'category_filter')
     extra = 1
     ordering = ['order']
     # Adding a class to make the inline editor more compact
@@ -38,7 +38,7 @@ class WidgetAdmin(TabbedTranslationAdmin):
     A global list view for all Widgets, allowing for quick edits and
     re-assignment across different zones.
     """
-    list_display = ('title', 'zone', 'widget_type', 'order', 'cache_timeout')
+    list_display = ('title', 'zone', 'widget_type', 'order', 'cache_timeout', 'column_count', 'section_title', 'view_all_link_text', 'view_all_link_url', 'carousel_interval_ms')
     list_filter = ('zone', 'widget_type')
     list_editable = ('order', 'zone', 'cache_timeout')
     search_fields = ('title',)

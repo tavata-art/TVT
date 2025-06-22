@@ -1,0 +1,56 @@
+<!-- File: widgets/templates/widgets/partials/_post_carousel.html -->
+{% load i18n %}
+{% load static %}
+
+{# This partial renders a responsive carousel of blog posts. #}
+{# It is designed to be highly configurable via the Widget model. #}
+
+{# Container for the entire carousel section #}
+<div class="post-carousel-section">
+    {# Optional: Section Title #}
+    {% if widget.section_title %}
+        <h2 class="mb-4 text-center">{% translate widget.section_title %}</h2>
+    {% endif %}
+
+    {# Ensure there are items to prevent Bootstrap carousel errors #}
+    {% if items %}
+        <div id="carousel-{{ widget.id }}" class="carousel slide" data-bs-ride="carousel" data-bs-interval="{{ widget.carousel_interval_ms|default:5000 }}">
+            {# Carousel Indicators #}
+            <div class="carousel-indicators">
+                {% for forloop_item in items %}
+                    <button type="button" data-bs-target="#carousel-{{ widget.id }}" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+                {% endfor %}
+            </div>
+
+            {# Carousel Inner #}
+            <div class="carousel-inner">
+                {% for item in items %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        {# Assuming 'item' is a Post object and has 'featured_image.url' and 'title' #}
+                        {# You might need to adjust 'item_obj.featured_image' to 'item.featured_image' #}
+                        <img src="{{ item.featured_image.url }}" class="d-block w-100 carousel-img" alt="{{ item.title }}" style="height: 400px; object-fit: cover;">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>{{ item.title }}</h5>
+                            <p>{{ item.content|striptags|truncatechars:100 }}</p>
+                            <a href="{{ item.get_absolute_url }}" class="btn btn-sm btn-light">{% translate "Read More" %}</a>
+                        </div>
+                    </div>
+                {% empty %}
+                    {# This empty block is generally not reached if 'items' check above is successful #}
+                {% endfor %}
+            </div>
+
+            {# Carousel Controls #}
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-{{ widget.id }}" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">{% translate "Previous" %}</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel-{{ widget.id }}" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">{% translate "Next" %}</span>
+            </button>
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center">{% translate "No posts available for the carousel." %}</div>
+    {% endif %}
+</div>

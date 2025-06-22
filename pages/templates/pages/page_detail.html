@@ -43,6 +43,16 @@
 <div class="container mt-5">
     {# If a valid page object was passed from the view, display its content. #}
     {% if page %}
+
+        {# --- NEW: Widget Zone for Main Content Area on the Homepage --- #}
+        {# This section displays prominent content like a carousel or a grid, #}
+        {# only if the current page is the designated homepage. #}
+        {% if page.is_homepage %}
+            <hr class="my-5"> {# Separator before the dynamic content zone #}
+            <div class="homepage-main-content-display">
+                {% show_widget_zone 'homepage-main-content' %} {# Renders widgets configured for this zone #}
+            </div>
+        {% endif %}
         <div class="row">
             <div class="col-lg-10 mx-auto">
 

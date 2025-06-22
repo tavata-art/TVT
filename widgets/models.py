@@ -36,6 +36,8 @@ class Widget(models.Model):
         POST_GRID_POPULAR = 'post_grid_popular', _("Post Grid: Most Viewed")
         POST_GRID_COMMENTED = 'post_grid_commented', _("Post Grid: Most Commented")
         POST_GRID_EDITOR = 'post_grid_editor', _("Post Grid: Editor's Picks")
+
+        POST_CAROUSEL = 'post_carousel', _("Post Carousel")
         # We can easily add more types in the future:
         # PAGE_LIST = 'page_list', _('List of Pages')
         # HTML_CONTENT = 'html_content', _('Custom HTML Content')
@@ -139,6 +141,12 @@ class Widget(models.Model):
         verbose_name=_("View All Link URL"),
         help_text=_("URL for the 'View All' link (e.g., '/blog/').")
     )
+    carousel_interval_ms = models.PositiveIntegerField(
+        default=5000, # 5 seconds in milliseconds
+        verbose_name=_("Carousel Interval (ms)"),
+        help_text=_("Time in milliseconds between slides for 'Post Carousel' widget.")
+    )
+    
     class Meta:
         ordering = ['zone', 'order']
         verbose_name = _("Widget")
