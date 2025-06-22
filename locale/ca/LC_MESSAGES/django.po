@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-22 12:15+0000\n"
-"PO-Revision-Date: 2025-06-22 14:17+0200\n"
+"POT-Creation-Date: 2025-06-22 12:45+0000\n"
+"PO-Revision-Date: 2025-06-22 15:06+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "Language: ca\n"
@@ -201,7 +201,8 @@ msgstr "No s’ha trobat usuaris al directori."
 
 #: accounts/templates/registration/login.html:5
 #: accounts/templates/registration/login.html:12
-#: accounts/templates/registration/login.html:30
+#: accounts/templates/registration/login.html:37
+#: accounts/templates/registration/password_reset_complete.html:15
 #: core/templates/core/partials/_header.html:60
 msgid "Log In"
 msgstr "Iniciar sessió"
@@ -212,13 +213,142 @@ msgstr ""
 "El vostre nom d’usuari i la vostra contrasenya no coincideixen. Torneu-ho a "
 "provar."
 
-#: accounts/templates/registration/login.html:40
-msgid "Don't have an account?"
-msgstr "No teniu cap compte?"
+#: accounts/templates/registration/login.html:32
+msgid "Forgot password?"
+msgstr "Has oblidat la contrasenya?"
 
-#: accounts/templates/registration/login.html:40
-msgid "Sign up here"
-msgstr "Registra't aquí"
+#: accounts/templates/registration/login.html:47
+#, python-format
+msgid "Don't have an account? <a href=\"%(signup_url)s\">Sign up here</a>."
+msgstr ""
+"No teniu cap compte? <a href=\"%(signup_url) s\"> Registra't aquí </a>."
+
+#: accounts/templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "Contrasenya Cantada"
+
+#: accounts/templates/registration/password_reset_complete.html:13
+msgid "Password has been changed successfully!"
+msgstr "La contrasenya s'ha canviat amb èxit!"
+
+#: accounts/templates/registration/password_reset_complete.html:14
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr ""
+"La vostra contrasenya s’ha establert. Potser aneu endavant i inicieu la "
+"sessió ara."
+
+#: accounts/templates/registration/password_reset_confirm.html:5
+msgid "Enter New Password"
+msgstr "Introduïu una nova contrasenya"
+
+#: accounts/templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "Definiu una nova contrasenya"
+
+#: accounts/templates/registration/password_reset_confirm.html:29
+msgid "Change Password"
+msgstr "Canviar la contrasenya"
+
+#: accounts/templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used."
+msgstr ""
+"L’enllaç de restabliment de contrasenya no va ser vàlid, possiblement perquè "
+"ja s’ha utilitzat."
+
+#: accounts/templates/registration/password_reset_confirm.html:35
+msgid "Please request a new password reset."
+msgstr "Sol·liciteu un nou restabliment de contrasenya."
+
+#: accounts/templates/registration/password_reset_done.html:5
+msgid "Password Reset Sent"
+msgstr "Restablir la contrasenya enviat"
+
+#: accounts/templates/registration/password_reset_done.html:13
+msgid "Password Reset Email Sent"
+msgstr "Restablir la contrasenya Enviar correu electrònic"
+
+#: accounts/templates/registration/password_reset_done.html:14
+msgid ""
+"We've emailed you instructions for setting your password. You should receive "
+"them shortly."
+msgstr ""
+"Us hem enviat per correu electrònic instruccions per configurar la vostra "
+"contrasenya. Hauríeu de rebre-los en breu."
+
+#: accounts/templates/registration/password_reset_done.html:15
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+"Si no rebeu cap correu electrònic, assegureu-vos que heu entrat a l’adreça "
+"amb la qual us heu registrat i comproveu la vostra carpeta d’espam."
+
+#: accounts/templates/registration/password_reset_done.html:16
+msgid "Return to Login"
+msgstr "Tornar a la sessió"
+
+#: accounts/templates/registration/password_reset_email.html:4
+msgid "Hi"
+msgstr "Hola"
+
+#: accounts/templates/registration/password_reset_email.html:6
+msgid "It looks like you requested a password reset for your account at"
+msgstr ""
+"Sembla que heu sol·licitat un restabliment de contrasenya per al vostre "
+"compte"
+
+#: accounts/templates/registration/password_reset_email.html:13
+#, python-format
+msgid ""
+"\n"
+"Please go to the following page and choose a new password:\n"
+"%(protocol)s://%(domain)s%(reset_password_url)s\n"
+msgstr ""
+"\n"
+"Si us plau, aneu a la pàgina següent i trieu una nova contrasenya:\n"
+"%(protocol)s://%(domain)s%(reset_password_url)s\n"
+
+#: accounts/templates/registration/password_reset_email.html:19
+msgid "Your username, in case you've forgotten:"
+msgstr "El vostre nom d’usuari, per si heu oblidat:"
+
+#: accounts/templates/registration/password_reset_email.html:21
+msgid "Thanks for using our site!"
+msgstr "Gràcies per utilitzar el nostre lloc!"
+
+#: accounts/templates/registration/password_reset_email.html:23
+msgid "The"
+msgstr "EL"
+
+#: accounts/templates/registration/password_reset_email.html:23
+msgid "team"
+msgstr "equip"
+
+#: accounts/templates/registration/password_reset_form.html:5
+msgid "Reset Password"
+msgstr "Restablir la contrasenya"
+
+#: accounts/templates/registration/password_reset_form.html:12
+msgid "Reset Your Password"
+msgstr "Restablir la vostra contrasenya"
+
+#: accounts/templates/registration/password_reset_form.html:13
+msgid ""
+"Enter your email address below, and we'll send you instructions to set a new "
+"one."
+msgstr ""
+"Introduïu la vostra adreça de correu electrònic a continuació i us enviarem "
+"instruccions per configurar-ne una de nova."
+
+#: accounts/templates/registration/password_reset_form.html:24
+msgid "Send Reset Link"
+msgstr "Enviar enllaç de restabliment"
+
+#: accounts/templates/registration/password_reset_subject.txt:2
+msgid "Password reset for"
+msgstr "Restablir la contrasenya per"
 
 #: accounts/templates/registration/profile_edit.html:5
 #: core/templates/core/partials/_header.html:40
@@ -1378,6 +1508,12 @@ msgstr ""
 "                <strong>Error de widget: </strong> Plantilla per a tipus "
 "widget \"%(widget_type)s\" que no es troba al despatxador.\n"
 "            "
+
+#~ msgid "Don't have an account?"
+#~ msgstr "No teniu cap compte?"
+
+#~ msgid "Sign up here"
+#~ msgstr "Registra't aquí"
 
 #~ msgid "Slug (identifier for code)"
 #~ msgstr "Slug (identificador per al codi)"

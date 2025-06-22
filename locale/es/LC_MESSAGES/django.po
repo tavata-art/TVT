@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-22 12:15+0000\n"
-"PO-Revision-Date: 2025-06-22 14:18+0200\n"
+"POT-Creation-Date: 2025-06-22 12:45+0000\n"
+"PO-Revision-Date: 2025-06-22 14:55+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -202,7 +202,8 @@ msgstr "No se encuentran usuarios en el directorio."
 
 #: accounts/templates/registration/login.html:5
 #: accounts/templates/registration/login.html:12
-#: accounts/templates/registration/login.html:30
+#: accounts/templates/registration/login.html:37
+#: accounts/templates/registration/password_reset_complete.html:15
 #: core/templates/core/partials/_header.html:60
 msgid "Log In"
 msgstr "Iniciar sesión"
@@ -213,13 +214,140 @@ msgstr ""
 "Su nombre de usuario y contraseña no coincidían. Por favor inténtalo de "
 "nuevo."
 
-#: accounts/templates/registration/login.html:40
-msgid "Don't have an account?"
-msgstr "¿No tiene una cuenta?"
+#: accounts/templates/registration/login.html:32
+msgid "Forgot password?"
+msgstr "¿Olvidó la contraseña?"
 
-#: accounts/templates/registration/login.html:40
-msgid "Sign up here"
-msgstr "Regístrate aquí"
+#: accounts/templates/registration/login.html:47
+#, python-format
+msgid "Don't have an account? <a href=\"%(signup_url)s\">Sign up here</a>."
+msgstr "¿No tienes una cuenta? <a href=\"%(signup_url)s\">Registrate aquí</a>."
+
+#: accounts/templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "Contraseña cambiada"
+
+#: accounts/templates/registration/password_reset_complete.html:13
+msgid "Password has been changed successfully!"
+msgstr "¡La contraseña se ha cambiado con éxito!"
+
+#: accounts/templates/registration/password_reset_complete.html:14
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr ""
+"Su contraseña ha sido establecida. Puede seguir adelante e iniciar sesión "
+"ahora."
+
+#: accounts/templates/registration/password_reset_confirm.html:5
+msgid "Enter New Password"
+msgstr "Introduzca nueva contraseña"
+
+#: accounts/templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "Establecer una Nueva Contraseña"
+
+#: accounts/templates/registration/password_reset_confirm.html:29
+msgid "Change Password"
+msgstr "Cambiar contraseña"
+
+#: accounts/templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used."
+msgstr ""
+"El enlace de restablecimiento de contraseña no era válido, posiblemente "
+"porque ya se ha utilizado."
+
+#: accounts/templates/registration/password_reset_confirm.html:35
+msgid "Please request a new password reset."
+msgstr "Solicite un nuevo restablecimiento de contraseña."
+
+#: accounts/templates/registration/password_reset_done.html:5
+msgid "Password Reset Sent"
+msgstr "Restablecer Contraseña Enviado"
+
+#: accounts/templates/registration/password_reset_done.html:13
+msgid "Password Reset Email Sent"
+msgstr "Restablecer Contraseña Correo electrónico Enviado"
+
+#: accounts/templates/registration/password_reset_done.html:14
+msgid ""
+"We've emailed you instructions for setting your password. You should receive "
+"them shortly."
+msgstr ""
+"Le hemos enviado instrucciones por correo electrónico para configurar su "
+"contraseña. Deberías recibirlos en breve."
+
+#: accounts/templates/registration/password_reset_done.html:15
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+"Si no recibe un correo electrónico, asegúrese de haber ingresado la "
+"dirección con la que se registró y verifique su carpeta de correo no deseado."
+
+#: accounts/templates/registration/password_reset_done.html:16
+msgid "Return to Login"
+msgstr "Volver a Iniciar sesión"
+
+#: accounts/templates/registration/password_reset_email.html:4
+msgid "Hi"
+msgstr "Hola"
+
+#: accounts/templates/registration/password_reset_email.html:6
+msgid "It looks like you requested a password reset for your account at"
+msgstr ""
+"Parece que solicitó un restablecimiento de contraseña para su cuenta en"
+
+#: accounts/templates/registration/password_reset_email.html:13
+#, python-format
+msgid ""
+"\n"
+"Please go to the following page and choose a new password:\n"
+"%(protocol)s://%(domain)s%(reset_password_url)s\n"
+msgstr ""
+"\n"
+"Vaya a la siguiente página y elija una nueva contraseña:\n"
+"%(protocol)s://%(domain)s%(reset_password_url)s\n"
+
+#: accounts/templates/registration/password_reset_email.html:19
+msgid "Your username, in case you've forgotten:"
+msgstr "Su nombre de usuario, en caso de que lo haya olvidado:"
+
+#: accounts/templates/registration/password_reset_email.html:21
+msgid "Thanks for using our site!"
+msgstr "¡Gracias por usar nuestro sitio!"
+
+#: accounts/templates/registration/password_reset_email.html:23
+msgid "The"
+msgstr "El"
+
+#: accounts/templates/registration/password_reset_email.html:23
+msgid "team"
+msgstr "equipo"
+
+#: accounts/templates/registration/password_reset_form.html:5
+msgid "Reset Password"
+msgstr "Restablecer Contraseña"
+
+#: accounts/templates/registration/password_reset_form.html:12
+msgid "Reset Your Password"
+msgstr "Restablezca Su Contraseña"
+
+#: accounts/templates/registration/password_reset_form.html:13
+msgid ""
+"Enter your email address below, and we'll send you instructions to set a new "
+"one."
+msgstr ""
+"Ingrese su dirección de correo electrónico a continuación y le enviaremos "
+"instrucciones para establecer una nueva."
+
+#: accounts/templates/registration/password_reset_form.html:24
+msgid "Send Reset Link"
+msgstr "Enviar Enlace de Restablecimiento"
+
+#: accounts/templates/registration/password_reset_subject.txt:2
+msgid "Password reset for"
+msgstr "Restablecimiento de contraseña para"
 
 #: accounts/templates/registration/profile_edit.html:5
 #: core/templates/core/partials/_header.html:40
@@ -768,6 +896,7 @@ msgstr ""
 "                            "
 
 #: gallery/templates/gallery/gallery_page.html:33
+#, fuzzy
 msgid "No images in the gallery."
 msgstr "No hay imágenes en esta galería"
 
@@ -930,6 +1059,7 @@ msgid "Welcome to Tavata CMS!"
 msgstr "¡Bienvenido a Tavata CMS!"
 
 #: pages/templates/pages/page_detail.html:27
+#, fuzzy
 msgid "Welcome"
 msgstr "¡Bienvenido!"
 
@@ -1244,9 +1374,7 @@ msgstr "Post Grid: Las elecciones del editor"
 
 #: widgets/models.py:40
 msgid "Post Carousel"
-msgstr ""
-"\n"
-"Carrusel Post"
+msgstr "Carrusel Post"
 
 #: widgets/models.py:54
 msgid "Widget Type"
@@ -1359,14 +1487,14 @@ msgid "No categories with posts available."
 msgstr "No hay categorías con publicaciones disponibles."
 
 #: widgets/templates/widgets/partials/_post_grid.html:28
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "                                Published on %(date)s\n"
 "                            "
 msgstr ""
 "\n"
-"                            Actualizado en %(date)s\n"
+"                            Publicado en %(date)s\n"
 "                            "
 
 #: widgets/templates/widgets/partials/_posts_widget.html:33
@@ -1385,6 +1513,12 @@ msgstr ""
 "                 <strong>Widget Error:</strong> Plantilla para el tipo de "
 "widget \"%(widget_type)s\" no se encuentra en el despachador.\n"
 "             "
+
+#~ msgid "Don't have an account?"
+#~ msgstr "¿No tiene una cuenta?"
+
+#~ msgid "Sign up here"
+#~ msgstr "Regístrate aquí"
 
 #~ msgid "Slug (identifier for code)"
 #~ msgstr "Slug (identificador para el código)"
