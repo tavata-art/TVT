@@ -37,40 +37,92 @@
                         <h5 class="mb-0">{% translate "Profile Details" %}</h5>
                     </div>
                     <div class="card-body">
-                        {% for field in profile_form %}
-                            <div class="mb-3">
-                                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                        {# --- Render each field explicitly for full control --- #}
 
-                                {# === SPECIAL PREVIEW FOR AVATAR FIELD === #}
-                                {# We show the current avatar image above the file input field for better UX. #}
-                                {% if field.name == 'avatar' %}
-                                <div class="mb-2">
-                                    <img src="{{ profile_form.instance.get_avatar_url }}" 
-                                         alt="{% translate 'Current Avatar' %}"
-                                         class="img-thumbnail" 
-                                         style="max-width: 150px; height: auto;">
-                                </div>
-                                {% endif %}
-                                
-                                {# Render the form field itself. #}
-                                {# Because we defined a custom widget in forms.py, #}
-                                {# this will now render our clean 'custom_clearable_file_input.html' #}
-                                {# without the "Currently: ..." text. #}
-                                {{ field }}
-                                
-                                {% if field.help_text %}<div class="form-text">{{ field.help_text|safe }}</div>{% endif %}
-                                {% if field.errors %}<div class="invalid-feedback d-block">{{ field.errors|striptags }}</div>{% endif %}
-                            </div>
-                        {% endfor %}
-                        <div class="form-check mt-3">
-                            {{ profile_form.clear_avatar }} {# Renderiza el <input type="checkbox"> #}
-                            <label class="form-check-label" for="{{ profile_form.clear_avatar.id_for_label }}">
-                                {{ profile_form.clear_avatar.label }}
-                            </label>
-                            <div class="form-text">{{ profile_form.clear_avatar.help_text }}</div>
+                        {# Display Name #}
+                        <div class="mb-3">
+                            <label for="{{ profile_form.display_name.id_for_label }}" class="form-label">{{ profile_form.display_name.label }}</label>
+                            {{ profile_form.display_name }}
+                            {% if profile_form.display_name.help_text %}<div class="form-text">{{ profile_form.display_name.help_text|safe }}</div>{% endif %}
+                            {% if profile_form.display_name.errors %}<div class="invalid-feedback d-block">{{ profile_form.display_name.errors|striptags }}</div>{% endif %}
                         </div>
-                    </div>
-                </div>
+
+                        {# Bio #}
+                        <div class="mb-3">
+                            <label for="{{ profile_form.bio.id_for_label }}" class="form-label">{{ profile_form.bio.label }}</label>
+                            {{ profile_form.bio }}
+                            {% if profile_form.bio.help_text %}<div class="form-text">{{ profile_form.bio.help_text|safe }}</div>{% endif %}
+                            {% if profile_form.bio.errors %}<div class="invalid-feedback d-block">{{ profile_form.bio.errors|striptags }}</div>{% endif %}
+                        </div>
+
+                        {# Location #}
+                        <div class="mb-3">
+                            <label for="{{ profile_form.location.id_for_label }}" class="form-label">{{ profile_form.location.label }}</label>
+                            {{ profile_form.location }}
+                            {% if profile_form.location.help_text %}<div class="form-text">{{ profile_form.location.help_text|safe }}</div>{% endif %}
+                            {% if profile_form.location.errors %}<div class="invalid-feedback d-block">{{ profile_form.location.errors|striptags }}</div>{% endif %}
+                        </div>
+
+                        {# Website URL #}
+                        <div class="mb-3">
+                            <label for="{{ profile_form.website_url.id_for_label }}" class="form-label">{{ profile_form.website_url.label }}</label>
+                            {{ profile_form.website_url }}
+                            {% if profile_form.website_url.help_text %}<div class="form-text">{{ profile_form.website_url.help_text|safe }}</div>{% endif %}
+                            {% if profile_form.website_url.errors %}<div class="invalid-feedback d-block">{{ profile_form.website_url.errors|striptags }}</div>{% endif %}
+                        </div>
+
+                        {# --- AVATAR FIELD SECTION --- #}
+                        <div class="mb-3">
+                            <label for="{{ profile_form.avatar.id_for_label }}" class="form-label">{{ profile_form.avatar.label }}</label>
+                            
+                            {# Preview of current avatar #}
+                            <div class="mb-2">
+                                <img src="{{ profile_form.instance.get_avatar_url }}" 
+                                    alt="{% translate 'Current Avatar' %}"
+                                    class="img-thumbnail" 
+                                    style="max-width: 150px; height: auto;">
+                            </div>
+                            
+                            {# File input for new avatar #}
+                            {{ profile_form.avatar }} 
+                            {% if profile_form.avatar.help_text %}<div class="form-text">{{ profile_form.avatar.help_text|safe }}</div>{% endif %}
+                            {% if profile_form.avatar.errors %}<div class="invalid-feedback d-block">{{ profile_form.avatar.errors|striptags }}</div>{% endif %}
+                        </div>
+
+                        {# --- DEFAULT AVATAR CHOICE AND CLEAR CHECKBOX --- #}
+                        {# These two fields are handled together for clear UX #}
+                        {% if profile_form.default_avatar_choice %} {# Check if the field exists (it should, always) #}
+                            <div class="mb-3">
+                                <label for="{{ profile_form.default_avatar_choice.id_for_label }}" class="form-label">{{ profile_form.default_avatar_choice.label }}</label>
+                                {{ profile_form.default_avatar_choice }}
+                                {% if profile_form.default_avatar_choice.help_text %}<div class="form-text">{{ profile_form.default_avatar_choice.help_text|safe }}</div>{% endif %}
+                                {% if profile_form.default_avatar_choice.errors %}<div class="invalid-feedback d-block">{{ profile_form.default_avatar_choice.errors|striptags }}</div>{% endif %}
+                            </div>
+                        {% endif %}
+
+                        {% if profile_form.clear_avatar %} {# Check if the field exists (it should, always) #}
+                            <div class="mb-3 form-check"> {# Use form-check for checkboxes #}
+                                {{ profile_form.clear_avatar }} {# Renders the checkbox input #}
+                                <label class="form-check-label" for="{{ profile_form.clear_avatar.id_for_label }}">
+                                    {{ profile_form.clear_avatar.label }}
+                                </label>
+                                {% if profile_form.clear_avatar.help_text %}<div class="form-text">{{ profile_form.clear_avatar.help_text|safe }}</div>{% endif %}
+                                {% if profile_form.clear_avatar.errors %}<div class="invalid-feedback d-block">{{ profile_form.clear_avatar.errors|striptags }}</div>{% endif %}
+                            </div>
+                        {% endif %}
+                        
+                        {% if profile_form.is_listed_publicly %} {# Check if the field exists (it should, always) #}
+                            <div class="mb-3 form-check"> 
+                                {{ profile_form.is_listed_publicly }} 
+                                <label class="form-check-label" for="{{ profile_form.is_listed_publicly.id_for_label }}">
+                                    {{ profile_form.is_listed_publicly.label }}
+                                </label>
+                                {% if profile_form.is_listed_publicly.help_text %}<div class="form-text">{{ profile_form.is_listed_publicly.help_text|safe }}</div>{% endif %}
+                                {% if profile_form.is_listed_publicly.errors %}<div class="invalid-feedback d-block">{{ profile_form.is_listed_publicly.errors|striptags }}</div>{% endif %}
+                            </div>
+                        {% endif %}
+                    </div> {# End card-body #}
+                </div> {# End PROFILE DETAILS CARD #}
                 
                 <!-- SUBMIT BUTTON -->
                 <div class="d-grid mt-4">

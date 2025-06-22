@@ -176,7 +176,10 @@ def user_directory_view(request):
     """
     # 1. Get all active users, ordered by username.
     # You might want to filter out staff/superusers if you don't want them listed.
-    all_users = User.objects.filter(is_active=True).order_by('username')
+    all_users = User.objects.filter(
+        is_active=True,
+        profile__is_listed_publicly=True
+    ).order_by('username')
     
     # 2. Get pagination settings.
     try:

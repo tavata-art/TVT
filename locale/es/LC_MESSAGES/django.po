@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-21 16:50+0000\n"
-"PO-Revision-Date: 2025-06-21 18:53+0200\n"
+"POT-Creation-Date: 2025-06-22 08:57+0000\n"
+"PO-Revision-Date: 2025-06-22 11:06+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -132,11 +132,20 @@ msgstr "¿Es un Comentarista de Confianza?"
 msgid "If checked, comments are automatically approved."
 msgstr "Si se comprueba, los comentarios se aprueban automáticamente."
 
-#: accounts/models.py:74
+#: accounts/models.py:76
+msgid "List profile publicly?"
+msgstr "¿Listar perfil públicamente?"
+
+#: accounts/models.py:77
+msgid "If checked, your profile will be visible in the public user directory."
+msgstr ""
+"Si se comprueba, su perfil será visible en el directorio público de usuarios."
+
+#: accounts/models.py:81
 msgid "Profile"
 msgstr "Perfil"
 
-#: accounts/models.py:75
+#: accounts/models.py:82
 msgid "Profiles"
 msgstr "Perfiles"
 
@@ -229,11 +238,11 @@ msgstr "Información de usuario"
 msgid "Profile Details"
 msgstr "Detalles del Perfil"
 
-#: accounts/templates/registration/profile_edit.html:49
+#: accounts/templates/registration/profile_edit.html:81
 msgid "Current Avatar"
 msgstr "Avatar Actual"
 
-#: accounts/templates/registration/profile_edit.html:77
+#: accounts/templates/registration/profile_edit.html:129
 msgid "Save Changes"
 msgstr "Guardar Cambios"
 
@@ -272,7 +281,7 @@ msgid "Your profile has been updated successfully!"
 msgstr "¡Su perfil ha sido actualizado con éxito!"
 
 #: blog/admin.py:76 blog/models.py:38 categories/models.py:58 pages/admin.py:85
-#: pages/models.py:26 pages/templates/pages/page_detail.html:53
+#: pages/models.py:26 pages/templates/pages/page_detail.html:63
 msgid "Categories"
 msgstr "Categorías"
 
@@ -462,6 +471,7 @@ msgstr ""
 
 #: blog/templates/blog/post_list.html:43
 #: blog/templates/blog/post_list_by_category.html:55
+#: widgets/templates/widgets/partials/_post_grid.html:33
 msgid "Read More"
 msgstr "Leer Más"
 
@@ -809,7 +819,7 @@ msgstr ""
 msgid "Link Text"
 msgstr "Texto del Enlace"
 
-#: menus/models.py:70 widgets/models.py:55
+#: menus/models.py:70 widgets/models.py:61
 msgid "Display Order"
 msgstr "Mostrar Orden"
 
@@ -909,11 +919,24 @@ msgid "pages"
 msgstr "páginas"
 
 #: pages/templates/pages/page_detail.html:18
-#: pages/templates/pages/page_detail.html:23
+#: pages/templates/pages/page_detail.html:95
+msgid "Welcome to Tavata CMS!"
+msgstr "¡Bienvenido a Tavata CMS!"
+
+#: pages/templates/pages/page_detail.html:27
 msgid "Welcome"
 msgstr "¡Bienvenido!"
 
-#: pages/templates/pages/page_detail.html:45
+#: pages/templates/pages/page_detail.html:36
+#: pages/templates/pages/page_detail.html:96
+msgid ""
+"Content is being prepared. An administrator needs to configure a homepage "
+"from the admin panel."
+msgstr ""
+"Sitio en construcción. Por favor, configura una página de inicio desde el "
+"panel de administración."
+
+#: pages/templates/pages/page_detail.html:55
 #, python-format
 msgid ""
 "\n"
@@ -923,18 +946,6 @@ msgstr ""
 "\n"
 "                        Por %(author)s | Última Actualización: "
 "%(updated_date)s                    "
-
-#: pages/templates/pages/page_detail.html:75
-msgid "Welcome to Tavata CMS!"
-msgstr "¡Bienvenido a Tavata CMS!"
-
-#: pages/templates/pages/page_detail.html:76
-msgid ""
-"Content is being prepared. An administrator needs to configure a homepage "
-"from the admin panel."
-msgstr ""
-"Sitio en construcción. Por favor, configura una página de inicio desde el "
-"panel de administración."
 
 #: pages/templates/pages/pages_by_category.html:7
 #, python-format
@@ -1181,7 +1192,7 @@ msgstr "Nombre de la Zona"
 msgid "Slug (used in templates)"
 msgstr "Slug (used en plantillas)"
 
-#: widgets/models.py:15 widgets/models.py:41
+#: widgets/models.py:15 widgets/models.py:47
 msgid "Widget Zone"
 msgstr "Zona del Widget"
 
@@ -1209,23 +1220,39 @@ msgstr "Lista de Categorías de Blog"
 msgid "Editor's Picks (Blog Posts)"
 msgstr "Selección del Editor (Publicaciones de blog)"
 
-#: widgets/models.py:46
+#: widgets/models.py:35
+msgid "Post Grid: Recent Posts"
+msgstr "Post Grid: Publicaciones Recientes"
+
+#: widgets/models.py:36
+msgid "Post Grid: Most Viewed"
+msgstr "Post Grid: La mayoría de los Visto"
+
+#: widgets/models.py:37
+msgid "Post Grid: Most Commented"
+msgstr "Post Grid: Más Comentado"
+
+#: widgets/models.py:38
+msgid "Post Grid: Editor's Picks"
+msgstr "Post Grid: Las elecciones del editor"
+
+#: widgets/models.py:52
 msgid "Widget Type"
 msgstr "Tipo de Widget"
 
-#: widgets/models.py:50
+#: widgets/models.py:56
 msgid "Widget Title"
 msgstr "Título del Widget"
 
-#: widgets/models.py:51
+#: widgets/models.py:57
 msgid "The title that will be displayed above the widget."
 msgstr "El título que se mostrará encima del widget."
 
-#: widgets/models.py:61
+#: widgets/models.py:67
 msgid "Number of items to show"
 msgstr "Número de artículos a mostrar"
 
-#: widgets/models.py:63
+#: widgets/models.py:69
 msgid ""
 "Used by widgets that display a list of items, like 'Recent Posts' or 'Blog "
 "Categories'."
@@ -1233,11 +1260,11 @@ msgstr ""
 "Utilizado por widgets que muestran una lista de elementos, como "
 "'Publicaciones recientes' o 'Categorías de blogs'."
 
-#: widgets/models.py:68
+#: widgets/models.py:74
 msgid "Cache Timeout (in seconds)"
 msgstr "Tiempo de espera en caché (en segundos)"
 
-#: widgets/models.py:69
+#: widgets/models.py:75
 msgid ""
 "How long the results of this widget should be stored in cache. 0 to disable "
 "caching for this widget."
@@ -1245,21 +1272,59 @@ msgstr ""
 "Cuánto tiempo deben almacenarse los resultados de este widget en caché. 0 "
 "para deshabilitar el almacenamiento en caché de este widget."
 
-#: widgets/models.py:76
+#: widgets/models.py:82
 msgid "Filter by Category (optional)"
 msgstr "Filtrar por Categoría (opcional)"
 
-#: widgets/models.py:77
+#: widgets/models.py:83
 msgid ""
 "If selected, the widget will only show items from this specific category."
 msgstr ""
 "Si se selecciona, el widget solo mostrará publicaciones de esta categoría."
 
-#: widgets/models.py:82
+#: widgets/models.py:89 widgets/models.py:117
+msgid "Column Count"
+msgstr "Cuenta de Columna"
+
+#: widgets/models.py:90 widgets/models.py:118
+msgid "Number of columns for grid display (e.g., 2, 3, 4)."
+msgstr ""
+"Número de columnas para visualización de cuadrícula (por ejemplo, 2, 3, 4)."
+
+#: widgets/models.py:97 widgets/models.py:125
+msgid "Section Title (Optional)"
+msgstr "Título de la Sección (Opcional)"
+
+#: widgets/models.py:98 widgets/models.py:126
+msgid ""
+"A main title for this grid section (e.g., 'Latest Posts', 'Our Bestsellers')."
+msgstr ""
+"Un título principal para esta sección de cuadrícula (por ejemplo, 'Últimas "
+"publicaciones', 'Nuestros más vendidos')."
+
+#: widgets/models.py:105 widgets/models.py:133
+msgid "View All Link Text"
+msgstr "Ver Todo el Texto del Enlace"
+
+#: widgets/models.py:106 widgets/models.py:134
+msgid "Text for the 'View All' link below the grid (e.g., 'View All Posts')."
+msgstr ""
+"Texto para el enlace 'Ver todo' debajo de la cuadrícula (por ejemplo, 'Ver "
+"Todas las publicaciones')."
+
+#: widgets/models.py:111 widgets/models.py:139
+msgid "View All Link URL"
+msgstr "Ver Todo Enlace URL"
+
+#: widgets/models.py:112 widgets/models.py:140
+msgid "URL for the 'View All' link (e.g., '/blog/')."
+msgstr "URL para el enlace 'Ver todo' (por ejemplo, '/blog/')."
+
+#: widgets/models.py:144
 msgid "Widget"
 msgstr "Widget"
 
-#: widgets/models.py:83
+#: widgets/models.py:145
 msgid "Widgets"
 msgstr "Widgets"
 
@@ -1267,11 +1332,22 @@ msgstr "Widgets"
 msgid "No categories with posts available."
 msgstr "No hay categorías con publicaciones disponibles."
 
-#: widgets/templates/widgets/partials/_posts_widget.html:32
+#: widgets/templates/widgets/partials/_post_grid.html:28
+#, fuzzy, python-format
+msgid ""
+"\n"
+"                                Published on %(date)s\n"
+"                            "
+msgstr ""
+"\n"
+"                            Actualizado en %(date)s\n"
+"                            "
+
+#: widgets/templates/widgets/partials/_posts_widget.html:33
 msgid "No items to display."
 msgstr "No hay elementos para mostrar."
 
-#: widgets/templates/widgets/render_zone.html:25
+#: widgets/templates/widgets/render_zone.html:28
 #, python-format
 msgid ""
 "\n"
@@ -1325,9 +1401,6 @@ msgstr ""
 
 #~ msgid "Your Comment"
 #~ msgstr "Tu Comentario"
-
-#~ msgid "Number of Posts in 'Recent Posts' Widget"
-#~ msgstr "Widget: Número de Posts en 'Post Recientes'"
 
 #~ msgid "Number of Posts in 'Most Viewed' Widget"
 #~ msgstr "Widget: Número de Post en 'Más Vistos'"

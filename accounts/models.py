@@ -70,6 +70,13 @@ class Profile(models.Model):
         verbose_name=_("Is a Trusted Commenter?"),
         help_text=_("If checked, comments are automatically approved.")
     )
+    is_listed_publicly = models.BooleanField(
+        default=False, # consider False for new registrations.
+                       # We will make this configurable in the signup process.
+        verbose_name=_("List profile publicly?"),
+        help_text=_("If checked, your profile will be visible in the public user directory.")
+    )
+
     class Meta:
         verbose_name = _("Profile")
         verbose_name_plural = _("Profiles")

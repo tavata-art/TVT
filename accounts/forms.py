@@ -80,7 +80,8 @@ class ProfileUpdateForm(forms.ModelForm):
             'location', 
             'website_url', 
             'avatar', 
-            'default_avatar_choice'
+            'default_avatar_choice',
+            'is_listed_publicly'
         ]
         
     def __init__(self, *args, **kwargs):
