@@ -7,6 +7,7 @@ django-modeltranslation==0.19.15
 django-mptt==0.17.0
 django-solo==2.4.0
 django-summernote==0.8.20.0
+django-taggit==6.1.0
 Markdown==3.8
 pillow==11.2.1
 PyMySQL==1.1.1

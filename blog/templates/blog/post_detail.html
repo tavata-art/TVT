@@ -37,10 +37,27 @@
             {% endblocktranslate %}
         </p>
         {% if post.categories.exists %}
-            <!-- ... (Category display logic remains the same) ... -->
+            <div class="mb-3">
+                <strong>{% translate "Categories" %}:</strong>
+                {% for category in post.categories.all %}
+                    <a href="{{ category.get_absolute_url }}" class="badge bg-primary text-dark text-decoration-none">
+                        {{ category.name }}
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        {% if post.tags.all %}
+            <div class="mb-3">
+                <strong>{% translate "Tags" %}:</strong>
+                {% for tag in post.tags.all %}
+                    <a href="{% url 'blog:posts_by_tag' tag.slug %}" class="badge bg-info text-white text-decoration-none">
+                        {{ tag.name }}
+                    </a>
+                {% endfor %}
+            </div>
         {% endif %}
         <hr class="my-4">
-        
         <!-- 2. Post Body -->
         <div class="post-content fs-5">
             {{ post.content|safe }}

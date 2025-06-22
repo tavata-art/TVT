@@ -1,0 +1,64 @@
+<!-- File: blog/templates/blog/post_list_by_tag.html -->
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% load static %}
+{% load widget_tags %} {# For sidebars #}
+
+{% block seo_title %}{% translate "Posts tagged with" %} "{{ tag.name }}" | Tavata.art{% endblock %}
+{% block seo_description %}{% translate "Browse all blog posts related to" %} "{{ tag.name }}" {% translate "on Tavata CMS." %}{% endblock %}
+{% block title %}{% translate "Posts by tag" %}: "{{ tag.name }}"{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="blog-header pb-3 mb-5 text-center border-bottom">
+        <h1 class="display-4">{% translate "Posts Tagged With" %}: <span class="text-primary">{{ tag.name }}</span></h1>
+        <p class="lead text-muted">{% translate "Explore content related to this tag." %}</p>
+    </div>
+
+    <div class="row">
+        {% for post in posts %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    {% if post.featured_image %}
+                        <a href="{{ post.get_absolute_url }}">
+                            <img src="{{ post.featured_image.url }}" class="card-img-top" loading="lazy" alt="{{ post.title }}" style="height: 180px; object-fit: cover;">
+                        </a>
+                    {% endif %}
+                    <div class="card-body d-flex flex-column"> 
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text text-muted">
+                            {% firstof post.author.profile.get_display_name post.author.username as author_name %}
+                            <small>
+                                {% blocktranslate with published_date=post.published_date|date:"DATE_FORMAT" author=author_name %}
+                                    Published on {{ published_date }} by {{ author }}
+                                {% endblocktranslate %}
+                            </small>
+                        </p>
+                        <a href="{{ post.get_absolute_url }}" class="btn btn-primary mt-auto">{% translate "Read More" %}</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col">
+                <p class="text-center">{% translate "No posts found for this tag yet." %}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    {# --- PAGINATION --- #}
+    {% include 'core/partials/_pagination.html' with page_obj=posts %}
+</div>
+{% endblock %}
+
+{# Sidebars will be the same as blog list generally #}
+{% block sidebar_left %}
+    <div class="sticky-top pt-5">
+        {% show_widget_zone 'blog-sidebar-left' %} 
+    </div>
+{% endblock sidebar_left %}
+
+{% block sidebar_right %}
+    <div class="sticky-top pt-5">
+        {% show_widget_zone 'blog-sidebar-right' %} 
+    </div>
+{% endblock sidebar_right %}

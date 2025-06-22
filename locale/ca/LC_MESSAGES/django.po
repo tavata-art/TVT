@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-22 12:45+0000\n"
-"PO-Revision-Date: 2025-06-22 15:06+0200\n"
+"POT-Creation-Date: 2025-06-22 14:07+0000\n"
+"PO-Revision-Date: 2025-06-22 16:09+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "Language: ca\n"
@@ -171,7 +171,7 @@ msgid "Comments by"
 msgstr "Comentaris de"
 
 #: accounts/templates/accounts/public_profile_view.html:63
-#: blog/templates/blog/post_detail.html:70
+#: blog/templates/blog/post_detail.html:87
 msgid "ago"
 msgstr "fa"
 
@@ -408,8 +408,9 @@ msgstr "Benvingut! El vostre compte s’ha creat amb èxit."
 msgid "Your profile has been updated successfully!"
 msgstr "El vostre perfil s’ha actualitzat amb èxit!"
 
-#: blog/admin.py:76 blog/models.py:38 categories/models.py:58 pages/admin.py:85
-#: pages/models.py:26 pages/templates/pages/page_detail.html:73
+#: blog/admin.py:148 blog/models.py:39 blog/templates/blog/post_detail.html:41
+#: categories/models.py:58 pages/admin.py:85 pages/models.py:26
+#: pages/templates/pages/page_detail.html:73
 msgid "Categories"
 msgstr "Categories"
 
@@ -425,106 +426,114 @@ msgstr "El vostre nom (obligatori)"
 msgid "Your Email (required, not published)"
 msgstr "El vostre correu electrònic (obligatori, no publicat)"
 
-#: blog/models.py:15 pages/models.py:12
+#: blog/models.py:16 pages/models.py:12
 msgid "Draft"
 msgstr "Esborrany"
 
-#: blog/models.py:16 pages/models.py:13
+#: blog/models.py:17 pages/models.py:13
 msgid "Published"
 msgstr "Publicat"
 
-#: blog/models.py:18 gallery/admin.py:42 gallery/models.py:14
+#: blog/models.py:19 gallery/admin.py:42 gallery/models.py:14
 #: pages/models.py:16
 msgid "Title"
 msgstr "Títol"
 
-#: blog/models.py:19 categories/models.py:20 menus/models.py:20
+#: blog/models.py:20 categories/models.py:20 menus/models.py:20
 msgid "Slug"
 msgstr "Slug"
 
-#: blog/models.py:20 pages/models.py:20
+#: blog/models.py:21 pages/models.py:20
 msgid "Author"
 msgstr "Autor"
 
-#: blog/models.py:22 blog/models.py:81 pages/models.py:18
+#: blog/models.py:23 blog/models.py:86 pages/models.py:18
 msgid "Content"
 msgstr "Contingut"
 
-#: blog/models.py:27 pages/models.py:51
+#: blog/models.py:28 pages/models.py:51
 msgid "Featured Image"
 msgstr "Imatge Destacada"
 
-#: blog/models.py:30
+#: blog/models.py:31
 msgid "Published Date"
 msgstr "Data de Publicació"
 
-#: blog/models.py:31 pages/models.py:21
+#: blog/models.py:32 pages/models.py:21
 msgid "Status"
 msgstr "Estat"
 
-#: blog/models.py:43 categories/models.py:45 pages/models.py:36
+#: blog/models.py:44 categories/models.py:45 pages/models.py:36
 msgid "Meta Title (SEO)"
 msgstr "Meta Títol (SEO)"
 
-#: blog/models.py:44 categories/models.py:51 pages/models.py:37
+#: blog/models.py:45 categories/models.py:51 pages/models.py:37
 msgid "Meta Description (SEO)"
 msgstr "Meta Descripció (SEO)"
 
-#: blog/models.py:45
+#: blog/models.py:46
 msgid "View Count"
 msgstr "Veure comte"
 
-#: blog/models.py:48
+#: blog/models.py:49
 msgid "Editor's Rating"
 msgstr "Qualificació de l'editor"
 
-#: blog/models.py:49
+#: blog/models.py:50
 msgid "A score from 0-100 to feature this post. Higher numbers appear first."
 msgstr ""
 "Una puntuació de 0-100 per presentar aquesta publicació. Primer apareixen "
 "números més alts."
 
-#: blog/models.py:59
+#: blog/models.py:57 blog/templates/blog/post_detail.html:52
+msgid "Tags"
+msgstr "Tags"
+
+#: blog/models.py:58
+msgid "A comma-separated list of tags."
+msgstr "Una llista separada per coma d’etiquetes."
+
+#: blog/models.py:64
 msgid "blog post"
 msgstr "entrada de blog"
 
-#: blog/models.py:60
+#: blog/models.py:65
 msgid "blog posts"
 msgstr "entrades de blog"
 
-#: blog/models.py:76
+#: blog/models.py:81
 msgid "Post"
 msgstr "Post"
 
-#: blog/models.py:77
+#: blog/models.py:82
 msgid "Parent Comment"
 msgstr "Comentari dels pares"
 
-#: blog/models.py:78
+#: blog/models.py:83
 msgid "User"
 msgstr "Usuari"
 
-#: blog/models.py:79
+#: blog/models.py:84
 msgid "Author Name"
 msgstr "Nom de l'autor"
 
-#: blog/models.py:80
+#: blog/models.py:85
 msgid "Author Email"
 msgstr "Correu electrònic de l’autor"
 
-#: blog/models.py:82
+#: blog/models.py:87
 msgid "Created At"
 msgstr "Data de Creació"
 
-#: blog/models.py:83
+#: blog/models.py:88
 msgid "Is Approved?"
 msgstr "S’aprova?"
 
-#: blog/models.py:89
+#: blog/models.py:94
 msgid "comment"
 msgstr "comentari"
 
-#: blog/models.py:90
+#: blog/models.py:95
 msgid "comments"
 msgstr "comentaris"
 
@@ -539,30 +548,30 @@ msgstr ""
 "                Publicat el %(published_date)s per %(author)s\n"
 "                "
 
-#: blog/templates/blog/post_detail.html:52
+#: blog/templates/blog/post_detail.html:69
 #, python-format
 msgid "%(count)s Comment"
 msgid_plural "%(count)s Comments"
 msgstr[0] "%(count)s Comentari"
 msgstr[1] "%(count)s Comentaris"
 
-#: blog/templates/blog/post_detail.html:71
+#: blog/templates/blog/post_detail.html:88
 msgid "Reply"
 msgstr "Respon"
 
-#: blog/templates/blog/post_detail.html:102
+#: blog/templates/blog/post_detail.html:119
 msgid "Leave a Comment"
 msgstr "Deixa un comentari"
 
-#: blog/templates/blog/post_detail.html:124
+#: blog/templates/blog/post_detail.html:141
 msgid "Submit Comment"
 msgstr "Envieu comentari"
 
-#: blog/templates/blog/post_detail.html:155
+#: blog/templates/blog/post_detail.html:172
 msgid "Cancel Reply"
 msgstr "Cancel·la la resposta"
 
-#: blog/templates/blog/post_detail.html:164
+#: blog/templates/blog/post_detail.html:181
 msgid "Reply to"
 msgstr "Respon a"
 
@@ -585,6 +594,7 @@ msgstr "Notícies, articles i idees del nostre equip."
 
 #: blog/templates/blog/post_list.html:38
 #: blog/templates/blog/post_list_by_category.html:49
+#: blog/templates/blog/post_list_by_tag.html:32
 #, python-format
 msgid ""
 "\n"
@@ -599,6 +609,7 @@ msgstr ""
 
 #: blog/templates/blog/post_list.html:43
 #: blog/templates/blog/post_list_by_category.html:55
+#: blog/templates/blog/post_list_by_tag.html:37
 #: widgets/templates/widgets/_post_carousel.html:33
 #: widgets/templates/widgets/partials/_post_carousel.html:35
 #: widgets/templates/widgets/partials/_post_grid.html:33
@@ -631,11 +642,39 @@ msgstr ""
 msgid "There are currently no published posts in this category."
 msgstr "Actualment no hi ha entrades publicades en aquesta categoria."
 
-#: blog/views.py:113
+#: blog/templates/blog/post_list_by_tag.html:7
+msgid "Posts tagged with"
+msgstr "Publicacions etiquetades amb"
+
+#: blog/templates/blog/post_list_by_tag.html:8
+msgid "Browse all blog posts related to"
+msgstr "Consulteu totes les publicacions del bloc relacionades amb"
+
+#: blog/templates/blog/post_list_by_tag.html:8
+msgid "on Tavata CMS."
+msgstr "Benvingut a Tavata CMS!"
+
+#: blog/templates/blog/post_list_by_tag.html:9
+msgid "Posts by tag"
+msgstr "Publicacions per etiqueta"
+
+#: blog/templates/blog/post_list_by_tag.html:14
+msgid "Posts Tagged With"
+msgstr "Publicacions etiquetades amb"
+
+#: blog/templates/blog/post_list_by_tag.html:15
+msgid "Explore content related to this tag."
+msgstr "Exploreu contingut relacionat amb aquesta etiqueta."
+
+#: blog/templates/blog/post_list_by_tag.html:43
+msgid "No posts found for this tag yet."
+msgstr "Encara no s'han trobat publicacions per a aquesta etiqueta."
+
+#: blog/views.py:156
 msgid "Thank you! Your comment has been published."
 msgstr "Gràcies! El vostre comentari ha estat publicat."
 
-#: blog/views.py:118
+#: blog/views.py:161
 msgid "Thank you! Your comment has been submitted and is awaiting moderation."
 msgstr "Gràcies! El vostre comentari ha estat enviat i espera la moderació."
 
@@ -1297,15 +1336,15 @@ msgstr "Vaja! Sembla que la pàgina que buscaves no existeix ni s’ha mogut."
 msgid "Go to Homepage"
 msgstr "Vés a la pàgina d'inici"
 
-#: tvt/settings.py:189
+#: tvt/settings.py:190
 msgid "Spanish"
 msgstr "Espanyol"
 
-#: tvt/settings.py:190
+#: tvt/settings.py:191
 msgid "English"
 msgstr "Anglès"
 
-#: tvt/settings.py:191
+#: tvt/settings.py:192
 msgid "Català"
 msgstr "Català"
 

@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from mptt.models import MPTTModel, TreeForeignKey
 from categories.models import Category # Import the universal Category model
+from taggit.managers import TaggableManager
 
 class Post(models.Model):
     """ Represents a single blog post. """
@@ -52,7 +53,11 @@ class Post(models.Model):
     # --- Timestamps ---
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    tags = TaggableManager(
+        verbose_name=_("Tags"),
+        help_text=_("A comma-separated list of tags."),
+        blank=True # Allows posts to have no tags
+    )
 
     class Meta:
         ordering = ('-published_date',)

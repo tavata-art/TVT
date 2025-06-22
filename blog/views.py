@@ -10,8 +10,51 @@ from .forms import CommentForm
 from .models import Post, Comment
 from categories.models import Category
 from site_settings.models import SiteConfiguration
+from taggit.models import Tag
 
 logger = logging.getLogger(__name__)
+
+def posts_by_tag_view(request, tag_slug):
+    """
+    Displays a paginated list of published posts associated with a specific tag.
+    """
+    # 1. Get the Tag object by slug, or return a 404
+    tag = get_object_or_404(Tag, slug=tag_slug)
+
+    # 2. Get all published posts associated with this tag
+    all_posts_by_tag = Post.objects.filter(
+        status='published', tags__slug=tag_slug
+    ).order_by('-published_date')
+
+    # 3. Get pagination settings
+    try:
+        site_config = SiteConfiguration.objects.get()
+        posts_per_page = site_config.blog_items_per_page
+    except SiteConfiguration.DoesNotExist:
+        posts_per_page = 6
+        logger.warning("SiteConfiguration not found. Using default tag pagination.")
+
+    # 4. Apply pagination
+    paginator = Paginator(all_posts_by_tag, posts_per_page)
+    page_number = request.GET.get('page')
+
+    try:
+        posts = paginator.get_page(page_number)
+    except PageNotAnInteger:
+        posts = paginator.get_page(1)
+    except EmptyPage:
+        if paginator.num_pages > 0:
+            posts = paginator.get_page(paginator.num_pages)
+        else:
+            posts = []
+
+    logger.info(f"Posts by tag view accessed for tag '{tag_slug}'. Showing page {getattr(posts, 'number', 0)} of {getattr(posts, 'paginator.num_pages', 0)} posts.")
+
+    context = {
+        'tag': tag,
+        'posts': posts,
+    }
+    return render(request, 'blog/post_list_by_tag.html', context)
 
 def post_list_view(request):
     """

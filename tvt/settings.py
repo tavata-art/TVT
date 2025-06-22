@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'solo',
     'mptt',
+    'taggit',
 
     # 4. Nuestras Propias Aplicaciones
     'core.apps.CoreConfig',
