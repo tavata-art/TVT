@@ -136,14 +136,9 @@ def user_profile_public_view(request, username):
             is_approved=True
         ).order_by('-created_at')
 
-        # --- Pagination for User's Content ---
-        # Assuming you'll have a setting for this in SiteConfiguration
-        try:
-            site_config = SiteConfiguration.objects.get()
-            items_per_page = getattr(site_config, 'user_profile_items_per_page', 5) # Fallback to 5
-        except SiteConfiguration.DoesNotExist:
-            items_per_page = 5
-            logger.warning("SiteConfiguration not found. Using default user profile items per page (5).")
+        site_config = SiteConfiguration.get_solo()
+        items_per_page = getattr(site_config, 'user_profile_items_per_page', 5) # Fallback to 5
+
 
         # Paginate Posts
         posts_paginator = Paginator(user_posts, items_per_page)
@@ -183,7 +178,7 @@ def user_directory_view(request):
     
     # 2. Get pagination settings.
     try:
-        site_config = SiteConfiguration.objects.get()
+        site_config = SiteConfiguration.get_solo()
         items_per_page = getattr(site_config, 'user_directory_items_per_page', 25)
     except SiteConfiguration.DoesNotExist:
         items_per_page = 25

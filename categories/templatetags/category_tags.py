@@ -44,7 +44,7 @@ def render_category_tree(context):
         # Get the cache timeout setting from our global site configuration.
         try:
             from site_settings.models import SiteConfiguration
-            timeout = SiteConfiguration.objects.get().category_tree_cache_timeout
+            timeout = SiteConfiguration.get_solo().category_tree_cache_timeout
         except ImportError:
              logger.error("Could not import SiteConfiguration. Is the app in INSTALLED_APPS?")
              timeout = 3600 # Fallback to 1 hour

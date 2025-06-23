@@ -16,7 +16,7 @@ def search_results_view(request):
     and paginates the results correctly.
     """
     try:
-        site_config = SiteConfiguration.objects.get()
+        site_config = SiteConfiguration.get_solo()
         pages_per_page = site_config.search_pages_per_page
         posts_per_page = site_config.search_posts_per_page
     except SiteConfiguration.DoesNotExist:

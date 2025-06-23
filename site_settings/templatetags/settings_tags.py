@@ -15,4 +15,4 @@ def get_site_config():
     # For simplicity now, we get it directly.
 
     # .get() is safe because django-solo ensures there's only one.
-    return SiteConfiguration.objects.get()
+    return SiteConfiguration.get_solo()

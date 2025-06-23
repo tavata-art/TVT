@@ -162,7 +162,7 @@ class CommentAdmin(MPTTModelAdmin):
     @property
     def mptt_level_indent(self):
         try:
-            return SiteConfiguration.objects.get().comment_indentation_pixels
+            return SiteConfiguration.get_solo().comment_indentation_pixels
         except SiteConfiguration.DoesNotExist:
             logger.warning("SiteConfiguration not found. Using default mptt_level_indent of 20.")
             return 20
@@ -179,7 +179,7 @@ class CommentAdmin(MPTTModelAdmin):
                 user_profile = obj.user.profile
                 if not user_profile.is_trusted_commenter:
                     try:
-                        config = SiteConfiguration.objects.get()
+                        config = SiteConfiguration.get_solo()
                         approval_threshold = config.trusted_commenter_threshold
                     except SiteConfiguration.DoesNotExist:
                         approval_threshold = 10 

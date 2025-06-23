@@ -28,7 +28,7 @@ def posts_by_tag_view(request, tag_slug):
 
     # 3. Get pagination settings
     try:
-        site_config = SiteConfiguration.objects.get()
+        site_config = SiteConfiguration.get_solo()
         posts_per_page = site_config.blog_items_per_page
     except SiteConfiguration.DoesNotExist:
         posts_per_page = 6
@@ -66,7 +66,7 @@ def post_list_view(request):
     # 2. Create a Paginator instance.
     #    We'll show 6 posts per page. This number can be changed easily.
     try:
-        config = SiteConfiguration.objects.get()
+        config = SiteConfiguration.get_solo()
         posts_per_page = config.blog_items_per_page
     except SiteConfiguration.DoesNotExist:
         logger.warning(
@@ -117,7 +117,7 @@ def post_detail_view(request, year, month, day, slug):
                              slug=slug)
 
     try:
-        site_config = SiteConfiguration.objects.get()
+        site_config = SiteConfiguration.get_solo()
     except SiteConfiguration.DoesNotExist:
         logger.error("CRITICAL: SiteConfiguration object not found. Site may not function correctly.")
         # Create a fallback object to prevent crashes.
@@ -193,7 +193,7 @@ def posts_by_category_view(request, category_slug):
 
     # --- 2. Get Pagination Settings ---
     try:
-        config = SiteConfiguration.objects.get()
+        config = SiteConfiguration.get_solo()
         posts_per_page = config.blog_items_per_page
     except SiteConfiguration.DoesNotExist:
         logger.warning(

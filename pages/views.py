@@ -29,7 +29,7 @@ def pages_by_category_view(request, category_slug):
     all_pages_in_category = category.pages.filter(status='published').order_by('title')
 
     try:
-        site_config = SiteConfiguration.objects.get()
+        site_config = SiteConfiguration.get_solo()
         # Usamos el mismo setting que para el blog para mantener la consistencia
         items_per_page = site_config.blog_items_per_page 
     except SiteConfiguration.DoesNotExist:

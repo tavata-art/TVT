@@ -50,8 +50,8 @@ def show_menu(context, menu_slug):
             for item_obj in all_menu_items: 
                 item_obj.dynamic_children = [] # Initialize for all items
 
-                blog_cat_limit = getattr(SiteConfiguration.objects.get(), 'blog_items_per_page', 9) if SiteConfiguration else 9
-                important_pages_limit = getattr(SiteConfiguration.objects.get(), 'search_importance_limit', 3) if SiteConfiguration else 3
+                blog_cat_limit = getattr(SiteConfiguration.get_solo(), 'blog_items_per_page', 9) if SiteConfiguration else 9
+                important_pages_limit = getattr(SiteConfiguration.get_solo(), 'search_importance_limit', 3) if SiteConfiguration else 3
 
                 if item_obj.link_type == MenuItem.LinkType.ALL_BLOG_CATEGORIES:
                     blog_categories = Category.objects.annotate(
@@ -73,7 +73,7 @@ def show_menu(context, menu_slug):
 
             # Get cache timeout and set cache.
             try:
-                config = SiteConfiguration.objects.get()
+                config = SiteConfiguration.get_solo()
                 timeout = config.menu_cache_timeout
             except SiteConfiguration.DoesNotExist:
                 timeout = 3600
@@ -108,7 +108,7 @@ def show_social_links_menu(context):
         
         try:
             from site_settings.models import SiteConfiguration # Import here
-            timeout = SiteConfiguration.objects.get().menu_cache_timeout
+            timeout = SiteConfiguration.get_solo().menu_cache_timeout
         except (ImportError, SiteConfiguration.DoesNotExist):
             timeout = 3600 # Fallback
 

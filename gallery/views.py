@@ -117,7 +117,7 @@ def gallery_view(request):
     
     # --- Apply Pagination ---
     try:
-        site_config = SiteConfiguration.objects.get()
+        site_config = SiteConfiguration.get_solo()
         gallery_items_per_page = getattr(site_config, 'gallery_items_per_page', 9) 
     except SiteConfiguration.DoesNotExist:
         gallery_items_per_page = 9 # Fallback value

@@ -50,12 +50,10 @@ def promote_user_on_comment_approval(sender, instance, created, **kwargs):
             
             # Only promote if the user is not already trusted.
             if not user_profile.is_trusted_commenter:
-                try:
-                    site_config = SiteConfiguration.objects.get()
-                    approval_threshold = getattr(site_config, 'trusted_commenter_threshold', 10) # Fallback to 10
-                except SiteConfiguration.DoesNotExist:
-                    approval_threshold = 10
-                    logger.warning("SiteConfiguration not found during comment save. Using default trusted commenter threshold (10).")
+
+                site_config = SiteConfiguration.get_solo()
+                approval_threshold = getattr(site_config, 'trusted_commenter_threshold', 10) # Fallback to 10
+
 
                 # Count all approved comments by this user.
                 approved_comment_count = Comment.objects.filter(
