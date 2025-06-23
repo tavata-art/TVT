@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-22 14:06+0000\n"
+"POT-Creation-Date: 2025-06-23 18:13+0000\n"
 "PO-Revision-Date: 2025-06-22 16:11+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -408,8 +408,8 @@ msgstr "¡Bienvenido! Su acceso ha sido creado con éxito."
 msgid "Your profile has been updated successfully!"
 msgstr "¡Su perfil ha sido actualizado con éxito!"
 
-#: blog/admin.py:148 blog/models.py:39 blog/templates/blog/post_detail.html:41
-#: categories/models.py:58 pages/admin.py:85 pages/models.py:26
+#: blog/admin.py:143 blog/models.py:40 blog/templates/blog/post_detail.html:41
+#: categories/models.py:58 pages/admin.py:85 pages/models.py:27
 #: pages/templates/pages/page_detail.html:73
 msgid "Categories"
 msgstr "Categorías"
@@ -426,114 +426,114 @@ msgstr "Tu Nombre (requerido)"
 msgid "Your Email (required, not published)"
 msgstr "Su correo electrónico (requerido, no es público)"
 
-#: blog/models.py:16 pages/models.py:12
+#: blog/models.py:17 pages/models.py:13
 msgid "Draft"
 msgstr "Borrador"
 
-#: blog/models.py:17 pages/models.py:13
+#: blog/models.py:18 pages/models.py:14
 msgid "Published"
 msgstr "Publicado"
 
-#: blog/models.py:19 gallery/admin.py:42 gallery/models.py:14
-#: pages/models.py:16
+#: blog/models.py:20 gallery/admin.py:42 gallery/models.py:15
+#: pages/models.py:17
 msgid "Title"
 msgstr "Título"
 
-#: blog/models.py:20 categories/models.py:20 menus/models.py:20
+#: blog/models.py:21 categories/models.py:20 menus/models.py:20
 msgid "Slug"
 msgstr "Slug"
 
-#: blog/models.py:21 pages/models.py:20
+#: blog/models.py:22 pages/models.py:21
 msgid "Author"
 msgstr "Autor"
 
-#: blog/models.py:23 blog/models.py:86 pages/models.py:18
+#: blog/models.py:24 blog/models.py:97 pages/models.py:19
 msgid "Content"
 msgstr "Contenido"
 
-#: blog/models.py:28 pages/models.py:51
+#: blog/models.py:29 pages/models.py:52
 msgid "Featured Image"
 msgstr "Imagen Destacada"
 
-#: blog/models.py:31
+#: blog/models.py:32
 msgid "Published Date"
 msgstr "Fecha de Publicación"
 
-#: blog/models.py:32 pages/models.py:21
+#: blog/models.py:33 pages/models.py:22
 msgid "Status"
 msgstr "Estado"
 
-#: blog/models.py:44 categories/models.py:45 pages/models.py:36
+#: blog/models.py:45 categories/models.py:45 pages/models.py:37
 msgid "Meta Title (SEO)"
 msgstr "Meta Título (SEO)"
 
-#: blog/models.py:45 categories/models.py:51 pages/models.py:37
+#: blog/models.py:46 categories/models.py:51 pages/models.py:38
 msgid "Meta Description (SEO)"
 msgstr "Meta Descripción (SEO)"
 
-#: blog/models.py:46
+#: blog/models.py:47
 msgid "View Count"
 msgstr "Número de vistas"
 
-#: blog/models.py:49
+#: blog/models.py:50
 msgid "Editor's Rating"
 msgstr "Calificación del Editor"
 
-#: blog/models.py:50
+#: blog/models.py:51
 msgid "A score from 0-100 to feature this post. Higher numbers appear first."
 msgstr ""
 "Una puntuación de 0-100 para presentar esta publicación. Los números más "
 "altos aparecen primero."
 
-#: blog/models.py:57 blog/templates/blog/post_detail.html:52
+#: blog/models.py:58 blog/templates/blog/post_detail.html:52
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: blog/models.py:58
+#: blog/models.py:59
 msgid "A comma-separated list of tags."
 msgstr "Una lista de etiquetas separadas por comas."
 
-#: blog/models.py:64
+#: blog/models.py:65
 msgid "blog post"
 msgstr "entrada de blog"
 
-#: blog/models.py:65
+#: blog/models.py:66
 msgid "blog posts"
 msgstr "entradas de blog"
 
-#: blog/models.py:81
+#: blog/models.py:92
 msgid "Post"
 msgstr "Post"
 
-#: blog/models.py:82
+#: blog/models.py:93
 msgid "Parent Comment"
 msgstr "Comentario Padre"
 
-#: blog/models.py:83
+#: blog/models.py:94
 msgid "User"
 msgstr "Usuario"
 
-#: blog/models.py:84
+#: blog/models.py:95
 msgid "Author Name"
 msgstr "Nombre del Autor"
 
-#: blog/models.py:85
+#: blog/models.py:96
 msgid "Author Email"
 msgstr "Email del Autor"
 
-#: blog/models.py:87
+#: blog/models.py:98
 msgid "Created At"
 msgstr "Fecha de Creación"
 
-#: blog/models.py:88
+#: blog/models.py:99
 msgid "Is Approved?"
 msgstr "¿Está aprobado?"
 
-#: blog/models.py:94
+#: blog/models.py:105
 msgid "comment"
 msgstr "comentario"
 
-#: blog/models.py:95
+#: blog/models.py:106
 msgid "comments"
 msgstr "comentarios"
 
@@ -691,7 +691,7 @@ msgstr "Categoría Padre"
 msgid "Select a parent to create a sub-category."
 msgstr "Seleccione un padre para crear una subcategoría."
 
-#: categories/models.py:37 gallery/models.py:20
+#: categories/models.py:37 gallery/models.py:21
 msgid "Description"
 msgstr "Descripción"
 
@@ -903,15 +903,15 @@ msgstr "Logotipo del Sitio"
 msgid "Advertisement"
 msgstr "Publicidad"
 
-#: gallery/models.py:17 gallery/models.py:27
+#: gallery/models.py:18 gallery/models.py:28
 msgid "Image"
 msgstr "Imagen"
 
-#: gallery/models.py:23
+#: gallery/models.py:24
 msgid "Uploaded at"
 msgstr "Actualizado el"
 
-#: gallery/models.py:28
+#: gallery/models.py:29
 msgid "Images"
 msgstr "Imagen"
 
@@ -1047,15 +1047,15 @@ msgstr "Elemento de Menú"
 msgid "Menu Items"
 msgstr "Elementos de Menú"
 
-#: pages/models.py:17
+#: pages/models.py:18
 msgid "Slug (URL friendly)"
 msgstr "Slug (URL amigable)"
 
-#: pages/models.py:32
+#: pages/models.py:33
 msgid "Is Homepage?"
 msgstr "¿Es la página de inicio?"
 
-#: pages/models.py:33
+#: pages/models.py:34
 msgid ""
 "Mark only one page with this option. If multiple are marked, the most recent "
 "one will be used."
@@ -1063,19 +1063,19 @@ msgstr ""
 "Marcar solo una página con esta opción. Si varias están marcadas, se usará "
 "la más reciente."
 
-#: pages/models.py:39
+#: pages/models.py:40
 msgid "Creation Date"
 msgstr "Fecha de Creación"
 
-#: pages/models.py:40
+#: pages/models.py:41
 msgid "Last Updated"
 msgstr "Última Actualización"
 
-#: pages/models.py:44
+#: pages/models.py:45
 msgid "Importance Order"
 msgstr "Orden de importancia"
 
-#: pages/models.py:45
+#: pages/models.py:46
 msgid ""
 "A lower number means higher priority in search results. E.g., 1 for 'About "
 "Us', 2 for 'Contact', 99 for others."
@@ -1083,11 +1083,11 @@ msgstr ""
 "Un número menor significa mayor prioridad en los resultados de búsqueda. Por "
 "ejemplo, 1 para 'Acerca de nosotros', 2 para 'Contacto', 99 para otros."
 
-#: pages/models.py:54
+#: pages/models.py:55
 msgid "page"
 msgstr "página"
 
-#: pages/models.py:55
+#: pages/models.py:56
 msgid "pages"
 msgstr "páginas"
 
@@ -1341,15 +1341,15 @@ msgstr ""
 msgid "Go to Homepage"
 msgstr "Ir a la página de inicio"
 
-#: tvt/settings.py:190
+#: tvt/settings.py:191
 msgid "Spanish"
 msgstr "Español"
 
-#: tvt/settings.py:191
+#: tvt/settings.py:192
 msgid "English"
 msgstr "Inglés"
 
-#: tvt/settings.py:192
+#: tvt/settings.py:193
 msgid "Català"
 msgstr "Catalán"
 

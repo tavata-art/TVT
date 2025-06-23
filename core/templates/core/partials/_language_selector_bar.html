@@ -1,0 +1,65 @@
+<!-- File: core/templates/core/partials/_language_selector_bar.html -->
+{% load i18n %}
+{% load url_utils %} {# Asegúrate de que este cargado si lo necesitas para translatable_object #}
+
+<div class="language-bar bg-light py-2 shadow-sm">
+    <div class="container d-flex justify-content-end align-items-center">
+        
+        {# --- LANGUAGE SELECTOR: BUTTONS WITH FONT AWESOME ICONS (GENERIC) --- #}
+        <div class="btn-group" role="group" aria-label="Language selector">
+            
+            {# Botón para Español #}
+            <form action="{% url 'set_language' %}" method="post" class="d-inline-block me-2"> 
+                {% csrf_token %}
+                {# Lógica para el 'next' URL (mantener si usas translatable_object) #}
+                {% if translatable_object %}
+                    {% get_translated_url translatable_object 'es' as translated_url %}
+                    <input type="hidden" name="next" value="{{ translated_url }}">
+                {% else %}
+                    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                {% endif %}
+                {# Fin lógica para el 'next' URL #}
+                <button type="submit" name="language" value="es"
+                        class="btn btn-sm {% if LANGUAGE_CODE == 'es' %}btn-primary{% else %}btn-outline-secondary{% endif %}">
+                    <i class="fas fa-globe flag-icon-fa"></i> ES
+                </button>
+            </form>
+
+            {# Botón para Inglés #}
+            <form action="{% url 'set_language' %}" method="post" class="d-inline-block me-2">
+                {% csrf_token %}
+                {# Lógica para el 'next' URL #}
+                {% if translatable_object %}
+                    {% get_translated_url translatable_object 'en' as translated_url %}
+                    <input type="hidden" name="next" value="{{ translated_url }}">
+                {% else %}
+                    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                {% endif %}
+                {# Fin lógica para el 'next' URL #}
+                <button type="submit" name="language" value="en"
+                        class="btn btn-sm {% if LANGUAGE_CODE == 'en' %}btn-primary{% else %}btn-outline-secondary{% endif %}">
+                    <i class="fas fa-globe flag-icon-fa"></i> EN
+                </button>
+            </form>
+
+            {# Botón para Catalán #}
+            <form action="{% url 'set_language' %}" method="post" class="d-inline-block">
+                {% csrf_token %}
+                {# Lógica para el 'next' URL #}
+                {% if translatable_object %}
+                    {% get_translated_url translatable_object 'ca' as translated_url %}
+                    <input type="hidden" name="next" value="{{ translated_url }}">
+                {% else %}
+                    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                {% endif %}
+                {# Fin lógica para el 'next' URL #}
+                <button type="submit" name="language" value="ca"
+                        class="btn btn-sm {% if LANGUAGE_CODE == 'ca' %}btn-primary{% else %}btn-outline-secondary{% endif %}">
+                    <i class="fas fa-globe flag-icon-fa"></i> CA
+                </button>
+            </form>
+        </div>
+        {# --- END LANGUAGE SELECTOR --- #}
+
+    </div>
+</div>

@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.contrib.contenttypes.fields import GenericRelation
 from categories.models import Category
+from django.utils.translation import override 
 
 class Page(models.Model):
     """ Represents a single static page in the CMS, like 'About Us'. """
@@ -61,3 +62,9 @@ class Page(models.Model):
     def get_absolute_url(self):
         # Uses the 'pages' namespace to generate the correct URL.
         return reverse('pages:page_detail', kwargs={'slug': self.slug})
+    
+    def get_absolute_url_for_language(self, language_code):
+        with override(language_code):
+            # 'self.slug' automáticamente devuelve el slug para el idioma actual del contexto.
+            # Al usar 'override(language_code)', estamos forzando el contexto.
+            return reverse('pages:page_detail', kwargs={'slug': self.slug}) 

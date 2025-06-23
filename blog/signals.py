@@ -4,6 +4,7 @@ from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from django.core.cache import cache
 from django.contrib.auth.models import User # For promoting trusted commenters
+from django.conf import settings 
 
 from .models import Post, Comment # Import Post and Comment for sender
 from site_settings.models import SiteConfiguration # For cache timeouts and threshold from SiteConfiguration

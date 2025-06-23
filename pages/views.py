@@ -15,7 +15,8 @@ def page_detail_view(request, slug):
 
     # El contexto es el diccionario de datos que pasamos a la plantilla.
     context = {
-        'page': page
+        'page': page,
+        'translatable_object': page,
     }
 
     return render(request, 'pages/page_detail.html', context)

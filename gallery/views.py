@@ -10,6 +10,7 @@ from blog.models import Post # For collecting featured images from posts
 from pages.models import Page # For collecting featured images from pages (assuming it has featured_image)
 from .models import Image # For images specifically in the gallery app
 import logging
+import datetime
 
 logger = logging.getLogger(__name__)
 
@@ -149,6 +150,9 @@ def gallery_view(request):
 def image_detail_view(request, pk):
     """ Displays details for a single image from the gallery. """
     image = get_object_or_404(Image, pk=pk)
-    context = {'image': image}
+    context = {
+        'image': image,
+        'translatable_object': image,
+    }
     # Create this template: gallery/templates/gallery/image_detail.html
     return render(request, 'gallery/image_detail.html', context)

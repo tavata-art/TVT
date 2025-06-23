@@ -179,6 +179,7 @@ def post_detail_view(request, year, month, day, slug):
         'post': post,
         'comments': comments,
         'comment_form': comment_form,
+        'translatable_object': post,
     }
     return render(request, 'blog/post_detail.html', context)
 

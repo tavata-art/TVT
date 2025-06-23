@@ -6,8 +6,9 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from mptt.models import MPTTModel, TreeForeignKey
-from categories.models import Category # Import the universal Category model
+from categories.models import Category 
 from taggit.managers import TaggableManager
+from django.utils.translation import override 
 
 class Post(models.Model):
     """ Represents a single blog post. """
@@ -74,6 +75,16 @@ class Post(models.Model):
             self.published_date.day,
             self.slug
         ])
+    
+    def get_absolute_url_for_language(self, language_code):
+        with override(language_code):
+            # 'self.slug' automáticamente devuelve el slug para el idioma del contexto que acabamos de setear con override.
+            return reverse('blog:post_detail', args=[
+                self.published_date.year,
+                self.published_date.month,
+                self.published_date.day,
+                self.slug
+            ])
 
 
 class Comment(MPTTModel):

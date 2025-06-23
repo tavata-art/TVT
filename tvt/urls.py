@@ -19,6 +19,7 @@ urlpatterns = [
     # as we now handle the POST request in the template. If we needed a custom
     # next_page, we'd define a specific logout path here BEFORE this include.
     path('accounts/', include('django.contrib.auth.urls')),
+    path('i18n/', include('django.conf.urls.i18n')), 
 ]
 
 
