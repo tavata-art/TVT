@@ -126,3 +126,37 @@ def show_social_links_menu(context):
         logger.debug(f"CACHE HIT for 'social-links' menu (lang: {language_code}). Serving from cache.")
 
     return {'nodes': menu_items_processed}
+
+@register.inclusion_tag('menus/partials/_simple_horizontal_menu.html', takes_context=True)
+def show_simple_menu(context, menu_slug):
+    """
+    Fetches and renders menu items for a simple, non-hierarchical menu
+    like a footer menu.
+    """
+    language_code = context.get('LANGUAGE_CODE', settings.LANGUAGE_CODE)
+    cache_key = f'simple_menu_items_{menu_slug}_{language_code}_v1'
+    
+    items = cache.get(cache_key)
+
+    if items is None:
+        logger.info(f"CACHE MISS for simple menu '{menu_slug}' (lang: {language_code}). Building.")
+        try:
+            menu = Menu.objects.get(slug=menu_slug)
+            # Solo queremos los items de nivel 0, ya que es un menú simple.
+            items = list(menu.items.filter(level=0).order_by('order')) 
+            
+            try:
+                config = SiteConfiguration.objects.get()
+                timeout = config.menu_cache_timeout
+            except SiteConfiguration.DoesNotExist:
+                timeout = 3600
+            
+            cache.set(cache_key, items, timeout)
+            
+        except Menu.DoesNotExist:
+            logger.warning(f"Menu with slug '{menu_slug}' does not exist for show_simple_menu.")
+            items = []
+    else:
+        logger.debug(f"CACHE HIT for simple menu '{menu_slug}' (lang: {language_code}).")
+
+    return {'nodes': items}

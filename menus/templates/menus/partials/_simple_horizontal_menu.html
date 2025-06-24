@@ -1,0 +1,12 @@
+<!-- File: menus/templates/menus/partials/_simple_horizontal_menu.html -->
+{% load i18n %}
+
+<ul class="nav">
+    {% for node in nodes %}
+        <li class="nav-item">
+            <a class="nav-link text-white-50 px-3" href="{{ node.get_url }}">
+                {{ node.title }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

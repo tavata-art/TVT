@@ -57,10 +57,10 @@
             <div class="col-lg-10 mx-auto">
 
                 <!-- 1. Page Title -->
-                <h1 class="display-4 fw-bold">{{ page.title }}</h1>
+                <h1 class="fw-bold">{{ page.title }}</h1>
                 
                 <!-- 2. Page Metadata (Author and Last Updated) -->
-                <p class="lead text-muted">
+                <p class="text-muted small">
                     {% firstof page.author.profile.get_display_name page.author.username as author_name %}
                     {% blocktranslate with author=author_name updated_date=page.updated_at|date:"DATE_FORMAT" %}
                         By {{ author }} | Last updated: {{ updated_date }}
