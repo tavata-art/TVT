@@ -9,6 +9,7 @@ from django.conf import settings # Needed for settings.LANGUAGES and settings.LA
 from blog.models import Post 
 from categories.models import Category # Universal Category model
 from widgets.models import Widget, WidgetZone
+from accounts.models import User
 
 # Ensure static is imported from Django's template tags
 from django.templatetags.static import static 
@@ -121,6 +122,11 @@ def show_widget_zone(context, zone_slug):
                                            .order_by('-editor_rating', '-published_date')
                     items_container = list(items_qs[:widget_instance.item_count])
 
+                case 'user_directory':
+                    items_qs = User.objects.filter(is_active=True, profile__is_trusted_commenter=True) \
+                                    .select_related("profile") \
+                                    .order_by("username")[:widget_instance.item_count]
+                    items_container = list(items_qs)
                 case _: # Unrecognized widget type
                     logger.warning(f"Unrecognized widget type '{widget_instance.widget_type}' for widget '{widget_instance.title}'.")
                     items_container = [] # Empty list for safety.
@@ -128,7 +134,7 @@ def show_widget_zone(context, zone_slug):
             # --- Common Post-based Processing (Applies only to Post items) ---
             # Attach thumbnail_url to Post objects. This runs once per item on cache miss.
             # This should not run for categories.
-            if widget_instance.widget_type in ['recent_posts', 'most_viewed_posts', 'most_commented_posts', 'editor_picks_posts', 'post_grid_recent', 'post_grid_popular', 'post_grid_commented', 'post_grid_editor', 'post_carousel']:
+            if widget_instance.widget_type in ['recent_posts', 'most_viewed_posts', 'most_commented_posts', 'editor_picks_posts', 'post_grid_recent', 'post_grid_popular', 'post_grid_commented', 'post_grid_editor', 'post_carousel', 'user_directory']:
                 for post_obj in items_container: 
                     # post_obj is already a Post instance here (from items_container)
                     post_obj.thumbnail_url = _get_thumbnail_url(post_obj)

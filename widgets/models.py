@@ -38,6 +38,8 @@ class Widget(models.Model):
         POST_GRID_EDITOR = 'post_grid_editor', _("Post Grid: Editor's Picks")
 
         POST_CAROUSEL = 'post_carousel', _("Post Carousel")
+        USER_DIRECTORY = 'user_directory', _("User Directory")
+
         # We can easily add more types in the future:
         # PAGE_LIST = 'page_list', _('List of Pages')
         # HTML_CONTENT = 'html_content', _('Custom HTML Content')

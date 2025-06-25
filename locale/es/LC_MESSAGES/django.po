@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-25 10:08+0000\n"
-"PO-Revision-Date: 2025-06-25 12:15+0200\n"
+"POT-Creation-Date: 2025-06-25 20:51+0000\n"
+"PO-Revision-Date: 2025-06-25 22:53+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -198,6 +198,7 @@ msgid "This user has not posted any comments yet."
 msgstr "Este usuario no ha publicado ningún comentario todavía."
 
 #: accounts/templates/accounts/user_directory.html:6 reporte_completo.txt:888
+#: widgets/models.py:41
 msgid "User Directory"
 msgstr "Directorio de Usuarios"
 
@@ -456,8 +457,8 @@ msgid "Your profile has been updated successfully!"
 msgstr "¡Su perfil ha sido actualizado con éxito!"
 
 #: accounts/views.py:154 accounts/views.py:209 blog/views.py:100
-#: blog/views.py:213 blog/views.py:276 categories/views.py:16
-#: categories/views.py:43 gallery/views.py:145 menus/views.py:11
+#: blog/views.py:213 blog/views.py:276 categories/views.py:17
+#: categories/views.py:44 gallery/views.py:145 menus/views.py:11
 #: pages/views.py:19 pages/views.py:64
 msgid "Home"
 msgstr "Inicio"
@@ -467,7 +468,7 @@ msgid "Users"
 msgstr "Usuarios"
 
 #: blog/admin.py:143 blog/models.py:40 blog/templates/blog/post_detail.html:45
-#: categories/models.py:58 categories/views.py:17 pages/admin.py:85
+#: categories/models.py:58 categories/views.py:18 pages/admin.py:85
 #: pages/models.py:27 pages/templates/pages/page_detail.html:76
 #: reporte_completo.txt:1784 reporte_completo.txt:5429
 msgid "Categories"
@@ -674,7 +675,7 @@ msgstr ""
 #: blog/templates/blog/post_list_by_tag.html:37 reporte_completo.txt:5354
 #: reporte_completo.txt:5627 reporte_completo.txt:5700
 #: reporte_completo.txt:6428 reporte_completo.txt:6560
-#: reporte_completo.txt:6614 widgets/templates/widgets/_post_carousel.html:33
+#: reporte_completo.txt:6614
 #: widgets/templates/widgets/partials/_post_carousel.html:35
 #: widgets/templates/widgets/partials/_post_grid.html:33
 msgid "Read More"
@@ -734,7 +735,7 @@ msgstr "Explora el contenido relacionado con esta etiqueta."
 msgid "No posts found for this tag yet."
 msgstr "Todavía no se han encontrado publicaciones para esta etiqueta."
 
-#: blog/views.py:101 blog/views.py:214 blog/views.py:277 categories/views.py:44
+#: blog/views.py:101 blog/views.py:214 blog/views.py:277 categories/views.py:45
 msgid "Blog"
 msgstr "Nuestro Blog"
 
@@ -955,7 +956,7 @@ msgstr "Cerrar sesión"
 #: core/templates/core/partials/_pagination.html:13
 #: core/templates/core/partials/_pagination.html:15 reporte_completo.txt:6437
 #: reporte_completo.txt:6571 reporte_completo.txt:6969
-#: reporte_completo.txt:6971 widgets/templates/widgets/_post_carousel.html:42
+#: reporte_completo.txt:6971
 #: widgets/templates/widgets/partials/_post_carousel.html:46
 msgid "Previous"
 msgstr "Anterior"
@@ -963,7 +964,7 @@ msgstr "Anterior"
 #: core/templates/core/partials/_pagination.html:29
 #: core/templates/core/partials/_pagination.html:31 reporte_completo.txt:6441
 #: reporte_completo.txt:6575 reporte_completo.txt:6985
-#: reporte_completo.txt:6987 widgets/templates/widgets/_post_carousel.html:46
+#: reporte_completo.txt:6987
 #: widgets/templates/widgets/partials/_post_carousel.html:50
 msgid "Next"
 msgstr "Siguiente"
@@ -1072,7 +1073,7 @@ msgstr ""
 msgid "Link Text"
 msgstr "Texto del Enlace"
 
-#: menus/models.py:70 widgets/models.py:63
+#: menus/models.py:70 widgets/models.py:65
 msgid "Display Order"
 msgstr "Mostrar Orden"
 
@@ -1247,8 +1248,6 @@ msgid "Pages"
 msgstr "Páginas"
 
 #: reporte_completo.txt:1729
-#, fuzzy
-#| msgid "Welcome to Tavata CMS!"
 msgid "Welcome to TAVATA!"
 msgstr "¡Bienvenido a Tavata CMS!"
 
@@ -1292,7 +1291,7 @@ msgstr ""
 msgid "Go to Homepage"
 msgstr "Ir a la página de inicio"
 
-#: reporte_completo.txt:6387 widgets/templates/widgets/render_zone.html:32
+#: reporte_completo.txt:6387 widgets/templates/widgets/render_zone.html:36
 #, python-format
 msgid ""
 "\n"
@@ -1306,7 +1305,6 @@ msgstr ""
 "             "
 
 #: reporte_completo.txt:6445 reporte_completo.txt:6579
-#: widgets/templates/widgets/_post_carousel.html:50
 #: widgets/templates/widgets/partials/_post_carousel.html:54
 msgid "No posts available for the carousel."
 msgstr "No hay publicaciones disponibles para el carrusel."
@@ -1515,7 +1513,7 @@ msgstr "Nombre de la Zona"
 msgid "Slug (used in templates)"
 msgstr "Slug (used en plantillas)"
 
-#: widgets/models.py:15 widgets/models.py:49
+#: widgets/models.py:15 widgets/models.py:51
 msgid "Widget Zone"
 msgstr "Zona del Widget"
 
@@ -1563,23 +1561,23 @@ msgstr "Post Grid: Las elecciones del editor"
 msgid "Post Carousel"
 msgstr "Carrusel Post"
 
-#: widgets/models.py:54
+#: widgets/models.py:56
 msgid "Widget Type"
 msgstr "Tipo de Widget"
 
-#: widgets/models.py:58
+#: widgets/models.py:60
 msgid "Widget Title"
 msgstr "Título del Widget"
 
-#: widgets/models.py:59
+#: widgets/models.py:61
 msgid "The title that will be displayed above the widget."
 msgstr "El título que se mostrará encima del widget."
 
-#: widgets/models.py:69
+#: widgets/models.py:71
 msgid "Number of items to show"
 msgstr "Número de artículos a mostrar"
 
-#: widgets/models.py:71
+#: widgets/models.py:73
 msgid ""
 "Used by widgets that display a list of items, like 'Recent Posts' or 'Blog "
 "Categories'."
@@ -1587,11 +1585,11 @@ msgstr ""
 "Utilizado por widgets que muestran una lista de elementos, como "
 "'Publicaciones recientes' o 'Categorías de blogs'."
 
-#: widgets/models.py:76
+#: widgets/models.py:78
 msgid "Cache Timeout (in seconds)"
 msgstr "Tiempo de espera en caché (en segundos)"
 
-#: widgets/models.py:77
+#: widgets/models.py:79
 msgid ""
 "How long the results of this widget should be stored in cache. 0 to disable "
 "caching for this widget."
@@ -1599,70 +1597,74 @@ msgstr ""
 "Cuánto tiempo deben almacenarse los resultados de este widget en caché. 0 "
 "para deshabilitar el almacenamiento en caché de este widget."
 
-#: widgets/models.py:84
+#: widgets/models.py:86
 msgid "Filter by Category (optional)"
 msgstr "Filtrar por Categoría (opcional)"
 
-#: widgets/models.py:85
+#: widgets/models.py:87
 msgid ""
 "If selected, the widget will only show items from this specific category."
 msgstr ""
 "Si se selecciona, el widget solo mostrará publicaciones de esta categoría."
 
-#: widgets/models.py:91 widgets/models.py:119
+#: widgets/models.py:93 widgets/models.py:121
 msgid "Column Count"
 msgstr "Cuenta de Columna"
 
-#: widgets/models.py:92 widgets/models.py:120
+#: widgets/models.py:94 widgets/models.py:122
 msgid "Number of columns for grid display (e.g., 2, 3, 4)."
 msgstr ""
 "Número de columnas para visualización de cuadrícula (por ejemplo, 2, 3, 4)."
 
-#: widgets/models.py:99 widgets/models.py:127
+#: widgets/models.py:101 widgets/models.py:129
 msgid "Section Title (Optional)"
 msgstr "Título de la Sección (Opcional)"
 
-#: widgets/models.py:100 widgets/models.py:128
+#: widgets/models.py:102 widgets/models.py:130
 msgid ""
 "A main title for this grid section (e.g., 'Latest Posts', 'Our Bestsellers')."
 msgstr ""
 "Un título principal para esta sección de cuadrícula (por ejemplo, 'Últimas "
 "publicaciones', 'Nuestros más vendidos')."
 
-#: widgets/models.py:107 widgets/models.py:135
+#: widgets/models.py:109 widgets/models.py:137
 msgid "View All Link Text"
 msgstr "Ver Todo el Texto del Enlace"
 
-#: widgets/models.py:108 widgets/models.py:136
+#: widgets/models.py:110 widgets/models.py:138
 msgid "Text for the 'View All' link below the grid (e.g., 'View All Posts')."
 msgstr ""
 "Texto para el enlace 'Ver todo' debajo de la cuadrícula (por ejemplo, 'Ver "
 "Todas las publicaciones')."
 
-#: widgets/models.py:113 widgets/models.py:141
+#: widgets/models.py:115 widgets/models.py:143
 msgid "View All Link URL"
 msgstr "Ver Todo Enlace URL"
 
-#: widgets/models.py:114 widgets/models.py:142
+#: widgets/models.py:116 widgets/models.py:144
 msgid "URL for the 'View All' link (e.g., '/blog/')."
 msgstr "URL para el enlace 'Ver todo' (por ejemplo, '/blog/')."
 
-#: widgets/models.py:146
+#: widgets/models.py:148
 msgid "Carousel Interval (ms)"
 msgstr "Intervalo de Carrusel (ms)"
 
-#: widgets/models.py:147
+#: widgets/models.py:149
 msgid "Time in milliseconds between slides for 'Post Carousel' widget."
 msgstr ""
 "Tiempo en milisegundos entre diapositivas para el widget 'Post Carousel'."
 
-#: widgets/models.py:152
+#: widgets/models.py:154
 msgid "Widget"
 msgstr "Widget"
 
-#: widgets/models.py:153
+#: widgets/models.py:155
 msgid "Widgets"
 msgstr "Widgets"
+
+#: widgets/templates/widgets/partials/_user_directory.html:37
+msgid "No users available."
+msgstr "Sin usuarios disponibles."
 
 #~ msgid "Don't have an account?"
 #~ msgstr "¿No tiene una cuenta?"
@@ -1714,9 +1716,6 @@ msgstr "Widgets"
 
 #~ msgid "Number of Posts in 'Most Viewed' Widget"
 #~ msgstr "Widget: Número de Post en 'Más Vistos'"
-
-#~ msgid "No recent posts available."
-#~ msgstr "No hay post recientes."
 
 #, python-format
 #~ msgid "Search results for \"%(query)s\""

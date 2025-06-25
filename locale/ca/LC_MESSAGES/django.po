@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-25 10:08+0000\n"
-"PO-Revision-Date: 2025-06-25 12:20+0200\n"
+"POT-Creation-Date: 2025-06-25 20:51+0000\n"
+"PO-Revision-Date: 2025-06-25 22:54+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "Language: ca\n"
@@ -198,6 +198,7 @@ msgid "This user has not posted any comments yet."
 msgstr "Aquest usuari encara no ha publicat cap comentari."
 
 #: accounts/templates/accounts/user_directory.html:6 reporte_completo.txt:888
+#: widgets/models.py:41
 msgid "User Directory"
 msgstr "Directori d'usuaris"
 
@@ -456,8 +457,8 @@ msgid "Your profile has been updated successfully!"
 msgstr "El vostre perfil s’ha actualitzat amb èxit!"
 
 #: accounts/views.py:154 accounts/views.py:209 blog/views.py:100
-#: blog/views.py:213 blog/views.py:276 categories/views.py:16
-#: categories/views.py:43 gallery/views.py:145 menus/views.py:11
+#: blog/views.py:213 blog/views.py:276 categories/views.py:17
+#: categories/views.py:44 gallery/views.py:145 menus/views.py:11
 #: pages/views.py:19 pages/views.py:64
 msgid "Home"
 msgstr "Comença"
@@ -467,7 +468,7 @@ msgid "Users"
 msgstr "Usuaris"
 
 #: blog/admin.py:143 blog/models.py:40 blog/templates/blog/post_detail.html:45
-#: categories/models.py:58 categories/views.py:17 pages/admin.py:85
+#: categories/models.py:58 categories/views.py:18 pages/admin.py:85
 #: pages/models.py:27 pages/templates/pages/page_detail.html:76
 #: reporte_completo.txt:1784 reporte_completo.txt:5429
 msgid "Categories"
@@ -674,7 +675,7 @@ msgstr ""
 #: blog/templates/blog/post_list_by_tag.html:37 reporte_completo.txt:5354
 #: reporte_completo.txt:5627 reporte_completo.txt:5700
 #: reporte_completo.txt:6428 reporte_completo.txt:6560
-#: reporte_completo.txt:6614 widgets/templates/widgets/_post_carousel.html:33
+#: reporte_completo.txt:6614
 #: widgets/templates/widgets/partials/_post_carousel.html:35
 #: widgets/templates/widgets/partials/_post_grid.html:33
 msgid "Read More"
@@ -734,7 +735,7 @@ msgstr "Exploreu contingut relacionat amb aquesta etiqueta."
 msgid "No posts found for this tag yet."
 msgstr "Encara no s'han trobat publicacions per a aquesta etiqueta."
 
-#: blog/views.py:101 blog/views.py:214 blog/views.py:277 categories/views.py:44
+#: blog/views.py:101 blog/views.py:214 blog/views.py:277 categories/views.py:45
 msgid "Blog"
 msgstr "El Nostre Blog"
 
@@ -953,7 +954,7 @@ msgstr "Tanqueu"
 #: core/templates/core/partials/_pagination.html:13
 #: core/templates/core/partials/_pagination.html:15 reporte_completo.txt:6437
 #: reporte_completo.txt:6571 reporte_completo.txt:6969
-#: reporte_completo.txt:6971 widgets/templates/widgets/_post_carousel.html:42
+#: reporte_completo.txt:6971
 #: widgets/templates/widgets/partials/_post_carousel.html:46
 msgid "Previous"
 msgstr "Anterior"
@@ -961,7 +962,7 @@ msgstr "Anterior"
 #: core/templates/core/partials/_pagination.html:29
 #: core/templates/core/partials/_pagination.html:31 reporte_completo.txt:6441
 #: reporte_completo.txt:6575 reporte_completo.txt:6985
-#: reporte_completo.txt:6987 widgets/templates/widgets/_post_carousel.html:46
+#: reporte_completo.txt:6987
 #: widgets/templates/widgets/partials/_post_carousel.html:50
 msgid "Next"
 msgstr "El proper"
@@ -1070,7 +1071,7 @@ msgstr ""
 msgid "Link Text"
 msgstr "Text de l'Enllaç"
 
-#: menus/models.py:70 widgets/models.py:63
+#: menus/models.py:70 widgets/models.py:65
 msgid "Display Order"
 msgstr "Ordre de visualització"
 
@@ -1255,7 +1256,6 @@ msgid "Search results for:"
 msgstr "Resultats de la cerca per a:"
 
 #: reporte_completo.txt:2839 search/templates/search/search_results.html:14
-#, fuzzy
 msgid "1 result found."
 msgstr "1 resultat trobat."
 
@@ -1290,7 +1290,7 @@ msgstr "Vaja! Sembla que la pàgina que buscaves no existeix ni s’ha mogut."
 msgid "Go to Homepage"
 msgstr "Vés a la pàgina d'inici"
 
-#: reporte_completo.txt:6387 widgets/templates/widgets/render_zone.html:32
+#: reporte_completo.txt:6387 widgets/templates/widgets/render_zone.html:36
 #, python-format
 msgid ""
 "\n"
@@ -1304,7 +1304,6 @@ msgstr ""
 "            "
 
 #: reporte_completo.txt:6445 reporte_completo.txt:6579
-#: widgets/templates/widgets/_post_carousel.html:50
 #: widgets/templates/widgets/partials/_post_carousel.html:54
 msgid "No posts available for the carousel."
 msgstr "No hi ha publicacions disponibles per al carrusel."
@@ -1509,7 +1508,7 @@ msgstr "Nom de la zona"
 msgid "Slug (used in templates)"
 msgstr "Slug (utilitzat en plantilla)"
 
-#: widgets/models.py:15 widgets/models.py:49
+#: widgets/models.py:15 widgets/models.py:51
 msgid "Widget Zone"
 msgstr "Zona Widget"
 
@@ -1557,23 +1556,23 @@ msgstr "Post Grid: Picks de l'editor"
 msgid "Post Carousel"
 msgstr "Publica Carrusel"
 
-#: widgets/models.py:54
+#: widgets/models.py:56
 msgid "Widget Type"
 msgstr "Tipus de widget"
 
-#: widgets/models.py:58
+#: widgets/models.py:60
 msgid "Widget Title"
 msgstr "Títol de l'idget"
 
-#: widgets/models.py:59
+#: widgets/models.py:61
 msgid "The title that will be displayed above the widget."
 msgstr "El títol que es mostrarà per sobre del widget."
 
-#: widgets/models.py:69
+#: widgets/models.py:71
 msgid "Number of items to show"
 msgstr "Nombre d’articles a mostrar"
 
-#: widgets/models.py:71
+#: widgets/models.py:73
 msgid ""
 "Used by widgets that display a list of items, like 'Recent Posts' or 'Blog "
 "Categories'."
@@ -1581,11 +1580,11 @@ msgstr ""
 "Utilitzat per widgets que mostren una llista d’elements, com ara “Postes "
 "recents” o “categories de blocs”'."
 
-#: widgets/models.py:76
+#: widgets/models.py:78
 msgid "Cache Timeout (in seconds)"
 msgstr "Cache Timeout (en segons)"
 
-#: widgets/models.py:77
+#: widgets/models.py:79
 msgid ""
 "How long the results of this widget should be stored in cache. 0 to disable "
 "caching for this widget."
@@ -1593,72 +1592,76 @@ msgstr ""
 "Quant de temps s’han d’emmagatzemar els resultats d’aquest widget a la "
 "memòria cau. 0 per desactivar la memòria cau per a aquest widget."
 
-#: widgets/models.py:84
+#: widgets/models.py:86
 msgid "Filter by Category (optional)"
 msgstr "Filtre per categoria (opcional)"
 
-#: widgets/models.py:85
+#: widgets/models.py:87
 msgid ""
 "If selected, the widget will only show items from this specific category."
 msgstr ""
 "Si es selecciona, el widget només mostrarà articles d'aquesta categoria "
 "específica."
 
-#: widgets/models.py:91 widgets/models.py:119
+#: widgets/models.py:93 widgets/models.py:121
 msgid "Column Count"
 msgstr "Nombre de columnes"
 
-#: widgets/models.py:92 widgets/models.py:120
+#: widgets/models.py:94 widgets/models.py:122
 msgid "Number of columns for grid display (e.g., 2, 3, 4)."
 msgstr ""
 "Nombre de columnes per a la visualització de quadrícules (per exemple, 2, 3, "
 "4)."
 
-#: widgets/models.py:99 widgets/models.py:127
+#: widgets/models.py:101 widgets/models.py:129
 msgid "Section Title (Optional)"
 msgstr "Títol de la secció (Opcional)"
 
-#: widgets/models.py:100 widgets/models.py:128
+#: widgets/models.py:102 widgets/models.py:130
 msgid ""
 "A main title for this grid section (e.g., 'Latest Posts', 'Our Bestsellers')."
 msgstr ""
 "Un títol principal per a aquesta secció de quadrícules (per exemple, "
 "\"Latest Posts\", \"Els nostres best-sellers\")."
 
-#: widgets/models.py:107 widgets/models.py:135
+#: widgets/models.py:109 widgets/models.py:137
 msgid "View All Link Text"
 msgstr "Veure tot el text d’enllaç"
 
-#: widgets/models.py:108 widgets/models.py:136
+#: widgets/models.py:110 widgets/models.py:138
 msgid "Text for the 'View All' link below the grid (e.g., 'View All Posts')."
 msgstr ""
 "Text per a l'enllaç \"Veure tot\" per sota de la graella (per exemple, "
 "\"Veure totes les publicacions\")."
 
-#: widgets/models.py:113 widgets/models.py:141
+#: widgets/models.py:115 widgets/models.py:143
 msgid "View All Link URL"
 msgstr "Veure tot l’URL d’enllaç"
 
-#: widgets/models.py:114 widgets/models.py:142
+#: widgets/models.py:116 widgets/models.py:144
 msgid "URL for the 'View All' link (e.g., '/blog/')."
 msgstr "URL per a l'enllaç \"Veure tot\" (per exemple, '/blog /')."
 
-#: widgets/models.py:146
+#: widgets/models.py:148
 msgid "Carousel Interval (ms)"
 msgstr "Interval Carrusel (ms)"
 
-#: widgets/models.py:147
+#: widgets/models.py:149
 msgid "Time in milliseconds between slides for 'Post Carousel' widget."
 msgstr ""
 "Temps en mil·lisegons entre diapositives per al widget \"Post Carousel\"."
 
-#: widgets/models.py:152
+#: widgets/models.py:154
 msgid "Widget"
 msgstr "Widget"
 
-#: widgets/models.py:153
+#: widgets/models.py:155
 msgid "Widgets"
 msgstr "Widgets"
+
+#: widgets/templates/widgets/partials/_user_directory.html:37
+msgid "No users available."
+msgstr "No hi ha usuaris disponibles."
 
 #~ msgid "Don't have an account?"
 #~ msgstr "No teniu cap compte?"
@@ -1710,9 +1713,6 @@ msgstr "Widgets"
 
 #~ msgid "Number of Posts in 'Most Viewed' Widget"
 #~ msgstr "Nombre de publicacions en Widget \"Most Viewed\""
-
-#~ msgid "No recent posts available."
-#~ msgstr "No hi ha entrades recents disponibles."
 
 #, python-format
 #~ msgid "Search results for \"%(query)s\""
