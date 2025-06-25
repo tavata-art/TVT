@@ -1,6 +1,7 @@
 # File: categories/views.py
 from django.shortcuts import render
 from .models import Category
+from blog.models import Post
 from django.urls import reverse
 from django.utils.translation import gettext
 from django.shortcuts import get_object_or_404
