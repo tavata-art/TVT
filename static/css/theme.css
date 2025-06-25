@@ -28,6 +28,11 @@
     --bs-body-color-rgb: 33, 37, 41; /* Texto principal oscuro */
 }
 
+.text-tavata-yellow-outlined {
+    color: var(--tavata-yellow);
+    text-shadow:
+        0 0 1px rgba(0, 0, 0, 0.5);
+}
 /* 3. Pequeños ajustes y clases de utilidad */
 
 /* Asegurarnos de que el texto en botones primarios sea negro para legibilidad */

@@ -213,6 +213,8 @@ STATIC_URL = '/static/'
 # La ruta donde `collectstatic` copiará todos los archivos para producción.
 # Es bueno tenerla definida aunque en desarrollo no se use directamente.
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+if ENVIRONMENT == 'production':
+    STATIC_ROOT = "/home/sextavac/domains/tavata.art/public_html/static"
 
 # ¡LA CONFIGURACIÓN CLAVE PARA DESARROLLO!
 # Directorios adicionales donde el servidor de desarrollo de Django buscará archivos estáticos.
@@ -226,7 +228,10 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+if ENVIRONMENT == 'production':
+    MEDIA_ROOT = "/home/sextavac/domains/tavata.art/public_html/media"
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
