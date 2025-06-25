@@ -6,12 +6,18 @@
 
 {% block title %}{{ profile.get_display_name }}'s Profile{% endblock %}
 
+{% block breadcrumbs %}
+  {% include "core/partials/_breadcrumbs.html" %}
+{% endblock %}
+
 {% block content %}
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-lg-10">
 
             {# --- PROFILE HEADER --- #}
+            <h1>{{ user.get_full_name|default:user.username }}</h1>
+            <p>{{ user.bio|default:_("This user has not added a biography yet.") }}</p>
             <div class="d-flex align-items-center mb-5 p-4 bg-light rounded shadow-sm">
                 <img src="{{ profile.get_avatar_url }}" 
                      alt="{{ profile.get_display_name }}'s Avatar"

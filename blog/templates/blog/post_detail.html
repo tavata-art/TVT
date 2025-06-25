@@ -10,6 +10,10 @@
 {% block seo_description %}{{ post.meta_description|default:"" }}{% endblock %}
 {% block title %}{{ post.title }}{% endblock %}
 
+{% block breadcrumbs %}
+    {% include "core/partials/_breadcrumbs.html" %}
+{% endblock %}
+
 {# --- OVERRIDE GLOBAL MESSAGES BLOCK --- #}
 {# This block is intentionally left empty to prevent messages from appearing at the top. #}
 {% block messages %}{% endblock %}

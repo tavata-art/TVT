@@ -15,7 +15,7 @@ from .forms import CustomUserCreationForm, UserUpdateForm, ProfileUpdateForm
 # Import the models required for the public profile view
 from .models import Profile # Model for user profiles
 from blog.models import Post, Comment # Models for posts and comments
-
+from django.urls import reverse
 from site_settings.models import SiteConfiguration 
 
 # Get a logger instance for this module.
@@ -150,11 +150,17 @@ def user_profile_public_view(request, username):
         comments_page_number = request.GET.get('comments_page', 1)
         paginated_user_comments = comments_paginator.get_page(comments_page_number)
 
+        breadcrumbs = [
+            {"url": "/", "label": gettext("Home")},
+            {"url": reverse("accounts:user_directory"), "label": gettext("Users")},
+            {"url": "", "label": user_obj.get_full_name() or user_obj.username},
+        ]
         context = {
             'user_obj': user_obj, # The User object
             'profile': profile,   # The associated Profile object
             'user_posts': paginated_user_posts,
             'user_comments': paginated_user_comments,
+            "breadcrumbs": breadcrumbs,
         }
         return render(request, 'accounts/public_profile_view.html', context)
 
@@ -199,8 +205,12 @@ def user_directory_view(request):
             users_on_page = []
 
     logger.info(f"User directory view accessed. Showing page {getattr(users_on_page, 'number', 0)} of {getattr(users_on_page, 'paginator.num_pages', 0)} users.")
-
+    breadcrumbs = [
+        {"url": "/", "label": gettext("Home")},
+        {"url": "", "label": gettext("Users")},
+    ]
     context = {
         'users': users_on_page, # Pass the paginated user objects
+        "breadcrumbs": breadcrumbs,
     }
     return render(request, 'accounts/user_directory.html', context)

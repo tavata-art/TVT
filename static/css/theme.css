@@ -131,3 +131,21 @@
     vertical-align: middle;
 }
 /* --- END MULTI-LEVEL DROPDOWN --- */
+
+.breadcrumb-wrapper {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.breadcrumb {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid #dee2e6;
+  background-color: #f9f9f9;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}

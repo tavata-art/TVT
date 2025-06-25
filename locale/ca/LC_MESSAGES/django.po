@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-22 14:07+0000\n"
-"PO-Revision-Date: 2025-06-22 16:09+0200\n"
+"POT-Creation-Date: 2025-06-25 10:08+0000\n"
+"PO-Revision-Date: 2025-06-25 12:20+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "Language: ca\n"
@@ -31,10 +31,12 @@ msgid "Confirm password"
 msgstr "Confirmeu la contrasenya"
 
 #: accounts/forms.py:30 accounts/templates/registration/login.html:22
+#: reporte_completo.txt:1206
 msgid "Username"
 msgstr "Nom d'usuari"
 
 #: accounts/forms.py:31 accounts/templates/registration/login.html:26
+#: reporte_completo.txt:1210
 msgid "Password"
 msgstr "Contrasenya"
 
@@ -149,53 +151,65 @@ msgstr "Perfil"
 msgid "Profiles"
 msgstr "Perfils"
 
-#: accounts/templates/accounts/public_profile_view.html:34
+#: accounts/templates/accounts/public_profile_view.html:20
+msgid "This user has not added a biography yet."
+msgstr "Aquest usuari encara no ha afegit una biografia."
+
+#: accounts/templates/accounts/public_profile_view.html:40
+#: reporte_completo.txt:838
 msgid "About Me"
 msgstr "Sobre mi"
 
-#: accounts/templates/accounts/public_profile_view.html:42
+#: accounts/templates/accounts/public_profile_view.html:48
+#: reporte_completo.txt:846
 msgid "Posts by"
 msgstr "Publicacions de"
 
-#: accounts/templates/accounts/public_profile_view.html:47
+#: accounts/templates/accounts/public_profile_view.html:53
+#: reporte_completo.txt:851 reporte_completo.txt:2879
 #: search/templates/search/search_results.html:54
 msgid "Published on"
 msgstr "Publicat el"
 
-#: accounts/templates/accounts/public_profile_view.html:50
+#: accounts/templates/accounts/public_profile_view.html:56
+#: reporte_completo.txt:854
 msgid "This user has not published any blog posts yet."
 msgstr "Aquest usuari encara no ha publicat cap publicació al bloc."
 
-#: accounts/templates/accounts/public_profile_view.html:58
+#: accounts/templates/accounts/public_profile_view.html:64
+#: reporte_completo.txt:862
 msgid "Comments by"
 msgstr "Comentaris de"
 
-#: accounts/templates/accounts/public_profile_view.html:63
-#: blog/templates/blog/post_detail.html:87
+#: accounts/templates/accounts/public_profile_view.html:69
+#: blog/templates/blog/post_detail.html:91 reporte_completo.txt:867
+#: reporte_completo.txt:5475
 msgid "ago"
 msgstr "fa"
 
-#: accounts/templates/accounts/public_profile_view.html:65
+#: accounts/templates/accounts/public_profile_view.html:71
+#: reporte_completo.txt:869
 msgid "View in context"
 msgstr "Veure en context"
 
-#: accounts/templates/accounts/public_profile_view.html:69
+#: accounts/templates/accounts/public_profile_view.html:75
+#: reporte_completo.txt:873
 msgid "This user has not posted any comments yet."
 msgstr "Aquest usuari encara no ha publicat cap comentari."
 
-#: accounts/templates/accounts/user_directory.html:6
+#: accounts/templates/accounts/user_directory.html:6 reporte_completo.txt:888
 msgid "User Directory"
 msgstr "Directori d'usuaris"
 
-#: accounts/templates/accounts/user_directory.html:10
+#: accounts/templates/accounts/user_directory.html:14 reporte_completo.txt:892
 msgid "Our Community Members"
 msgstr "Els nostres membres comunitaris"
 
-#: accounts/templates/accounts/user_directory.html:11
+#: accounts/templates/accounts/user_directory.html:15 reporte_completo.txt:893
 msgid "Explore profiles of users who are part of our community."
 msgstr "Exploreu perfils d’usuaris que formen part de la nostra comunitat."
 
-#: accounts/templates/accounts/user_directory.html:38
+#: accounts/templates/accounts/user_directory.html:42 reporte_completo.txt:920
 msgid "No users found in the directory."
 msgstr "No s’ha trobat usuaris al directori."
 
@@ -203,53 +217,62 @@ msgstr "No s’ha trobat usuaris al directori."
 #: accounts/templates/registration/login.html:12
 #: accounts/templates/registration/login.html:37
 #: accounts/templates/registration/password_reset_complete.html:15
-#: core/templates/core/partials/_header.html:60
+#: core/templates/core/partials/_header.html:60 reporte_completo.txt:1189
+#: reporte_completo.txt:1196 reporte_completo.txt:1221
+#: reporte_completo.txt:1251 reporte_completo.txt:6891
 msgid "Log In"
 msgstr "Iniciar sessió"
 
-#: accounts/templates/registration/login.html:16
+#: accounts/templates/registration/login.html:16 reporte_completo.txt:1200
 msgid "Your username and password didn't match. Please try again."
 msgstr ""
 "El vostre nom d’usuari i la vostra contrasenya no coincideixen. Torneu-ho a "
 "provar."
 
-#: accounts/templates/registration/login.html:32
+#: accounts/templates/registration/login.html:32 reporte_completo.txt:1216
 msgid "Forgot password?"
 msgstr "Has oblidat la contrasenya?"
 
-#: accounts/templates/registration/login.html:47
+#: accounts/templates/registration/login.html:47 reporte_completo.txt:1231
 #, python-format
 msgid "Don't have an account? <a href=\"%(signup_url)s\">Sign up here</a>."
 msgstr ""
 "No teniu cap compte? <a href=\"%(signup_url) s\"> Registra't aquí </a>."
 
 #: accounts/templates/registration/password_reset_complete.html:5
+#: reporte_completo.txt:1241
 msgid "Password Changed"
 msgstr "Contrasenya Cantada"
 
 #: accounts/templates/registration/password_reset_complete.html:13
+#: reporte_completo.txt:1249
 msgid "Password has been changed successfully!"
 msgstr "La contrasenya s'ha canviat amb èxit!"
 
 #: accounts/templates/registration/password_reset_complete.html:14
+#: reporte_completo.txt:1250
 msgid "Your password has been set. You may go ahead and log in now."
 msgstr ""
 "La vostra contrasenya s’ha establert. Potser aneu endavant i inicieu la "
 "sessió ara."
 
 #: accounts/templates/registration/password_reset_confirm.html:5
+#: reporte_completo.txt:1147
 msgid "Enter New Password"
 msgstr "Introduïu una nova contrasenya"
 
 #: accounts/templates/registration/password_reset_confirm.html:12
+#: reporte_completo.txt:1154
 msgid "Set a New Password"
 msgstr "Definiu una nova contrasenya"
 
 #: accounts/templates/registration/password_reset_confirm.html:29
+#: reporte_completo.txt:1171
 msgid "Change Password"
 msgstr "Canviar la contrasenya"
 
 #: accounts/templates/registration/password_reset_confirm.html:34
+#: reporte_completo.txt:1176
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used."
@@ -258,18 +281,22 @@ msgstr ""
 "ja s’ha utilitzat."
 
 #: accounts/templates/registration/password_reset_confirm.html:35
+#: reporte_completo.txt:1177
 msgid "Please request a new password reset."
 msgstr "Sol·liciteu un nou restabliment de contrasenya."
 
 #: accounts/templates/registration/password_reset_done.html:5
+#: reporte_completo.txt:966
 msgid "Password Reset Sent"
 msgstr "Restablir la contrasenya enviat"
 
 #: accounts/templates/registration/password_reset_done.html:13
+#: reporte_completo.txt:974
 msgid "Password Reset Email Sent"
 msgstr "Restablir la contrasenya Enviar correu electrònic"
 
 #: accounts/templates/registration/password_reset_done.html:14
+#: reporte_completo.txt:975
 msgid ""
 "We've emailed you instructions for setting your password. You should receive "
 "them shortly."
@@ -278,6 +305,7 @@ msgstr ""
 "contrasenya. Hauríeu de rebre-los en breu."
 
 #: accounts/templates/registration/password_reset_done.html:15
+#: reporte_completo.txt:976
 msgid ""
 "If you don't receive an email, please make sure you've entered the address "
 "you registered with, and check your spam folder."
@@ -286,20 +314,24 @@ msgstr ""
 "amb la qual us heu registrat i comproveu la vostra carpeta d’espam."
 
 #: accounts/templates/registration/password_reset_done.html:16
+#: reporte_completo.txt:977
 msgid "Return to Login"
 msgstr "Tornar a la sessió"
 
 #: accounts/templates/registration/password_reset_email.html:4
+#: reporte_completo.txt:1122
 msgid "Hi"
 msgstr "Hola"
 
 #: accounts/templates/registration/password_reset_email.html:6
+#: reporte_completo.txt:1124
 msgid "It looks like you requested a password reset for your account at"
 msgstr ""
 "Sembla que heu sol·licitat un restabliment de contrasenya per al vostre "
 "compte"
 
 #: accounts/templates/registration/password_reset_email.html:13
+#: reporte_completo.txt:1131
 #, python-format
 msgid ""
 "\n"
@@ -311,30 +343,37 @@ msgstr ""
 "%(protocol)s://%(domain)s%(reset_password_url)s\n"
 
 #: accounts/templates/registration/password_reset_email.html:19
+#: reporte_completo.txt:1137
 msgid "Your username, in case you've forgotten:"
 msgstr "El vostre nom d’usuari, per si heu oblidat:"
 
 #: accounts/templates/registration/password_reset_email.html:21
+#: reporte_completo.txt:1139
 msgid "Thanks for using our site!"
 msgstr "Gràcies per utilitzar el nostre lloc!"
 
 #: accounts/templates/registration/password_reset_email.html:23
+#: reporte_completo.txt:1141
 msgid "The"
 msgstr "EL"
 
 #: accounts/templates/registration/password_reset_email.html:23
+#: reporte_completo.txt:1141
 msgid "team"
 msgstr "equip"
 
 #: accounts/templates/registration/password_reset_form.html:5
+#: reporte_completo.txt:935
 msgid "Reset Password"
 msgstr "Restablir la contrasenya"
 
 #: accounts/templates/registration/password_reset_form.html:12
+#: reporte_completo.txt:942
 msgid "Reset Your Password"
 msgstr "Restablir la vostra contrasenya"
 
 #: accounts/templates/registration/password_reset_form.html:13
+#: reporte_completo.txt:943
 msgid ""
 "Enter your email address below, and we'll send you instructions to set a new "
 "one."
@@ -343,6 +382,7 @@ msgstr ""
 "instruccions per configurar-ne una de nova."
 
 #: accounts/templates/registration/password_reset_form.html:24
+#: reporte_completo.txt:954
 msgid "Send Reset Link"
 msgstr "Enviar enllaç de restabliment"
 
@@ -351,52 +391,59 @@ msgid "Password reset for"
 msgstr "Restablir la contrasenya per"
 
 #: accounts/templates/registration/profile_edit.html:5
-#: core/templates/core/partials/_header.html:40
+#: core/templates/core/partials/_header.html:40 reporte_completo.txt:987
+#: reporte_completo.txt:6871
 msgid "Edit Profile"
 msgstr "Edita el perfil"
 
 #: accounts/templates/registration/profile_edit.html:12
+#: reporte_completo.txt:994
 msgid "Edit Your Profile"
 msgstr "Edita el teu perfil"
 
 #: accounts/templates/registration/profile_edit.html:20
+#: reporte_completo.txt:1002
 msgid "User Information"
 msgstr "Informació de l'usuari"
 
 #: accounts/templates/registration/profile_edit.html:37
+#: reporte_completo.txt:1019
 msgid "Profile Details"
 msgstr "Detalls del perfil"
 
 #: accounts/templates/registration/profile_edit.html:81
+#: reporte_completo.txt:1063
 msgid "Current Avatar"
 msgstr "Avatar actual"
 
 #: accounts/templates/registration/profile_edit.html:129
+#: reporte_completo.txt:1111
 msgid "Save Changes"
 msgstr "Desa els canvis"
 
 #: accounts/templates/registration/signup.html:5
-#: accounts/templates/registration/signup.html:50
+#: accounts/templates/registration/signup.html:50 reporte_completo.txt:1261
+#: reporte_completo.txt:1306
 msgid "Sign Up"
 msgstr "Registra't"
 
-#: accounts/templates/registration/signup.html:12
+#: accounts/templates/registration/signup.html:12 reporte_completo.txt:1268
 msgid "Create an Account"
 msgstr "Crear un compte"
 
-#: accounts/templates/registration/signup.html:30
+#: accounts/templates/registration/signup.html:30 reporte_completo.txt:1286
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr "Obligat. 150 caràcters o menys. Cartes, dígits i @/./ + / - / _ només."
 
-#: accounts/templates/registration/signup.html:38
+#: accounts/templates/registration/signup.html:38 reporte_completo.txt:1294
 msgid "Your password must contain at least 8 characters."
 msgstr "La vostra contrasenya ha de contenir almenys 8 caràcters."
 
-#: accounts/templates/registration/signup.html:56
+#: accounts/templates/registration/signup.html:56 reporte_completo.txt:1312
 msgid "Already have an account?"
 msgstr "Ja teniu un compte?"
 
-#: accounts/templates/registration/signup.html:56
+#: accounts/templates/registration/signup.html:56 reporte_completo.txt:1312
 msgid "Log in here"
 msgstr "Inicieu la sessió aquí"
 
@@ -408,9 +455,21 @@ msgstr "Benvingut! El vostre compte s’ha creat amb èxit."
 msgid "Your profile has been updated successfully!"
 msgstr "El vostre perfil s’ha actualitzat amb èxit!"
 
-#: blog/admin.py:148 blog/models.py:39 blog/templates/blog/post_detail.html:41
-#: categories/models.py:58 pages/admin.py:85 pages/models.py:26
-#: pages/templates/pages/page_detail.html:73
+#: accounts/views.py:154 accounts/views.py:209 blog/views.py:100
+#: blog/views.py:213 blog/views.py:276 categories/views.py:16
+#: categories/views.py:43 gallery/views.py:145 menus/views.py:11
+#: pages/views.py:19 pages/views.py:64
+msgid "Home"
+msgstr "Comença"
+
+#: accounts/views.py:155 accounts/views.py:210
+msgid "Users"
+msgstr "Usuaris"
+
+#: blog/admin.py:143 blog/models.py:40 blog/templates/blog/post_detail.html:45
+#: categories/models.py:58 categories/views.py:17 pages/admin.py:85
+#: pages/models.py:27 pages/templates/pages/page_detail.html:76
+#: reporte_completo.txt:1784 reporte_completo.txt:5429
 msgid "Categories"
 msgstr "Categories"
 
@@ -426,118 +485,119 @@ msgstr "El vostre nom (obligatori)"
 msgid "Your Email (required, not published)"
 msgstr "El vostre correu electrònic (obligatori, no publicat)"
 
-#: blog/models.py:16 pages/models.py:12
+#: blog/models.py:17 pages/models.py:13
 msgid "Draft"
 msgstr "Esborrany"
 
-#: blog/models.py:17 pages/models.py:13
+#: blog/models.py:18 pages/models.py:14
 msgid "Published"
 msgstr "Publicat"
 
-#: blog/models.py:19 gallery/admin.py:42 gallery/models.py:14
-#: pages/models.py:16
+#: blog/models.py:20 gallery/admin.py:42 gallery/models.py:15
+#: pages/models.py:17
 msgid "Title"
 msgstr "Títol"
 
-#: blog/models.py:20 categories/models.py:20 menus/models.py:20
+#: blog/models.py:21 categories/models.py:20 menus/models.py:20
 msgid "Slug"
 msgstr "Slug"
 
-#: blog/models.py:21 pages/models.py:20
+#: blog/models.py:22 pages/models.py:21
 msgid "Author"
 msgstr "Autor"
 
-#: blog/models.py:23 blog/models.py:86 pages/models.py:18
+#: blog/models.py:24 blog/models.py:97 pages/models.py:19
 msgid "Content"
 msgstr "Contingut"
 
-#: blog/models.py:28 pages/models.py:51
+#: blog/models.py:29 pages/models.py:52
 msgid "Featured Image"
 msgstr "Imatge Destacada"
 
-#: blog/models.py:31
+#: blog/models.py:32
 msgid "Published Date"
 msgstr "Data de Publicació"
 
-#: blog/models.py:32 pages/models.py:21
+#: blog/models.py:33 pages/models.py:22
 msgid "Status"
 msgstr "Estat"
 
-#: blog/models.py:44 categories/models.py:45 pages/models.py:36
+#: blog/models.py:45 categories/models.py:45 pages/models.py:37
 msgid "Meta Title (SEO)"
 msgstr "Meta Títol (SEO)"
 
-#: blog/models.py:45 categories/models.py:51 pages/models.py:37
+#: blog/models.py:46 categories/models.py:51 pages/models.py:38
 msgid "Meta Description (SEO)"
 msgstr "Meta Descripció (SEO)"
 
-#: blog/models.py:46
+#: blog/models.py:47
 msgid "View Count"
 msgstr "Veure comte"
 
-#: blog/models.py:49
+#: blog/models.py:50
 msgid "Editor's Rating"
 msgstr "Qualificació de l'editor"
 
-#: blog/models.py:50
+#: blog/models.py:51
 msgid "A score from 0-100 to feature this post. Higher numbers appear first."
 msgstr ""
 "Una puntuació de 0-100 per presentar aquesta publicació. Primer apareixen "
 "números més alts."
 
-#: blog/models.py:57 blog/templates/blog/post_detail.html:52
+#: blog/models.py:58 blog/templates/blog/post_detail.html:56
+#: reporte_completo.txt:5440
 msgid "Tags"
 msgstr "Tags"
 
-#: blog/models.py:58
+#: blog/models.py:59
 msgid "A comma-separated list of tags."
 msgstr "Una llista separada per coma d’etiquetes."
 
-#: blog/models.py:64
+#: blog/models.py:65
 msgid "blog post"
 msgstr "entrada de blog"
 
-#: blog/models.py:65
+#: blog/models.py:66
 msgid "blog posts"
 msgstr "entrades de blog"
 
-#: blog/models.py:81
+#: blog/models.py:92
 msgid "Post"
 msgstr "Post"
 
-#: blog/models.py:82
+#: blog/models.py:93
 msgid "Parent Comment"
 msgstr "Comentari dels pares"
 
-#: blog/models.py:83
+#: blog/models.py:94
 msgid "User"
 msgstr "Usuari"
 
-#: blog/models.py:84
+#: blog/models.py:95
 msgid "Author Name"
 msgstr "Nom de l'autor"
 
-#: blog/models.py:85
+#: blog/models.py:96
 msgid "Author Email"
 msgstr "Correu electrònic de l’autor"
 
-#: blog/models.py:87
+#: blog/models.py:98
 msgid "Created At"
 msgstr "Data de Creació"
 
-#: blog/models.py:88
+#: blog/models.py:99
 msgid "Is Approved?"
 msgstr "S’aprova?"
 
-#: blog/models.py:94
+#: blog/models.py:105
 msgid "comment"
 msgstr "comentari"
 
-#: blog/models.py:95
+#: blog/models.py:106
 msgid "comments"
 msgstr "comentaris"
 
-#: blog/templates/blog/post_detail.html:35
+#: blog/templates/blog/post_detail.html:39 reporte_completo.txt:5423
 #, python-format
 msgid ""
 "\n"
@@ -548,39 +608,40 @@ msgstr ""
 "                Publicat el %(published_date)s per %(author)s\n"
 "                "
 
-#: blog/templates/blog/post_detail.html:69
+#: blog/templates/blog/post_detail.html:73 reporte_completo.txt:5457
 #, python-format
 msgid "%(count)s Comment"
 msgid_plural "%(count)s Comments"
 msgstr[0] "%(count)s Comentari"
 msgstr[1] "%(count)s Comentaris"
 
-#: blog/templates/blog/post_detail.html:88
+#: blog/templates/blog/post_detail.html:92 reporte_completo.txt:5476
 msgid "Reply"
 msgstr "Respon"
 
-#: blog/templates/blog/post_detail.html:119
+#: blog/templates/blog/post_detail.html:123 reporte_completo.txt:5507
 msgid "Leave a Comment"
 msgstr "Deixa un comentari"
 
-#: blog/templates/blog/post_detail.html:141
+#: blog/templates/blog/post_detail.html:145 reporte_completo.txt:5529
 msgid "Submit Comment"
 msgstr "Envieu comentari"
 
-#: blog/templates/blog/post_detail.html:172
+#: blog/templates/blog/post_detail.html:176 reporte_completo.txt:5560
 msgid "Cancel Reply"
 msgstr "Cancel·la la resposta"
 
-#: blog/templates/blog/post_detail.html:181
+#: blog/templates/blog/post_detail.html:185 reporte_completo.txt:5569
 msgid "Reply to"
 msgstr "Respon a"
 
 #: blog/templates/blog/post_list.html:6 blog/templates/blog/post_list.html:8
-#: blog/templates/blog/post_list.html:16
+#: blog/templates/blog/post_list.html:19 reporte_completo.txt:5590
+#: reporte_completo.txt:5592 reporte_completo.txt:5600
 msgid "Our Blog"
 msgstr "El Nostre Blog"
 
-#: blog/templates/blog/post_list.html:7
+#: blog/templates/blog/post_list.html:7 reporte_completo.txt:5591
 msgid ""
 "Latest articles and updates on Computer Vision, Natural Language Processing, "
 "and more from the Tavata team."
@@ -588,13 +649,14 @@ msgstr ""
 "Últims articles i novetats sobre Visió per Computador, Processament de "
 "Llenguatge Natural i més de l'equip de Tavata."
 
-#: blog/templates/blog/post_list.html:17
+#: blog/templates/blog/post_list.html:20 reporte_completo.txt:5601
 msgid "News, articles, and insights from our team."
 msgstr "Notícies, articles i idees del nostre equip."
 
-#: blog/templates/blog/post_list.html:38
-#: blog/templates/blog/post_list_by_category.html:49
-#: blog/templates/blog/post_list_by_tag.html:32
+#: blog/templates/blog/post_list.html:41
+#: blog/templates/blog/post_list_by_category.html:52
+#: blog/templates/blog/post_list_by_tag.html:32 reporte_completo.txt:5348
+#: reporte_completo.txt:5622 reporte_completo.txt:5695
 #, python-format
 msgid ""
 "\n"
@@ -607,25 +669,27 @@ msgstr ""
 "%(author)s\n"
 "                                "
 
-#: blog/templates/blog/post_list.html:43
-#: blog/templates/blog/post_list_by_category.html:55
-#: blog/templates/blog/post_list_by_tag.html:37
-#: widgets/templates/widgets/_post_carousel.html:33
+#: blog/templates/blog/post_list.html:46
+#: blog/templates/blog/post_list_by_category.html:58
+#: blog/templates/blog/post_list_by_tag.html:37 reporte_completo.txt:5354
+#: reporte_completo.txt:5627 reporte_completo.txt:5700
+#: reporte_completo.txt:6428 reporte_completo.txt:6560
+#: reporte_completo.txt:6614 widgets/templates/widgets/_post_carousel.html:33
 #: widgets/templates/widgets/partials/_post_carousel.html:35
 #: widgets/templates/widgets/partials/_post_grid.html:33
 msgid "Read More"
 msgstr "Llegir Més"
 
-#: blog/templates/blog/post_list.html:51
+#: blog/templates/blog/post_list.html:54 reporte_completo.txt:5635
 msgid "There are no blog posts yet. Come back soon!"
 msgstr "Encara no hi ha entrades al blog. Torna aviat!"
 
-#: blog/templates/blog/post_list_by_category.html:11
+#: blog/templates/blog/post_list_by_category.html:11 reporte_completo.txt:5310
 #, python-format
 msgid "Posts in %(category.name)s"
 msgstr "Entrades a %(category.name)s"
 
-#: blog/templates/blog/post_list_by_category.html:21
+#: blog/templates/blog/post_list_by_category.html:24 reporte_completo.txt:5320
 #, python-format
 msgid ""
 "\n"
@@ -638,43 +702,47 @@ msgstr ""
 "primary\">%(category.name)s</span>\n"
 "             "
 
-#: blog/templates/blog/post_list_by_category.html:63
+#: blog/templates/blog/post_list_by_category.html:66 reporte_completo.txt:5362
 msgid "There are currently no published posts in this category."
 msgstr "Actualment no hi ha entrades publicades en aquesta categoria."
 
-#: blog/templates/blog/post_list_by_tag.html:7
+#: blog/templates/blog/post_list_by_tag.html:7 reporte_completo.txt:5670
 msgid "Posts tagged with"
 msgstr "Publicacions etiquetades amb"
 
-#: blog/templates/blog/post_list_by_tag.html:8
+#: blog/templates/blog/post_list_by_tag.html:8 reporte_completo.txt:5671
 msgid "Browse all blog posts related to"
 msgstr "Consulteu totes les publicacions del bloc relacionades amb"
 
-#: blog/templates/blog/post_list_by_tag.html:8
+#: blog/templates/blog/post_list_by_tag.html:8 reporte_completo.txt:5671
 msgid "on Tavata CMS."
 msgstr "Benvingut a Tavata CMS!"
 
-#: blog/templates/blog/post_list_by_tag.html:9
+#: blog/templates/blog/post_list_by_tag.html:9 reporte_completo.txt:5672
 msgid "Posts by tag"
 msgstr "Publicacions per etiqueta"
 
-#: blog/templates/blog/post_list_by_tag.html:14
+#: blog/templates/blog/post_list_by_tag.html:14 reporte_completo.txt:5677
 msgid "Posts Tagged With"
 msgstr "Publicacions etiquetades amb"
 
-#: blog/templates/blog/post_list_by_tag.html:15
+#: blog/templates/blog/post_list_by_tag.html:15 reporte_completo.txt:5678
 msgid "Explore content related to this tag."
 msgstr "Exploreu contingut relacionat amb aquesta etiqueta."
 
-#: blog/templates/blog/post_list_by_tag.html:43
+#: blog/templates/blog/post_list_by_tag.html:43 reporte_completo.txt:5706
 msgid "No posts found for this tag yet."
 msgstr "Encara no s'han trobat publicacions per a aquesta etiqueta."
 
-#: blog/views.py:156
+#: blog/views.py:101 blog/views.py:214 blog/views.py:277 categories/views.py:44
+msgid "Blog"
+msgstr "El Nostre Blog"
+
+#: blog/views.py:182
 msgid "Thank you! Your comment has been published."
 msgstr "Gràcies! El vostre comentari ha estat publicat."
 
-#: blog/views.py:161
+#: blog/views.py:187
 msgid "Thank you! Your comment has been submitted and is awaiting moderation."
 msgstr "Gràcies! El vostre comentari ha estat enviat i espera la moderació."
 
@@ -690,7 +758,7 @@ msgstr "Categoria dels pares"
 msgid "Select a parent to create a sub-category."
 msgstr "Seleccioneu un progenitor per crear una subcategoria."
 
-#: categories/models.py:37 gallery/models.py:20
+#: categories/models.py:37 gallery/models.py:21
 msgid "Description"
 msgstr "Descripció"
 
@@ -714,14 +782,17 @@ msgid "Category"
 msgstr "Categoria"
 
 #: categories/templates/categories/category_tree.html:6
+#: reporte_completo.txt:3635
 msgid "All Categories"
 msgstr "Totes les categories"
 
-#: categories/templates/categories/category_tree.html:15
+#: categories/templates/categories/category_tree.html:19
+#: reporte_completo.txt:3644
 msgid "Explore Our Topics"
 msgstr "Exploreu els nostres temes"
 
-#: categories/templates/categories/category_tree.html:16
+#: categories/templates/categories/category_tree.html:20
+#: reporte_completo.txt:3645
 msgid "Navigate through our content organized by category."
 msgstr "Navegueu pel nostre contingut organitzat per categoria."
 
@@ -819,11 +890,12 @@ msgstr "Missatge de contacte"
 msgid "Contact Messages"
 msgstr "Missatges de contacte"
 
-#: contact/templates/contact/contact_form.html:6 templates/404.html:36
+#: contact/templates/contact/contact_form.html:6 reporte_completo.txt:3138
+#: reporte_completo.txt:5780 templates/404.html:36
 msgid "Contact Us"
 msgstr "Contacta amb nosaltres"
 
-#: contact/templates/contact/contact_form.html:7
+#: contact/templates/contact/contact_form.html:7 reporte_completo.txt:3139
 msgid ""
 "Get in touch with the Tavata team. We would love to hear about your project "
 "in Computer Vision or Natural Language Processing."
@@ -831,11 +903,11 @@ msgstr ""
 "Poseu-vos en contacte amb l’equip de Tavata. Ens encantaria parlar del "
 "vostre projecte en visió informàtica o processament d’idiomes naturals."
 
-#: contact/templates/contact/contact_form.html:17
+#: contact/templates/contact/contact_form.html:17 reporte_completo.txt:3149
 msgid "Get in Touch"
 msgstr "Poseu-vos en contacte"
 
-#: contact/templates/contact/contact_form.html:19
+#: contact/templates/contact/contact_form.html:19 reporte_completo.txt:3151
 msgid ""
 "Have a question or a project in mind? We're here to help. Fill out the form "
 "below and we will get back to you as soon as possible."
@@ -843,7 +915,7 @@ msgstr ""
 "Teniu en compte una pregunta o un projecte? Estem aquí per ajudar-vos. "
 "Ompliu el formulari següent i us tornarem al més aviat possible."
 
-#: contact/templates/contact/contact_form.html:77
+#: contact/templates/contact/contact_form.html:77 reporte_completo.txt:3209
 msgid "Send Message"
 msgstr "Enviar missatge"
 
@@ -851,77 +923,81 @@ msgstr "Enviar missatge"
 msgid "Thank you for your message! We will get back to you shortly."
 msgstr "Gràcies pel vostre missatge! Tornarem a arribar aviat."
 
-#: core/templates/core/partials/_footer.html:9
+#: core/templates/core/partials/_footer.html:10
 #, python-format
 msgid ""
-"&copy; %(year)s Tavata.art - Built with Django and <i class=\"fas fa-bee\"></"
-"i> by Gustavo and Tavata."
+"&copy; %(year)s Tavata.art - \"A Python and Django CMS project\" <i "
+"class=\"fas fa-bee\"></i> Fueled by Gustavo M. and Tavata D."
 msgstr ""
-"&copy; %(year)s Tavata.art - Construït amb Django i <i class=\"fas fa-"
-"bee\"></i> per Gustavo i Tavata."
+"&copy; %(year)s Tavata.art - \"Un projecte Python i Django CMS\" <i "
+"class=\"fas fa-bee\"></i> Combulat per Gustavo M. i Tavata D."
 
-#: core/templates/core/partials/_header.html:30
+#: core/templates/core/partials/_header.html:30 reporte_completo.txt:6861
 msgid "Search..."
 msgstr "Cercar..."
 
-#: core/templates/core/partials/_header.html:31
-#: search/templates/search/search_results.html:22
+#: core/templates/core/partials/_header.html:31 reporte_completo.txt:2847
+#: reporte_completo.txt:6862 search/templates/search/search_results.html:22
 msgid "Search"
 msgstr "Cercar"
 
-#: core/templates/core/partials/_header.html:49
+#: core/templates/core/partials/_header.html:49 reporte_completo.txt:6880
 #, python-format
 msgid "Hello, %(user_name)s"
 msgstr "Hola,%(user_name)s"
 
-#: core/templates/core/partials/_header.html:55
+#: core/templates/core/partials/_header.html:55 reporte_completo.txt:6886
 msgid "Log Out"
 msgstr "Tanqueu"
 
 #: core/templates/core/partials/_pagination.html:13
-#: core/templates/core/partials/_pagination.html:15
-#: widgets/templates/widgets/_post_carousel.html:42
+#: core/templates/core/partials/_pagination.html:15 reporte_completo.txt:6437
+#: reporte_completo.txt:6571 reporte_completo.txt:6969
+#: reporte_completo.txt:6971 widgets/templates/widgets/_post_carousel.html:42
 #: widgets/templates/widgets/partials/_post_carousel.html:46
 msgid "Previous"
 msgstr "Anterior"
 
 #: core/templates/core/partials/_pagination.html:29
-#: core/templates/core/partials/_pagination.html:31
-#: widgets/templates/widgets/_post_carousel.html:46
+#: core/templates/core/partials/_pagination.html:31 reporte_completo.txt:6441
+#: reporte_completo.txt:6575 reporte_completo.txt:6985
+#: reporte_completo.txt:6987 widgets/templates/widgets/_post_carousel.html:46
 #: widgets/templates/widgets/partials/_post_carousel.html:50
 msgid "Next"
 msgstr "El proper"
 
-#: core/templates/core/partials/_topbar.html:18 site_settings/models.py:60
+#: core/templates/core/partials/_topbar.html:18 reporte_completo.txt:6917
+#: site_settings/models.py:60
 msgid "Site Logo"
 msgstr "Logotip del lloc"
 
-#: core/templates/core/partials/_topbar.html:38
 #: core/templates/core/partials/_topbar.html:41
+#: core/templates/core/partials/_topbar.html:44 reporte_completo.txt:6940
+#: reporte_completo.txt:6943
 msgid "Advertisement"
 msgstr "Publicitat"
 
-#: gallery/models.py:17 gallery/models.py:27
+#: gallery/models.py:18 gallery/models.py:28
 msgid "Image"
 msgstr "Imatge"
 
-#: gallery/models.py:23
+#: gallery/models.py:24
 msgid "Uploaded at"
 msgstr "Carregada a"
 
-#: gallery/models.py:28
+#: gallery/models.py:29
 msgid "Images"
 msgstr "Imatge"
 
-#: gallery/templates/gallery/gallery_page.html:5
+#: gallery/templates/gallery/gallery_page.html:8 reporte_completo.txt:2288
 msgid "Image Gallery"
 msgstr "Galeria d'imatges"
 
-#: gallery/templates/gallery/gallery_page.html:18
+#: gallery/templates/gallery/gallery_page.html:21 reporte_completo.txt:2301
 msgid "Read more"
 msgstr "Llegir Més"
 
-#: gallery/templates/gallery/gallery_page.html:23
+#: gallery/templates/gallery/gallery_page.html:26 reporte_completo.txt:2306
 #, python-format
 msgid ""
 "\n"
@@ -932,21 +1008,25 @@ msgstr ""
 "                                    Publicat el %(date)s\n"
 "                                    "
 
-#: gallery/templates/gallery/gallery_page.html:33
+#: gallery/templates/gallery/gallery_page.html:36 reporte_completo.txt:2316
 msgid "No images in the gallery."
 msgstr "No hi ha imatges a la galeria."
 
-#: gallery/templates/gallery/image_detail.html:6
+#: gallery/templates/gallery/image_detail.html:6 reporte_completo.txt:2269
 msgid "Image Detail"
 msgstr "Deteriorament de la imatge"
 
-#: gallery/templates/gallery/image_detail.html:17
+#: gallery/templates/gallery/image_detail.html:17 reporte_completo.txt:2280
 msgid "Uploaded on"
 msgstr "Carregada a"
 
-#: gallery/templates/gallery/image_detail.html:18
+#: gallery/templates/gallery/image_detail.html:18 reporte_completo.txt:2281
 msgid "Back to Gallery"
 msgstr "Tornar a la Galeria"
+
+#: gallery/views.py:146
+msgid "Gallery"
+msgstr "Galeria d'imatges"
 
 #: menus/models.py:19
 msgid "Menu Title"
@@ -956,7 +1036,7 @@ msgstr "Títol del Menú"
 msgid "Menu"
 msgstr "Menú"
 
-#: menus/models.py:24
+#: menus/models.py:24 menus/views.py:12
 msgid "Menus"
 msgstr "Menús"
 
@@ -1045,15 +1125,15 @@ msgstr "Element de Menú"
 msgid "Menu Items"
 msgstr "Elements de Menú"
 
-#: pages/models.py:17
+#: pages/models.py:18
 msgid "Slug (URL friendly)"
 msgstr "Slug (URL amigable)"
 
-#: pages/models.py:32
+#: pages/models.py:33
 msgid "Is Homepage?"
 msgstr "És la pàgina d'inici?"
 
-#: pages/models.py:33
+#: pages/models.py:34
 msgid ""
 "Mark only one page with this option. If multiple are marked, the most recent "
 "one will be used."
@@ -1061,19 +1141,19 @@ msgstr ""
 "Marca només una pàgina amb aquesta opció. Si se'n marquen diverses, "
 "s'utilitzarà la més recent."
 
-#: pages/models.py:39
+#: pages/models.py:40
 msgid "Creation Date"
 msgstr "Data de Creació"
 
-#: pages/models.py:40
+#: pages/models.py:41
 msgid "Last Updated"
 msgstr "Última Actualització"
 
-#: pages/models.py:44
+#: pages/models.py:45
 msgid "Importance Order"
 msgstr "Ordre d’importació"
 
-#: pages/models.py:45
+#: pages/models.py:46
 msgid ""
 "A lower number means higher priority in search results. E.g., 1 for 'About "
 "Us', 2 for 'Contact', 99 for others."
@@ -1082,25 +1162,26 @@ msgstr ""
 "cerca. Per exemple, 1 per a \"Sobre nosaltres\", 2 per a \"Contacte\", 99 "
 "per a altres."
 
-#: pages/models.py:54
+#: pages/models.py:55
 msgid "page"
 msgstr "pàgina"
 
-#: pages/models.py:55
+#: pages/models.py:56
 msgid "pages"
 msgstr "pàgines"
 
 #: pages/templates/pages/page_detail.html:18
-#: pages/templates/pages/page_detail.html:105
+#: pages/templates/pages/page_detail.html:108 reporte_completo.txt:1816
 msgid "Welcome to Tavata CMS!"
 msgstr "Benvingut a Tavata CMS!"
 
-#: pages/templates/pages/page_detail.html:27
+#: pages/templates/pages/page_detail.html:27 reporte_completo.txt:1738
 msgid "Welcome"
 msgstr "Benvingut!"
 
 #: pages/templates/pages/page_detail.html:36
-#: pages/templates/pages/page_detail.html:106
+#: pages/templates/pages/page_detail.html:109 reporte_completo.txt:1747
+#: reporte_completo.txt:1817
 msgid ""
 "Content is being prepared. An administrator needs to configure a homepage "
 "from the admin panel."
@@ -1108,7 +1189,7 @@ msgstr ""
 "S’està preparant el contingut. Un administrador ha de configurar una pàgina "
 "d'inici del quadre d'administració."
 
-#: pages/templates/pages/page_detail.html:65
+#: pages/templates/pages/page_detail.html:68 reporte_completo.txt:1776
 #, python-format
 msgid ""
 "\n"
@@ -1120,12 +1201,20 @@ msgstr ""
 "%(updated_date)s\n"
 "                  "
 
-#: pages/templates/pages/pages_by_category.html:7
+#: pages/templates/pages/page_directory.html:8
+msgid "Pages by Category"
+msgstr "Pàgines per categoria"
+
+#: pages/templates/pages/page_directory.html:24
+msgid "There are no pages with categories to display."
+msgstr "No hi ha pàgines amb categories per mostrar."
+
+#: pages/templates/pages/pages_by_category.html:7 reporte_completo.txt:1655
 #, python-format
 msgid "Pages in %(category.name)s"
 msgstr "Pàgines a %(category.name)s"
 
-#: pages/templates/pages/pages_by_category.html:17
+#: pages/templates/pages/pages_by_category.html:20 reporte_completo.txt:1665
 #, python-format
 msgid ""
 "\n"
@@ -1138,7 +1227,7 @@ msgstr ""
 "primary\">%(category.name)s</span>\n"
 "         "
 
-#: pages/templates/pages/pages_by_category.html:41
+#: pages/templates/pages/pages_by_category.html:44 reporte_completo.txt:1689
 #, python-format
 msgid ""
 "\n"
@@ -1149,34 +1238,107 @@ msgstr ""
 "                                    Publicat el %(updated_date)s\n"
 "                                    "
 
-#: pages/templates/pages/pages_by_category.html:52
+#: pages/templates/pages/pages_by_category.html:55 reporte_completo.txt:1700
 msgid "There are currently no published pages in this category."
 msgstr "Actualment no hi ha pàgines publicades en aquesta categoria."
 
-#: search/templates/search/search_results.html:9
+#: pages/views.py:20 pages/views.py:65
+msgid "Pages"
+msgstr "Pàgines"
+
+#: reporte_completo.txt:1729
+msgid "Welcome to TAVATA!"
+msgstr "Benvingut a Tavata CMS!"
+
+#: reporte_completo.txt:2834 search/templates/search/search_results.html:9
 msgid "Search results for:"
 msgstr "Resultats de la cerca per a:"
 
-#: search/templates/search/search_results.html:14
+#: reporte_completo.txt:2839 search/templates/search/search_results.html:14
+#, fuzzy
 msgid "1 result found."
 msgstr "1 resultat trobat."
 
-#: search/templates/search/search_results.html:16
+#: reporte_completo.txt:2841 search/templates/search/search_results.html:16
 #, python-format
 msgid "%(count)s results found."
 msgstr "%(count)s resultats trobats."
 
-#: search/templates/search/search_results.html:23
+#: reporte_completo.txt:2848 search/templates/search/search_results.html:23
 msgid "Please enter a term in the search bar above."
 msgstr "Si us plau, introdueix un terme a la barra de cerca."
 
-#: search/templates/search/search_results.html:31
+#: reporte_completo.txt:2856 search/templates/search/search_results.html:31
 msgid "Pages Found"
 msgstr "Pàgines Trobades"
 
-#: search/templates/search/search_results.html:49
+#: reporte_completo.txt:2874 search/templates/search/search_results.html:49
 msgid "Blog Posts Found"
 msgstr "Entrades de Blog Trobades"
+
+#: reporte_completo.txt:5750 reporte_completo.txt:5767 templates/404.html:6
+#: templates/404.html:23
+msgid "Page Not Found"
+msgstr "Pàgina no trobada"
+
+#: reporte_completo.txt:5771 templates/404.html:27
+msgid ""
+"Oops! It seems the page you were looking for doesn't exist or has been moved."
+msgstr "Vaja! Sembla que la pàgina que buscaves no existeix ni s’ha mogut."
+
+#: reporte_completo.txt:5777 templates/404.html:33
+msgid "Go to Homepage"
+msgstr "Vés a la pàgina d'inici"
+
+#: reporte_completo.txt:6387 widgets/templates/widgets/render_zone.html:32
+#, python-format
+msgid ""
+"\n"
+"                <strong>Widget Error:</strong> Template for widget type "
+"\"%(widget_type)s\" not found in the dispatcher.\n"
+"            "
+msgstr ""
+"\n"
+"                <strong>Error de widget: </strong> Plantilla per a tipus "
+"widget \"%(widget_type)s\" que no es troba al despatxador.\n"
+"            "
+
+#: reporte_completo.txt:6445 reporte_completo.txt:6579
+#: widgets/templates/widgets/_post_carousel.html:50
+#: widgets/templates/widgets/partials/_post_carousel.html:54
+msgid "No posts available for the carousel."
+msgstr "No hi ha publicacions disponibles per al carrusel."
+
+#: reporte_completo.txt:6484
+#: widgets/templates/widgets/partials/_blog_categories_widget.html:37
+msgid "No categories with posts available."
+msgstr "No hi ha categories disponibles."
+
+#: reporte_completo.txt:6521
+#: widgets/templates/widgets/partials/_posts_widget.html:33
+msgid "No items to display."
+msgstr "No hi ha articles a mostrar."
+
+#: reporte_completo.txt:6609
+#: widgets/templates/widgets/partials/_post_grid.html:28
+#, python-format
+msgid ""
+"\n"
+"                                Published on %(date)s\n"
+"                            "
+msgstr ""
+"\n"
+"                                    Publicat el %(date)s\n"
+"                                    "
+
+#: reporte_completo.txt:7098
+#, python-format
+msgid ""
+"&copy; %(year)s Tavata.art - Built with Django and <i class=\"fas fa-bee\"></"
+"i> by Gustavo and Tavata."
+msgstr ""
+"&copy; %(year)s Tavata.art - Construït amb Django i <i class=\"fas fa-"
+"bee\"></i> per Gustavo i Tavata."
 
 #: site_settings/models.py:14
 msgid "Items per Page in Blog/Category lists"
@@ -1323,28 +1485,15 @@ msgstr "L’URL a la qual s’enllaçarà la imatge de la pancarta."
 msgid "Site Configuration"
 msgstr "Configuració del lloc"
 
-#: templates/404.html:6 templates/404.html:23
-msgid "Page Not Found"
-msgstr "Pàgina no trobada"
-
-#: templates/404.html:27
-msgid ""
-"Oops! It seems the page you were looking for doesn't exist or has been moved."
-msgstr "Vaja! Sembla que la pàgina que buscaves no existeix ni s’ha mogut."
-
-#: templates/404.html:33
-msgid "Go to Homepage"
-msgstr "Vés a la pàgina d'inici"
-
-#: tvt/settings.py:190
+#: tvt/settings.py:191
 msgid "Spanish"
 msgstr "Espanyol"
 
-#: tvt/settings.py:191
+#: tvt/settings.py:192
 msgid "English"
 msgstr "Anglès"
 
-#: tvt/settings.py:192
+#: tvt/settings.py:193
 msgid "Català"
 msgstr "Català"
 
@@ -1510,43 +1659,6 @@ msgstr "Widget"
 #: widgets/models.py:153
 msgid "Widgets"
 msgstr "Widgets"
-
-#: widgets/templates/widgets/_post_carousel.html:50
-#: widgets/templates/widgets/partials/_post_carousel.html:54
-msgid "No posts available for the carousel."
-msgstr "No hi ha publicacions disponibles per al carrusel."
-
-#: widgets/templates/widgets/partials/_blog_categories_widget.html:37
-msgid "No categories with posts available."
-msgstr "No hi ha categories disponibles."
-
-#: widgets/templates/widgets/partials/_post_grid.html:28
-#, python-format
-msgid ""
-"\n"
-"                                Published on %(date)s\n"
-"                            "
-msgstr ""
-"\n"
-"                                    Publicat el %(date)s\n"
-"                                    "
-
-#: widgets/templates/widgets/partials/_posts_widget.html:33
-msgid "No items to display."
-msgstr "No hi ha articles a mostrar."
-
-#: widgets/templates/widgets/render_zone.html:32
-#, python-format
-msgid ""
-"\n"
-"                <strong>Widget Error:</strong> Template for widget type "
-"\"%(widget_type)s\" not found in the dispatcher.\n"
-"            "
-msgstr ""
-"\n"
-"                <strong>Error de widget: </strong> Plantilla per a tipus "
-"widget \"%(widget_type)s\" que no es troba al despatxador.\n"
-"            "
 
 #~ msgid "Don't have an account?"
 #~ msgstr "No teniu cap compte?"

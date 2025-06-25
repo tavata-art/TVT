@@ -5,6 +5,7 @@ from django.db.models import F
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.utils.translation import gettext
+from django.urls import reverse
 
 from .forms import CommentForm
 from .models import Post, Comment
@@ -95,12 +96,37 @@ def post_list_view(request):
 
     # 5. Prepare the context to be passed to the template.
     #    The 'posts' variable is now a Paginator's Page object, not a simple list.
+    breadcrumbs = [
+        {"url": "/", "label": gettext("Home")},
+        {"url": "", "label": gettext("Blog")},
+    ]
     context = {
         'posts': posts,
+        "breadcrumbs": breadcrumbs,
     }
 
     # 6. Render the template with the provided context.
     return render(request, 'blog/post_list.html', context)
+
+def get_category_depth(category):
+    depth = 0
+    current = category
+    while current.parent:
+        depth += 1
+        current = current.parent
+    return depth
+
+def build_category_breadcrumbs(category):
+    """Devuelve una lista de dicts desde la raíz hasta la categoría"""
+    path = []
+    current = category
+    while current:
+        path.append({
+            "url": reverse("blog:posts_by_category", args=[current.slug]),
+            "label": current.name,
+        })
+        current = current.parent
+    return reversed(path)  # children to father
 
 def post_detail_view(request, year, month, day, slug):
     """
@@ -174,14 +200,42 @@ def post_detail_view(request, year, month, day, slug):
         comment_form = CommentForm(user=request.user)
 
     # 4. Prepare the final context for the template.
-    # ----------------------------------------------------
+    # ----------------------------------------------------l
+    categories = list(post.categories.all())
+    if categories:
+        # Ordenar por (profundidad en el árbol, fecha de creación)
+        categories.sort(key=lambda c: (get_category_depth(c), c.id))
+        category = categories[0]
+    else:
+        category = None
+
+    breadcrumbs = [
+        {"url": "/", "label": gettext("Home")},
+        {"url": reverse("blog:post_list"), "label": gettext("Blog")},  # o "Noticias", según el nombre
+    ]
+    if category:
+        breadcrumbs += list(build_category_breadcrumbs(category))
+
+    breadcrumbs.append({"url": "", "label": post.title})
     context = {
         'post': post,
         'comments': comments,
         'comment_form': comment_form,
+        "breadcrumbs": breadcrumbs,
         'translatable_object': post,
     }
     return render(request, 'blog/post_detail.html', context)
+
+def build_category_breadcrumbs(category):
+    path = []
+    current = category
+    while current:
+        path.append({
+            "url": reverse("blog:posts_by_category", args=[current.slug]),
+            "label": current.name,
+        })
+        current = current.parent
+    return reversed(path)
 
 def posts_by_category_view(request, category_slug):
     """
@@ -218,8 +272,15 @@ def posts_by_category_view(request, category_slug):
         posts = paginator.page(paginator.num_pages)
 
     # --- 4. Prepare Context and Render ---
+    breadcrumbs = [
+        {"url": "/", "label": gettext("Home")},
+        {"url": reverse("blog:post_list"), "label": gettext("Blog")},
+    ]
+    breadcrumbs += list(build_category_breadcrumbs(category))
+
     context = {
         'category': category,
+        "breadcrumbs": breadcrumbs,
         'posts': posts,  # Pass the paginated 'posts' object
     }
     return render(request, 'blog/post_list_by_category.html', context)

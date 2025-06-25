@@ -1,11 +1,19 @@
-<!-- File: menus/templates/menus/menu_page.html -->
 {% extends 'core/base.html' %}
 {% load i18n %}
-{% load menu_tags %}
 
-{% block title %}Menu Test Page{% endblock %}
+{% block breadcrumbs %}
+  {% include "core/partials/_breadcrumbs.html" %}
+{% endblock %}
+
+{% block title %}
+  {{ menu.title }}
+{% endblock %}
 
 {% block content %}
-    <h1>Visualización del Menú Principal</h1>
-    {% render_menu_tree 'main-menu' %}
+  <h1>{{ menu.title }}</h1>
+  <ul class="menu-tree">
+    {% for item in menu_items %}
+      {% include "menus/partials/_menu_item.html" with item=item %}
+    {% endfor %}
+  </ul>
 {% endblock %}

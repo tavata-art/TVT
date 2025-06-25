@@ -7,6 +7,9 @@
 {% block seo_description %}{% translate "Latest articles and updates on Computer Vision, Natural Language Processing, and more from the Tavata team." %}{% endblock %}
 {% block title %}{% translate "Our Blog" %}{% endblock %}
 
+{% block breadcrumbs %}
+  {% include "core/partials/_breadcrumbs.html" %}
+{% endblock %}
 
 {% block content %}
 <div class="container mt-5">

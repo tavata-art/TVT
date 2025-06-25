@@ -5,11 +5,7 @@ from . import views
 app_name = 'pages' # <-- AÑADIMOS ESTA LÍNEA
 
 urlpatterns = [
-    # NUEVA RUTA: Recibirá un 'slug' de categoría como parámetro
-    # Ejemplo: /pages/category/tutoriales/
-    path('category/<slug:category_slug>/', views.pages_by_category_view, name='pages_by_category'),
-
-    # Ruta existente para el detalle de una página
-    # Ejemplo: /pages/sobre-nosotros/
-    path('<slug:slug>/', views.page_detail_view, name='page_detail'),
+    path("directory/", views.pages_with_category_view, name="directory"),  # primero
+    path("category/<slug:category_slug>/", views.pages_by_category_view, name="pages_by_category"),
+    path("<slug:slug>/", views.page_detail_view, name="page_detail"),  # último
 ]

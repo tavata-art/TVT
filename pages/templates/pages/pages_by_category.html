@@ -6,6 +6,9 @@
 {% block seo_description %}{{ category.meta_description|default:"" }}{% endblock %}
 {% block title %}{% blocktranslate %}Pages in {{ category.name }}{% endblocktranslate %}{% endblock %}
 
+{% block breadcrumbs %}
+  {% include "core/partials/_breadcrumbs.html" %}
+{% endblock %}
 
 {% block content %}
 <div class="container mt-5">

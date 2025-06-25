@@ -37,8 +37,16 @@
     {% include 'core/partials/_language_selector_bar.html' %}
     {# --- END NEW --- #}
 
+    {% block breadcrumbs %}
+    <div class="breadcrumb-wrapper mt-3 mb-3">
+        <div class="container-xl px-4">
+            {% include "core/partials/_breadcrumbs.html" %}
+        </div>
+    </div>
+    {% endblock %}
+
     {# --- MAIN CONTENT AREA --- #}
-    <main class="container-fluid flex-grow-1 py-4">
+    <main class="container-fluid flex-grow-1 pt-0 pb-4">
         <div class="row">
 
             {# Left Sidebar: Hidden on small screens, appears on medium and larger screens #}
@@ -62,9 +70,6 @@
                         </div>
                     {% endif %}
                 {% endblock messages %}
-                
-                {# Breadcrumbs block for navigation context on inner pages #}
-                {% block breadcrumbs %}{% endblock breadcrumbs %}
                 
                 {# Main content block, which child templates will override #}
                 <div class="mt-4">

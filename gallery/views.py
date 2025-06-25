@@ -9,6 +9,8 @@ from site_settings.models import SiteConfiguration # For pagination settings
 from blog.models import Post # For collecting featured images from posts
 from pages.models import Page # For collecting featured images from pages (assuming it has featured_image)
 from .models import Image # For images specifically in the gallery app
+from django.utils.translation import gettext
+from django.urls import reverse
 import logging
 import datetime
 
@@ -139,9 +141,13 @@ def gallery_view(request):
             images_on_page = [] # No pages to display if paginator has 0 pages
     
     logger.info(f"Gallery view accessed. Showing page {getattr(images_on_page, 'number', 0)} of {getattr(images_on_page, 'paginator.num_pages', 0)} images.")
-
+    breadcrumbs = [
+        {"url": "/", "label": gettext("Home")},
+        {"url": "", "label": gettext("Gallery")},
+    ]
     context = {
-        'images': images_on_page # Passed to template as 'images'
+        'images': images_on_page, # Passed to template as 'images'
+        "breadcrumbs": breadcrumbs,
     }
 
     return render(request, 'gallery/gallery_page.html', context)
@@ -156,3 +162,4 @@ def image_detail_view(request, pk):
     }
     # Create this template: gallery/templates/gallery/image_detail.html
     return render(request, 'gallery/image_detail.html', context)
+

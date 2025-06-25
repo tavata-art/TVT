@@ -10,6 +10,9 @@
 {# This sets the browser tab's title. #}
 {% block title %}{% blocktranslate %}Posts in {{ category.name }}{% endblocktranslate %}{% endblock %}
 
+{% block breadcrumbs %}
+  {% include "core/partials/_breadcrumbs.html" %}
+{% endblock %}
 
 {% block content %}
 <div class="container mt-5">

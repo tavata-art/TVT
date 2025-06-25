@@ -1,0 +1,21 @@
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/sextavac/tvt"
+PassengerBaseURI "/"
+PassengerPython "/home/sextavac/virtualenv/tvt/3.11/bin/python"
+PassengerAppLogFile "/home/sextavac/tvt/logs/passenger.logs"
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
+<IfModule Litespeed>
+SetEnv ALLOWED_HOSTS tavata.art,www.tavata.art
+SetEnv DB_HOST localhost
+SetEnv DB_NAME sextavac_tvt_db
+SetEnv DB_PASSWORD .......................
+SetEnv DB_PORT 3306
+SetEnv DB_USER sextavac_tvt_db_user
+SetEnv EMAIL_BACKEND django.core.mail.backends.console.EmailBackend
+SetEnv ENGINE django.db.backends.mysql
+SetEnv ENVIRONMENT production
+SetEnv SECRET_KEY ..........................................
+SetEnv DEBUG True
+</IfModule>
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END

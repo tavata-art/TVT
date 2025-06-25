@@ -5,6 +5,8 @@ from .models import Page
 from categories.models import Category
 from django.core.paginator import Paginator # Asegúrate de importar Paginator
 from site_settings.models import SiteConfiguration
+from django.utils.translation import gettext
+from django.urls import reverse
 
 logger = logging.getLogger(__name__)
 
@@ -13,10 +15,16 @@ def page_detail_view(request, slug):
     # Si no la encuentra, automáticamente devuelve un error 404.
     page = get_object_or_404(Page, slug=slug, status='published')
 
-    # El contexto es el diccionario de datos que pasamos a la plantilla.
+    breadcrumbs = [
+    {"url": "/", "label": gettext("Home")},
+    {"url": reverse("pages:directory"), "label": gettext("Pages")},
+    {"url": "", "label": page.title},
+]
+
     context = {
         'page': page,
         'translatable_object': page,
+        "breadcrumbs": breadcrumbs,
     }
 
     return render(request, 'pages/page_detail.html', context)
@@ -47,4 +55,18 @@ def pages_by_category_view(request, category_slug):
         'pages_list': pages_list, # Pasamos el objeto paginado
     }
     return render(request, 'pages/pages_by_category.html', context)
+
+
+def pages_with_category_view(request):
+    pages = Page.objects.filter(categories__isnull=False)
+
+    breadcrumbs = [
+        {"url": "/", "label": gettext("Home")},
+        {"url": "", "label": gettext("Pages")},
+    ]
+
+    return render(request, "pages/page_directory.html", {
+        "pages": pages,
+        "breadcrumbs": breadcrumbs,
+    })
    

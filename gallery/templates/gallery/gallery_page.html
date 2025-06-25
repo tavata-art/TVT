@@ -1,5 +1,8 @@
 {% extends 'core/base.html' %}
 {% load i18n %}
+{% block breadcrumbs %}
+  {% include "core/partials/_breadcrumbs.html" %}
+{% endblock %}
 {% block content %}
 <div class="container py-4">
   <h1 class="mb-4 text-center">{% trans "Image Gallery" %}</h1>
