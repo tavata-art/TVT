@@ -106,6 +106,26 @@
     
     {# Block for extra, page-specific JavaScript #}
     {% block extra_js %}{% endblock %}
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("img.zoomable").forEach(function(img) {
+        img.addEventListener("click", function() {
+        const overlay = document.createElement("div");
+        overlay.classList.add("image-modal-overlay");
 
+        const modalImg = document.createElement("img");
+        modalImg.src = this.src;
+        modalImg.alt = this.alt || "";
+
+        overlay.appendChild(modalImg);
+        document.body.appendChild(overlay);
+
+        overlay.addEventListener("click", function () {
+            overlay.remove();
+        });
+        });
+    });
+    });
+    </script>
 </body>
 </html>

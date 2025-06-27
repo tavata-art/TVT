@@ -1,9 +1,11 @@
 <!-- File: blog/templates/blog/post_detail.html -->
 {% extends 'core/base.html' %}
+{% load custom_filters %}
 {% load static %}
 {% load i18n %}
 {% load mptt_tags %}
 {% load widget_tags %}
+
 
 {# --- SEO and Browser Tab Title Blocks --- #}
 {% block seo_title %}{{ post.meta_title|default:post.title }}{% endblock %}
@@ -30,7 +32,9 @@
     <div class="post-detail-container">
         <!-- 1. Post Header -->
         {% if post.featured_image %}
-            <img src="{{ post.featured_image.url }}" class="img-fluid rounded mb-4 shadow" alt="{{ post.title }}">
+            <img src="{{ post.featured_image.url }}"
+                alt="{{ post.title }}"
+                class="zoomable img-fluid rounded mb-4 shadow">
         {% endif %}
         <h1 class="fw-bold">{{ post.title }}</h1>
         <p class="text-muted small">
@@ -64,7 +68,7 @@
         <hr class="my-4">
         <!-- 2. Post Body -->
         <div class="post-content fs-5">
-            {{ post.content|safe }}
+            {{ post.content|add_zoom_class_to_images|safe }}
         </div>
 
         <!-- 3. Comments Section -->

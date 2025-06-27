@@ -2,6 +2,7 @@
 {% extends 'core/base.html' %}
 {% load i18n %}
 {% load static %}
+{% load custom_filters %}
 {% load widget_tags %} {# Ensure widget_tags is loaded for show_widget_zone #}
 
 {# This template is used to render single static pages and the dynamic homepage. #}
@@ -86,7 +87,12 @@
 
                 <!-- 4. Main Page Content (from WYSIWYG editor) -->
                 <div class="page-content fs-5">
-                    {{ page.content|safe }}
+                    {% if page.featured_image %}
+                    <img src="{{ page.featured_image.url }}"
+                        alt="{{ page.title }}"
+                        class="zoomable img-fluid rounded mb-4 shadow">
+                    {% endif %}
+                    {{ page.content|add_zoom_class_to_images|safe }}
                 </div>
 
             </div>

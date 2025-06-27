@@ -28,7 +28,7 @@
                     <div class="carousel-item {% if forloop.first %}active{% endif %}">
                         {# Assuming 'item' is a Post object and has 'featured_image.url' and 'title' #}
                         {# You might need to adjust 'item_obj.featured_image' to 'item.featured_image' #}
-                        <img src="{{ item.featured_image.url }}" class="d-block w-100 carousel-img" alt="{{ item.title }}" style="height: 400px; object-fit: cover;">
+                        <img src="{{ item.featured_image.url }}" class="zoomable w-100 carousel-img" alt="{{ item.title }}" style="height: 400px; object-fit: cover;">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>{{ item.title }}</h5>
                             <p>{{ item.content|striptags|truncatechars:100 }}</p>

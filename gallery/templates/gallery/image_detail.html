@@ -12,7 +12,7 @@
         <p class="lead">{{ image.description }}</p>
     {% endif %}
     {% if image.image %}
-        <img src="{{ image.image.url }}" alt="{{ image.title }}" class="img-fluid rounded shadow" style="max-width: 800px;">
+        <img src="{{ image.image.url }}" alt="{{ image.title }}" class="zoomable img-fluid rounded shadow" style="max-width: 800px;">
     {% endif %}
     <p class="mt-4 text-muted">{% translate "Uploaded on" %} {{ image.uploaded_at|date:"DATE_FORMAT" }}</p>
     <p class="mt-4"><a href="{% url 'gallery:gallery_view' %}">{% translate "Back to Gallery" %}</a></p>
