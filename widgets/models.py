@@ -39,6 +39,7 @@ class Widget(models.Model):
 
         POST_CAROUSEL = 'post_carousel', _("Post Carousel")
         USER_DIRECTORY = 'user_directory', _("User Directory")
+        TESTIMONIALS = 'testimonials', _("Testimonials")
 
         # We can easily add more types in the future:
         # PAGE_LIST = 'page_list', _('List of Pages')

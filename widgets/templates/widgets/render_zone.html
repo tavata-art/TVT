@@ -29,6 +29,10 @@
     {% elif data.widget.widget_type == 'user_directory' %}
         {% include 'widgets/partials/_user_directory.html' with widget=data.widget items=data.items request=request %}
 
+    {# --- CASE FOR TESTIMONIALS --- #}
+    {% elif data.widget.widget_type == 'testimonials' %}
+        {% include 'widgets/partials/_testimonials.html' with widget=data.widget items=data.items request=request %}
+
     {# You can add more 'elif' blocks here for future widget types, like 'page_list', etc. #}
     {# Default Case: If the widget type is not recognized, show a helpful debug message. #}
     {% else %}

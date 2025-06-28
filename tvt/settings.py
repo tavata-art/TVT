@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'solo',
     'mptt',
     'taggit',
+    'parler',
 
     # 4. Nuestras Propias Aplicaciones
     'core.apps.CoreConfig',
@@ -81,6 +82,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'categories.apps.CategoriesConfig',
     'gallery.apps.GalleryConfig',
+    'testimonials',
 ]
 
 MIDDLEWARE = [
@@ -189,10 +191,24 @@ LANGUAGE_CODE = 'en'
 
 # Lista de idiomas disponibles
 LANGUAGES = [
-    ('es', _('Spanish')),
+    ('es', _('Español')),
     ('en', _('English')),
     ('ca', _('Català')),
 ]
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'es'},
+        {'code': 'en'},
+        {'code': 'ca'},
+    ),
+    'default': {
+        'fallbacks': ['es'],
+        'hide_untranslated': False,
+        'redirect_on_fallback': False,
+    }
+}
+PARLER_ENABLE_CACHING = False 
 
 # Rutas donde Django buscará los archivos de traducción (.po/.mo)
 LOCALE_PATHS = [

@@ -37,6 +37,7 @@ urlpatterns += i18n_patterns(
     path('blog/', include('blog.urls', namespace='blog')),
     path('contact/', include('contact.urls', namespace='contact')),
     path('gallery/', include('gallery.urls', namespace='gallery')),
+    path('testimonials/', include('testimonials.urls', namespace='testimonials')),
     path('', include('core.urls')),
 )
 

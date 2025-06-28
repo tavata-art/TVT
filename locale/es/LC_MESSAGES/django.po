@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-25 20:51+0000\n"
-"PO-Revision-Date: 2025-06-25 22:53+0200\n"
+"POT-Creation-Date: 2025-06-28 16:03+0000\n"
+"PO-Revision-Date: 2025-06-28 18:27+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -182,7 +182,7 @@ msgid "Comments by"
 msgstr "Comentarios de"
 
 #: accounts/templates/accounts/public_profile_view.html:69
-#: blog/templates/blog/post_detail.html:91 reporte_completo.txt:867
+#: blog/templates/blog/post_detail.html:95 reporte_completo.txt:867
 #: reporte_completo.txt:5475
 msgid "ago"
 msgstr "hace"
@@ -459,7 +459,7 @@ msgstr "¡Su perfil ha sido actualizado con éxito!"
 #: accounts/views.py:154 accounts/views.py:209 blog/views.py:100
 #: blog/views.py:213 blog/views.py:276 categories/views.py:17
 #: categories/views.py:44 gallery/views.py:145 menus/views.py:11
-#: pages/views.py:19 pages/views.py:64
+#: pages/views.py:19 pages/views.py:64 testimonials/views.py:9
 msgid "Home"
 msgstr "Inicio"
 
@@ -467,9 +467,9 @@ msgstr "Inicio"
 msgid "Users"
 msgstr "Usuarios"
 
-#: blog/admin.py:143 blog/models.py:40 blog/templates/blog/post_detail.html:45
+#: blog/admin.py:143 blog/models.py:40 blog/templates/blog/post_detail.html:49
 #: categories/models.py:58 categories/views.py:18 pages/admin.py:85
-#: pages/models.py:27 pages/templates/pages/page_detail.html:76
+#: pages/models.py:27 pages/templates/pages/page_detail.html:77
 #: reporte_completo.txt:1784 reporte_completo.txt:5429
 msgid "Categories"
 msgstr "Categorías"
@@ -503,7 +503,7 @@ msgstr "Título"
 msgid "Slug"
 msgstr "Slug"
 
-#: blog/models.py:22 pages/models.py:21
+#: blog/models.py:22 pages/models.py:21 testimonials/models.py:8
 msgid "Author"
 msgstr "Autor"
 
@@ -545,7 +545,7 @@ msgstr ""
 "Una puntuación de 0-100 para presentar esta publicación. Los números más "
 "altos aparecen primero."
 
-#: blog/models.py:58 blog/templates/blog/post_detail.html:56
+#: blog/models.py:58 blog/templates/blog/post_detail.html:60
 #: reporte_completo.txt:5440
 msgid "Tags"
 msgstr "Etiquetas"
@@ -598,7 +598,7 @@ msgstr "comentario"
 msgid "comments"
 msgstr "comentarios"
 
-#: blog/templates/blog/post_detail.html:39 reporte_completo.txt:5423
+#: blog/templates/blog/post_detail.html:43 reporte_completo.txt:5423
 #, python-format
 msgid ""
 "\n"
@@ -609,30 +609,30 @@ msgstr ""
 "                 Publicado el %(published_date)s por %(author)s\n"
 "                "
 
-#: blog/templates/blog/post_detail.html:73 reporte_completo.txt:5457
+#: blog/templates/blog/post_detail.html:77 reporte_completo.txt:5457
 #, python-format
 msgid "%(count)s Comment"
 msgid_plural "%(count)s Comments"
 msgstr[0] "%(count)s Comentario"
 msgstr[1] "%(count)s Comentarios"
 
-#: blog/templates/blog/post_detail.html:92 reporte_completo.txt:5476
+#: blog/templates/blog/post_detail.html:96 reporte_completo.txt:5476
 msgid "Reply"
 msgstr "Respuesta"
 
-#: blog/templates/blog/post_detail.html:123 reporte_completo.txt:5507
+#: blog/templates/blog/post_detail.html:127 reporte_completo.txt:5507
 msgid "Leave a Comment"
 msgstr "Deja un Comentario"
 
-#: blog/templates/blog/post_detail.html:145 reporte_completo.txt:5529
+#: blog/templates/blog/post_detail.html:149 reporte_completo.txt:5529
 msgid "Submit Comment"
 msgstr "Comenta"
 
-#: blog/templates/blog/post_detail.html:176 reporte_completo.txt:5560
+#: blog/templates/blog/post_detail.html:180 reporte_completo.txt:5560
 msgid "Cancel Reply"
 msgstr "Cancelar respuesta"
 
-#: blog/templates/blog/post_detail.html:185 reporte_completo.txt:5569
+#: blog/templates/blog/post_detail.html:189 reporte_completo.txt:5569
 msgid "Reply to"
 msgstr "Responder a"
 
@@ -1073,7 +1073,7 @@ msgstr ""
 msgid "Link Text"
 msgstr "Texto del Enlace"
 
-#: menus/models.py:70 widgets/models.py:65
+#: menus/models.py:70 widgets/models.py:66
 msgid "Display Order"
 msgstr "Mostrar Orden"
 
@@ -1172,17 +1172,17 @@ msgstr "página"
 msgid "pages"
 msgstr "páginas"
 
-#: pages/templates/pages/page_detail.html:18
-#: pages/templates/pages/page_detail.html:108 reporte_completo.txt:1816
+#: pages/templates/pages/page_detail.html:19
+#: pages/templates/pages/page_detail.html:114 reporte_completo.txt:1816
 msgid "Welcome to Tavata CMS!"
 msgstr "¡Bienvenido a Tavata CMS!"
 
-#: pages/templates/pages/page_detail.html:27 reporte_completo.txt:1738
+#: pages/templates/pages/page_detail.html:28 reporte_completo.txt:1738
 msgid "Welcome"
 msgstr "¡Bienvenido!"
 
-#: pages/templates/pages/page_detail.html:36
-#: pages/templates/pages/page_detail.html:109 reporte_completo.txt:1747
+#: pages/templates/pages/page_detail.html:37
+#: pages/templates/pages/page_detail.html:115 reporte_completo.txt:1747
 #: reporte_completo.txt:1817
 msgid ""
 "Content is being prepared. An administrator needs to configure a homepage "
@@ -1191,7 +1191,7 @@ msgstr ""
 "Sitio en construcción. Por favor, configura una página de inicio desde el "
 "panel de administración."
 
-#: pages/templates/pages/page_detail.html:68 reporte_completo.txt:1776
+#: pages/templates/pages/page_detail.html:69 reporte_completo.txt:1776
 #, python-format
 msgid ""
 "\n"
@@ -1291,7 +1291,7 @@ msgstr ""
 msgid "Go to Homepage"
 msgstr "Ir a la página de inicio"
 
-#: reporte_completo.txt:6387 widgets/templates/widgets/render_zone.html:36
+#: reporte_completo.txt:6387 widgets/templates/widgets/render_zone.html:40
 #, python-format
 msgid ""
 "\n"
@@ -1489,15 +1489,47 @@ msgstr "La URL a la que se vinculará la imagen del banner."
 msgid "Site Configuration"
 msgstr "Configuración del Sitio"
 
-#: tvt/settings.py:191
-msgid "Spanish"
+#: testimonials/models.py:7
+msgid "Quote"
+msgstr "cita"
+
+#: testimonials/models.py:9
+msgid "Title or Role"
+msgstr "Título o Rol"
+
+#: testimonials/models.py:12
+msgid "Photo"
+msgstr "Fotografía"
+
+#: testimonials/models.py:13
+msgid "Visible"
+msgstr "Visible"
+
+#: testimonials/models.py:17
+msgid "Testimonial"
+msgstr "Testimonio"
+
+#: testimonials/models.py:18
+#: testimonials/templates/testimonials/testimonial_list.html:4
+#: testimonials/templates/testimonials/testimonial_list.html:5
+#: testimonials/views.py:10 widgets/models.py:42
+msgid "Testimonials"
+msgstr "Testimonios"
+
+#: testimonials/templates/testimonials/testimonial_list.html:6
+#: testimonials/templates/testimonials/testimonial_list.html:14
+msgid "What our users are saying"
+msgstr "Lo que dicen nuestros usuarios"
+
+#: tvt/settings.py:194
+msgid "Español"
 msgstr "Español"
 
-#: tvt/settings.py:192
+#: tvt/settings.py:195
 msgid "English"
 msgstr "Inglés"
 
-#: tvt/settings.py:193
+#: tvt/settings.py:196
 msgid "Català"
 msgstr "Catalán"
 
@@ -1513,7 +1545,7 @@ msgstr "Nombre de la Zona"
 msgid "Slug (used in templates)"
 msgstr "Slug (used en plantillas)"
 
-#: widgets/models.py:15 widgets/models.py:51
+#: widgets/models.py:15 widgets/models.py:52
 msgid "Widget Zone"
 msgstr "Zona del Widget"
 
@@ -1561,23 +1593,23 @@ msgstr "Post Grid: Las elecciones del editor"
 msgid "Post Carousel"
 msgstr "Carrusel Post"
 
-#: widgets/models.py:56
+#: widgets/models.py:57
 msgid "Widget Type"
 msgstr "Tipo de Widget"
 
-#: widgets/models.py:60
+#: widgets/models.py:61
 msgid "Widget Title"
 msgstr "Título del Widget"
 
-#: widgets/models.py:61
+#: widgets/models.py:62
 msgid "The title that will be displayed above the widget."
 msgstr "El título que se mostrará encima del widget."
 
-#: widgets/models.py:71
+#: widgets/models.py:72
 msgid "Number of items to show"
 msgstr "Número de artículos a mostrar"
 
-#: widgets/models.py:73
+#: widgets/models.py:74
 msgid ""
 "Used by widgets that display a list of items, like 'Recent Posts' or 'Blog "
 "Categories'."
@@ -1585,11 +1617,11 @@ msgstr ""
 "Utilizado por widgets que muestran una lista de elementos, como "
 "'Publicaciones recientes' o 'Categorías de blogs'."
 
-#: widgets/models.py:78
+#: widgets/models.py:79
 msgid "Cache Timeout (in seconds)"
 msgstr "Tiempo de espera en caché (en segundos)"
 
-#: widgets/models.py:79
+#: widgets/models.py:80
 msgid ""
 "How long the results of this widget should be stored in cache. 0 to disable "
 "caching for this widget."
@@ -1597,74 +1629,77 @@ msgstr ""
 "Cuánto tiempo deben almacenarse los resultados de este widget en caché. 0 "
 "para deshabilitar el almacenamiento en caché de este widget."
 
-#: widgets/models.py:86
+#: widgets/models.py:87
 msgid "Filter by Category (optional)"
 msgstr "Filtrar por Categoría (opcional)"
 
-#: widgets/models.py:87
+#: widgets/models.py:88
 msgid ""
 "If selected, the widget will only show items from this specific category."
 msgstr ""
 "Si se selecciona, el widget solo mostrará publicaciones de esta categoría."
 
-#: widgets/models.py:93 widgets/models.py:121
+#: widgets/models.py:94 widgets/models.py:122
 msgid "Column Count"
 msgstr "Cuenta de Columna"
 
-#: widgets/models.py:94 widgets/models.py:122
+#: widgets/models.py:95 widgets/models.py:123
 msgid "Number of columns for grid display (e.g., 2, 3, 4)."
 msgstr ""
 "Número de columnas para visualización de cuadrícula (por ejemplo, 2, 3, 4)."
 
-#: widgets/models.py:101 widgets/models.py:129
+#: widgets/models.py:102 widgets/models.py:130
 msgid "Section Title (Optional)"
 msgstr "Título de la Sección (Opcional)"
 
-#: widgets/models.py:102 widgets/models.py:130
+#: widgets/models.py:103 widgets/models.py:131
 msgid ""
 "A main title for this grid section (e.g., 'Latest Posts', 'Our Bestsellers')."
 msgstr ""
 "Un título principal para esta sección de cuadrícula (por ejemplo, 'Últimas "
 "publicaciones', 'Nuestros más vendidos')."
 
-#: widgets/models.py:109 widgets/models.py:137
+#: widgets/models.py:110 widgets/models.py:138
 msgid "View All Link Text"
 msgstr "Ver Todo el Texto del Enlace"
 
-#: widgets/models.py:110 widgets/models.py:138
+#: widgets/models.py:111 widgets/models.py:139
 msgid "Text for the 'View All' link below the grid (e.g., 'View All Posts')."
 msgstr ""
 "Texto para el enlace 'Ver todo' debajo de la cuadrícula (por ejemplo, 'Ver "
 "Todas las publicaciones')."
 
-#: widgets/models.py:115 widgets/models.py:143
+#: widgets/models.py:116 widgets/models.py:144
 msgid "View All Link URL"
 msgstr "Ver Todo Enlace URL"
 
-#: widgets/models.py:116 widgets/models.py:144
+#: widgets/models.py:117 widgets/models.py:145
 msgid "URL for the 'View All' link (e.g., '/blog/')."
 msgstr "URL para el enlace 'Ver todo' (por ejemplo, '/blog/')."
 
-#: widgets/models.py:148
+#: widgets/models.py:149
 msgid "Carousel Interval (ms)"
 msgstr "Intervalo de Carrusel (ms)"
 
-#: widgets/models.py:149
+#: widgets/models.py:150
 msgid "Time in milliseconds between slides for 'Post Carousel' widget."
 msgstr ""
 "Tiempo en milisegundos entre diapositivas para el widget 'Post Carousel'."
 
-#: widgets/models.py:154
+#: widgets/models.py:155
 msgid "Widget"
 msgstr "Widget"
 
-#: widgets/models.py:155
+#: widgets/models.py:156
 msgid "Widgets"
 msgstr "Widgets"
 
 #: widgets/templates/widgets/partials/_user_directory.html:37
 msgid "No users available."
 msgstr "Sin usuarios disponibles."
+
+#~ msgid "Spanish"
+#~ msgstr "Español"
 
 #~ msgid "Don't have an account?"
 #~ msgstr "¿No tiene una cuenta?"

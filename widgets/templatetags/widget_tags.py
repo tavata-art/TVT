@@ -10,6 +10,7 @@ from blog.models import Post
 from categories.models import Category # Universal Category model
 from widgets.models import Widget, WidgetZone
 from accounts.models import User
+from testimonials.models import Testimonial
 
 # Ensure static is imported from Django's template tags
 from django.templatetags.static import static 
@@ -127,6 +128,11 @@ def show_widget_zone(context, zone_slug):
                                     .select_related("profile") \
                                     .order_by("username")[:widget_instance.item_count]
                     items_container = list(items_qs)
+
+                case 'testimonials':
+                    items_qs = Testimonial.objects.filter(is_active=True).order_by('-created_at')
+                    items_container = list(items_qs[:widget_instance.item_count])
+
                 case _: # Unrecognized widget type
                     logger.warning(f"Unrecognized widget type '{widget_instance.widget_type}' for widget '{widget_instance.title}'.")
                     items_container = [] # Empty list for safety.
