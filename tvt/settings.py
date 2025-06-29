@@ -83,6 +83,8 @@ INSTALLED_APPS = [
     'categories.apps.CategoriesConfig',
     'gallery.apps.GalleryConfig',
     'testimonials',
+    'posts',
+    'tags',
 ]
 
 MIDDLEWARE = [
