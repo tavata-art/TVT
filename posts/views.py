@@ -5,7 +5,8 @@ import logging
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from django.utils.translation import get_language, gettext_lazy as _
-
+from comments.forms import CommentForm
+from comments.models import Comment
 from .models import Post
 from tags.models import Tag
 
@@ -46,6 +47,20 @@ def post_detail_view(request, year, month, day, slug):
             status='published'
         )
         logger.info(f"✅ Post found: '{post.safe_translation_getter('title', any_language=True)}' [{language}]")
+        
+        comment_form = CommentForm(request.POST or None)
+        comment_submitted = False
+
+        if request.method == 'POST' and comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.post = post
+            new_comment.user = request.user if request.user.is_authenticated else None
+            new_comment.save()
+            comment_submitted = True
+            logger.info(f"💬 New comment on post '{post}' by {new_comment.author_name or request.user}")
+
+        comments = post.comments.filter(is_approved=True)
+
     except Post.DoesNotExist:
         logger.warning(f"🚫 Post not found: slug='{slug}', lang='{language}'")
         raise Http404(_("No Post matches the given query."))
@@ -58,6 +73,9 @@ def post_detail_view(request, year, month, day, slug):
 
     return render(request, 'posts/post_detail.html', {
         "post": post,
+        "comments": comments,
+        "comment_form": comment_form,
+        "comment_submitted": comment_submitted,
         'breadcrumbs': breadcrumbs,
     })
 

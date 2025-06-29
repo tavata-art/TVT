@@ -85,6 +85,7 @@ INSTALLED_APPS = [
     'testimonials',
     'posts',
     'tags',
+    'comments'
 ]
 
 MIDDLEWARE = [
