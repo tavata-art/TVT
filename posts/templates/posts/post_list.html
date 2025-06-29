@@ -2,11 +2,20 @@
 {% extends "core/base.html" %}
 {% load i18n %}
 
-{% block title %}{% trans "Blog" %}{% endblock %}
+{# 🌐 Página: Título para pestaña del navegador #}
+{% block title %}{% trans "Posts" %}{% endblock %}
+
+{# 🧭 Breadcrumbs desde el contexto de la vista #}
+{% block breadcrumbs %}
+  {% include "core/partials/_breadcrumbs.html" %}
+{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
+
+  {# 📰 Título de página #}
   <h1 class="mb-4">{% trans "📚 Published Posts" %}</h1>
+
   <div class="row">
     {% for post in posts %}
       <div class="col-md-6 mb-4">
@@ -16,7 +25,7 @@
           {% endif %}
           <div class="card-body">
             <h5 class="card-title">{{ post.title }}</h5>
-            <p class="card-text">{{ post.meta_description }}</p>
+            <p class="card-text text-muted">{{ post.meta_description }}</p>
             <a href="{{ post.get_absolute_url }}" class="btn btn-primary">
               {% trans "Read more" %}
             </a>

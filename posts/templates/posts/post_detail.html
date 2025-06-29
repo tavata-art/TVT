@@ -1,26 +1,50 @@
-{# File: posts/templates/posts/post_detail.html #}
-{% extends "core/base.html" %}
+{% extends 'core/base.html' %}
 {% load i18n %}
 
+{# SEO Tags #}
+{% block seo_title %}{{ post.meta_title|default:post.title }}{% endblock %}
+{% block seo_description %}{{ post.meta_description|default:"" }}{% endblock %}
 {% block title %}{{ post.title }}{% endblock %}
+
+{# 🧭 Breadcrumbs #}
+{% block breadcrumbs %}
+  {% include "core/partials/_breadcrumbs.html" %}
+{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
-  <article>
-    <h1>{{ post.title }}</h1>
-    <p class="text-muted">
-      {% blocktrans with date=post.published_date|date:"F j, Y" %}
-        Published on {{ date }}
-      {% endblocktrans %}
-    </p>
+  <article class="post">
+    <header class="mb-4">
+      <h1 class="display-5">{{ post.title }}</h1>
+      <p class="text-muted">
+        {{ post.published_date|date:"DATE_FORMAT" }} · {{ post.author.get_full_name|default:post.author.username }}
+      </p>
+    </header>
 
     {% if post.featured_image %}
       <img src="{{ post.featured_image.url }}" class="img-fluid mb-4" alt="{{ post.title }}">
     {% endif %}
-
-    <div class="post-body fs-5">
+    
+    {# 🏷️ TAGS as Badges #}
+    {% if post.tags.exists %}
+      <div class="post-tags mt-4">
+        <h6 class="text-muted">{% trans "Tags" %}:</h6>
+        <ul class="list-inline">
+          {% for tag in post.tags.all %}
+            <li class="list-inline-item">
+              <a href="{% url 'posts:posts_by_tag' tag.slug %}" class="badge bg-secondary text-decoration-none">
+                {{ tag.label }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    <div class="post-content mb-5">
       {{ post.content|safe }}
     </div>
+
+    
   </article>
 </div>
 {% endblock %}

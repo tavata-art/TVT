@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tvt-cms 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-28 16:03+0000\n"
-"PO-Revision-Date: 2025-06-28 18:27+0200\n"
+"POT-Creation-Date: 2025-06-29 19:57+0000\n"
+"PO-Revision-Date: 2025-06-29 22:05+0200\n"
 "Last-Translator: Gustavo <tu_email@ejemplo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -459,7 +459,8 @@ msgstr "¡Su perfil ha sido actualizado con éxito!"
 #: accounts/views.py:154 accounts/views.py:209 blog/views.py:100
 #: blog/views.py:213 blog/views.py:276 categories/views.py:17
 #: categories/views.py:44 gallery/views.py:145 menus/views.py:11
-#: pages/views.py:19 pages/views.py:64 testimonials/views.py:9
+#: pages/views.py:19 pages/views.py:64 posts/views.py:22 posts/views.py:54
+#: posts/views.py:76 testimonials/views.py:9
 msgid "Home"
 msgstr "Inicio"
 
@@ -486,40 +487,42 @@ msgstr "Tu Nombre (requerido)"
 msgid "Your Email (required, not published)"
 msgstr "Su correo electrónico (requerido, no es público)"
 
-#: blog/models.py:17 pages/models.py:13
+#: blog/models.py:17 pages/models.py:13 posts/models.py:66
 msgid "Draft"
 msgstr "Borrador"
 
-#: blog/models.py:18 pages/models.py:14
+#: blog/models.py:18 pages/models.py:14 posts/models.py:67
 msgid "Published"
 msgstr "Publicado"
 
 #: blog/models.py:20 gallery/admin.py:42 gallery/models.py:15
-#: pages/models.py:17
+#: pages/models.py:17 posts/models.py:20
 msgid "Title"
 msgstr "Título"
 
 #: blog/models.py:21 categories/models.py:20 menus/models.py:20
+#: posts/models.py:25 tags/models.py:14
 msgid "Slug"
 msgstr "Slug"
 
-#: blog/models.py:22 pages/models.py:21 testimonials/models.py:8
+#: blog/models.py:22 pages/models.py:21 posts/models.py:48
+#: testimonials/models.py:8
 msgid "Author"
 msgstr "Autor"
 
-#: blog/models.py:24 blog/models.py:97 pages/models.py:19
+#: blog/models.py:24 blog/models.py:97 pages/models.py:19 posts/models.py:28
 msgid "Content"
 msgstr "Contenido"
 
-#: blog/models.py:29 pages/models.py:52
+#: blog/models.py:29 pages/models.py:52 posts/models.py:55
 msgid "Featured Image"
 msgstr "Imagen Destacada"
 
-#: blog/models.py:32
+#: blog/models.py:32 posts/models.py:60
 msgid "Published Date"
 msgstr "Fecha de Publicación"
 
-#: blog/models.py:33 pages/models.py:22
+#: blog/models.py:33 pages/models.py:22 posts/models.py:70
 msgid "Status"
 msgstr "Estado"
 
@@ -531,11 +534,11 @@ msgstr "Meta Título (SEO)"
 msgid "Meta Description (SEO)"
 msgstr "Meta Descripción (SEO)"
 
-#: blog/models.py:47
+#: blog/models.py:47 posts/models.py:73
 msgid "View Count"
 msgstr "Número de vistas"
 
-#: blog/models.py:50
+#: blog/models.py:50 posts/models.py:76
 msgid "Editor's Rating"
 msgstr "Calificación del Editor"
 
@@ -545,15 +548,6 @@ msgstr ""
 "Una puntuación de 0-100 para presentar esta publicación. Los números más "
 "altos aparecen primero."
 
-#: blog/models.py:58 blog/templates/blog/post_detail.html:60
-#: reporte_completo.txt:5440
-msgid "Tags"
-msgstr "Etiquetas"
-
-#: blog/models.py:59
-msgid "A comma-separated list of tags."
-msgstr "Una lista de etiquetas separadas por comas."
-
 #: blog/models.py:65
 msgid "blog post"
 msgstr "entrada de blog"
@@ -562,7 +556,7 @@ msgstr "entrada de blog"
 msgid "blog posts"
 msgstr "entradas de blog"
 
-#: blog/models.py:92
+#: blog/models.py:92 posts/models.py:93 tags/models.py:32
 msgid "Post"
 msgstr "Post"
 
@@ -582,7 +576,7 @@ msgstr "Nombre del Autor"
 msgid "Author Email"
 msgstr "Email del Autor"
 
-#: blog/models.py:98
+#: blog/models.py:98 posts/models.py:80
 msgid "Created At"
 msgstr "Fecha de Creación"
 
@@ -608,6 +602,12 @@ msgstr ""
 "\n"
 "                 Publicado el %(published_date)s por %(author)s\n"
 "                "
+
+#: blog/templates/blog/post_detail.html:60 posts/models.py:87
+#: posts/templates/posts/post_detail.html:31 reporte_completo.txt:5440
+#: tags/models.py:18
+msgid "Tags"
+msgstr "Etiquetas"
 
 #: blog/templates/blog/post_detail.html:77 reporte_completo.txt:5457
 #, python-format
@@ -672,7 +672,8 @@ msgstr ""
 
 #: blog/templates/blog/post_list.html:46
 #: blog/templates/blog/post_list_by_category.html:58
-#: blog/templates/blog/post_list_by_tag.html:37 reporte_completo.txt:5354
+#: blog/templates/blog/post_list_by_tag.html:37
+#: posts/templates/posts/posts_by_tag.html:44 reporte_completo.txt:5354
 #: reporte_completo.txt:5627 reporte_completo.txt:5700
 #: reporte_completo.txt:6428 reporte_completo.txt:6560
 #: reporte_completo.txt:6614
@@ -717,7 +718,7 @@ msgstr "Examine todas las publicaciones de blog relacionadas con"
 
 #: blog/templates/blog/post_list_by_tag.html:8 reporte_completo.txt:5671
 msgid "on Tavata CMS."
-msgstr "¡Bienvenido a Tavata CMS!"
+msgstr "a Tavata CMS"
 
 #: blog/templates/blog/post_list_by_tag.html:9 reporte_completo.txt:5672
 msgid "Posts by tag"
@@ -996,7 +997,8 @@ msgstr "Imagen"
 msgid "Image Gallery"
 msgstr "Galería de imágenes"
 
-#: gallery/templates/gallery/gallery_page.html:21 reporte_completo.txt:2301
+#: gallery/templates/gallery/gallery_page.html:21
+#: posts/templates/posts/post_list.html:30 reporte_completo.txt:2301
 msgid "Read more"
 msgstr "Leer Más"
 
@@ -1013,7 +1015,7 @@ msgstr ""
 
 #: gallery/templates/gallery/gallery_page.html:36 reporte_completo.txt:2316
 msgid "No images in the gallery."
-msgstr "No hay imágenes en esta galería"
+msgstr "No hay imágenes en esta galería."
 
 #: gallery/templates/gallery/image_detail.html:6 reporte_completo.txt:2269
 msgid "Image Detail"
@@ -1179,7 +1181,7 @@ msgstr "¡Bienvenido a Tavata CMS!"
 
 #: pages/templates/pages/page_detail.html:28 reporte_completo.txt:1738
 msgid "Welcome"
-msgstr "¡Bienvenido!"
+msgstr "Bienvenido"
 
 #: pages/templates/pages/page_detail.html:37
 #: pages/templates/pages/page_detail.html:115 reporte_completo.txt:1747
@@ -1246,6 +1248,89 @@ msgstr "Actualmente no hay páginas publicadas en esta categoría."
 #: pages/views.py:20 pages/views.py:65
 msgid "Pages"
 msgstr "Páginas"
+
+#: posts/models.py:34
+msgid "Meta Title"
+msgstr "Meta Título"
+
+#: posts/models.py:40
+msgid "Meta Description"
+msgstr "Meta Descripción"
+
+#: posts/models.py:77
+msgid ""
+"A score from 0-100. Higher numbers can be used for ordering or editor’s "
+"picks."
+msgstr ""
+"Una puntuación de 0-100. Se pueden usar números más altos para ordenar o "
+"seleccionar editoriales."
+
+#: posts/models.py:81
+msgid "Updated At"
+msgstr "Actualizado En"
+
+#: posts/models.py:89
+msgid "Tags assigned to this post. Managed via TaggedPost intermediate model."
+msgstr ""
+"Etiquetas asignadas a esta publicación. Gestionado a través del modelo "
+"intermedio TaggedPost."
+
+#: posts/models.py:94 posts/templates/posts/post_list.html:6 posts/views.py:23
+#: posts/views.py:55 posts/views.py:77
+msgid "Posts"
+msgstr "Posts"
+
+#: posts/models.py:98
+msgid "(No title)"
+msgstr "(Sin título)"
+
+#: posts/templates/posts/post_list.html:17
+msgid "📚 Published Posts"
+msgstr "📚 Publicaciones Publicadas"
+
+#: posts/templates/posts/post_list.html:38
+msgid "No published posts found."
+msgstr "No se encontraron publicaciones."
+
+#: posts/templates/posts/posts_by_tag.html:5
+msgid "Tagged posts"
+msgstr "Publicaciones etiquetadas"
+
+#: posts/templates/posts/posts_by_tag.html:6
+#, python-format
+msgid "List of all posts tagged with \"%(tag.label)s\"."
+msgstr "Lista de todas las publicaciones etiquetadas con \"%(tag.label)s\"."
+
+#: posts/templates/posts/posts_by_tag.html:10
+#, python-format
+msgid "Posts tagged with \"%(tag_label)s\""
+msgstr "Publicaciones etiquetadas con \"%(tag_label)s\""
+
+#: posts/templates/posts/posts_by_tag.html:21
+#, python-format
+msgid "Posts tagged with <span class=\"text-primary\">“%(tag_label)s”</span>"
+msgstr ""
+"Publicaciones etiquetadas con <span class=\"text-primary\">“%(tag_label)s”</"
+"span>"
+
+#: posts/templates/posts/posts_by_tag.html:39
+#, python-format
+msgid ""
+"\n"
+"                  Published on %(published_date)s by %(author)s\n"
+"                "
+msgstr ""
+"\n"
+"                 Publicado el %(published_date)s por %(author)s\n"
+"                "
+
+#: posts/templates/posts/posts_by_tag.html:51
+msgid "There are currently no posts tagged with this label."
+msgstr "Actualmente no hay páginas publicadas en esta categoría."
+
+#: posts/views.py:51
+msgid "No Post matches the given query."
+msgstr "Ninguna publicación coincide con la consulta dada."
 
 #: reporte_completo.txt:1729
 msgid "Welcome to TAVATA!"
@@ -1489,9 +1574,38 @@ msgstr "La URL a la que se vinculará la imagen del banner."
 msgid "Site Configuration"
 msgstr "Configuración del Sitio"
 
+#: tags/models.py:12
+msgid "Label"
+msgstr "Etiqueta"
+
+#: tags/models.py:17 tags/models.py:38
+msgid "Tag"
+msgstr "Etiqueta"
+
+#: tags/models.py:43
+msgid "Relevance Score"
+msgstr "Puntuación de Relevancia"
+
+#: tags/models.py:44
+msgid "Optional score from 0 to 100 indicating tag relevance."
+msgstr ""
+"Puntuación opcional de 0 a 100 que indica la relevancia de la etiqueta."
+
+#: tags/models.py:46
+msgid "Assigned At"
+msgstr "Asignado a"
+
+#: tags/models.py:50
+msgid "Tagged Post"
+msgstr "Etiquetado Post"
+
+#: tags/models.py:51
+msgid "Tagged Posts"
+msgstr "Tagged Publicaciones"
+
 #: testimonials/models.py:7
 msgid "Quote"
-msgstr "cita"
+msgstr "Cita"
 
 #: testimonials/models.py:9
 msgid "Title or Role"
@@ -1521,15 +1635,15 @@ msgstr "Testimonios"
 msgid "What our users are saying"
 msgstr "Lo que dicen nuestros usuarios"
 
-#: tvt/settings.py:194
+#: tvt/settings.py:196
 msgid "Español"
 msgstr "Español"
 
-#: tvt/settings.py:195
+#: tvt/settings.py:197
 msgid "English"
 msgstr "Inglés"
 
-#: tvt/settings.py:196
+#: tvt/settings.py:198
 msgid "Català"
 msgstr "Catalán"
 
@@ -1697,6 +1811,9 @@ msgstr "Widgets"
 #: widgets/templates/widgets/partials/_user_directory.html:37
 msgid "No users available."
 msgstr "Sin usuarios disponibles."
+
+#~ msgid "A comma-separated list of tags."
+#~ msgstr "Una lista de etiquetas separadas por comas."
 
 #~ msgid "Spanish"
 #~ msgstr "Español"

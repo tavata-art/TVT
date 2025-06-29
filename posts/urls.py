@@ -9,4 +9,5 @@ urlpatterns = [
     
     # URL con fecha + slug
     path('<int:year>/<int:month>/<int:day>/<slug:slug>/', views.post_detail_view, name='post_detail'),
+    path('tag/<slug:tag_slug>/', views.posts_by_tag_view, name='posts_by_tag'),
 ]

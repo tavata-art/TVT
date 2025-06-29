@@ -4,8 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from parler.models import TranslatableModel, TranslatedFields
 from django.urls import reverse
 from django.utils import timezone
-from taggit.managers import TaggableManager
-#from tags.models import TranslatedTaggedPost
+from tags.models import Tag, TaggedPost  # ✅ Aquí ya funciona porque usamos string en tags
 
 User = get_user_model()
 
@@ -81,13 +80,14 @@ class Post(TranslatableModel):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created At"))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_("Updated At"))
 
-    #tags = TaggableManager(
-    #    through='tags.TranslatedTaggedPost',  # ✅ <- como string si tienes imports cruzados
-    #    verbose_name=_("Tags"),
-    #    help_text=_("A comma-separated list of tags."),
-    #    blank=True
-    #)
-
+    tags = models.ManyToManyField(
+        Tag,
+        through=TaggedPost,
+        related_name="posts",
+        verbose_name=_("Tags"),
+        blank=True,
+        help_text=_("Tags assigned to this post. Managed via TaggedPost intermediate model."),
+    )
 
     class Meta:
         verbose_name = _("Post")

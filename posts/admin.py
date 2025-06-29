@@ -4,27 +4,34 @@ import logging
 from django.contrib import admin
 from parler.admin import TranslatableAdmin
 from .models import Post
-from django.utils.translation import gettext_lazy as _
+from tags.models import TaggedPost
 
 logger = logging.getLogger(__name__)
+
+
+class TaggedPostInline(admin.TabularInline):
+    """
+    🧩 Inline admin to manage tags assigned to a Post.
+    Displays the related tag and optional relevance score.
+    """
+    model = TaggedPost
+    extra = 1
+    autocomplete_fields = ['tag']  # Enables search-as-you-type for tag selection
+    fields = ('tag', 'relevance_score')
+    verbose_name = "Assigned Tag"
+    verbose_name_plural = "Assigned Tags"
+
 
 @admin.register(Post)
 class PostAdmin(TranslatableAdmin):
     """
     🧠 Admin for multilingual Post model using django-parler tabs.
-    Does not use any WYSIWYG editor. Keeps the interface clean.
+    Includes inline management of associated tags via TaggedPost.
     """
-
-    # 📋 Columns displayed in the admin list view
     list_display = ('title', 'status', 'published_date', 'author')
-
-    # 🔍 Sidebar filters
     list_filter = ('status', 'published_date')
-
-    # 🙈 Hidden fields (set automatically or not relevant to edit)
     exclude = ('author', 'views_count')
 
-    # 🔍 Searchable fields across all translations
     search_fields = (
         'translations__title',
         'translations__content',
@@ -32,11 +39,12 @@ class PostAdmin(TranslatableAdmin):
         'translations__meta_description'
     )
 
-    # 🚀 Automatically assign author on post creation
+    inlines = [TaggedPostInline]  # 👈 Attach tag management here
+
     def save_model(self, request, obj, form, change):
         if not obj.pk:
             obj.author = request.user
-            logger.info(f"🆕 New post created by 🧑‍💻 {request.user.username}: {obj}")
+            logger.info(f"🆕 New post created by 🧑\u200d💻 {request.user.username}: {obj}")
         else:
-            logger.info(f"✏️ Post updated by 🧑‍💻 {request.user.username}: {obj}")
+            logger.info(f"✏️ Post updated by 🧑\u200d💻 {request.user.username}: {obj}")
         super().save_model(request, obj, form, change)
