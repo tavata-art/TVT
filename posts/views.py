@@ -15,6 +15,8 @@ from comments.models import Comment
 from comments.forms import CommentForm
 from tags.models import Tag
 from site_settings.models import SiteConfiguration
+from django.conf import settings
+from django.db.models import Q
 
 logger = logging.getLogger(__name__)
 
@@ -65,13 +67,21 @@ def get_category_depth(category):
         current = current.parent
     return depth
 
+def get_fallback(instance, field_name, language):
+    val = getattr(instance, f"{field_name}_{language}", None)
+    if val:
+        return val
+    return getattr(instance, f"{field_name}_{settings.LANGUAGE_CODE}", f"[{field_name}]")
+
 def build_category_breadcrumbs(category):
     path = []
     current = category
+    lang = get_language()
+
     while current:
         path.append({
-            "url": reverse("posts:posts_by_category", args=[current.slug]),
-            "label": current.name,
+            "url": reverse("posts:posts_by_category", args=[get_fallback(current, "slug", lang)]),
+            "label": get_fallback(current, "name", lang),
         })
         current = current.parent
     return reversed(path)
@@ -168,10 +178,12 @@ def posts_by_category_view(request, category_slug):
     """
     language = get_language()
 
-    category = get_object_or_404(
-        Category.objects.language(language), 
-        translations__slug=category_slug
-    )
+    # 🧭 Buscar la categoría multilingüe por el slug del idioma actual
+    lookup = Q()
+    for lang_code, _ in settings.LANGUAGES:
+        lookup |= Q(**{f"slug_{lang_code}": category_slug})
+
+    category = get_object_or_404(Category, lookup)
     all_posts = Post.objects.filter(status='published', categories=category).order_by('-published_date')
 
     try:
