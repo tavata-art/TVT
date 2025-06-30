@@ -108,26 +108,6 @@ def post_list_view(request):
     # 6. Render the template with the provided context.
     return render(request, 'blog/post_list.html', context)
 
-def get_category_depth(category):
-    depth = 0
-    current = category
-    while current.parent:
-        depth += 1
-        current = current.parent
-    return depth
-
-def build_category_breadcrumbs(category):
-    """Devuelve una lista de dicts desde la raíz hasta la categoría"""
-    path = []
-    current = category
-    while current:
-        path.append({
-            "url": reverse("blog:posts_by_category", args=[current.slug]),
-            "label": current.name,
-        })
-        current = current.parent
-    return reversed(path)  # children to father
-
 def post_detail_view(request, year, month, day, slug):
     """
     Displays a single blog post and handles the entire comment submission process,
@@ -226,7 +206,16 @@ def post_detail_view(request, year, month, day, slug):
     }
     return render(request, 'blog/post_detail.html', context)
 
+def get_category_depth(category):
+    depth = 0
+    current = category
+    while current.parent:
+        depth += 1
+        current = current.parent
+    return depth
+
 def build_category_breadcrumbs(category):
+    """Devuelve una lista de dicts desde la raíz hasta la categoría"""
     path = []
     current = category
     while current:
@@ -235,7 +224,7 @@ def build_category_breadcrumbs(category):
             "label": current.name,
         })
         current = current.parent
-    return reversed(path)
+    return reversed(path)  # children to father
 
 def posts_by_category_view(request, category_slug):
     """

@@ -1,25 +1,33 @@
-{% extends "core/base.html" %}
+{% extends 'core/base.html' %}
 {% load i18n %}
 {% load widget_tags %}
 
-{# --- SEO --- #}
-{% block seo_title %}{% translate "Published Posts" %} | Tavata.art{% endblock %}
-{% block seo_description %}{% translate "Latest updates and insights from the Tavata project." %}{% endblock %}
-{% block title %}{% translate "Published Posts" %}{% endblock %}
+{# --- SEO and Browser Tab Title Blocks --- #}
+{% block seo_title %}{{ category.meta_title|default:category.name }}{% endblock %}
+{% block seo_description %}{{ category.meta_description|default:"" }}{% endblock %}
 
-{# --- Breadcrumbs desde el contexto --- #}
+{% block title %}{% blocktranslate %}Posts in {{ category.name }}{% endblocktranslate %}{% endblock %}
+
 {% block breadcrumbs %}
   {% include "core/partials/_breadcrumbs.html" %}
 {% endblock %}
 
 {% block content %}
 <div class="container mt-5">
-  
-  <div class="blog-header pb-3 mb-5 text-center border-bottom">
-      <h1 class="display-4">{% translate "Published Posts" %}</h1>
-      <p class="lead text-muted">{% translate "Latest news and articles from the Tavata platform." %}</p>
+
+  {# --- Header de Categoría --- #}
+  <div class="category-header mb-5 text-center">
+    <h1 class="display-4">
+      {% blocktranslate %}
+        Posts in category: <span class="text-primary">{{ category.name }}</span>
+      {% endblocktranslate %}
+    </h1>
+    {% if category.description %}
+      <p class="lead text-muted">{{ category.description }}</p>
+    {% endif %}
   </div>
 
+  {# --- Grid de Posts --- #}
   <div class="row">
     {% for post in posts %}
       <div class="col-md-6 col-lg-4 mb-4">
@@ -32,7 +40,7 @@
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">{{ post.title }}</h5>
             <p class="card-text text-muted">
-              {% firstof post.author.get_full_name post.author.username as author_name %}
+              {% firstof post.author.profile.get_display_name post.author.username as author_name %}
               <small>
                 {% blocktranslate with published_date=post.published_date|date:"DATE_FORMAT" author=author_name %}
                   Published on {{ published_date }} by {{ author }}
@@ -40,35 +48,35 @@
               </small>
             </p>
             <a href="{{ post.get_absolute_url }}" class="btn btn-primary mt-auto">
-              {% trans "Read More" %}
+              {% translate "Read More" %}
             </a>
           </div>
         </div>
       </div>
     {% empty %}
       <div class="col">
-        <div class="alert alert-info">
-          {% translate "There are no posts yet. Come back soon!" %}
+        <div class="alert alert-info" role="alert">
+          {% translate "There are currently no published posts in this category." %}
         </div>
       </div>
     {% endfor %}
   </div>
 
-  {# --- Paginación estándar centralizada --- #}
+  {# --- PAGINACIÓN --- #}
   {% include 'core/partials/_pagination.html' with page_obj=posts %}
-
 </div>
 {% endblock %}
 
-{# --- Zonas de Widgets --- #}
+{# --- Sidebar Izquierdo --- #}
 {% block sidebar_left %}
   <div class="sticky-top pt-5">
-    {% show_widget_zone 'posts-sidebar-left' %}
+    {% show_widget_zone 'blog-sidebar-left' %}
   </div>
 {% endblock %}
 
+{# --- Sidebar Derecho --- #}
 {% block sidebar_right %}
   <div class="sticky-top pt-5">
-    {% show_widget_zone 'posts-sidebar-right' %}
+    {% show_widget_zone 'blog-sidebar-right' %}
   </div>
 {% endblock %}

@@ -1,28 +1,32 @@
-{# File: posts/templates/posts/post_detail.html #}
 {% extends 'core/base.html' %}
-{% load static i18n mptt_tags %}
-{% load widget_tags %}
-{% load custom_filters %} {# Si usas el filtro add_zoom_class_to_images #}
+{% load static i18n mptt_tags widget_tags custom_filters %}
 
+{# --- SEO --- #}
 {% block seo_title %}{{ post.meta_title|default:post.title }}{% endblock %}
 {% block seo_description %}{{ post.meta_description|default:"" }}{% endblock %}
 {% block title %}{{ post.title }}{% endblock %}
 
-{# 🧭 Breadcrumbs #}
 {% block breadcrumbs %}
   {% include "core/partials/_breadcrumbs.html" %}
 {% endblock %}
 
+{# --- Optional left sidebar --- #}
+{% block sidebar_left %}
+  <div class="sticky-top pt-5">
+    {% show_widget_zone 'blog-sidebar-left' %}
+  </div>
+{% endblock %}
+
 {% block content %}
 <div class="post-detail-container">
-  <!-- 🖼 Featured image -->
+  {# Featured Image #}
   {% if post.featured_image %}
     <img src="{{ post.featured_image.url }}"
          alt="{{ post.title }}"
          class="zoomable img-fluid rounded mb-4 shadow">
   {% endif %}
 
-  <!-- 📝 Title and Meta -->
+  {# Post Title and Metadata #}
   <h1 class="fw-bold">{{ post.title }}</h1>
   <p class="text-muted small">
     {% firstof post.author.profile.get_display_name post.author.username as author_name %}
@@ -31,7 +35,19 @@
     {% endblocktranslate %}
   </p>
 
-  <!-- 🏷 Tags -->
+  {# Categories #}
+  {% if post.categories.exists %}
+    <div class="mb-3">
+      <strong>{% translate "Categories" %}:</strong>
+      {% for category in post.categories.all %}
+        <a href="{{ category.get_absolute_url }}" class="badge bg-primary text-dark text-decoration-none">
+          {{ category.name }}
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {# Tags #}
   {% if post.tags.exists %}
     <div class="mb-3">
       <strong>{% trans "Tags" %}:</strong>
@@ -45,28 +61,28 @@
 
   <hr class="my-4">
 
-  <!-- 📄 Content -->
+  {# Content #}
   <div class="post-content fs-5">
     {{ post.content|add_zoom_class_to_images|safe }}
   </div>
 
-  <!-- 💬 Comments -->
+  {# Comments Section #}
   <hr class="my-5">
   <div class="comments-section">
-    <h3 class="mb-4" id="comments-section">{% blocktranslate count count=comments.count %}{{ count }} Comment{% plural %}{{ count }} Comments{% endblocktranslate %}</h3>
+    <h3 class="mb-4" id="comments-section">
+      {% blocktranslate count count=comments.count %}{{ count }} Comment{% plural %}{{ count }} Comments{% endblocktranslate %}
+    </h3>
 
     <ul class="list-unstyled">
       {% recursetree comments %}
         <li class="comment-item mb-4" id="comment-{{ node.id }}">
           <div class="d-flex">
             <div class="flex-shrink-0">
-              <!-- DYNAMIC AVATAR -->
               <img src="{{ node.get_author_avatar_url }}" alt="{{ node.get_author_name }}'s Avatar"
                    class="rounded-circle me-3"
                    style="width: 48px; height: 48px; object-fit: cover;">
             </div>
             <div class="flex-grow-1">
-              <!-- DYNAMIC AUTHOR NAME -->
               <h6 class="mt-0 fw-bold">{{ node.get_author_name }}</h6>
               <p class="mb-1">{{ node.content|linebreaks }}</p>
               <small class="text-muted">
@@ -85,7 +101,7 @@
     </ul>
   </div>
 
-  <!-- 📝 Comment Form -->
+  {# Comment Form #}
   <hr class="my-5">
   <div class="comment-form-section card shadow-sm border-0" id="comment-form">
     <div class="card-body p-4 p-md-5">
@@ -103,14 +119,12 @@
       <h4 class="card-title" id="comment-form-title">{% trans "Leave a Comment" %}</h4>
       <form method="post" action="">
         {% csrf_token %}
-
         <div class="mb-3">
           {{ comment_form.content }}
           {% if comment_form.content.errors %}
             <div class="invalid-feedback d-block">{{ comment_form.content.errors|striptags }}</div>
           {% endif %}
         </div>
-
         <div class="row {% if user.is_authenticated %}d-none{% endif %}">
           <div class="col-md-6 mb-3">
             {{ comment_form.author_name }}
@@ -125,50 +139,53 @@
             {% endif %}
           </div>
         </div>
-
         {{ comment_form.parent }}
-
         <button type="submit" class="btn btn-primary">{% trans "Submit Comment" %}</button>
       </form>
     </div>
   </div>
 </div>
-{% endblock content %}
+{% endblock %}
+
+{% block sidebar_right %}
+  <div class="sticky-top pt-5">
+    {% show_widget_zone 'blog-sidebar-right' %}
+  </div>
+{% endblock %}
 
 {% block extra_js %}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const replyLinks = document.querySelectorAll('.reply-link');
-    const parentIdInput = document.querySelector('input[name="parent"]');
-    const formTitle = document.getElementById('comment-form-title');
-    const originalFormTitle = formTitle.textContent;
-    const contentTextarea = document.getElementById('id_content');
+  const replyLinks = document.querySelectorAll('.reply-link');
+  const parentIdInput = document.querySelector('input[name="parent"]');
+  const formTitle = document.getElementById('comment-form-title');
+  const originalFormTitle = formTitle.textContent;
+  const contentTextarea = document.getElementById('id_content');
 
-    const cancelButton = document.createElement('button');
-    cancelButton.type = 'button';
-    cancelButton.id = 'cancel-reply';
-    cancelButton.className = 'btn btn-sm btn-secondary ms-3';
-    cancelButton.textContent = '{% translate "Cancel Reply" %}';
+  const cancelButton = document.createElement('button');
+  cancelButton.type = 'button';
+  cancelButton.id = 'cancel-reply';
+  cancelButton.className = 'btn btn-sm btn-secondary ms-3';
+  cancelButton.textContent = '{% translate "Cancel Reply" %}';
 
-    replyLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            const commentId = this.getAttribute('data-comment-id');
-            const authorName = this.closest('.comment-item').querySelector('.fw-bold').textContent.trim();
-
-            parentIdInput.value = commentId;
-            formTitle.textContent = `{% trans "Reply to" %} ${authorName}`;
-            if (!document.getElementById('cancel-reply')) {
-                formTitle.appendChild(cancelButton);
-            }
-            contentTextarea.focus();
-        });
+  replyLinks.forEach(link => {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      const commentId = this.getAttribute('data-comment-id');
+      const authorName = this.closest('.comment-item').querySelector('.fw-bold').textContent.trim();
+      parentIdInput.value = commentId;
+      formTitle.textContent = `{% trans "Reply to" %} ${authorName}`;
+      if (!document.getElementById('cancel-reply')) {
+        formTitle.appendChild(cancelButton);
+      }
+      contentTextarea.focus();
     });
+  });
 
-    cancelButton.addEventListener('click', function() {
-        parentIdInput.value = '';
-        formTitle.textContent = originalFormTitle;
-    });
+  cancelButton.addEventListener('click', function() {
+    parentIdInput.value = '';
+    formTitle.textContent = originalFormTitle;
+  });
 });
 </script>
 {% endblock %}

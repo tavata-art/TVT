@@ -1,14 +1,11 @@
 {% extends 'core/base.html' %}
 {% load i18n %}
+{% load widget_tags %}
 
-{# --- SEO blocks --- #}
-{% block seo_title %}{{ tag.label }} — {% trans "Tagged posts" %}{% endblock %}
-{% block seo_description %}{% blocktranslate %}List of all posts tagged with "{{ tag.label }}".{% endblocktranslate %}{% endblock %}
-
-{# --- Browser tab title --- #}
-{% block title %}
-  {% blocktranslate %}Posts tagged with "{{ tag_label }}"{% endblocktranslate %}
-{% endblock %}
+{# --- SEO y título de pestaña del navegador --- #}
+{% block seo_title %}{{ tag.meta_title|default:tag.label }} | Tavata.art{% endblock %}
+{% block seo_description %}{% blocktranslate %}Explore all posts tagged with "{{ tag.label }}" on Tavata CMS.{% endblocktranslate %}{% endblock %}
+{% block title %}{% blocktranslate %}Posts tagged with "{{ tag.label }}"{% endblocktranslate %}{% endblock %}
 
 {% block breadcrumbs %}
   {% include "core/partials/_breadcrumbs.html" %}
@@ -18,8 +15,13 @@
 <div class="container mt-5">
   <div class="text-center mb-5">
     <h1 class="display-4">
-      {% blocktranslate %}Posts tagged with <span class="text-primary">“{{ tag_label }}”</span>{% endblocktranslate %}
+      {% blocktranslate %}Posts tagged with <span class="text-primary">“{{ tag.label }}”</span>{% endblocktranslate %}
     </h1>
+    {% if tag.description %}
+      <p class="lead text-muted">{{ tag.description }}</p>
+    {% else %}
+      <p class="lead text-muted">{% trans "Explore content related to this tag." %}</p>
+    {% endif %}
   </div>
 
   <div class="row">
@@ -28,13 +30,17 @@
         <div class="card h-100 shadow-sm border-0">
           {% if post.featured_image %}
             <a href="{{ post.get_absolute_url }}">
-              <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
+              <img src="{{ post.featured_image.url }}"
+                   class="card-img-top"
+                   loading="lazy"
+                   alt="{{ post.title }}"
+                   style="height: 180px; object-fit: cover;">
             </a>
           {% endif %}
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">{{ post.title }}</h5>
             <p class="card-text text-muted">
-              {% firstof post.author.get_full_name post.author.username as author_name %}
+              {% firstof post.author.profile.get_display_name post.author.username as author_name %}
               <small>
                 {% blocktranslate with published_date=post.published_date|date:"DATE_FORMAT" author=author_name %}
                   Published on {{ published_date }} by {{ author }}
@@ -46,12 +52,55 @@
         </div>
       </div>
     {% empty %}
-      <div class="col">
-        <div class="alert alert-info" role="alert">
-          {% trans "There are currently no posts tagged with this label." %}
+      <div class="col-12">
+        <div class="alert alert-info text-center" role="alert">
+          🐝 {% translate "There are currently no posts tagged with this label." %}
+        </div>
+
+        <div class="mt-5">
+          <h5 class="text-center">{% translate "You might be interested in these recent posts:" %}</h5>
+          <div class="row mt-4">
+            {% for fallback_post in fallback_posts %}
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                  {% if fallback_post.featured_image %}
+                    <a href="{{ fallback_post.get_absolute_url }}">
+                      <img src="{{ fallback_post.featured_image.url }}" class="card-img-top" loading="lazy" alt="{{ fallback_post.title }}">
+                    </a>
+                  {% endif %}
+                  <div class="card-body d-flex flex-column">
+                    <h6 class="card-title">{{ fallback_post.title }}</h6>
+                    <p class="card-text small text-muted">
+                      {% blocktranslate with published_date=fallback_post.published_date|date:"DATE_FORMAT" %}
+                        Published on {{ published_date }}
+                      {% endblocktranslate %}
+                    </p>
+                    <a href="{{ fallback_post.get_absolute_url }}" class="btn btn-sm btn-outline-primary mt-auto">
+                      {% translate "Read More" %}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
         </div>
       </div>
     {% endfor %}
   </div>
+
+  {% include 'core/partials/_pagination.html' with page_obj=posts %}
 </div>
+{% endblock %}
+
+{# --- Sidebars (opcional) --- #}
+{% block sidebar_left %}
+  <div class="sticky-top pt-5">
+    {% show_widget_zone 'blog-sidebar-left' %}
+  </div>
+{% endblock %}
+
+{% block sidebar_right %}
+  <div class="sticky-top pt-5">
+    {% show_widget_zone 'blog-sidebar-right' %}
+  </div>
 {% endblock %}
