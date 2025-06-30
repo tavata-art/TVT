@@ -27,11 +27,11 @@ class TaggedPostInline(admin.TabularInline):
 class PostAdmin(TranslatableAdmin):
     """
     🧠 Admin for multilingual Post model using django-parler.
-    Combines inline tag editing and tag badge display.
+    Combines inline tag editing and tag badge display, and managing categories via ManyToMany.
     """
 
     # 📋 Columns shown in list view
-    list_display = ('title', 'author', 'status', 'published_date', 'views_count', 'editor_rating', 'list_tags')
+    list_display = ('title', 'author', 'status', 'published_date', 'views_count', 'editor_rating', 'list_tags', 'display_categories_list')
     list_filter = ('status', 'published_date', 'author')
     date_hierarchy = 'published_date'
     ordering = ('status', '-published_date')
@@ -48,9 +48,17 @@ class PostAdmin(TranslatableAdmin):
     # 🙈 Hidden fields in form
     exclude = ('author', 'views_count')
 
+    # ManyToManyField for categories, uses a nice multi-selector interface
+    filter_horizontal = ('categories',) 
+
     # 🧩 Inline form for managing tag relations
     inlines = [TaggedPostInline]
 
+    # Custom method to display categories in the list view
+    @admin.display(description=_("Categories"))
+    def display_categories_list(self, obj):
+        return ", ".join([cat.name for cat in obj.categories.all()])
+    
     # 🏷 Visual badge list of tags
     @admin.display(description=_("Tags"))
     def list_tags(self, obj):

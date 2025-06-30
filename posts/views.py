@@ -111,7 +111,6 @@ def posts_by_tag_view(request, tag_slug):
     tag = get_object_or_404(Tag, slug=tag_slug)
     posts = Post.objects.language(language).filter(tags=tag, status='published').order_by('-published_date')
     logger.info(f"📌 Showing posts for tag: {tag.safe_translation_getter('label', any_language=True)} [{language}]")
-    
     context = {
         'tag': tag,
         'posts': posts,

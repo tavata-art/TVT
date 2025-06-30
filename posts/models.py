@@ -4,7 +4,8 @@ from django.utils.translation import gettext_lazy as _
 from parler.models import TranslatableModel, TranslatedFields
 from django.urls import reverse
 from django.utils import timezone
-from tags.models import Tag, TaggedPost  # ✅ Aquí ya funciona porque usamos string en tags
+from categories.models import Category 
+from tags.models import Tag, TaggedPost
 
 User = get_user_model()
 
@@ -87,6 +88,15 @@ class Post(TranslatableModel):
         verbose_name=_("Tags"),
         blank=True,
         help_text=_("Tags assigned to this post. Managed via TaggedPost intermediate model."),
+    )
+
+    # --- CORRECTED CATEGORY RELATIONSHIP ---
+    # Using a ManyToManyField is simpler and more efficient for querying than GenericRelation.
+    categories = models.ManyToManyField(
+        Category,
+        blank=True,
+        verbose_name=_("Categories"),
+        related_name="posts_posts"
     )
 
     class Meta:
