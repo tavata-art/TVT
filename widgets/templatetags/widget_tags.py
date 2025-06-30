@@ -6,7 +6,8 @@ from django.core.cache import cache
 from django.conf import settings # Needed for settings.LANGUAGES and settings.LANGUAGE_CODE
 
 # Import all needed models at the top
-from blog.models import Post 
+from blog.models import Post as Post
+from posts.models import Post as Posts
 from categories.models import Category # Universal Category model
 from widgets.models import Widget, WidgetZone
 from accounts.models import User
@@ -24,7 +25,7 @@ def _get_thumbnail_url(obj):
     Returns the URL for the thumbnail of a given object.
     Currently supports Post objects with 'featured_image'.
     """
-    if isinstance(obj, Post) and obj.featured_image:
+    if (isinstance(obj, Post) or isinstance(obj, Posts)) and obj.featured_image:
         return obj.featured_image.url
     
     # Fallback to a default placeholder image if no specific image is found.
@@ -68,39 +69,38 @@ def show_widget_zone(context, zone_slug):
 
             match widget_instance.widget_type:
                 case 'recent_posts':
-                    items_qs = Post.objects.filter(status='published').order_by('-published_date')
+                    items_qs = Posts.objects.filter(status='published').order_by('-published_date')
                     items_container = list(items_qs[:widget_instance.item_count]) # Evaluate QuerySet
                 
                 case 'most_viewed_posts':
-                    items_qs = Post.objects.filter(status='published').order_by('-views_count', '-published_date')
+                    items_qs = Posts.objects.filter(status='published').order_by('-views_count', '-published_date')
                     items_container = list(items_qs[:widget_instance.item_count])
 
                 case 'most_commented_posts':
-                    items_qs = Post.objects.filter(status='published') \
-                                           .annotate(num_comments=Count('comments', filter=Q(comments__is_approved=True))) \
-                                           .filter(num_comments__gt=0) \
-                                           .order_by('-num_comments', '-published_date')
+                    items_qs = Posts.objects.filter(status='published') \
+                        .annotate(num_comments=Count('comments', filter=Q(comments__is_approved=True))) \
+                        .filter(num_comments__gt=0) \
+                        .order_by('-num_comments', '-published_date')
                     items_container = list(items_qs[:widget_instance.item_count])
                 
                 case 'editor_picks_posts':
-                    items_qs = Post.objects.filter(status='published', editor_rating__gt=0) \
+                    items_qs = Posts.objects.filter(status='published', editor_rating__gt=0) \
                                            .order_by('-editor_rating', '-published_date')
                     items_container = list(items_qs[:widget_instance.item_count])
                 
                 case 'blog_categories':
                     categories_qs = Category.objects.annotate(
-                        num_blog_posts=Count('blog_posts', filter=Q(blog_posts__status='published'))
+                        num_blog_posts=Count('posts_posts', filter=Q(blog_posts__status='published'))
                     ).filter(num_blog_posts__gt=0).order_by('-num_blog_posts', 'name')
                     items_container = list(categories_qs[:widget_instance.item_count])
                 
-                # --- NEW CASES FOR POST GRIDS ---
                 case 'post_grid_recent':
-                    items_qs = Post.objects.filter(status='published').order_by('-published_date')
+                    items_qs = Posts.objects.filter(status='published').order_by('-published_date')
                     items_container = list(items_qs[:widget_instance.item_count])
                     # No new thumbnail_url required here, as the template will handle it dynamically.
 
                 case 'post_grid_popular':
-                    items_qs = Post.objects.filter(status='published').order_by('-views_count', '-published_date')
+                    items_qs = Posts.objects.filter(status='published').order_by('-views_count', '-published_date')
                     items_container = list(items_qs[:widget_instance.item_count])
 
                 case 'post_grid_commented':
@@ -111,7 +111,7 @@ def show_widget_zone(context, zone_slug):
                     items_container = list(items_qs[:widget_instance.item_count])
                 
                 case 'post_grid_editor':
-                    items_qs = Post.objects.filter(status='published', editor_rating__gt=0) \
+                    items_qs = Posts.objects.filter(status='published', editor_rating__gt=0) \
                                            .order_by('-editor_rating', '-published_date')
                     items_container = list(items_qs[:widget_instance.item_count])
 
@@ -119,7 +119,7 @@ def show_widget_zone(context, zone_slug):
                     # You can configure which posts go into the carousel.
                     # For simplicity, let's use a "top N" most recent posts or highly rated posts.
                     # This example uses editor_rating > 0.
-                    items_qs = Post.objects.filter(status='published', editor_rating__gt=0) \
+                    items_qs = Posts.objects.filter(status='published', editor_rating__gt=0) \
                                            .order_by('-editor_rating', '-published_date')
                     items_container = list(items_qs[:widget_instance.item_count])
 
@@ -140,7 +140,7 @@ def show_widget_zone(context, zone_slug):
             # --- Common Post-based Processing (Applies only to Post items) ---
             # Attach thumbnail_url to Post objects. This runs once per item on cache miss.
             # This should not run for categories.
-            if widget_instance.widget_type in ['recent_posts', 'most_viewed_posts', 'most_commented_posts', 'editor_picks_posts', 'post_grid_recent', 'post_grid_popular', 'post_grid_commented', 'post_grid_editor', 'post_carousel', 'user_directory']:
+            if widget_instance.widget_type in ['recent_posts', 'most_viewed_posts', 'most_commented_posts', 'editor_picks_posts', 'post_grid_recent', 'post_grid_popular', 'post_grid_commented', 'post_grid_editor', 'post_carousel', 'user_directory', 'testimonials']:
                 for post_obj in items_container: 
                     # post_obj is already a Post instance here (from items_container)
                     post_obj.thumbnail_url = _get_thumbnail_url(post_obj)
