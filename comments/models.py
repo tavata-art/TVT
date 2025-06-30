@@ -97,3 +97,18 @@ class Comment(MPTTModel):
         if preferred_language and preferred_language == self.translation_language and self.translated_content:
             return self.translated_content
         return self.content
+
+    def get_author_name(self):
+        if self.user:
+            return self.user.profile.get_display_name()
+        return self.author_name
+    
+    def get_author_avatar_url(self):
+        from django.templatetags.static import static
+        if self.user and hasattr(self.user, 'profile') and self.user.profile.avatar:
+            default_paths = [c[0] for c in self.user.profile.AvatarChoice.choices]
+            if self.user.profile.avatar.name not in default_paths:
+                return self.user.profile.avatar.url
+            return static(self.user.profile.default_avatar_choice)
+        
+        return static('images/avatars/default_anonymous.png')

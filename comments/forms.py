@@ -1,23 +1,52 @@
 # File: comments/forms.py
-
+import logging
 from django import forms
-from .models import Comment
 from django.utils.translation import gettext_lazy as _
+from .models import Comment
+
+logger = logging.getLogger(__name__)
 
 class CommentForm(forms.ModelForm):
     """
-    ✏️ Public comment form shown on post detail pages.
-    Only allows name, email and content.
+    🧠 A robust comment form with support for authenticated/anonymous users,
+    threaded replies via 'parent', and bootstrap styling.
     """
 
     class Meta:
         model = Comment
-        fields = ['author_name', 'author_email', 'content']
-        labels = {
-            'author_name': _("Your name"),
-            'author_email': _("Your email"),
-            'content': _("Comment"),
-        }
+        fields = ['content', 'parent', 'author_name', 'author_email']
         widgets = {
-            'content': forms.Textarea(attrs={'rows': 4}),
+            'parent': forms.HiddenInput(),
         }
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+
+        # ✏️ Bootstrap styling
+        self.fields['content'].widget = forms.Textarea(attrs={
+            'class': 'form-control',
+            'rows': 4,
+            'placeholder': _('Write your comment here...')
+        })
+        self.fields['author_name'].widget = forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': _('Your Name (required)')
+        })
+        self.fields['author_email'].widget = forms.EmailInput(attrs={
+            'class': 'form-control',
+            'placeholder': _('Your Email (required, not published)')
+        })
+
+        # 🔐 Logic for authenticated users
+        if self.user and self.user.is_authenticated:
+            self.fields['author_name'].required = False
+            self.fields['author_email'].required = False
+            self.fields['author_name'].widget = forms.HiddenInput()
+            self.fields['author_email'].widget = forms.HiddenInput()
+            logger.debug(f"🧑‍💻 Customizing CommentForm for logged-in user: {self.user.username}")
+
+    def clean(self):
+        if self.errors:
+            logger.warning(f"⚠️ CommentForm validation failed. Errors: {self.errors.as_json()}")
+        return super().clean()
