@@ -212,11 +212,14 @@ def posts_by_category_view(request, category_slug):
         {"url": reverse("posts:post_list"), "label": gettext("Posts")},
     ] + list(build_category_breadcrumbs(category))
 
+    category_label = getattr(category, f"name_{get_language()}", category.name)
+
     context = {
         "category": category,
         "posts": posts,
         "breadcrumbs": breadcrumbs,
         'fallback_posts': fallback_posts,
+        "category_label": category_label,
     }
     return render(request, "posts/posts_by_category.html", context)
 
@@ -256,6 +259,8 @@ def posts_by_tag_view(request, tag_slug):
         .exclude(pk__in=[p.pk for p in posts]) \
         .order_by('-published_date')[:3]
 
+    tag_label = tag.safe_translation_getter("label", any_language=True)
+
     context = {
         'tag': tag,
         'posts': posts,
@@ -266,6 +271,7 @@ def posts_by_tag_view(request, tag_slug):
             {"url": "/posts/", "label": gettext("Posts")},
             {"url": "", "label": tag.safe_translation_getter("label", any_language=True)},
         ],
+        'tag_label': tag_label,
     }
 
     return render(request, 'posts/posts_by_tag.html', context)
