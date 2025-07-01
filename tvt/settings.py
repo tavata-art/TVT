@@ -65,6 +65,7 @@ INSTALLED_APPS = [
 
     # 3. Otras apps de Terceros
     'django_summernote',
+    'tinymce',
     'solo',
     'mptt',
     'taggit',
@@ -85,7 +86,8 @@ INSTALLED_APPS = [
     'testimonials',
     'posts',
     'tags',
-    'comments'
+    'comments',
+    'publications',
 ]
 
 MIDDLEWARE = [
@@ -121,6 +123,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tvt.wsgi.application'
 
+TINYMCE_DEFAULT_CONFIG = {
+    'height': 500,
+    'width': '100%',
+    'menubar': 'file edit view insert format tools table help',
+    'plugins': 'advlist autolink lists link image charmap print preview anchor '
+               'searchreplace visualblocks code fullscreen '
+               'insertdatetime media table paste code help wordcount',
+    'toolbar': 'undo redo | formatselect | bold italic backcolor | '
+               'alignleft aligncenter alignright alignjustify | '
+               'bullist numlist outdent indent | removeformat | help',
+    'branding': False,
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases

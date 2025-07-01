@@ -13,6 +13,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     # 1. Third-party app URLs (like summernote)
     path('summernote/', include('django_summernote.urls')),
+    path('tinymce/', include('tinymce.urls')),
 
     # This includes all of Django's built-in auth URLs (login, password reset, etc.)
     # Our custom logout is technically handled by django.contrib.auth.urls's default logout,
@@ -39,6 +40,7 @@ urlpatterns += i18n_patterns(
     path('gallery/', include('gallery.urls', namespace='gallery')),
     path('testimonials/', include('testimonials.urls', namespace='testimonials')),
     path("posts/", include("posts.urls", namespace='posts')),
+    path('publications/', include('publications.urls', namespace='publications')),
     path('', include('core.urls')),
 )
 
